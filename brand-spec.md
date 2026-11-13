@@ -18,8 +18,22 @@ The older leaf wordmark and purple can in `training/vive-copy.md` are superseded
 | `texture-purple-cans.jpg`, `texture-purple-silk.jpg`, `cola-splash.png`, `ice-cube.png` | Deck textures |
 | `retailers.png` | Lawson, 7-Eleven, SM, Ayala Malls strip as used on the posters |
 
-## Color (sampled)
-Orange #F37A21 · Navy #283891 · Cream #E4CEAF · Black #000000 · Deck purple #2A2882 · Sun #FBAE47 (triangles on the can)
+## Visual language (client's words, 2026-11-14)
+Sharp and energetic. Vibrant and optimistic. Intense but sweet. Cheerful. Dynamic and motivating. Charged and playful.
+- Signature shapes: the **10-point star** and **triangles**.
+- Reading for the site: sharp edges and angled cuts over soft rounded pills; motion that feels charged (quick, snappy) rather than floaty.
+
+## Color (client-specified, 2026-11-14)
+| Role | Hex |
+|---|---|
+| Orange | #F27A21 |
+| Navy | #2B3990 |
+| Sun (triangles) | #F4BD6A |
+| Off-white | #F9F9F9 |
+
+Orange is the main ground for the site. Do not use the deck's purple (#2A2882) as a page ground (client, 2026-11-14).
+
+Flavor grounds seen on the cans (not part of the core four): cream #E4CEAF (Decaffeinated), black (Extra Caffeine).
 
 ## Type
 - Logo: Gardin Bold Rounded (logo is an image; do not set it as live text)
