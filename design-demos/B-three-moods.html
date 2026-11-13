@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VIVE · Direction B · Three Moods</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap">
+<!-- Direction B: the poster photography leads. The hero is three moods of the day; hovering one opens it. Quiet white type system around the photos. -->
+<style>
+  :root { --orange:#F37A21; --navy:#283891; --ink:#14183F; --paper:#FFFFFF; --mist:#F1F2F8; --sun:#FBAE47;
+          --f:"Montserrat", "Avenir Next", Arial, sans-serif; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:var(--f); color:var(--ink); background:var(--paper); }
+  a { color:inherit; }
+  img { max-width:100%; display:block; }
+
+  nav { position:absolute; inset:0 0 auto; z-index:5; display:flex; align-items:center; justify-content:space-between; padding:20px clamp(16px,4vw,48px); color:#fff; }
+  nav img { height:30px; }
+  nav ul { list-style:none; display:flex; gap:clamp(14px,3vw,36px); margin:0; padding:0; font-weight:600; font-size:15px; }
+  nav a { text-decoration:none; padding:10px 0; display:inline-block; text-shadow:0 1px 8px rgba(0,0,0,.4); }
+  nav a[aria-current] { font-weight:800; border-bottom:2px solid #fff; }
+
+  .moods { display:flex; height:min(92vh,860px); min-height:560px; background:#000; }
+  .mood { flex:1; position:relative; overflow:hidden; text-decoration:none; color:#fff; transition:flex .6s cubic-bezier(.2,.7,.2,1); }
+  .mood img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .8s; }
+  .mood::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.35) 0,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 55%,rgba(0,0,0,.7)); }
+  .mood .t { position:absolute; z-index:2; left:clamp(16px,2.4vw,32px); right:16px; bottom:clamp(20px,3vw,40px); }
+  .mood small { font-weight:800; text-transform:uppercase; letter-spacing:.14em; font-size:12px; color:var(--sun); }
+  .mood h2 { margin:6px 0 0; font-weight:900; font-size:clamp(26px,3vw,44px); line-height:1; text-transform:uppercase; }
+  .mood p { margin:10px 0 0; font-size:15px; max-width:22em; opacity:0; transform:translateY(8px); transition:.4s; }
+  .moods:hover .mood { flex:.8; } .moods .mood:hover { flex:1.6; } .mood:hover p { opacity:1; transform:none; } .mood:hover img { transform:scale(1.03); }
+  .mood.good { flex:1.4; } .mood.good p { opacity:1; transform:none; }
+  .mood.good .t { bottom:auto; top:50%; transform:translateY(-50%); text-align:left; }
+  .mood.good h2 { font-size:clamp(34px,4.4vw,64px); }
+
+  .strip { background:var(--navy); color:#fff; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; padding:22px clamp(16px,5vw,72px); }
+  .strip b { font-size:clamp(18px,2vw,24px); font-weight:900; text-transform:uppercase; }
+  .strip span { font-size:15px; opacity:.85; }
+  .btn { font:800 15px/1 var(--f); text-decoration:none; padding:16px 26px; border-radius:40px; background:var(--orange); color:#fff; display:inline-block; }
+
+  section { padding:clamp(56px,8vw,110px) clamp(16px,5vw,72px); }
+  .head { display:flex; justify-content:space-between; align-items:end; gap:16px; flex-wrap:wrap; margin-bottom:32px; }
+  h3 { font-weight:900; font-size:clamp(30px,3.6vw,48px); margin:0; text-transform:uppercase; line-height:1; }
+  .head p { margin:0; max-width:28em; line-height:1.6; color:#4a4f74; }
+
+  .rail { display:grid; grid-auto-flow:column; grid-auto-columns:minmax(260px,1fr); gap:20px; overflow-x:auto; padding-bottom:10px; scroll-snap-type:x mandatory; }
+  .rail figure { margin:0; scroll-snap-align:start; }
+  .rail img { aspect-ratio:7/10; object-fit:cover; width:100%; border-radius:6px; }
+  figcaption { font-size:14px; margin-top:10px; font-weight:600; } figcaption b { display:block; font-weight:800; text-transform:uppercase; font-size:13px; letter-spacing:.06em; color:var(--orange); }
+
+  .video { background:var(--mist); }
+  .player { aspect-ratio:16/9; border-radius:10px; overflow:hidden; position:relative; display:grid; place-items:center; color:#fff; text-align:center; font-weight:800; }
+  .player img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.55); }
+  .player div { position:relative; } .play { width:80px; height:80px; border-radius:50%; border:3px solid #fff; margin:0 auto 14px; display:grid; place-items:center; }
+  .play::after { content:""; border-left:24px solid #fff; border-top:15px solid transparent; border-bottom:15px solid transparent; margin-left:6px; }
+
+  .more { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .slot { aspect-ratio:2/3; border:2px dashed #b9bdd6; border-radius:6px; display:grid; place-items:center; text-align:center; color:#6a6f94; font-weight:600; padding:16px; }
+
+  footer { background:var(--ink); color:#fff; padding:44px clamp(16px,5vw,72px); display:grid; grid-template-columns:1fr auto; gap:24px; align-items:center; }
+  footer img.wm { height:34px; } footer .retail { background:#fff; padding:10px 14px; border-radius:6px; }
+
+  @media (max-width:800px) {
+    .moods { flex-direction:column; height:auto; } .mood { min-height:62vw; flex:none !important; }
+    .mood p { opacity:1; transform:none; } .mood.good .t { top:auto; bottom:24px; transform:none; }
+    .more { grid-template-columns:1fr; } footer { grid-template-columns:1fr; }
+    nav ul { gap:12px; font-size:13px; }
+  }
+  @media (prefers-reduced-motion:reduce) { * { transition:none !important; } }
+</style>
+</head>
+<body>
+<nav>
+  <img src="../assets/wordmark-vive-white.png" alt="VIVE">
+  <ul><li><a href="#" aria-current="page">Home</a></li><li><a href="#">About Us</a></li><li><a href="#">Product</a></li><li><a href="#">Shop</a></li></ul>
+</nav>
+
+<header class="moods">
+  <a class="mood relax" href="#"><img src="../assets/scene-living-room.jpg" alt=""><div class="t"><small>Decaffeinated</small><h2>Relaxing vibes</h2><p>For the evening couch. Cola decaffeinated with vitamins A, C, B9, and B12.</p></div></a>
+  <a class="mood good" href="#"><img src="../assets/scene-beach.jpg" alt=""><div class="t"><small>The vitamin-charged cola</small><h2>Your dose of<br>good vibes</h2><p>Familiar cola taste with four vitamins. Sweetened with 100% stevia, zero calories.</p></div></a>
+  <a class="mood grind" href="#"><img src="../assets/scene-office.jpg" alt=""><div class="t"><small>Extra caffeine</small><h2>Grind vibes</h2><p>For the long workday. Cola with extra caffeine and the same four vitamins.</p></div></a>
+</header>
+
+<div class="strip"><div><b>₱67 a can</b> <span>· 12 oz · at Lawson, 7-Eleven, SM, and Ayala Malls</span></div><a class="btn" href="#">Grab a VIVE!</a></div>
+
+<section>
+  <div class="head"><h3>The campaign</h3><p>Three flavors, three moods, and the poster that started it.</p></div>
+  <div class="rail">
+    <figure><img src="../assets/poster-good-vibes.jpg" alt="Good vibes poster"><figcaption><b>Original</b>Your dose of good vibes</figcaption></figure>
+    <figure><img src="../assets/poster-relaxing-vibes.jpg" alt="Relaxing vibes poster"><figcaption><b>Decaffeinated</b>Your dose of relaxing vibes</figcaption></figure>
+    <figure><img src="../assets/poster-grind-vibes.jpg" alt="Grind vibes poster"><figcaption><b>Extra caffeine</b>Your dose of grind vibes</figcaption></figure>
+    <figure><img src="../assets/poster-intro-good-vibes.jpg" alt="Introductory poster"><figcaption><b>Introductory poster</b>Get one now</figcaption></figure>
+    <figure><img src="../assets/mockup-wall-beach-poster.jpg" alt="Good vibes poster on a wall"><figcaption><b>In the wild</b>On the street</figcaption></figure>
+  </div>
+</section>
+
+<section class="video">
+  <div class="head"><h3>Watch the ad</h3><p>Placeholder for the VIVE ad video (16:9).</p></div>
+  <div class="player"><img src="../assets/scene-beach.jpg" alt=""><div><div class="play"></div>VIVE ad video goes here</div></div>
+</section>
+
+<section>
+  <div class="head"><h3>More from VIVE</h3><p>Seasonal posters.</p></div>
+  <div class="more"><div class="slot">Christmas poster<br>(placeholder)</div><div class="slot">Seasonal poster<br>(placeholder)</div><div class="slot">Seasonal poster<br>(placeholder)</div></div>
+</section>
+
+<footer><img class="wm" src="../assets/wordmark-vive-white.png" alt="VIVE"><img class="retail" src="../assets/retailers.png" alt="Lawson, 7-Eleven, SM, Ayala Malls"></footer>
+</body>
+</html>
