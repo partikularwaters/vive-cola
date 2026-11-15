@@ -1,0 +1,38 @@
+#!/bin/sh
+# Pre-push security hook: Scan outgoing commits before pushing to remote.
+
+remote="$1"
+url="$2"
+
+BLOCKED_NAME_PATTERNS="(\.env|\.pem$|\.key$|\.cert$|\.crt$|credentials\.json|token\.json|[Nn][Bb][Ii]|[Rr]esume|Video\.mp4$)"
+KEY_HEADER="-----BEGIN "
+KEY_SIG="${KEY_HEADER}PRIVATE KEY-----"
+
+while read local_ref local_sha remote_ref remote_sha; do
+  if [ "$local_sha" = "0000000000000000000000000000000000000000" ]; then
+    continue # Branch deletion
+  fi
+
+  if [ "$remote_sha" = "0000000000000000000000000000000000000000" ]; then
+    # New branch: check commits not in other branches
+    range="$local_sha"
+  else
+    range="$remote_sha..$local_sha"
+  fi
+
+  # Check filenames in outgoing commits
+  leaked_files=$(git log "$range" --name-only --format="" | grep -E "$BLOCKED_NAME_PATTERNS")
+  if [ -n "$leaked_files" ]; then
+    echo "ERROR [pre-push]: Outgoing commits contain blocked sensitive files:" >&2
+    echo "$leaked_files" >&2
+    exit 1
+  fi
+
+  # Check diffs for private keys (excluding hook definitions)
+  if git log "$range" -p -S"$KEY_SIG" --oneline -- . ':!.githooks' | grep -q .; then
+    echo "ERROR [pre-push]: Outgoing commits contain private key signatures." >&2
+    exit 1
+  fi
+done
+
+exit 0

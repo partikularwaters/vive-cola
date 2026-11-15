@@ -1,0 +1,35 @@
+#!/bin/sh
+# Pre-commit security hook: Prevent accidental inclusion of private files and secrets.
+
+# 1. Check staged filenames against blocked patterns
+BLOCKED_NAME_PATTERNS="(\.env|\.pem$|\.key$|\.cert$|\.crt$|credentials\.json|token\.json|[Nn][Bb][Ii]|[Rr]esume|Video\.mp4$)"
+
+staged_files=$(git diff --cached --name-only --diff-filter=ACM)
+
+for file in $staged_files; do
+  if echo "$file" | grep -E -q "$BLOCKED_NAME_PATTERNS"; then
+    echo "ERROR [pre-commit]: Refusing to commit private or sensitive file: $file" >&2
+    exit 1
+  fi
+done
+
+# 2. Check staged content for private key signatures (excluding hook definitions)
+KEY_HEADER="-----BEGIN "
+KEY_SIG="${KEY_HEADER}PRIVATE KEY-----"
+RSA_SIG="${KEY_HEADER}RSA PRIVATE KEY-----"
+
+if git diff --cached -S"$KEY_SIG" --quiet -- . ':!.githooks'; then
+  : # Clean
+else
+  echo "ERROR [pre-commit]: Staged changes appear to contain an unencrypted private key." >&2
+  exit 1
+fi
+
+if git diff --cached -S"$RSA_SIG" --quiet -- . ':!.githooks'; then
+  : # Clean
+else
+  echo "ERROR [pre-commit]: Staged changes appear to contain an unencrypted RSA private key." >&2
+  exit 1
+fi
+
+exit 0
