@@ -1,5 +1,7 @@
 #!/bin/sh
-# Pre-push security hook: Scan outgoing commits before pushing to remote.
+# Pre-push security and verification hook:
+# 1. Scans outgoing commits for blocked sensitive files and private keys.
+# 2. Runs mechanical verification checks on repo links and website assets.
 
 remote="$1"
 url="$2"
@@ -34,5 +36,18 @@ while read local_ref local_sha remote_ref remote_sha; do
     exit 1
   fi
 done
+
+# Mechanical verification checks
+echo "==> Running internal repository link checker..."
+if ! python3 scripts/check_repo_links.py; then
+  echo "ERROR [pre-push]: Repository link check failed. Aborting push." >&2
+  exit 1
+fi
+
+echo "==> Running website HTML link and asset checker..."
+if ! python3 scripts/check_site_links.py --allow-planned; then
+  echo "ERROR [pre-push]: Website link and asset check failed. Aborting push." >&2
+  exit 1
+fi
 
 exit 0

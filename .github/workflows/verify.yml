@@ -1,0 +1,25 @@
+name: Verify Links and Assets
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Check internal Markdown links
+        run: python3 scripts/check_repo_links.py
+
+      - name: Check website HTML links and assets
+        run: python3 scripts/check_site_links.py --allow-planned
