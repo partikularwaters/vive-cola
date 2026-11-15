@@ -12,7 +12,7 @@ Built on ICM principles: one place per truth, folders carry structure, and plain
 | Brand colors, typography, shapes, product facts, and assets | [brand-spec.md](brand-spec.md) |
 | Approved visual direction and motion decisions | [direction-approved.md](direction-approved.md) |
 | Human project overview, preview instructions, and samples | [README.md](README.md) |
-| Website edit surface (HTML/CSS) | [site/](site/) |
+| Website edit surface (HTML/CSS) | [index.html](index.html), `about.html`, `product.html`, and `shop.html` at root |
 | Image assets (logos, cans, posters, mockups) | [assets/](assets/) |
 
 ## Invariants and Execution Rules

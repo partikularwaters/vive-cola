@@ -1,9 +1,3 @@
 {
-  "cleanUrls": true,
-  "rewrites": [
-    { "source": "/", "destination": "/site" },
-    { "source": "/about", "destination": "/site/about" },
-    { "source": "/product", "destination": "/site/product" },
-    { "source": "/shop", "destination": "/site/shop" }
-  ]
+  "cleanUrls": true
 }

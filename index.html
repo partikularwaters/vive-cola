@@ -1,13 +1,195 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>VIVE — Vitamin-Charged Cola</title>
-  <meta http-equiv="refresh" content="0; url=/site/">
-  <link rel="canonical" href="/site/">
-  <script>window.location.replace("/site/");</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VIVE · Home</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap">
+<!-- Home v1: direction C hero and shapes, with direction A's tilted label headings and slanted posters after the hero.
+     Built from the brand's signature shapes: orange ground, 10-point star behind the can,
+     triangles scattered at sharp angles, and diagonal section cuts with snappy entrance motion. -->
+<style>
+  :root { --orange:#F27A21; --navy:#2B3990; --sun:#F4BD6A; --white:#F9F9F9; --deep:#1D2766;
+          --f:"Montserrat", "Avenir Next", Arial, sans-serif; --cut:clamp(28px,5vw,72px); }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:var(--f); color:var(--navy); background:var(--orange); }
+  a { color:inherit; }
+  img { max-width:100%; display:block; }
+  .wrap { padding-left:clamp(16px,5vw,72px); padding-right:clamp(16px,5vw,72px); }
+
+  nav { display:flex; align-items:center; justify-content:space-between; padding-top:18px; padding-bottom:18px; position:relative; z-index:3; }
+  nav img { height:32px; }
+  nav ul { list-style:none; display:flex; gap:clamp(12px,2.6vw,32px); margin:0; padding:0; font-weight:800; font-size:14px; text-transform:uppercase; letter-spacing:.06em; color:var(--white); }
+  nav a { text-decoration:none; display:inline-block; padding:10px 0; }
+  nav a[aria-current] { color:var(--navy); }
+
+  /* Shapes */
+  .tri { position:absolute; width:var(--s); height:var(--s); background:var(--c); clip-path:polygon(50% 0,100% 100%,0 100%);
+         transform:rotate(var(--r)); animation:snap .45s cubic-bezier(.2,1.6,.4,1) both; animation-delay:var(--d,0s); }
+  @keyframes snap { from { transform:rotate(calc(var(--r) - 40deg)) scale(0); } to { transform:rotate(var(--r)) scale(1); } }
+  .star { clip-path:polygon(50% 0%,59.5% 20.8%,79.4% 9.5%,77% 32.3%,97.6% 34.5%,84.6% 50%,97.6% 65.5%,77% 67.7%,79.4% 90.5%,59.5% 79.2%,50% 100%,40.5% 79.2%,20.6% 90.5%,23% 67.7%,2.4% 65.5%,15.4% 50%,2.4% 34.5%,23% 32.3%,20.6% 9.5%,40.5% 20.8%); }
+
+  /* HERO */
+  .hero { position:relative; overflow:hidden; padding-bottom:calc(var(--cut) + 40px); }
+  .hero .grid { display:grid; grid-template-columns:1fr minmax(260px,.85fr); align-items:center; gap:24px; position:relative; z-index:2; }
+  .hero h1 { margin:0; font-weight:900; text-transform:uppercase; line-height:.9; font-size:clamp(48px,8.6vw,128px); letter-spacing:-.01em; color:var(--white); }
+  .hero h1 em { font-style:normal; color:var(--navy); display:block; }
+  .hero p { font-size:clamp(16px,1.4vw,19px); line-height:1.55; font-weight:600; color:var(--deep); max-width:30em; margin:24px 0 0; }
+  .cta { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
+  .btn { font:900 15px/1 var(--f); text-transform:uppercase; letter-spacing:.04em; text-decoration:none; padding:17px 24px; display:inline-block;
+         clip-path:polygon(0 0,100% 0,calc(100% - 12px) 100%,0 100%); transition:transform .15s; }
+  .btn:hover, .btn:focus-visible { transform:translateY(-2px); }
+  .btn.navy { background:var(--navy); color:var(--white); }
+  .btn.white { background:var(--white); color:var(--navy); }
+  .stage { position:relative; aspect-ratio:1/1.15; display:grid; place-items:center; }
+  .stage .burst { position:absolute; inset:2% -6%; background:var(--white); animation:spin 90s linear infinite; }
+  .stage .burst.back { inset:-4% -12%; background:var(--sun); animation-direction:reverse; opacity:.9; }
+  @keyframes spin { to { transform:rotate(360deg); } }
+  .stage .can { position:relative; width:34%; transform:rotate(-9deg); filter:drop-shadow(0 26px 22px rgba(29,39,102,.35)); animation:pop .5s .15s cubic-bezier(.2,1.5,.4,1) both; }
+  @keyframes pop { from { transform:rotate(-30deg) translateY(40px) scale(.8); opacity:0; } }
+  .price { position:absolute; right:2%; bottom:6%; width:clamp(96px,10vw,132px); aspect-ratio:1; background:var(--navy); color:var(--white);
+           display:grid; place-items:center; text-align:center; font-weight:900; font-size:clamp(24px,2.4vw,32px); line-height:.9; transform:rotate(12deg); }
+  .price small { display:block; font-size:.5em; letter-spacing:.06em; text-transform:uppercase; }
+
+  /* diagonal cut into the next section */
+  .cut-down { clip-path:polygon(0 0,100% 0,100% calc(100% - var(--cut)),0 100%); }
+  .cut-both { clip-path:polygon(0 var(--cut),100% 0,100% calc(100% - var(--cut)),0 100%); margin-top:calc(var(--cut) * -1); }
+
+  .facts { background:var(--navy); color:var(--white); margin-top:calc(var(--cut) * -1); padding-top:calc(var(--cut) + 28px); padding-bottom:28px;
+           display:flex; flex-wrap:wrap; gap:14px 44px; justify-content:center; font-weight:900; text-transform:uppercase; letter-spacing:.06em; font-size:clamp(14px,1.4vw,17px); }
+  .facts span { display:inline-flex; align-items:center; gap:10px; }
+  .facts span::before { content:""; width:14px; height:14px; background:var(--sun); clip-path:polygon(50% 0,100% 100%,0 100%); }
+
+  /* Tilted label headings */
+  .label { display:inline-block; background:var(--navy); color:var(--white); line-height:1.02; padding:.16em .42em .2em;
+           transform:rotate(-3deg); clip-path:polygon(2% 0,100% 6%,98% 100%,0 94%); }
+  .label + .label { margin-top:6px; transform:rotate(-1.5deg); }
+  .label.orange { background:var(--orange); } .label.sun { background:var(--sun); color:var(--navy); } .label.white { background:var(--white); color:var(--navy); }
+  h2 .label { display:block; width:max-content; max-width:100%; }
+
+  section { position:relative; padding-top:clamp(64px,8vw,112px); padding-bottom:clamp(64px,8vw,112px); }
+  h2 { margin:0 0 36px; font-weight:900; text-transform:uppercase; line-height:.95; font-size:clamp(34px,5vw,68px); }
+
+  /* POSTERS: on off-white, each poster sits on its own tilted color block */
+  .posters { background:var(--white); }
+  
+  .row { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(20px,3.4vw,48px); }
+  .row figure { margin:0; position:relative; transition:transform .2s cubic-bezier(.2,1.4,.4,1); }
+  .row figure:nth-child(1) { transform:rotate(-2deg); }
+  .row figure:nth-child(2) { transform:rotate(1.2deg) translateY(24px); }
+  .row figure:nth-child(3) { transform:rotate(-.8deg); }
+  .row figure:hover { transform:rotate(0) translateY(-6px); }
+  .intro > img { transform:rotate(-2.5deg); box-shadow:0 18px 30px rgba(29,39,102,.2); }
+  .row figure::before { content:""; position:absolute; inset:5% -4% 44px 6%; background:var(--b); clip-path:polygon(4% 0,100% 3%,96% 100%,0 96%); z-index:0; }
+  .row img { position:relative; z-index:1; box-shadow:0 18px 30px rgba(29,39,102,.2); }
+  figcaption { position:relative; z-index:1; margin-top:18px; font-weight:900; text-transform:uppercase; font-size:15px; display:flex; justify-content:space-between; gap:8px; }
+  figcaption span { color:var(--orange); }
+  .intro { display:grid; grid-template-columns:.7fr 1.3fr; gap:clamp(24px,4vw,56px); align-items:center; margin-top:clamp(72px,8vw,120px); }
+  .intro p { font-size:17px; line-height:1.6; max-width:30em; margin:0 0 24px; color:#2a3366; }
+  .intro .mock { display:grid; grid-template-columns:2fr 1fr; gap:14px; }
+  .intro .mock img { height:100%; object-fit:cover; }
+
+  /* VIDEO */
+  .video { background:var(--navy); color:var(--white); }
+  
+  .player { aspect-ratio:16/9; max-width:1120px; margin:0 auto; position:relative; display:grid; place-items:center; text-align:center; font-weight:800;
+            background:var(--deep); clip-path:polygon(0 0,100% 0,100% 92%,96% 100%,0 100%); outline:2px dashed rgba(249,249,249,.35); outline-offset:-14px; }
+  .player .playbtn { width:96px; height:96px; background:var(--orange); margin:0 auto 14px; display:grid; place-items:center; }
+  .player .playbtn::after { content:""; width:34px; height:34px; background:var(--white); clip-path:polygon(0 0,100% 50%,0 100%); margin-left:6px; }
+
+  /* MORE POSTERS (seasonal), bottom of page */
+  .more { background:var(--orange); }
+  
+  .slots { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .slot { aspect-ratio:2/3; background:rgba(249,249,249,.16); outline:3px dashed rgba(249,249,249,.7); outline-offset:-3px; display:grid; place-items:center;
+          text-align:center; color:var(--white); font-weight:800; padding:16px; }
+
+  footer { background:var(--deep); color:var(--white); padding-top:44px; padding-bottom:44px; display:flex; flex-wrap:wrap; gap:24px; justify-content:space-between; align-items:center; }
+  footer b { text-transform:uppercase; font-weight:900; letter-spacing:.05em; }
+  footer .retail { background:var(--white); padding:10px 14px; }
+
+  @media (max-width:820px) {
+    .hero .grid { grid-template-columns:1fr; }
+    .stage { max-width:380px; margin:0 auto; width:100%; }
+    .row, .slots { grid-template-columns:1fr; } .row figure { transform:none !important; }
+    .intro > * { min-width:0; } h2 .label { width:auto; } .intro { grid-template-columns:1fr; }
+    nav { flex-wrap:wrap; row-gap:6px; }
+    nav ul { width:100%; justify-content:space-between; font-size:12px; } nav img { height:26px; }
+    .tri.hide-sm { display:none; }
+  }
+  @media (prefers-reduced-motion:reduce) { *, *::before { animation:none !important; transition:none !important; } }
+</style>
 </head>
-<body style="background:#F27A21;margin:0;display:grid;place-items:center;min-height:100vh;font-family:sans-serif;color:#fff;">
-  <p>Loading VIVE...</p>
+<body>
+
+<header class="hero cut-down">
+  <i class="tri" style="--s:120px;--c:var(--sun);--r:18deg;left:-30px;top:120px;--d:.05s"></i>
+  <i class="tri hide-sm" style="--s:46px;--c:var(--navy);--r:-24deg;left:42%;top:84px;--d:.12s"></i>
+  <i class="tri hide-sm" style="--s:70px;--c:var(--white);--r:200deg;left:38%;bottom:110px;--d:.18s"></i>
+  <i class="tri" style="--s:34px;--c:var(--navy);--r:40deg;right:6%;top:96px;--d:.24s"></i>
+  <i class="tri hide-sm" style="--s:58px;--c:var(--sun);--r:-150deg;left:8%;bottom:70px;--d:.3s"></i>
+
+  <nav class="wrap">
+    <a href="index.html"><img src="assets/wordmark-vive-navy.png" alt="VIVE"></a>
+    <ul>
+      <li><a href="index.html" aria-current="page">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="product.html">Product</a></li>
+      <li><a href="shop.html">Shop</a></li>
+    </ul>
+  </nav>
+
+  <div class="grid wrap">
+    <div>
+      <h1>Your dose of <em>good vibes</em></h1>
+      <p>The vitamin-charged cola. Familiar cola taste with vitamins A, C, B9, and B12, sweetened with 100% stevia. Zero calories.</p>
+      <div class="cta">
+        <a class="btn navy" href="shop.html">Grab a VIVE!</a>
+        <a class="btn white" href="product.html">See the flavors</a>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="burst back star"></div>
+      <div class="burst star"></div>
+      <img class="can" src="assets/can-original-hires.png" alt="VIVE Original can, 12 oz">
+      <div class="price star">₱67<small>Only</small></div>
+    </div>
+  </div>
+</header>
+
+<div class="facts wrap"><span>Vitamins A, C, B9, and B12</span><span>100% stevia</span><span>0 calories</span><span>12 oz</span></div>
+
+<section class="posters wrap">
+  <h2><span class="label">Pick your vibe</span></h2>
+  <div class="row">
+    <figure style="--b:var(--sun)"><img src="assets/poster-relaxing-vibes-hires.webp" alt="Your dose of relaxing vibes poster"><figcaption>Relaxing vibes <span>Decaffeinated</span></figcaption></figure>
+    <figure style="--b:var(--orange)"><img src="assets/poster-good-vibes-hires.webp" alt="Your dose of good vibes poster"><figcaption>Good vibes <span>Original</span></figcaption></figure>
+    <figure style="--b:var(--navy)"><img src="assets/poster-grind-vibes-hires.webp" alt="Your dose of grind vibes poster"><figcaption>Grind vibes <span>Extra caffeine</span></figcaption></figure>
+  </div>
+  <div class="intro">
+    <img src="assets/poster-intro-good-vibes.jpg" alt="Introductory poster: VIVE can over a volleyball net">
+    <div>
+      <h2><span class="label orange">Spread the vibes!</span></h2>
+      <p>Our first poster put VIVE courtside. Now it's on bus stops and city walls near you.</p>
+      <div class="mock"><img src="assets/mockup-bus-shelter.jpg" alt="Poster at a bus shelter"><img src="assets/mockup-wall-street.jpg" alt="Poster on a street wall"></div>
+    </div>
+  </div>
+</section>
+
+<section class="video wrap">
+  <h2><span class="label orange">Watch the ad</span></h2>
+  <div class="player"><div><div class="playbtn"></div>VIVE ad video goes here<br><small>Placeholder, 16:9</small></div></div>
+</section>
+
+<section class="more wrap">
+  <h2><span class="label">More from VIVE</span></h2>
+  <div class="slots">
+    <div class="slot">Christmas poster<br>(placeholder)</div>
+    <div class="slot">Seasonal poster<br>(placeholder)</div>
+    <div class="slot">Seasonal poster<br>(placeholder)</div>
+  </div>
+</section>
+
+<footer class="wrap"><b>Grab a VIVE! at</b><img class="retail" src="assets/retailers.png" alt="Lawson, 7-Eleven, SM, and Ayala Malls"></footer>
 </body>
 </html>

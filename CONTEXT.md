@@ -6,16 +6,16 @@ This document is the canonical router and functional contract for the VIVE four-
 
 | Page | File | Status | Input Dependencies | Human Check Gate |
 |---|---|---|---|---|
-| 01 Home | [site/index.html](site/index.html) | Draft v1 complete | `assets/`, `brand-spec.md`, `direction-approved.md` | Gian / Client review of hero, posters, and video layout |
-| 02 About Us | `site/about.html` | Not started | Founding story, team roster, and team photos | Verify complete names, company roles, and photo look |
-| 03 Product | `site/product.html` | Not started | Can renders, flavor specifications, and nutritional facts | Verify one variant per strip, zero posters, and zero merch |
-| 04 Shop | `site/shop.html` | Not started | Merch catalog, bundle definitions, and pricing | Verify quantity inputs, cart count behavior, zero checkout |
+| 01 Home | [index.html](index.html) | Draft v1 complete | `assets/`, `brand-spec.md`, `direction-approved.md` | Gian / Client review of hero, posters, and video layout |
+| 02 About Us | `about.html` | Not started | Founding story, team roster, and team photos | Verify complete names, company roles, and photo look |
+| 03 Product | `product.html` | Not started | Can renders, flavor specifications, and nutritional facts | Verify one variant per strip, zero posters, and zero merch |
+| 04 Shop | `shop.html` | Not started | Merch catalog, bundle definitions, and pricing | Verify quantity inputs, cart count behavior, zero checkout |
 
 ---
 
 ## Canonical Page Specifications
 
-### 1. Homepage (`site/index.html`)
+### 1. Homepage (`index.html`)
 - **Hero section:** Bold brand statement, price point (₱67), 10-point burst, Original can visual, and clear calls to action.
 - **Posters section:** Present the three core flavor posters (`Good Vibes`, `Relaxing Vibes`, and `Grind Vibes`) at slight angles with tilted labels.
 - **Video section:** Showcase the VIVE video commercial in 16:9 aspect ratio.
@@ -23,20 +23,20 @@ This document is the canonical router and functional contract for the VIVE four-
 - **Seasonal poster footer:** Additional posters at the very end of the page (such as seasonal or holiday editions).
 - **All ads created live here:** The homepage acts as the comprehensive advertising showcase for the brand.
 
-### 2. About Us (`site/about.html`)
+### 2. About Us (`about.html`)
 - **Founding story:** Narrative explaining how the business and product started, rooted in the brand name origin (the ending letters of *revive* and *survive*).
 - **The team:** Complete names and company roles for the six team members.
 - **Brand-aligned photos:** Team photography styled to match the energetic, charged brand aesthetic.
 - **Visual mechanic:** Utilizes the expanding panel hover interaction (reserved from Direction B) to showcase the team.
 
-### 3. Product Page (`site/product.html`)
+### 3. Product Page (`product.html`)
 - **Brand product showcase:** Deep focus on the cans, vitamin formulation (Vitamins A, C, B9, and B12), stevia sweetening, and zero-calorie benefits.
 - **Strip structure:** Exactly one product variation per strip, except where variants are showcased together as a cohesive family strip.
 - **Strict negative constraints:**
   - **NO** product posters are allowed on this page.
   - **NO** merchandise items are allowed on this page.
 
-### 4. Shop Page (`site/shop.html`)
+### 4. Shop Page (`shop.html`)
 - **E-commerce experience:** Browse and select items with quantity selectors and functional "Add to Cart" interactions.
 - **Catalog range:** Individual cans/singles, curated multi-can bundles, and branded merchandise.
 - **Cart count state:** Display a true, reactive numeric cart counter in the header navigation.
@@ -73,7 +73,7 @@ This document is the canonical router and functional contract for the VIVE four-
 | `CONTEXT.md` | Canonical router | This file: pipeline status, page requirements, and system contracts |
 | [brand-spec.md](brand-spec.md) | Brand reference | Palette (#F27A21, #2B3990, #F4BD6A, #F9F9F9), typography, cans, and assets |
 | [direction-approved.md](direction-approved.md) | Design decision | Decision record for Direction C base + Direction A headings + Direction B panels |
-| `site/` | Product output | The static HTML and CSS deliverable |
+| `index.html`, `about.html`, etc. | Product output | The canonical static HTML pages at root |
 | `assets/` | Asset library | High-resolution WebP posters, can cutouts, logos, and mockups |
 | `wix-assets/` | Source exports | Print exports and PDF materials for Wix migration |
 | `source/` | Archival source | Original 8-page brand deck and raw asset extracts |

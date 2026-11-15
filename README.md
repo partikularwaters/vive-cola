@@ -9,13 +9,10 @@ A four-page website prototype for **VIVE**, the vitamin-charged cola brand, span
 To preview the prototype in a local browser:
 
 ```bash
-cd training/vive-website
 python3 -m http.server 8767
 ```
 
-Then visit [http://localhost:8767/site/index.html](http://localhost:8767/site/index.html).
-
-If you are using the desktop editor environment, the launch profile `vive-site` starts this preview server automatically.
+Then visit [http://localhost:8767/](http://localhost:8767/) (or `http://localhost:8767/index.html`).
 
 ---
 
@@ -23,10 +20,10 @@ If you are using the desktop editor environment, the launch profile `vive-site` 
 
 | Page | File | Status | Highlights |
 |---|---|---|---|
-| **Home** | [site/index.html](site/index.html) | Draft v1 complete | Hero section with ₱67 price burst, flavor posters, ad mockups, and video player container |
-| **About Us** | `site/about.html` | In progress | Founding story (*revive* and *survive*), six-person team roster, and expanding panel cards |
-| **Product** | `site/product.html` | Planned | One product variant per strip, zero posters, and zero merchandise |
-| **Shop** | `site/shop.html` | Planned | E-commerce catalog with singles, bundles, merchandise, and live header cart count |
+| **Home** | [index.html](index.html) | Draft v1 complete | Canonical homepage with ₱67 price burst, flavor posters, ad mockups, and video player container |
+| **About Us** | `about.html` | In progress | Founding story (*revive* and *survive*), six-person team roster, and expanding panel cards |
+| **Product** | `product.html` | Planned | One product variant per strip, zero posters, and zero merchandise |
+| **Shop** | `shop.html` | Planned | E-commerce catalog with singles, bundles, merchandise, and live header cart count |
 
 ---
 
@@ -65,10 +62,10 @@ git push <NEW_GITHUB_REPO_URL> deploy-vive:main
 
 ### Deploying to Vercel
 
-When importing the newly created standalone GitHub repository into Vercel:
+When importing this repository into Vercel:
 1. **Framework Preset:** Other / None.
-2. **Root Directory:** `./` (the root of the new repo, which directly holds `site/`, `assets/`, and configuration).
-3. **Routing Configuration:** A [`vercel.json`](vercel.json) rewrites the root path `/` to `/site/index.html` and cleans URL paths.
+2. **Root Directory:** `./` (the repository root).
+3. **Clean URL Routing:** With [`vercel.json`](vercel.json) enabling clean URLs, Vercel natively serves `index.html` at `/`, `about.html` at `/about`, `product.html` at `/product`, and `shop.html` at `/shop` without URL redirects.
 
 ---
 
