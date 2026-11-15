@@ -1,6 +1,6 @@
 # VIVE website: brand spec
 
-Source: `VIVE! - Cola Brand.pdf` (8-page deck, this folder). Everything below comes from it unless marked as missing.
+Source: `source/VIVE! - Cola Brand.pdf` (8-page deck). Everything below comes from it unless marked as missing.
 The older leaf wordmark and purple can in `training/vive-copy.md` are superseded by this deck.
 
 ## Assets (`assets/`, pulled from the deck; all the client's own work)
@@ -11,7 +11,8 @@ The older leaf wordmark and purple can in `training/vive-copy.md` are superseded
 | `logo-color-variations.png` | The four approved grounds: orange, navy, cream, black |
 | `can-original-hires.png` | Original (orange) can, 554×1473, transparent |
 | `can-original.png`, `can-extra-caffeine.png`, `can-decaffeinated.png` | The three flavors, transparent |
-| `poster-good-vibes.jpg`, `poster-relaxing-vibes.jpg`, `poster-grind-vibes.jpg` | The three flavor posters (cropped from deck p6) |
+| `poster-good-vibes-hires.webp`, `poster-relaxing-vibes-hires.webp`, `poster-grind-vibes-hires.webp` | The three flavor posters at 1587×2245, copied from the client's `wix-assets/` exports. Use these. |
+| `poster-good-vibes.jpg`, `poster-relaxing-vibes.jpg`, `poster-grind-vibes.jpg` | Earlier lower-resolution crops from deck p6. Kept for the design demos. |
 | `poster-intro-good-vibes.jpg` | Introductory poster (volleyball net) |
 | `mockup-bus-shelter.jpg`, `mockup-wall-street.jpg`, `mockup-wall-beach-poster.jpg` | Poster mockups |
 | `scene-beach.jpg`, `scene-living-room.jpg`, `scene-office.jpg` | Poster backgrounds with can, no text |
