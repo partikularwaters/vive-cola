@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VIVE · About Us</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap">
+<link rel="stylesheet" href="site.css">
+<style>
+  /* ==========================================================================
+     About Us Page-Specific Styles
+     ========================================================================== */
+
+  /* Hero */
+  .about-hero {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: calc(var(--cut) + 50px);
+    background: var(--orange);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 860px;
+    margin-top: clamp(24px, 4vw, 56px);
+  }
+  .hero-content h1 {
+    margin: 0;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: clamp(38px, 6.5vw, 92px);
+    line-height: .92;
+    letter-spacing: -.01em;
+    color: var(--white);
+  }
+  .hero-content h1 em {
+    font-style: normal;
+    color: var(--navy);
+    display: block;
+  }
+  .hero-intro {
+    font-size: clamp(16px, 1.4vw, 20px);
+    line-height: 1.6;
+    font-weight: 600;
+    color: var(--deep);
+    margin: 28px 0 0;
+    max-width: 38em;
+  }
+  .hero-nav-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 32px;
+  }
+
+  /* Story Section */
+  .story-section {
+    background: var(--white);
+    color: var(--ink);
+    padding-top: clamp(64px, 8vw, 112px);
+    padding-bottom: clamp(64px, 8vw, 112px);
+  }
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: clamp(32px, 5vw, 80px);
+    align-items: center;
+  }
+  .story-copy h2 {
+    margin: 0 0 28px;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: clamp(32px, 4vw, 54px);
+    line-height: .96;
+  }
+  .story-copy p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #2b3360;
+    margin: 0 0 20px;
+  }
+  .story-copy p strong {
+    color: var(--navy);
+  }
+  .story-card {
+    background: var(--navy);
+    color: var(--white);
+    padding: clamp(28px, 4vw, 44px);
+    clip-path: polygon(0 0, 100% 0, 100% 96%, 94% 100%, 0 100%);
+    box-shadow: 0 24px 44px rgba(20, 24, 63, .16);
+    position: relative;
+    overflow: hidden;
+  }
+  .story-card::after {
+    content: "IV";
+    position: absolute;
+    right: -20px;
+    bottom: -30px;
+    font-size: 190px;
+    font-weight: 900;
+    color: rgba(244, 189, 106, .08);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .story-card h3 {
+    margin: 0 0 16px;
+    font-size: 24px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--sun);
+  }
+  .story-card ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 14px;
+  }
+  .story-card li {
+    font-size: 15px;
+    line-height: 1.5;
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+  }
+  .story-card li span.bullet {
+    width: 10px;
+    height: 10px;
+    background: var(--orange);
+    display: inline-block;
+    flex-shrink: 0;
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  }
+
+  /* Team Section — Direction B Expanding Panels */
+  .team-section {
+    background: var(--ink);
+    color: var(--white);
+    padding-top: clamp(64px, 8vw, 112px);
+    padding-bottom: clamp(64px, 8vw, 112px);
+  }
+  .team-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: clamp(32px, 4vw, 48px);
+  }
+  .team-header h2 {
+    margin: 0;
+    font-size: clamp(32px, 4.5vw, 60px);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: .95;
+  }
+  .team-header p {
+    margin: 0;
+    max-width: 32em;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #a7acc8;
+  }
+
+  .team-panels {
+    display: flex;
+    gap: 12px;
+    min-height: 580px;
+    margin-top: 10px;
+  }
+  .member-card {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    background: var(--deep);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 24px 18px;
+    text-decoration: none;
+    color: var(--white);
+    transition: flex .6s cubic-bezier(.2, .7, .2, 1), transform .3s ease;
+    border: 1px solid rgba(244, 189, 106, .2);
+  }
+  .member-card img.avatar {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .8s cubic-bezier(.2, .7, .2, 1);
+  }
+  .member-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(20, 24, 63, .05) 0%,
+      rgba(20, 24, 63, .5) 45%,
+      rgba(20, 24, 63, .92) 80%,
+      rgba(20, 24, 63, .98) 100%
+    );
+    z-index: 1;
+    transition: opacity .4s ease;
+  }
+  .member-info {
+    position: relative;
+    z-index: 2;
+  }
+  .member-role {
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--sun);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .member-name {
+    margin: 0;
+    font-weight: 900;
+    font-size: clamp(17px, 1.3vw, 22px);
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+  .member-bio {
+    margin: 10px 0 0;
+    font-size: 13px;
+    line-height: 1.55;
+    color: #e0e3f5;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transform: translateY(10px);
+    transition: opacity .4s ease, max-height .4s ease, transform .4s ease;
+  }
+  .member-badge {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 4px 8px;
+    background: rgba(242, 122, 33, .25);
+    border: 1px solid var(--orange);
+    color: var(--sun);
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity .4s ease, transform .4s ease;
+  }
+
+  /* Expanding interaction states */
+  .team-panels:hover .member-card {
+    flex: .75;
+  }
+  .team-panels .member-card:hover {
+    flex: 2.25;
+    border-color: var(--orange);
+  }
+  .team-panels .member-card:hover img.avatar {
+    transform: scale(1.04);
+  }
+  .team-panels .member-card:hover .member-bio {
+    opacity: 1;
+    max-height: 140px;
+    transform: translateY(0);
+  }
+  .team-panels .member-card:hover .member-badge {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Pillars Section */
+  .pillars-section {
+    background: var(--navy);
+    color: var(--white);
+    padding-top: clamp(64px, 8vw, 112px);
+    padding-bottom: clamp(64px, 8vw, 112px);
+  }
+  .pillars-section h2 {
+    margin: 0 0 clamp(32px, 4vw, 56px);
+    font-size: clamp(32px, 4.5vw, 60px);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: .95;
+  }
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(20px, 3vw, 36px);
+  }
+  .pillar-card {
+    background: var(--deep);
+    padding: clamp(28px, 3.5vw, 40px);
+    border: 2px solid rgba(244, 189, 106, .2);
+    clip-path: polygon(0 0, 100% 0, 100% 95%, 92% 100%, 0 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .pillar-card h3 {
+    margin: 0 0 14px;
+    font-weight: 900;
+    font-size: 22px;
+    text-transform: uppercase;
+    color: var(--sun);
+  }
+  .pillar-card p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.65;
+    color: #e2e5f8;
+  }
+  .pillar-card .pillar-tag {
+    margin-top: 24px;
+    font-size: 13px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--orange);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .pillar-card .pillar-tag::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background: var(--sun);
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  }
+
+  /* Call to Action Strip */
+  .about-cta-strip {
+    background: var(--orange);
+    color: var(--white);
+    padding-top: clamp(60px, 7vw, 96px);
+    padding-bottom: clamp(60px, 7vw, 96px);
+    text-align: center;
+  }
+  .about-cta-strip h2 {
+    margin: 0 auto 18px;
+    font-size: clamp(34px, 5vw, 68px);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: .95;
+    max-width: 18ch;
+  }
+  .about-cta-strip p {
+    margin: 0 auto 32px;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--deep);
+    max-width: 32em;
+    line-height: 1.5;
+  }
+  .cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 960px) {
+    .story-grid {
+      grid-template-columns: 1fr;
+    }
+    .pillars-grid {
+      grid-template-columns: 1fr;
+    }
+    .team-panels {
+      flex-direction: column;
+      min-height: auto;
+    }
+    .member-card {
+      min-height: 320px;
+      flex: none !important;
+    }
+    .member-bio,
+    .member-badge {
+      opacity: 1 !important;
+      max-height: none !important;
+      transform: none !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header / Hero Section -->
+<header class="about-hero cut-down">
+  <!-- Dynamic Brand Triangles -->
+  <i class="tri" style="--s:110px;--c:var(--sun);--r:22deg;left:-20px;top:110px;--d:.06s"></i>
+  <i class="tri hide-sm" style="--s:42px;--c:var(--navy);--r:-28deg;left:48%;top:90px;--d:.14s"></i>
+  <i class="tri hide-sm" style="--s:64px;--c:var(--white);--r:190deg;left:34%;bottom:90px;--d:.2s"></i>
+  <i class="tri" style="--s:38px;--c:var(--navy);--r:38deg;right:8%;top:100px;--d:.26s"></i>
+
+  <nav class="wrap">
+    <a href="index.html"><img src="assets/wordmark-vive-navy.png" alt="VIVE"></a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" aria-current="page">About Us</a></li>
+      <li><a href="product.html">Product</a></li>
+      <li><a href="shop.html">Shop</a></li>
+    </ul>
+  </nav>
+
+  <div class="wrap hero-content">
+    <h1>
+      <span class="label">Born from the vibes</span>
+      <em>Crafted for life</em>
+    </h1>
+    <p class="hero-intro">
+      VIVE started with a straightforward aim: giving active people classic cola taste charged with vitamins A, C, B9, and B12, sweetened with 100% stevia, and finished with zero calories.
+    </p>
+    <div class="hero-nav-strip">
+      <a class="btn navy" href="#story">The Founding Story</a>
+      <a class="btn white" href="#team">Leadership Team</a>
+      <a class="btn navy" href="#pillars">Brand Pillars</a>
+    </div>
+  </div>
+</header>
+
+<!-- Facts Banner -->
+<div class="facts wrap">
+  <span>Vitamins A, C, B9, and B12</span>
+  <span>100% stevia</span>
+  <span>0 calories</span>
+  <span>12 oz can</span>
+  <span>₱67 at retail</span>
+</div>
+
+<!-- Section 1: The Founding Story -->
+<section id="story" class="story-section wrap">
+  <div class="story-grid">
+    <div class="story-copy">
+      <h2>
+        <span class="label">The name,</span>
+        <span class="label orange">the mission</span>
+      </h2>
+      <p>
+        The name <strong>VIVE</strong> comes directly from the ending letters of <em>revive</em> and <em>survive</em>. It captures the daily reset people need between morning focus, afternoon deadlines, and evening sports.
+      </p>
+      <p>
+        On every can, the middle letters stand out as the Roman numeral <strong>IV</strong>. That marks the four essential micronutrients built into each recipe: <strong>Vitamin A</strong> for cellular defense, <strong>Vitamin C</strong> for antioxidant support, <strong>Vitamin B9</strong> for healthy cell production, and <strong>Vitamin B12</strong> for sustained energy.
+      </p>
+      <p>
+        Standard colas rely on heavy high-fructose corn syrup or synthetic artificial sweeteners. VIVE uses 100% natural stevia extract, which provides crisp cola sweetness and zero calories without spiking blood sugar.
+      </p>
+      <div style="margin-top:28px;">
+        <a class="btn orange" href="product.html">See the formulation</a>
+      </div>
+    </div>
+
+    <aside class="story-card">
+      <h3>The Formulation Standard</h3>
+      <ul>
+        <li>
+          <span class="bullet"></span>
+          <div><strong>Four Added Vitamins:</strong> Standardized dosages of Vitamins A, C, B9, and B12 per 12 oz serving.</div>
+        </li>
+        <li>
+          <span class="bullet"></span>
+          <div><strong>100% Stevia Leaf Extract:</strong> Botanical plant-derived sweetener without sugar spikes.</div>
+        </li>
+        <li>
+          <span class="bullet"></span>
+          <div><strong>Familiar Cola Profile:</strong> Crisp effervescence, warm spices, and citrus cola notes.</div>
+        </li>
+        <li>
+          <span class="bullet"></span>
+          <div><strong>Zero Artificial Preservatives:</strong> Clean pasteurization to protect vitamin stability.</div>
+        </li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<!-- Section 2: Leadership Team (Direction B Expanding Panels) -->
+<section id="team" class="team-section wrap cut-both">
+  <div class="team-header">
+    <div>
+      <h2>
+        <span class="label sun">The team</span>
+        <span class="label white">behind the can</span>
+      </h2>
+    </div>
+    <p>
+      Meet the leadership group directing product development, national retail distribution, brand operations, and commercial growth across the Philippines.
+    </p>
+  </div>
+
+  <div class="team-panels" aria-label="Leadership Team Interactive Roster">
+    <!-- 1. Venson Sanchez -->
+    <article class="member-card">
+      <img class="avatar" src="assets/team/venson-sanchez.svg" alt="Venson Sanchez portrait placeholder">
+      <div class="member-info">
+        <span class="member-role">Chief Executive Officer</span>
+        <h3 class="member-name">Venson Sanchez</h3>
+        <p class="member-bio">
+          Steers corporate strategy, market expansion, and key enterprise partnerships to establish VIVE across major retail chains.
+        </p>
+        <span class="member-badge">Executive Leadership</span>
+      </div>
+    </article>
+
+    <!-- 2. Ayanna Yarra -->
+    <article class="member-card">
+      <img class="avatar" src="assets/team/ayanna-yarra.svg" alt="Ayanna Yarra portrait placeholder">
+      <div class="member-info">
+        <span class="member-role">Chief Commercial Officer</span>
+        <h3 class="member-name">Ayanna Yarra</h3>
+        <p class="member-bio">
+          Oversees national account distribution, commercial partnerships, retail shelf presence, and institutional accounts nationwide.
+        </p>
+        <span class="member-badge">Commercial Strategy</span>
+      </div>
+    </article>
+
+    <!-- 3. Czar Bambao -->
+    <article class="member-card">
+      <img class="avatar" src="assets/team/czar-bambao.svg" alt="Czar Bambao portrait placeholder">
+      <div class="member-info">
+        <span class="member-role">Chief Marketing Officer</span>
+        <h3 class="member-name">Czar Bambao</h3>
+        <p class="member-bio">
+          Leads national brand identity, creative campaigns, outdoor media, digital community growth, and consumer communications.
+        </p>
+        <span class="member-badge">Brand &amp; Creative</span>
+      </div>
+    </article>
+
+    <!-- 4. Louie Latoreno -->
+    <article class="member-card">
+      <img class="avatar" src="assets/team/louie-latoreno.svg" alt="Louie Latoreno portrait placeholder">
+      <div class="member-info">
+        <span class="member-role">Chief Operating Officer</span>
+        <h3 class="member-name">Louie Latoreno</h3>
+        <p class="member-bio">
+          Manages canning facility logistics, supplier quality control, warehouse inventory, and cold-chain fulfillment operations.
+        </p>
+        <span class="member-badge">Operations &amp; Supply</span>
+      </div>
+    </article>
+
+    <!-- 5. Warren Gumapac -->
+    <article class="member-card">
+      <img class="avatar" src="assets/team/warren-gumapac.svg" alt="Warren Gumapac portrait placeholder">
+      <div class="member-info">
+        <span class="member-role">Chief Financial Officer</span>
+        <h3 class="member-name">Warren Gumapac</h3>
+        <p class="member-bio">
+          Directs financial planning, capital allocation, supplier unit economics, and accessible pricing across retail channels.
+        </p>
+        <span class="member-badge">Finance &amp; Governance</span>
+      </div>
+    </article>
+
+    <!-- 6. John Madrid -->
+    <article class="member-card">
+      <img class="avatar" src="assets/team/john-madrid.svg" alt="John Madrid portrait placeholder">
+      <div class="member-info">
+        <span class="member-role">Chief R&amp;D Officer</span>
+        <h3 class="member-name">John Madrid</h3>
+        <p class="member-bio">
+          Spearheads beverage formulation, vitamin bio-availability stabilization, sensory profiling, and stevia sweetening optimization.
+        </p>
+        <span class="member-badge">Formulation &amp; R&amp;D</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- Section 3: Brand Pillars -->
+<section id="pillars" class="pillars-section wrap cut-down">
+  <h2>
+    <span class="label orange">Our core</span>
+    <span class="label white">commitments</span>
+  </h2>
+
+  <div class="pillars-grid">
+    <div class="pillar-card">
+      <div>
+        <h3>Vitamin Fortification</h3>
+        <p>
+          Each can delivers standardized daily doses of Vitamins A, C, B9, and B12. We test each batch to ensure micronutrient stability and potency from canning through opening.
+        </p>
+      </div>
+      <div class="pillar-tag">Four Added Vitamins</div>
+    </div>
+
+    <div class="pillar-card">
+      <div>
+        <h3>100% Stevia Sweetness</h3>
+        <p>
+          We balance plant-extracted stevia with natural cola spices and citrus extracts. You get refreshing cola sweetness without added sugar, calories, or glycemic impact.
+        </p>
+      </div>
+      <div class="pillar-tag">Zero Sugar Spikes</div>
+    </div>
+
+    <div class="pillar-card">
+      <div>
+        <h3>Everyday Accessibility</h3>
+        <p>
+          Premium vitamin-charged refreshment should fit everyday routines. Priced at ₱67 per 12 oz can across convenience chains, grocery supermarkets, and major retail malls.
+        </p>
+      </div>
+      <div class="pillar-tag">₱67 at Lawson, 7-Eleven, SM, Ayala</div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 4: Call to Action Strip -->
+<section class="about-cta-strip wrap">
+  <h2>Ready for your dose of good vibes?</h2>
+  <p>Find VIVE chilled in the beverage aisle or order direct delivery in single cans and party bundles.</p>
+  <div class="cta-buttons">
+    <a class="btn navy" href="shop.html">Grab a VIVE!</a>
+    <a class="btn white" href="product.html">Explore all 3 flavors</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="wrap">
+  <b>Grab a VIVE! at</b>
+  <img class="retail" src="assets/retailers.png" alt="Lawson, 7-Eleven, SM, and Ayala Malls">
+</footer>
+
+</body>
+</html>

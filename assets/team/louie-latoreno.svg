@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800">
+  <defs>
+    <linearGradient id="bgLl" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14183F"/>
+      <stop offset="100%" stop-color="#1D2766"/>
+    </linearGradient>
+    <linearGradient id="burstLl" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F4BD6A"/>
+      <stop offset="100%" stop-color="#2B3990"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="800" fill="url(#bgLl)"/>
+
+  <!-- Brand Geometric Background Shards -->
+  <polygon points="100,0 420,0 260,320" fill="#2B3990" opacity="0.6"/>
+  <polygon points="600,100 600,520 400,280" fill="#F27A21" opacity="0.22"/>
+  <polygon points="0,580 240,800 0,800" fill="#F4BD6A" opacity="0.2"/>
+  <polygon points="600,660 600,800 380,800" fill="#2B3990" opacity="0.4"/>
+
+  <!-- 10-Point Star Aura -->
+  <g transform="translate(300, 360) scale(1.6)" opacity="0.16">
+    <polygon points="0,-120 23,-37 95,-70 59,2 119,37 45,72 70,144 0,95 -70,144 -45,72 -119,37 -59,2 -95,-70 -23,-37" fill="#F4BD6A"/>
+  </g>
+
+  <!-- Stylized Male Executive Silhouette -->
+  <g fill="#F9F9F9" opacity="0.92">
+    <!-- Head -->
+    <ellipse cx="300" cy="270" rx="72" ry="88"/>
+    <!-- Hair contour (Neat Crop) -->
+    <path d="M228,270 C228,185 242,160 300,160 C358,160 372,185 372,270 C365,205 345,180 300,180 C255,180 235,205 228,270 Z" fill="#F4BD6A"/>
+    <!-- Neck -->
+    <path d="M272,345 L272,400 L328,400 L328,345 Z"/>
+    <!-- Collar & Shoulders -->
+    <path d="M160,540 C170,430 220,400 270,395 L300,440 L330,395 C380,400 430,430 440,540 L470,680 L130,680 Z"/>
+    <!-- Tie Accent -->
+    <polygon points="300,442 314,460 310,560 300,580 290,560 286,460" fill="#2B3990"/>
+  </g>
+
+  <!-- Monogram Badge -->
+  <g transform="translate(300, 110)">
+    <circle cx="0" cy="0" r="42" fill="url(#burstLl)"/>
+    <text x="0" y="12" font-family="'Montserrat', 'Avenir Next', Arial, sans-serif" font-weight="900" font-size="28" fill="#F9F9F9" text-anchor="middle" letter-spacing="1">LL</text>
+  </g>
+
+  <!-- Typography Card Baseline -->
+  <rect x="50" y="660" width="500" height="90" rx="4" fill="#14183F" fill-opacity="0.9" stroke="#F4BD6A" stroke-width="2" stroke-dasharray="8 6"/>
+  <text x="300" y="696" font-family="'Montserrat', 'Avenir Next', Arial, sans-serif" font-weight="900" font-size="22" fill="#F9F9F9" text-anchor="middle" letter-spacing="2">LOUIE LATORENO</text>
+  <text x="300" y="728" font-family="'Montserrat', 'Avenir Next', Arial, sans-serif" font-weight="800" font-size="14" fill="#F4BD6A" text-anchor="middle" letter-spacing="3">CHIEF OPERATING OFFICER</text>
+</svg>

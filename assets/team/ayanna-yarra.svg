@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800">
+  <defs>
+    <linearGradient id="bgAy" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14183F"/>
+      <stop offset="100%" stop-color="#2B3990"/>
+    </linearGradient>
+    <linearGradient id="burstAy" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F4BD6A"/>
+      <stop offset="100%" stop-color="#F27A21"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="800" fill="url(#bgAy)"/>
+
+  <!-- Brand Geometric Background Shards -->
+  <polygon points="600,0 350,0 480,360" fill="#F27A21" opacity="0.35"/>
+  <polygon points="0,0 0,440 220,180" fill="#F4BD6A" opacity="0.25"/>
+  <polygon points="0,620 280,800 0,800" fill="#1D2766" opacity="0.6"/>
+  <polygon points="600,560 600,800 320,800" fill="#F27A21" opacity="0.25"/>
+
+  <!-- 10-Point Star Aura -->
+  <g transform="translate(300, 360) scale(1.6)" opacity="0.16">
+    <polygon points="0,-120 23,-37 95,-70 59,2 119,37 45,72 70,144 0,95 -70,144 -45,72 -119,37 -59,2 -95,-70 -23,-37" fill="#F4BD6A"/>
+  </g>
+
+  <!-- Stylized Female Executive Silhouette -->
+  <g fill="#F9F9F9" opacity="0.92">
+    <!-- Chic Bob Hair Shape -->
+    <path d="M208,270 C206,170 238,138 300,138 C362,138 394,170 392,270 C390,340 376,370 366,375 C356,330 364,250 358,220 C345,170 255,170 242,220 C236,250 244,330 234,375 C224,370 210,340 208,270 Z" fill="#F4BD6A"/>
+    <!-- Head -->
+    <ellipse cx="300" cy="272" rx="66" ry="80"/>
+    <!-- Hair Front Bangs / Texture -->
+    <path d="M234,250 C234,175 250,150 300,150 C350,150 366,175 366,250 C358,200 338,170 300,170 C262,170 242,200 234,250 Z" fill="#F27A21"/>
+    <!-- Neck -->
+    <path d="M276,340 L276,396 L324,396 L324,340 Z"/>
+    <!-- Blazer & Shoulders -->
+    <path d="M170,540 C180,430 225,395 270,392 L300,455 L330,392 C375,395 420,430 430,540 L460,680 L140,680 Z"/>
+    <!-- Inner Blouse Lapel Accent -->
+    <polygon points="300,458 318,410 282,410" fill="#F27A21"/>
+  </g>
+
+  <!-- Monogram Badge -->
+  <g transform="translate(300, 110)">
+    <circle cx="0" cy="0" r="42" fill="url(#burstAy)"/>
+    <text x="0" y="12" font-family="'Montserrat', 'Avenir Next', Arial, sans-serif" font-weight="900" font-size="28" fill="#14183F" text-anchor="middle" letter-spacing="1">AY</text>
+  </g>
+
+  <!-- Typography Card Baseline -->
+  <rect x="50" y="660" width="500" height="90" rx="4" fill="#14183F" fill-opacity="0.9" stroke="#F4BD6A" stroke-width="2" stroke-dasharray="8 6"/>
+  <text x="300" y="696" font-family="'Montserrat', 'Avenir Next', Arial, sans-serif" font-weight="900" font-size="22" fill="#F9F9F9" text-anchor="middle" letter-spacing="2">AYANNA YARRA</text>
+  <text x="300" y="728" font-family="'Montserrat', 'Avenir Next', Arial, sans-serif" font-weight="800" font-size="14" fill="#F4BD6A" text-anchor="middle" letter-spacing="3">CHIEF COMMERCIAL OFFICER</text>
+</svg>
