@@ -55,3 +55,7 @@ yarn-error.log*
 *.swp
 *.swo
 *~
+
+# Local session memory and private scratchpads
+memory/
+.memory/

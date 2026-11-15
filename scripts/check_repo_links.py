@@ -142,8 +142,8 @@ def main():
     # Collect all Markdown files, skipping git and node_modules
     md_files = []
     for root, dirs, files in os.walk(target_dir):
-        # Exclude hidden directories and node_modules
-        dirs[:] = [d for d in dirs if not d.startswith(".") and d != "node_modules"]
+        # Exclude hidden directories, node_modules, and gitignored memory
+        dirs[:] = [d for d in dirs if not d.startswith(".") and d not in ("node_modules", "memory")]
         for f in files:
             if f.endswith(".md"):
                 md_files.append(Path(root) / f)
