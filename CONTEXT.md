@@ -47,13 +47,16 @@ This document is the canonical router and functional contract for the VIVE four-
 
 ## Operational Standards and Submission Rules
 
-- **Copywriting standard:** Follow the `/copywriting` skill. Copy must be clear, compelling, and grounded in customer benefits. Strictly ban all `ai-tells` (no contrast reveals like "not X, but Y", no negation lists like "no X, no Y, no Z", no trailing pile-on comma clauses, no rhetorical self-questions, and no empty buzzwords).
+- **Copywriting standard (`/copywriting`, `/copy-editing`):** Follow the `/copywriting` skill for new copy and `/copy-editing` for tightening drafts. Copy must be clear, compelling, and grounded in customer benefits. Strictly ban all `ai-tells` (no contrast reveals like "not X, but Y", no negation lists like "no X, no Y, no Z", no trailing pile-on comma clauses, no rhetorical self-questions, and no empty buzzwords).
+- **Web platform standard (`/modern-web-guidance`):** Follow Google Chrome's `modern-web-guidance` for semantic HTML5 structure, modern CSS layout (Grid, Subgrid, container queries, `:has()`, `@starting-style`), accessibility, and asset performance. Check `modern-web-guidance` before writing ad-hoc layout logic or script workarounds.
+- **Prototyping and design standard (`/huashu-design`, `/snowe-ui-skill`):** Apply `/huashu-design` for high-fidelity HTML prototype creation, multi-directional exploration, and design presentation reviews. Use `/snowe-ui-skill` to safeguard brand visual balance, sharp cuts, star/triangle motifs, and typography hierarchy.
+- **Motion and micro-interaction standard (`/animate`, `/emil-design-eng`, `/apple-design`):** Interactions must feel energetic, crisp, and physically grounded. Button hovers, poster tilts, Direction B expanding photo panels, and cart badge updates should use snappy easing curves with mandatory `prefers-reduced-motion` support.
 - **Punctuation standard:** Mandatory Oxford comma in all lists of three or more items across copy, documentation, and interface text.
 - **Interactive fidelity:** The site must feel like an authentic, finished web application. Every button, selector, and link must work. If an external link has no specific sub-page (such as social channels), wire it directly to the platform root (`https://facebook.com`, `https://instagram.com`, `https://tiktok.com`).
 - **High-stakes grading:** Gian will grade all assets appearing across these pages (posters, video, product variations, and branding).
 - **Asset integrity:** No placeholder photos and no placeholder texts (Lorem Ipsum). All content must be written and staged with genuine assets.
 - **Dynamic visual generosity:** Apply signature brand patterns generously (10-point star, triangles, diagonal cuts, and contrasting color grounds). Do not settle for plainness.
-- **GitHub and Vercel publishing:** The `vive-website/` directory will be published as a standalone repository on GitHub and deployed directly to Vercel. All relative asset links and inter-page navigations must function cleanly in this standalone root structure.
+- **GitHub and Vercel publishing (`/deploy-with-vercel`):** The `vive-website/` directory will be published as a standalone repository on GitHub and deployed directly to Vercel. All relative asset links and inter-page navigations must function cleanly in this standalone root structure.
 - **Out of scope:**
   - Dedicated cart, checkout, and payment pages.
   - Mobile responsive layouts (desktop presentation is the target).

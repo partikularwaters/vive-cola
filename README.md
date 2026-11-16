@@ -31,7 +31,9 @@ Then visit [http://localhost:8767/](http://localhost:8767/) (or `http://localhos
 
 - **Evaluation:** Gian will grade all assets appearing across these pages (posters, video, product variations, and branding).
 - **Quality standards:** Every button and link is functional (with external social links pointing to platform homepages), all copy and photos are production-ready, and brand geometry patterns are implemented generously.
-- **Copywriting rules:** Adheres to the `/copywriting` skill and enforces the Oxford comma. Strictly eliminates machine `ai-tells` (no contrast reveals, no negation lists, no trailing pile-on clauses, and no artificial hype).
+- **Copywriting rules (`/copywriting`, `/copy-editing`):** Adheres to the `/copywriting` skill and enforces the Oxford comma. Strictly eliminates machine `ai-tells` (no contrast reveals, no negation lists, no trailing pile-on clauses, and no artificial hype).
+- **Modern web standards (`/modern-web-guidance`):** Follows Google Chrome's `modern-web-guidance` for semantic HTML5 structure, modern CSS Grid/Subgrid layouts, native interactive controls, and web performance.
+- **Visual prototyping and motion (`/huashu-design`, `/animate`, `/snowe-ui-skill`):** Uses `/huashu-design` for high-fidelity HTML prototypes, `/snowe-ui-skill` for brand visual consistency, and `/animate` with `/emil-design-eng` for snappy, charged micro-interactions.
 - **Reference samples:**
   - [Chewla](https://pjconsing.wixsite.com/chewla)
   - [Collide](https://hpearlquinto.wixsite.com/collideyourwaynow)
