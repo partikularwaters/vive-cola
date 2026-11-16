@@ -159,7 +159,7 @@ nav a[aria-current="page"] {
   text-transform: uppercase;
   letter-spacing: .08em;
   cursor: pointer;
-  transition: background-color .15s ease, color .15s ease, transform .16s var(--ease-out);
+  transition: background-color .15s ease .12s, color .15s ease .12s, transform .16s var(--ease-out);
 }
 
 .cart-btn svg {
@@ -172,6 +172,7 @@ nav a[aria-current="page"] {
 .cart-btn:focus-visible {
   background: var(--sun);
   color: var(--deep);
+  transition-delay: 0s, 0s, 0s;
 }
 
 .cart-btn:focus-visible {
@@ -687,13 +688,16 @@ h3 .label {
   height: 44px;
   padding: 0;
   color: var(--sun);
-  transition: background-color .15s ease, color .15s ease;
+  /* Same 120ms leave grace as buttons: sweeping across the 8px gaps or resting on
+     an edge never flashes the fill off and on */
+  transition: background-color .15s ease .12s, color .15s ease .12s;
 }
 
 .social a:hover,
 .social a:focus-visible {
   background: var(--sun);
   color: var(--deep);
+  transition-delay: 0s;
 }
 
 .social a:focus-visible {

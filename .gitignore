@@ -4,6 +4,8 @@
 ._*
 .Spotlight-V100
 .Trashes
+# Custom folder icons (the file name is "Icon" plus a carriage return)
+Icon
 
 # Windows metadata
 Thumbs.db
@@ -50,6 +52,8 @@ yarn-debug.log*
 yarn-error.log*
 
 # Editor and IDE metadata
+# Local Claude Code settings, such as the preview server launch config
+.claude/
 .idea/
 .vscode/
 *.swp
