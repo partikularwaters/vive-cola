@@ -9,9 +9,9 @@ The older leaf wordmark and purple can in `training/vive-copy.md` are superseded
 | `logo-vive-navy-tagline.png` | White V, navy !, white VE, "Vitamin-Charged Cola" in navy (for orange ground) |
 | `wordmark-vive-white.png`, `wordmark-vive-navy.png` | Wordmark only |
 | `logo-color-variations.png` | The four approved grounds: orange, navy, cream, black |
-| `can-original-hires.png` | Original (orange) can, 554×1473, transparent |
-| `can-original.png`, `can-extra-caffeine.png`, `can-decaffeinated.png` | The three flavors, transparent |
-| `poster-good-vibes-hires.webp`, `poster-relaxing-vibes-hires.webp`, `poster-grind-vibes-hires.webp` | The three flavor posters at 1587×2245, copied from the client's `wix-assets/` exports. Use these. |
+| `can-original-hires.png` | Classic (orange) can, 554×1473, transparent |
+| `can-original.png`, `can-extra-caffeine.png`, `can-decaffeinated.png` | The three deck-era cans, transparent. Only `can-original` matches the current line (Classic); the other two are retired variants. |
+| `poster-good-vibes-hires.webp`, `poster-relaxing-vibes-hires.webp`, `poster-grind-vibes-hires.webp` | The three deck-era posters at 1587×2245, copied from the client's `wix-assets/` exports. Good vibes is the Classic poster. Relaxing vibes and grind vibes stand in for Glow and Focus on the home page until their own posters exist. |
 | `poster-good-vibes.jpg`, `poster-relaxing-vibes.jpg`, `poster-grind-vibes.jpg` | Earlier lower-resolution crops from deck p6. Kept for the design demos. |
 | `poster-intro-good-vibes.jpg` | Introductory poster (volleyball net) |
 | `mockup-bus-shelter.jpg`, `mockup-wall-street.jpg`, `mockup-wall-beach-poster.jpg` | Poster mockups |
@@ -38,21 +38,24 @@ Sharp and energetic. Vibrant and optimistic. Intense but sweet. Cheerful. Dynami
 
 Orange is the main ground for the site. Do not use the deck's purple (#2A2882) as a page ground (client, 2026-11-14).
 
-Flavor grounds seen on the cans (not part of the core four): cream #E4CEAF (Decaffeinated), black (Extra Caffeine).
+Flavor grounds seen on the retired deck-era cans (not part of the core four): cream #E4CEAF (Decaffeinated), black (Extra Caffeine).
 
 ## Type
 - Logo: Gardin Bold Rounded (logo is an image; do not set it as live text)
 - Headings and body: Montserrat Bold / Regular (Google Fonts, so it carries to Wix)
 
 ## Product facts
-- VIVE, "The vitamin-charged cola." Vitamins A, C, B9, B12. Sweetened with 100% stevia. Zero calories. 12 oz can. ₱67.
-- Original: "Your dose of good vibes." Cola charged with Vit A, C, B9, B12.
-- Decaffeinated: "Your dose of relaxing vibes." Cola decaffeinated + Vit A, C, B9, B12.
-- Extra Caffeine: "Your dose of grind vibes." Cola + extra caffeine + Vit A, C, B9, B12.
+- VIVE, "The vitamin-charged cola." Lead with the vitamins; stevia is secondary reassurance. Sweetened with 100% stevia. Zero calories. 12 oz can. ₱67.
+- Product line (client, 2026-11-16):
+  - **VIVE Classic:** "Your dose of good vibes." The original orange can. Vitamins A, B9, B12, and C.
+  - **VIVE Glow:** "Your dose of radiant vibes." Vitamins A, B7, C, and E, which support skin health.
+  - **VIVE Focus:** "Your dose of sharp vibes." Vitamins B6, B9, B12, and C, which support mental performance.
+- Retired deck-era variants (do not promote): Decaffeinated ("Your dose of relaxing vibes") and Extra Caffeine ("Your dose of grind vibes").
 - CTA lines: "Grab a VIVE!" / "Spread the vibes!" Retailers: Lawson, 7-Eleven, SM, Ayala Malls.
 - Name: from the last letters of *revive* and *survive* (vive-copy.md). The middle "!" / IV marks the four vitamins.
 
 ## Missing (honest placeholders in the draft)
+- VIVE Glow and VIVE Focus can renders and posters (the home page borrows the relaxing vibes and grind vibes posters until these exist)
 - VIVE ad video (`for-uploads/Video.mp4` is a personal intro video, not a VIVE ad)
 - Christmas and other seasonal posters
 - Founding story details (who, when, why)

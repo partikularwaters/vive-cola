@@ -16,8 +16,8 @@ This document is the canonical router and functional contract for the VIVE four-
 ## Canonical Page Specifications
 
 ### 1. Homepage (`index.html`)
-- **Hero section:** Bold brand statement, price point (₱67), 10-point burst, Original can visual, and clear calls to action.
-- **Posters section:** Present the three core flavor posters (`Good Vibes`, `Relaxing Vibes`, and `Grind Vibes`) at slight angles with tilted labels.
+- **Hero section:** Bold brand statement, 10-point burst, Classic can visual, a vitamin-led paragraph, and clear calls to action. No price in the hero.
+- **Posters section:** Present one poster per variant (VIVE Glow, VIVE Classic, and VIVE Focus) at slight angles under the tilted "Pick your vibe" label. Each poster carries the variant name, its tagline, its vitamins, and a "Grab VIVE …" button to `shop.html`. Glow and Focus borrow the deck-era relaxing vibes and grind vibes posters until their own posters exist (see [brand-spec.md](brand-spec.md)).
 - **Video section:** Showcase the VIVE video commercial in 16:9 aspect ratio.
 - **Additional posters:** Feature campaign extensions and introductory ads (including the courtside volleyball poster and street mockups).
 - **Seasonal poster footer:** Additional posters at the very end of the page (such as seasonal or holiday editions).
@@ -30,7 +30,7 @@ This document is the canonical router and functional contract for the VIVE four-
 - **Visual mechanic:** Utilizes the expanding panel hover interaction (reserved from Direction B) to showcase the team.
 
 ### 3. Product Page (`product.html`)
-- **Brand product showcase:** Deep focus on the cans, vitamin formulation (Vitamins A, C, B9, and B12), stevia sweetening, and zero-calorie benefits.
+- **Brand product showcase:** Deep focus on the cans, vitamin formulation per variant (see the product line in [brand-spec.md](brand-spec.md)), stevia sweetening, and zero-calorie benefits.
 - **Strip structure:** Exactly one product variation per strip, except where variants are showcased together as a cohesive family strip.
 - **Strict negative constraints:**
   - **NO** product posters are allowed on this page.

@@ -20,7 +20,7 @@ Then visit [http://localhost:8767/](http://localhost:8767/) (or `http://localhos
 
 | Page | File | Status | Highlights |
 |---|---|---|---|
-| **Home** | [index.html](index.html) | Draft v1 complete | Canonical homepage with ₱67 price burst, flavor posters, ad mockups, and video player container |
+| **Home** | [index.html](index.html) | Draft v1 complete | Canonical homepage with vitamin-led burst hero, Glow, Classic, and Focus posters with buttons, ad mockups, and video player container |
 | **About Us** | `about.html` | In progress | Founding story (*revive* and *survive*), six-person team roster, and expanding panel cards |
 | **Product** | `product.html` | Planned | One product variant per strip, zero posters, and zero merchandise |
 | **Shop** | `shop.html` | Planned | E-commerce catalog with singles, bundles, merchandise, and live header cart count |
