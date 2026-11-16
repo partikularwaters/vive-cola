@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1200, height=630">
+<title>VIVE OG Card · V3-Split (Navy & Orange Duo)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap">
+<style>
+  :root {
+    --orange: #F27A21;
+    --navy: #1D2766;
+    --sun: #F4BD6A;
+    --white: #F9F9F9;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    position: relative;
+    background: var(--navy);
+    font-family: 'Montserrat', sans-serif;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 80px 0 72px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Right Angled Orange Seam */
+  .orange-backdrop {
+    position: absolute;
+    right: -100px;
+    top: -50px;
+    bottom: -50px;
+    width: 620px;
+    background: var(--orange);
+    transform: skewX(-10deg);
+    box-shadow: -24px 0 50px rgba(0, 0, 0, 0.45);
+  }
+
+  /* 10-Point Sun Star behind can */
+  .bg-star {
+    position: absolute;
+    right: 70px;
+    top: 50%;
+    transform: translateY(-50%) rotate(14deg);
+    width: 520px;
+    height: 520px;
+    background: var(--sun);
+    clip-path: polygon(
+      50% 0%, 59.5% 20.8%, 79.4% 9.5%, 77% 32.3%, 97.6% 34.5%, 
+      84.6% 50%, 97.6% 65.5%, 77% 67.7%, 79.4% 90.5%, 59.5% 79.2%, 
+      50% 100%, 40.5% 79.2%, 20.6% 90.5%, 23% 67.7%, 2.4% 65.5%, 
+      15.4% 50%, 2.4% 34.5%, 23% 32.3%, 20.6% 9.5%, 40.5% 20.8%
+    );
+    opacity: 1;
+    pointer-events: none;
+  }
+
+  /* Left Editorial Block: Only Brand + Headline */
+  .left-content {
+    position: relative;
+    z-index: 5;
+    max-width: 600px;
+  }
+
+  .brand-wordmark {
+    height: 42px;
+    margin-bottom: 32px;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.25));
+  }
+
+  h1.claim {
+    margin: 0;
+    font-size: 92px;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+  }
+  h1.claim span.white-line {
+    display: block;
+    color: var(--white);
+  }
+  h1.claim span.orange-line {
+    display: block;
+    color: var(--orange);
+  }
+
+  /* Right Hero Can */
+  .can-container {
+    position: relative;
+    z-index: 6;
+    width: 440px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-can {
+    height: 560px;
+    transform: rotate(5deg);
+    filter: drop-shadow(-18px 24px 36px rgba(0, 0, 0, 0.55));
+  }
+</style>
+</head>
+<body>
+
+<div class="orange-backdrop"></div>
+<div class="bg-star"></div>
+
+<div class="left-content">
+  <img src="../assets/wordmark-vive-white.png" alt="VIVE" class="brand-wordmark">
+  <h1 class="claim">
+    <span class="white-line">GOOD VIBES.</span>
+    <span class="orange-line">ZERO GUILT.</span>
+  </h1>
+</div>
+
+<div class="can-container">
+  <img src="../assets/can-original-hires.png" alt="VIVE Can" class="hero-can">
+</div>
+
+</body>
+</html>

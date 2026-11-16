@@ -59,3 +59,4 @@ yarn-error.log*
 # Local session memory and private scratchpads
 memory/
 .memory/
+.tmp.driveupload/

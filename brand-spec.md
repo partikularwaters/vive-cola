@@ -18,10 +18,14 @@ The older leaf wordmark and purple can in `training/vive-copy.md` are superseded
 | `scene-beach.jpg`, `scene-living-room.jpg`, `scene-office.jpg` | Poster backgrounds with can, no text |
 | `texture-purple-cans.jpg`, `texture-purple-silk.jpg`, `cola-splash.png`, `ice-cube.png` | Deck textures |
 | `retailers.png` | Lawson, 7-Eleven, SM, Ayala Malls strip as used on the posters |
+| `lawson-logo-white.png` (`source/deck-extract/`, `assets/`) | Lawson white wordmark with transparency (1280×195 and 2560×390 2×) for colored/dark grounds |
+| `ayala-malls-logo-white.png` (`source/deck-extract/`, `assets/`) | Ayala Malls monochromatic white logo (SVG vector and 1376×552 PNG, 2752×1104 2×) with clean transparency |
+| `shapes/` (`source/deck-extract/`, mirrored to `assets/shapes/`) | 148 standalone vector SVGs and 1024×1024 transparent PNGs: 10-point stars, 5-point stars, 4-point stars, squares & diamonds (solids, outlines, concentric badges, tilts, chamfers), triangles (equilateral, directional, acute energy, wireframe, corner wedges), angled banners, clusters, and price/vitamin burst badges |
 
 ## Visual language (client's words, 2026-11-14)
 Sharp and energetic. Vibrant and optimistic. Intense but sweet. Cheerful. Dynamic and motivating. Charged and playful.
 - Signature shapes: the **10-point star** and **triangles**.
+- Shape asset library: See [source/deck-extract/README.md](source/deck-extract/README.md) and [source/deck-extract/showcase.html](source/deck-extract/showcase.html) for the full 70-item library of vector SVGs and high-resolution PNGs across all brand colors.
 - Reading for the site: sharp edges and angled cuts over soft rounded pills; motion that feels charged (quick, snappy) rather than floaty.
 
 ## Color (client-specified, 2026-11-14)

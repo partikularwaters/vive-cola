@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1200, height=630">
+<title>VIVE OG Card · V2-Icon (Pure Icon Billboard)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&display=swap">
+<style>
+  :root {
+    --orange: #F27A21;
+    --navy: #2B3990;
+    --sun: #F4BD6A;
+    --white: #F9F9F9;
+    --deep: #14183F;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    position: relative;
+    background: var(--orange);
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 36px 40px 32px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Giant 10-Point Starburst */
+  .giant-star {
+    position: absolute;
+    left: 50%;
+    top: 52%;
+    transform: translate(-50%, -50%) rotate(18deg);
+    width: 580px;
+    height: 580px;
+    background: var(--sun);
+    clip-path: polygon(
+      50% 0%, 59.5% 20.8%, 79.4% 9.5%, 77% 32.3%, 97.6% 34.5%, 
+      84.6% 50%, 97.6% 65.5%, 77% 67.7%, 79.4% 90.5%, 59.5% 79.2%, 
+      50% 100%, 40.5% 79.2%, 20.6% 90.5%, 23% 67.7%, 2.4% 65.5%, 
+      15.4% 50%, 2.4% 34.5%, 23% 32.3%, 20.6% 9.5%, 40.5% 20.8%
+    );
+    opacity: 0.95;
+    z-index: 1;
+    filter: drop-shadow(0 15px 30px rgba(20, 24, 63, 0.2));
+  }
+
+  /* Top Massive Brand Logo */
+  .brand-logo {
+    height: 68px;
+    z-index: 5;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15));
+  }
+
+  /* Giant Center Can */
+  .can-wrap {
+    position: absolute;
+    left: 50%;
+    top: 53%;
+    transform: translate(-50%, -50%) rotate(4deg);
+    z-index: 4;
+  }
+  .can-wrap img {
+    height: 480px;
+    filter: drop-shadow(0 24px 36px rgba(20, 24, 63, 0.45));
+  }
+
+  /* Floating Huge Badges on Sides */
+  .badge-left {
+    position: absolute;
+    left: 60px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-4deg);
+    background: var(--navy);
+    color: var(--white);
+    padding: 14px 26px;
+    font-size: 26px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    clip-path: polygon(4% 0, 100% 0, 96% 100%, 0 100%);
+    box-shadow: 0 10px 24px rgba(20, 24, 63, 0.3);
+    z-index: 5;
+  }
+  .badge-left span {
+    color: var(--sun);
+    display: block;
+    font-size: 18px;
+  }
+
+  .badge-right {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%) rotate(4deg);
+    background: var(--white);
+    color: var(--navy);
+    padding: 14px 26px;
+    font-size: 26px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    clip-path: polygon(0 0, 96% 0, 100% 100%, 4% 100%);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+    z-index: 5;
+    text-align: right;
+  }
+  .badge-right span {
+    color: var(--orange);
+    display: block;
+    font-size: 18px;
+  }
+
+  /* Bottom Massive Pill */
+  .bottom-pill {
+    background: var(--navy);
+    color: var(--white);
+    padding: 14px 36px;
+    font-size: 20px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-radius: 999px;
+    z-index: 5;
+    box-shadow: 0 12px 28px rgba(20, 24, 63, 0.35);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .bottom-pill span.dot {
+    color: var(--sun);
+  }
+</style>
+</head>
+<body>
+
+<div class="giant-star"></div>
+
+<img src="../assets/logo-vive-navy-tagline.png" alt="VIVE" class="brand-logo">
+
+<div class="badge-left">
+  <span>VITAMINS</span>
+  A · C · B9 · B12
+</div>
+
+<div class="can-wrap">
+  <img src="../assets/can-original-hires.png" alt="VIVE Can">
+</div>
+
+<div class="badge-right">
+  <span>NATURAL</span>
+  0 CAL · ₱67
+</div>
+
+<div class="bottom-pill">
+  <span>100% STEVIA</span>
+  <span class="dot">★</span>
+  <span>ZERO SUGAR</span>
+  <span class="dot">★</span>
+  <span>ZERO CALORIES</span>
+</div>
+
+</body>
+</html>

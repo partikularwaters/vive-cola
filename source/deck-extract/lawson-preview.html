@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 1400px;
+    height: 700px;
+    background: #0D1026;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .title {
+    color: #F4BD6A;
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 20px;
+  }
+  .box {
+    border-radius: 12px;
+    padding: 30px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+  .box-label {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .box-orange { background: #F27A21; }
+  .box-orange .box-label { color: #2B3990; }
+  .box-navy { background: #2B3990; }
+  .box-navy .box-label { color: #F4BD6A; }
+  .box-dark { background: #14183F; }
+  .box-dark .box-label { color: #F9F9F9; }
+  .box-white { background: #FFFFFF; }
+  .box-white .box-label { color: #007BC2; }
+  img {
+    max-width: 90%;
+    max-height: 80px;
+    object-fit: contain;
+    display: block;
+  }
+</style>
+</head>
+<body>
+  <div class="title">Lawson Logo Asset Verification — Original vs. White PNG</div>
+  <div class="grid">
+    <div class="box box-white">
+      <div class="box-label">Original (1280px-Lawson_logo.svg.webp) on White</div>
+      <img src="1280px-Lawson_logo.svg.webp">
+    </div>
+    <div class="box box-navy">
+      <div class="box-label">White PNG on VIVE Navy (#2B3990)</div>
+      <img src="1280px-Lawson_logo_white.png">
+    </div>
+    <div class="box box-orange">
+      <div class="box-label">White PNG on VIVE Orange (#F27A21)</div>
+      <img src="1280px-Lawson_logo_white.png">
+    </div>
+    <div class="box box-dark">
+      <div class="box-label">White PNG on Midnight Navy (#14183F)</div>
+      <img src="1280px-Lawson_logo_white.png">
+    </div>
+  </div>
+</body>
+</html>

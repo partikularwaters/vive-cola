@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>VIVE Brand Asset Library — Deck Extract Showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #F27A21;
+    --navy: #2B3990;
+    --sun: #F4BD6A;
+    --white: #F9F9F9;
+    --deep: #1D2766;
+    --dark: #0D1026;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--dark);
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    padding: 48px 40px;
+    -webkit-font-smoothing: antialiased;
+  }
+  header {
+    max-width: 1360px;
+    margin: 0 auto 48px;
+    border-bottom: 2px solid rgba(244, 189, 106, 0.2);
+    padding-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  h1 {
+    font-size: 38px;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    color: var(--sun);
+  }
+  .subtitle {
+    font-size: 16px;
+    color: rgba(249, 249, 249, 0.7);
+    margin-top: 6px;
+  }
+  .badge-count {
+    background: var(--orange);
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 900;
+    padding: 6px 14px;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+  }
+  .container {
+    max-width: 1360px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+  .section-title {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--white);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-title::before {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: var(--orange);
+    transform: rotate(45deg);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 18px;
+  }
+  .grid.wide {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+  .card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.15s, border-color 0.15s, background 0.15s;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: var(--sun);
+    background: rgba(255, 255, 255, 0.06);
+  }
+  .preview-box {
+    width: 100%;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+    background: repeating-conic-gradient(rgba(255,255,255,0.06) 0% 25%, transparent 0% 50%) 50% / 16px 16px;
+  }
+  .preview-box.wide {
+    height: 90px;
+  }
+  .preview-box img {
+    max-width: 82%;
+    max-height: 82%;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+  }
+  .card-title {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+  .card-meta {
+    font-size: 11px;
+    color: rgba(249, 249, 249, 0.5);
+    margin-bottom: 12px;
+  }
+  .links {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+  }
+  .btn {
+    flex: 1;
+    display: inline-block;
+    padding: 6px 0;
+    font-size: 11px;
+    font-weight: 800;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    transition: background 0.15s, color 0.15s;
+  }
+  .btn-svg {
+    background: var(--navy);
+    color: var(--white);
+    border: 1px solid rgba(244, 189, 106, 0.3);
+  }
+  .btn-svg:hover {
+    background: var(--sun);
+    color: var(--navy);
+  }
+  .btn-png {
+    background: var(--orange);
+    color: var(--white);
+  }
+  .btn-png:hover {
+    background: #ff8e38;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>VIVE Brand Asset Showcase</h1>
+    <div class="subtitle">Complete library of 10-point stars, 5-point stars, 4-point stars, squares, diamonds, triangles, banners, and retailer monochromes in SVG & high-res PNG.</div>
+  </div>
+  <div class="badge-count">148 SHAPE ASSETS</div>
+</header>
+
+<div class="container">
+  <section>
+    <h2 class="section-title">1. 10-Point Stars (VIVE Signature Bursts) (18)</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-10pt-sun.svg" alt="Sun Yellow">
+        </div>
+        <div class="card-title">Sun Yellow</div>
+        <div class="card-meta">star-10pt-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-10pt-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-10pt-sun.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-10pt-orange.svg" alt="VIVE Orange">
+        </div>
+        <div class="card-title">VIVE Orange</div>
+        <div class="card-meta">star-10pt-orange</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-10pt-orange.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-10pt-orange.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-10pt-navy.svg" alt="VIVE Navy">
+        </div>
+        <div class="card-title">VIVE Navy</div>
+        <div class="card-meta">star-10pt-navy</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-10pt-navy.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-10pt-navy.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-10pt-white.svg" alt="Off-White">
+        </div>
+        <div class="card-title">Off-White</div>
+        <div class="card-meta">star-10pt-white</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-10pt-white.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-10pt-white.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-10pt-deep.svg" alt="Deep Navy">
+        </div>
+        <div class="card-title">Deep Navy</div>
+        <div class="card-meta">star-10pt-deep</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-10pt-deep.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-10pt-deep.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-10pt-cream.svg" alt="Cream (Decaf)">
+        </div>
+        <div class="card-title">Cream (Decaf)</div>
+        <div class="card-meta">star-10pt-cream</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-10pt-cream.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-10pt-cream.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-10pt-black.svg" alt="Black (Extra Caffeine)">
+        </div>
+        <div class="card-title">Black (Extra Caffeine)</div>
+        <div class="card-meta">star-10pt-black</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-10pt-black.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-10pt-black.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-10pt-outline-sun.svg" alt="Sun Outline">
+        </div>
+        <div class="card-title">Sun Outline</div>
+        <div class="card-meta">star-10pt-outline-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-10pt-outline-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-10pt-outline-sun.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-10pt-outline-orange.svg" alt="Orange Outline">
+        </div>
+        <div class="card-title">Orange Outline</div>
+        <div class="card-meta">star-10pt-outline-orange</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-10pt-outline-orange.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-10pt-outline-orange.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-10pt-outline-navy.svg" alt="Navy Outline">
+        </div>
+        <div class="card-title">Navy Outline</div>
+        <div class="card-meta">star-10pt-outline-navy</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-10pt-outline-navy.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-10pt-outline-navy.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-10pt-outline-white.svg" alt="White Outline">
+        </div>
+        <div class="card-title">White Outline</div>
+        <div class="card-meta">star-10pt-outline-white</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-10pt-outline-white.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-10pt-outline-white.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-10pt-concentric-sun-navy.svg" alt="Sun + Navy Inner">
+        </div>
+        <div class="card-title">Sun + Navy Inner</div>
+        <div class="card-meta">star-10pt-concentric-sun-navy</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-10pt-concentric-sun-navy.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-10pt-concentric-sun-navy.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-10pt-concentric-navy-sun.svg" alt="Navy + Sun Inner">
+        </div>
+        <div class="card-title">Navy + Sun Inner</div>
+        <div class="card-meta">star-10pt-concentric-navy-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-10pt-concentric-navy-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-10pt-concentric-navy-sun.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-10pt-concentric-orange-white.svg" alt="Orange + White Inner">
+        </div>
+        <div class="card-title">Orange + White Inner</div>
+        <div class="card-meta">star-10pt-concentric-orange-white</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-10pt-concentric-orange-white.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-10pt-concentric-orange-white.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-10pt-concentric-deep-sun.svg" alt="Deep + Sun Inner">
+        </div>
+        <div class="card-title">Deep + Sun Inner</div>
+        <div class="card-meta">star-10pt-concentric-deep-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-10pt-concentric-deep-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-10pt-concentric-deep-sun.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-10pt-tilted-12deg-sun.svg" alt="+12° Dynamic Tilt">
+        </div>
+        <div class="card-title">+12° Dynamic Tilt</div>
+        <div class="card-meta">star-10pt-tilted-12deg-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-10pt-tilted-12deg-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-10pt-tilted-12deg-sun.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-10pt-tilted-minus15deg-navy.svg" alt="-15° Dynamic Tilt">
+        </div>
+        <div class="card-title">-15° Dynamic Tilt</div>
+        <div class="card-meta">star-10pt-tilted-minus15deg-navy</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-10pt-tilted-minus15deg-navy.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-10pt-tilted-minus15deg-navy.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-10pt-tilted-18deg-orange.svg" alt="+18° Dynamic Tilt">
+        </div>
+        <div class="card-title">+18° Dynamic Tilt</div>
+        <div class="card-meta">star-10pt-tilted-18deg-orange</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-10pt-tilted-18deg-orange.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-10pt-tilted-18deg-orange.png" download>PNG</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2 class="section-title">2. 5-Point Stars (Classic & Bold Pentagram Stars) (18)</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-5pt-sun.svg" alt="Sun 5-Point">
+        </div>
+        <div class="card-title">Sun 5-Point</div>
+        <div class="card-meta">star-5pt-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-5pt-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-5pt-sun.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-5pt-orange.svg" alt="Orange 5-Point">
+        </div>
+        <div class="card-title">Orange 5-Point</div>
+        <div class="card-meta">star-5pt-orange</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-5pt-orange.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-5pt-orange.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-5pt-navy.svg" alt="Navy 5-Point">
+        </div>
+        <div class="card-title">Navy 5-Point</div>
+        <div class="card-meta">star-5pt-navy</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-5pt-navy.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-5pt-navy.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-5pt-white.svg" alt="White 5-Point">
+        </div>
+        <div class="card-title">White 5-Point</div>
+        <div class="card-meta">star-5pt-white</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-5pt-white.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-5pt-white.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-5pt-deep.svg" alt="Deep Navy 5-Point">
+        </div>
+        <div class="card-title">Deep Navy 5-Point</div>
+        <div class="card-meta">star-5pt-deep</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-5pt-deep.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-5pt-deep.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-5pt-cream.svg" alt="Cream 5-Point">
+        </div>
+        <div class="card-title">Cream 5-Point</div>
+        <div class="card-meta">star-5pt-cream</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-5pt-cream.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-5pt-cream.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-5pt-black.svg" alt="Black 5-Point">
+        </div>
+        <div class="card-title">Black 5-Point</div>
+        <div class="card-meta">star-5pt-black</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-5pt-black.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-5pt-black.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-5pt-bold-sun.svg" alt="Sun Bold Pop">
+        </div>
+        <div class="card-title">Sun Bold Pop</div>
+        <div class="card-meta">star-5pt-bold-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-5pt-bold-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-5pt-bold-sun.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-5pt-bold-orange.svg" alt="Orange Bold Pop">
+        </div>
+        <div class="card-title">Orange Bold Pop</div>
+        <div class="card-meta">star-5pt-bold-orange</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-5pt-bold-orange.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-5pt-bold-orange.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-5pt-bold-navy.svg" alt="Navy Bold Pop">
+        </div>
+        <div class="card-title">Navy Bold Pop</div>
+        <div class="card-meta">star-5pt-bold-navy</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-5pt-bold-navy.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-5pt-bold-navy.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-5pt-bold-white.svg" alt="White Bold Pop">
+        </div>
+        <div class="card-title">White Bold Pop</div>
+        <div class="card-meta">star-5pt-bold-white</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-5pt-bold-white.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-5pt-bold-white.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-5pt-outline-sun.svg" alt="Sun 5-Pt Outline">
+        </div>
+        <div class="card-title">Sun 5-Pt Outline</div>
+        <div class="card-meta">star-5pt-outline-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-5pt-outline-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-5pt-outline-sun.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-5pt-outline-navy.svg" alt="Navy 5-Pt Outline">
+        </div>
+        <div class="card-title">Navy 5-Pt Outline</div>
+        <div class="card-meta">star-5pt-outline-navy</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-5pt-outline-navy.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-5pt-outline-navy.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-5pt-concentric-sun-navy.svg" alt="Sun + Navy 5-Pt Badge">
+        </div>
+        <div class="card-title">Sun + Navy 5-Pt Badge</div>
+        <div class="card-meta">star-5pt-concentric-sun-navy</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-5pt-concentric-sun-navy.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-5pt-concentric-sun-navy.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-5pt-concentric-navy-sun.svg" alt="Navy + Sun 5-Pt Badge">
+        </div>
+        <div class="card-title">Navy + Sun 5-Pt Badge</div>
+        <div class="card-meta">star-5pt-concentric-navy-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-5pt-concentric-navy-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-5pt-concentric-navy-sun.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-5pt-tilted-12deg-sun.svg" alt="+12° Tilted 5-Pt">
+        </div>
+        <div class="card-title">+12° Tilted 5-Pt</div>
+        <div class="card-meta">star-5pt-tilted-12deg-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-5pt-tilted-12deg-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-5pt-tilted-12deg-sun.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-5pt-tilted-minus15deg-navy.svg" alt="-15° Tilted 5-Pt">
+        </div>
+        <div class="card-title">-15° Tilted 5-Pt</div>
+        <div class="card-meta">star-5pt-tilted-minus15deg-navy</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-5pt-tilted-minus15deg-navy.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-5pt-tilted-minus15deg-navy.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-5pt-tilted-18deg-orange.svg" alt="+18° Tilted 5-Pt">
+        </div>
+        <div class="card-title">+18° Tilted 5-Pt</div>
+        <div class="card-meta">star-5pt-tilted-18deg-orange</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-5pt-tilted-18deg-orange.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-5pt-tilted-18deg-orange.png" download>PNG</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2 class="section-title">3. 4-Point Stars (Retro Sparkles & Diamond Flares) (17)</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-4pt-sun.svg" alt="Sun 4-Point">
+        </div>
+        <div class="card-title">Sun 4-Point</div>
+        <div class="card-meta">star-4pt-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-4pt-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-4pt-sun.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-4pt-orange.svg" alt="Orange 4-Point">
+        </div>
+        <div class="card-title">Orange 4-Point</div>
+        <div class="card-meta">star-4pt-orange</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-4pt-orange.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-4pt-orange.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-4pt-navy.svg" alt="Navy 4-Point">
+        </div>
+        <div class="card-title">Navy 4-Point</div>
+        <div class="card-meta">star-4pt-navy</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-4pt-navy.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-4pt-navy.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-4pt-white.svg" alt="White 4-Point">
+        </div>
+        <div class="card-title">White 4-Point</div>
+        <div class="card-meta">star-4pt-white</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-4pt-white.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-4pt-white.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-4pt-deep.svg" alt="Deep Navy 4-Point">
+        </div>
+        <div class="card-title">Deep Navy 4-Point</div>
+        <div class="card-meta">star-4pt-deep</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-4pt-deep.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-4pt-deep.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-4pt-cream.svg" alt="Cream 4-Point">
+        </div>
+        <div class="card-title">Cream 4-Point</div>
+        <div class="card-meta">star-4pt-cream</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-4pt-cream.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-4pt-cream.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-4pt-black.svg" alt="Black 4-Point">
+        </div>
+        <div class="card-title">Black 4-Point</div>
+        <div class="card-meta">star-4pt-black</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-4pt-black.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-4pt-black.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-4pt-sparkle-sun.svg" alt="Sun Sparkle Flare">
+        </div>
+        <div class="card-title">Sun Sparkle Flare</div>
+        <div class="card-meta">star-4pt-sparkle-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-4pt-sparkle-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-4pt-sparkle-sun.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-4pt-sparkle-orange.svg" alt="Orange Sparkle Flare">
+        </div>
+        <div class="card-title">Orange Sparkle Flare</div>
+        <div class="card-meta">star-4pt-sparkle-orange</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-4pt-sparkle-orange.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-4pt-sparkle-orange.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-4pt-sparkle-navy.svg" alt="Navy Sparkle Flare">
+        </div>
+        <div class="card-title">Navy Sparkle Flare</div>
+        <div class="card-meta">star-4pt-sparkle-navy</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-4pt-sparkle-navy.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-4pt-sparkle-navy.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-4pt-sparkle-white.svg" alt="White Sparkle Flare">
+        </div>
+        <div class="card-title">White Sparkle Flare</div>
+        <div class="card-meta">star-4pt-sparkle-white</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-4pt-sparkle-white.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-4pt-sparkle-white.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-4pt-outline-sun.svg" alt="Sun 4-Pt Outline">
+        </div>
+        <div class="card-title">Sun 4-Pt Outline</div>
+        <div class="card-meta">star-4pt-outline-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-4pt-outline-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-4pt-outline-sun.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-4pt-outline-navy.svg" alt="Navy 4-Pt Outline">
+        </div>
+        <div class="card-title">Navy 4-Pt Outline</div>
+        <div class="card-meta">star-4pt-outline-navy</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-4pt-outline-navy.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-4pt-outline-navy.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-4pt-concentric-sun-navy.svg" alt="Sun + Navy 4-Pt Badge">
+        </div>
+        <div class="card-title">Sun + Navy 4-Pt Badge</div>
+        <div class="card-meta">star-4pt-concentric-sun-navy</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-4pt-concentric-sun-navy.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-4pt-concentric-sun-navy.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-4pt-concentric-navy-sun.svg" alt="Navy + Sun 4-Pt Badge">
+        </div>
+        <div class="card-title">Navy + Sun 4-Pt Badge</div>
+        <div class="card-meta">star-4pt-concentric-navy-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-4pt-concentric-navy-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-4pt-concentric-navy-sun.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-4pt-tilted-15deg-sun.svg" alt="+15° Tilted 4-Pt">
+        </div>
+        <div class="card-title">+15° Tilted 4-Pt</div>
+        <div class="card-meta">star-4pt-tilted-15deg-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-4pt-tilted-15deg-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-4pt-tilted-15deg-sun.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="star-4pt-tilted-minus15deg-navy.svg" alt="-15° Tilted 4-Pt">
+        </div>
+        <div class="card-title">-15° Tilted 4-Pt</div>
+        <div class="card-meta">star-4pt-tilted-minus15deg-navy</div>
+        <div class="links">
+          <a class="btn btn-svg" href="star-4pt-tilted-minus15deg-navy.svg" download>SVG</a>
+          <a class="btn btn-png" href="star-4pt-tilted-minus15deg-navy.png" download>PNG</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2 class="section-title">4. Squares & Diamonds (20)</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="preview-box">
+          <img src="square-solid-sun.svg" alt="Sun Square">
+        </div>
+        <div class="card-title">Sun Square</div>
+        <div class="card-meta">square-solid-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="square-solid-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="square-solid-sun.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="square-solid-orange.svg" alt="Orange Square">
+        </div>
+        <div class="card-title">Orange Square</div>
+        <div class="card-meta">square-solid-orange</div>
+        <div class="links">
+          <a class="btn btn-svg" href="square-solid-orange.svg" download>SVG</a>
+          <a class="btn btn-png" href="square-solid-orange.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="square-solid-navy.svg" alt="Navy Square">
+        </div>
+        <div class="card-title">Navy Square</div>
+        <div class="card-meta">square-solid-navy</div>
+        <div class="links">
+          <a class="btn btn-svg" href="square-solid-navy.svg" download>SVG</a>
+          <a class="btn btn-png" href="square-solid-navy.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="square-solid-white.svg" alt="White Square">
+        </div>
+        <div class="card-title">White Square</div>
+        <div class="card-meta">square-solid-white</div>
+        <div class="links">
+          <a class="btn btn-svg" href="square-solid-white.svg" download>SVG</a>
+          <a class="btn btn-png" href="square-solid-white.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="square-solid-deep.svg" alt="Deep Navy Square">
+        </div>
+        <div class="card-title">Deep Navy Square</div>
+        <div class="card-meta">square-solid-deep</div>
+        <div class="links">
+          <a class="btn btn-svg" href="square-solid-deep.svg" download>SVG</a>
+          <a class="btn btn-png" href="square-solid-deep.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="square-diamond-sun.svg" alt="Sun 45° Diamond">
+        </div>
+        <div class="card-title">Sun 45° Diamond</div>
+        <div class="card-meta">square-diamond-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="square-diamond-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="square-diamond-sun.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="square-diamond-orange.svg" alt="Orange 45° Diamond">
+        </div>
+        <div class="card-title">Orange 45° Diamond</div>
+        <div class="card-meta">square-diamond-orange</div>
+        <div class="links">
+          <a class="btn btn-svg" href="square-diamond-orange.svg" download>SVG</a>
+          <a class="btn btn-png" href="square-diamond-orange.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="square-diamond-navy.svg" alt="Navy 45° Diamond">
+        </div>
+        <div class="card-title">Navy 45° Diamond</div>
+        <div class="card-meta">square-diamond-navy</div>
+        <div class="links">
+          <a class="btn btn-svg" href="square-diamond-navy.svg" download>SVG</a>
+          <a class="btn btn-png" href="square-diamond-navy.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="square-diamond-white.svg" alt="White 45° Diamond">
+        </div>
+        <div class="card-title">White 45° Diamond</div>
+        <div class="card-meta">square-diamond-white</div>
+        <div class="links">
+          <a class="btn btn-svg" href="square-diamond-white.svg" download>SVG</a>
+          <a class="btn btn-png" href="square-diamond-white.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="square-diamond-deep.svg" alt="Deep 45° Diamond">
+        </div>
+        <div class="card-title">Deep 45° Diamond</div>
+        <div class="card-meta">square-diamond-deep</div>
+        <div class="links">
+          <a class="btn btn-svg" href="square-diamond-deep.svg" download>SVG</a>
+          <a class="btn btn-png" href="square-diamond-deep.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="square-chamfer-sun.svg" alt="Sun Chamfer Square">
+        </div>
+        <div class="card-title">Sun Chamfer Square</div>
+        <div class="card-meta">square-chamfer-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="square-chamfer-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="square-chamfer-sun.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="square-chamfer-orange.svg" alt="Orange Chamfer Square">
+        </div>
+        <div class="card-title">Orange Chamfer Square</div>
+        <div class="card-meta">square-chamfer-orange</div>
+        <div class="links">
+          <a class="btn btn-svg" href="square-chamfer-orange.svg" download>SVG</a>
+          <a class="btn btn-png" href="square-chamfer-orange.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="square-chamfer-navy.svg" alt="Navy Chamfer Square">
+        </div>
+        <div class="card-title">Navy Chamfer Square</div>
+        <div class="card-meta">square-chamfer-navy</div>
+        <div class="links">
+          <a class="btn btn-svg" href="square-chamfer-navy.svg" download>SVG</a>
+          <a class="btn btn-png" href="square-chamfer-navy.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="square-chamfer-white.svg" alt="White Chamfer Square">
+        </div>
+        <div class="card-title">White Chamfer Square</div>
+        <div class="card-meta">square-chamfer-white</div>
+        <div class="links">
+          <a class="btn btn-svg" href="square-chamfer-white.svg" download>SVG</a>
+          <a class="btn btn-png" href="square-chamfer-white.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="square-outline-sun.svg" alt="Sun Square Outline">
+        </div>
+        <div class="card-title">Sun Square Outline</div>
+        <div class="card-meta">square-outline-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="square-outline-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="square-outline-sun.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="square-outline-navy.svg" alt="Navy Square Outline">
+        </div>
+        <div class="card-title">Navy Square Outline</div>
+        <div class="card-meta">square-outline-navy</div>
+        <div class="links">
+          <a class="btn btn-svg" href="square-outline-navy.svg" download>SVG</a>
+          <a class="btn btn-png" href="square-outline-navy.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="square-diamond-outline-sun.svg" alt="Sun Diamond Outline">
+        </div>
+        <div class="card-title">Sun Diamond Outline</div>
+        <div class="card-meta">square-diamond-outline-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="square-diamond-outline-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="square-diamond-outline-sun.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="square-diamond-outline-navy.svg" alt="Navy Diamond Outline">
+        </div>
+        <div class="card-title">Navy Diamond Outline</div>
+        <div class="card-meta">square-diamond-outline-navy</div>
+        <div class="links">
+          <a class="btn btn-svg" href="square-diamond-outline-navy.svg" download>SVG</a>
+          <a class="btn btn-png" href="square-diamond-outline-navy.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="square-concentric-sun-navy.svg" alt="Sun + Navy Nested Square">
+        </div>
+        <div class="card-title">Sun + Navy Nested Square</div>
+        <div class="card-meta">square-concentric-sun-navy</div>
+        <div class="links">
+          <a class="btn btn-svg" href="square-concentric-sun-navy.svg" download>SVG</a>
+          <a class="btn btn-png" href="square-concentric-sun-navy.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="square-concentric-navy-sun.svg" alt="Navy + Sun Nested Square">
+        </div>
+        <div class="card-title">Navy + Sun Nested Square</div>
+        <div class="card-meta">square-concentric-navy-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="square-concentric-navy-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="square-concentric-navy-sun.png" download>PNG</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2 class="section-title">5. Brand Triangles (Equilateral, Directional, Acute, and Corners) (20)</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="preview-box">
+          <img src="triangle-equilateral-sun.svg" alt="Sun Equilateral">
+        </div>
+        <div class="card-title">Sun Equilateral</div>
+        <div class="card-meta">triangle-equilateral-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="triangle-equilateral-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="triangle-equilateral-sun.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="triangle-equilateral-orange.svg" alt="Orange Equilateral">
+        </div>
+        <div class="card-title">Orange Equilateral</div>
+        <div class="card-meta">triangle-equilateral-orange</div>
+        <div class="links">
+          <a class="btn btn-svg" href="triangle-equilateral-orange.svg" download>SVG</a>
+          <a class="btn btn-png" href="triangle-equilateral-orange.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="triangle-equilateral-navy.svg" alt="Navy Equilateral">
+        </div>
+        <div class="card-title">Navy Equilateral</div>
+        <div class="card-meta">triangle-equilateral-navy</div>
+        <div class="links">
+          <a class="btn btn-svg" href="triangle-equilateral-navy.svg" download>SVG</a>
+          <a class="btn btn-png" href="triangle-equilateral-navy.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="triangle-equilateral-white.svg" alt="White Equilateral">
+        </div>
+        <div class="card-title">White Equilateral</div>
+        <div class="card-meta">triangle-equilateral-white</div>
+        <div class="links">
+          <a class="btn btn-svg" href="triangle-equilateral-white.svg" download>SVG</a>
+          <a class="btn btn-png" href="triangle-equilateral-white.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="triangle-down-sun.svg" alt="Sun Down">
+        </div>
+        <div class="card-title">Sun Down</div>
+        <div class="card-meta">triangle-down-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="triangle-down-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="triangle-down-sun.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="triangle-down-navy.svg" alt="Navy Down">
+        </div>
+        <div class="card-title">Navy Down</div>
+        <div class="card-meta">triangle-down-navy</div>
+        <div class="links">
+          <a class="btn btn-svg" href="triangle-down-navy.svg" download>SVG</a>
+          <a class="btn btn-png" href="triangle-down-navy.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="triangle-right-sun.svg" alt="Sun Right">
+        </div>
+        <div class="card-title">Sun Right</div>
+        <div class="card-meta">triangle-right-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="triangle-right-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="triangle-right-sun.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="triangle-left-sun.svg" alt="Sun Left">
+        </div>
+        <div class="card-title">Sun Left</div>
+        <div class="card-meta">triangle-left-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="triangle-left-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="triangle-left-sun.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="triangle-acute-sun.svg" alt="Acute Sun Energy">
+        </div>
+        <div class="card-title">Acute Sun Energy</div>
+        <div class="card-meta">triangle-acute-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="triangle-acute-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="triangle-acute-sun.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="triangle-acute-orange.svg" alt="Acute Orange Energy">
+        </div>
+        <div class="card-title">Acute Orange Energy</div>
+        <div class="card-meta">triangle-acute-orange</div>
+        <div class="links">
+          <a class="btn btn-svg" href="triangle-acute-orange.svg" download>SVG</a>
+          <a class="btn btn-png" href="triangle-acute-orange.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="triangle-acute-navy.svg" alt="Acute Navy Energy">
+        </div>
+        <div class="card-title">Acute Navy Energy</div>
+        <div class="card-meta">triangle-acute-navy</div>
+        <div class="links">
+          <a class="btn btn-svg" href="triangle-acute-navy.svg" download>SVG</a>
+          <a class="btn btn-png" href="triangle-acute-navy.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="triangle-acute-white.svg" alt="Acute White Energy">
+        </div>
+        <div class="card-title">Acute White Energy</div>
+        <div class="card-meta">triangle-acute-white</div>
+        <div class="links">
+          <a class="btn btn-svg" href="triangle-acute-white.svg" download>SVG</a>
+          <a class="btn btn-png" href="triangle-acute-white.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="triangle-acute-deep.svg" alt="Acute Deep Energy">
+        </div>
+        <div class="card-title">Acute Deep Energy</div>
+        <div class="card-meta">triangle-acute-deep</div>
+        <div class="links">
+          <a class="btn btn-svg" href="triangle-acute-deep.svg" download>SVG</a>
+          <a class="btn btn-png" href="triangle-acute-deep.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="triangle-acute-tilt-right-20deg-sun.svg" alt="+20° Acute Sun">
+        </div>
+        <div class="card-title">+20° Acute Sun</div>
+        <div class="card-meta">triangle-acute-tilt-right-20deg-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="triangle-acute-tilt-right-20deg-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="triangle-acute-tilt-right-20deg-sun.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="triangle-acute-tilt-left-20deg-navy.svg" alt="-20° Acute Navy">
+        </div>
+        <div class="card-title">-20° Acute Navy</div>
+        <div class="card-meta">triangle-acute-tilt-left-20deg-navy</div>
+        <div class="links">
+          <a class="btn btn-svg" href="triangle-acute-tilt-left-20deg-navy.svg" download>SVG</a>
+          <a class="btn btn-png" href="triangle-acute-tilt-left-20deg-navy.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="triangle-outline-sun.svg" alt="Sun Triangle Outline">
+        </div>
+        <div class="card-title">Sun Triangle Outline</div>
+        <div class="card-meta">triangle-outline-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="triangle-outline-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="triangle-outline-sun.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="triangle-outline-navy.svg" alt="Navy Triangle Outline">
+        </div>
+        <div class="card-title">Navy Triangle Outline</div>
+        <div class="card-meta">triangle-outline-navy</div>
+        <div class="links">
+          <a class="btn btn-svg" href="triangle-outline-navy.svg" download>SVG</a>
+          <a class="btn btn-png" href="triangle-outline-navy.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="triangle-corner-topright-navy.svg" alt="Corner Top-Right">
+        </div>
+        <div class="card-title">Corner Top-Right</div>
+        <div class="card-meta">triangle-corner-topright-navy</div>
+        <div class="links">
+          <a class="btn btn-svg" href="triangle-corner-topright-navy.svg" download>SVG</a>
+          <a class="btn btn-png" href="triangle-corner-topright-navy.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="triangle-corner-topright-sun.svg" alt="Corner Top-Right">
+        </div>
+        <div class="card-title">Corner Top-Right</div>
+        <div class="card-meta">triangle-corner-topright-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="triangle-corner-topright-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="triangle-corner-topright-sun.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="triangle-corner-bottomleft-orange.svg" alt="Corner Bottom-Left">
+        </div>
+        <div class="card-title">Corner Bottom-Left</div>
+        <div class="card-meta">triangle-corner-bottomleft-orange</div>
+        <div class="links">
+          <a class="btn btn-svg" href="triangle-corner-bottomleft-orange.svg" download>SVG</a>
+          <a class="btn btn-png" href="triangle-corner-bottomleft-orange.png" download>PNG</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2 class="section-title">6. Angled Cut Banners & Ribbons (Direction A) (8)</h2>
+    <div class="grid wide">
+      <div class="card">
+        <div class="preview-box wide">
+          <img src="banner-angled-navy.svg" alt="Angled Navy Banner">
+        </div>
+        <div class="card-title">Angled Navy Banner</div>
+        <div class="card-meta">banner-angled-navy</div>
+        <div class="links">
+          <a class="btn btn-svg" href="banner-angled-navy.svg" download>SVG</a>
+          <a class="btn btn-png" href="banner-angled-navy.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box wide">
+          <img src="banner-angled-orange.svg" alt="Angled Orange Banner">
+        </div>
+        <div class="card-title">Angled Orange Banner</div>
+        <div class="card-meta">banner-angled-orange</div>
+        <div class="links">
+          <a class="btn btn-svg" href="banner-angled-orange.svg" download>SVG</a>
+          <a class="btn btn-png" href="banner-angled-orange.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box wide">
+          <img src="banner-angled-sun.svg" alt="Angled Sun Banner">
+        </div>
+        <div class="card-title">Angled Sun Banner</div>
+        <div class="card-meta">banner-angled-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="banner-angled-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="banner-angled-sun.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box wide">
+          <img src="banner-angled-white.svg" alt="Angled White Banner">
+        </div>
+        <div class="card-title">Angled White Banner</div>
+        <div class="card-meta">banner-angled-white</div>
+        <div class="links">
+          <a class="btn btn-svg" href="banner-angled-white.svg" download>SVG</a>
+          <a class="btn btn-png" href="banner-angled-white.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box wide">
+          <img src="banner-angled-deep.svg" alt="Angled Deep Navy Banner">
+        </div>
+        <div class="card-title">Angled Deep Navy Banner</div>
+        <div class="card-meta">banner-angled-deep</div>
+        <div class="links">
+          <a class="btn btn-svg" href="banner-angled-deep.svg" download>SVG</a>
+          <a class="btn btn-png" href="banner-angled-deep.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box wide">
+          <img src="banner-angled-reverse-navy.svg" alt="Rev Angled Navy">
+        </div>
+        <div class="card-title">Rev Angled Navy</div>
+        <div class="card-meta">banner-angled-reverse-navy</div>
+        <div class="links">
+          <a class="btn btn-svg" href="banner-angled-reverse-navy.svg" download>SVG</a>
+          <a class="btn btn-png" href="banner-angled-reverse-navy.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box wide">
+          <img src="banner-angled-reverse-orange.svg" alt="Rev Angled Orange">
+        </div>
+        <div class="card-title">Rev Angled Orange</div>
+        <div class="card-meta">banner-angled-reverse-orange</div>
+        <div class="links">
+          <a class="btn btn-svg" href="banner-angled-reverse-orange.svg" download>SVG</a>
+          <a class="btn btn-png" href="banner-angled-reverse-orange.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box wide">
+          <img src="banner-angled-reverse-sun.svg" alt="Rev Angled Sun">
+        </div>
+        <div class="card-title">Rev Angled Sun</div>
+        <div class="card-meta">banner-angled-reverse-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="banner-angled-reverse-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="banner-angled-reverse-sun.png" download>PNG</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2 class="section-title">7. Dynamic Energy Clusters & Burst Badges (7)</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="preview-box">
+          <img src="cluster-energy-trio.svg" alt="Tri-Color Energy Trio">
+        </div>
+        <div class="card-title">Tri-Color Energy Trio</div>
+        <div class="card-meta">cluster-energy-trio</div>
+        <div class="links">
+          <a class="btn btn-svg" href="cluster-energy-trio.svg" download>SVG</a>
+          <a class="btn btn-png" href="cluster-energy-trio.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="cluster-star-scatter-sun.svg" alt="Sun Star + Particles">
+        </div>
+        <div class="card-title">Sun Star + Particles</div>
+        <div class="card-meta">cluster-star-scatter-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="cluster-star-scatter-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="cluster-star-scatter-sun.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="badge-price-67-sun.svg" alt="₱67 Burst Sun">
+        </div>
+        <div class="card-title">₱67 Burst Sun</div>
+        <div class="card-meta">badge-price-67-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="badge-price-67-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="badge-price-67-sun.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="badge-price-67-navy.svg" alt="₱67 Burst Navy">
+        </div>
+        <div class="card-title">₱67 Burst Navy</div>
+        <div class="card-meta">badge-price-67-navy</div>
+        <div class="links">
+          <a class="btn btn-svg" href="badge-price-67-navy.svg" download>SVG</a>
+          <a class="btn btn-png" href="badge-price-67-navy.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="badge-price-67-orange.svg" alt="₱67 Burst Orange">
+        </div>
+        <div class="card-title">₱67 Burst Orange</div>
+        <div class="card-meta">badge-price-67-orange</div>
+        <div class="links">
+          <a class="btn btn-svg" href="badge-price-67-orange.svg" download>SVG</a>
+          <a class="btn btn-png" href="badge-price-67-orange.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="badge-vitamins-sun.svg" alt="Vitamins A, C, B9, B12">
+        </div>
+        <div class="card-title">Vitamins A, C, B9, B12</div>
+        <div class="card-meta">badge-vitamins-sun</div>
+        <div class="links">
+          <a class="btn btn-svg" href="badge-vitamins-sun.svg" download>SVG</a>
+          <a class="btn btn-png" href="badge-vitamins-sun.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box">
+          <img src="badge-zero-calories-navy.svg" alt="0 Cal • Stevia Burst">
+        </div>
+        <div class="card-title">0 Cal • Stevia Burst</div>
+        <div class="card-meta">badge-zero-calories-navy</div>
+        <div class="links">
+          <a class="btn btn-svg" href="badge-zero-calories-navy.svg" download>SVG</a>
+          <a class="btn btn-png" href="badge-zero-calories-navy.png" download>PNG</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2 class="section-title">8. Retailer Logos (Monochromatic White) (2)</h2>
+    <div class="grid wide">
+      <div class="card">
+        <div class="preview-box wide">
+          <img src="lawson-logo-white.svg" alt="Lawson White Wordmark">
+        </div>
+        <div class="card-title">Lawson White Wordmark</div>
+        <div class="card-meta">lawson-logo-white</div>
+        <div class="links">
+          <a class="btn btn-svg" href="lawson-logo-white.svg" download>SVG</a>
+          <a class="btn btn-png" href="lawson-logo-white.png" download>PNG</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="preview-box wide">
+          <img src="ayala-malls-logo-white.svg" alt="Ayala Malls White Logo">
+        </div>
+        <div class="card-title">Ayala Malls White Logo</div>
+        <div class="card-meta">ayala-malls-logo-white</div>
+        <div class="links">
+          <a class="btn btn-svg" href="ayala-malls-logo-white.svg" download>SVG</a>
+          <a class="btn btn-png" href="ayala-malls-logo-white.png" download>PNG</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1200, height=630">
+<title>VIVE OG Card · Direction 1 (The Explosive Starburst)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800;900&display=swap">
+<style>
+  :root {
+    --orange: #F27A21;
+    --navy: #2B3990;
+    --sun: #F4BD6A;
+    --white: #F9F9F9;
+    --deep: #1D2766;
+    --f: "Montserrat", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    position: relative;
+    background: var(--orange);
+    font-family: var(--f);
+    color: var(--navy);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Decorative Brand Triangles */
+  .tri {
+    position: absolute;
+    width: var(--s);
+    height: var(--s);
+    background: var(--c);
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    transform: rotate(var(--r));
+    pointer-events: none;
+  }
+
+  /* Signature 10-Point Starburst */
+  .starburst-bg {
+    position: absolute;
+    right: 20px;
+    top: -20px;
+    width: 640px;
+    height: 640px;
+    background: var(--sun);
+    clip-path: polygon(
+      50% 0%, 59.5% 20.8%, 79.4% 9.5%, 77% 32.3%, 97.6% 34.5%, 
+      84.6% 50%, 97.6% 65.5%, 77% 67.7%, 79.4% 90.5%, 59.5% 79.2%, 
+      50% 100%, 40.5% 79.2%, 20.6% 90.5%, 23% 67.7%, 2.4% 65.5%, 
+      15.4% 50%, 2.4% 34.5%, 23% 32.3%, 20.6% 9.5%, 40.5% 20.8%
+    );
+    opacity: 0.95;
+    transform: rotate(14deg);
+    filter: drop-shadow(0 20px 35px rgba(20, 24, 63, 0.18));
+  }
+
+  /* Inner Ray Accent */
+  .starburst-inner {
+    position: absolute;
+    right: 90px;
+    top: 50px;
+    width: 500px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.22);
+    clip-path: polygon(
+      50% 0%, 59.5% 20.8%, 79.4% 9.5%, 77% 32.3%, 97.6% 34.5%, 
+      84.6% 50%, 97.6% 65.5%, 77% 67.7%, 79.4% 90.5%, 59.5% 79.2%, 
+      50% 100%, 40.5% 79.2%, 20.6% 90.5%, 23% 67.7%, 2.4% 65.5%, 
+      15.4% 50%, 2.4% 34.5%, 23% 32.3%, 20.6% 9.5%, 40.5% 20.8%
+    );
+    transform: rotate(-18deg);
+  }
+
+  /* Content Container */
+  .og-container {
+    position: relative;
+    z-index: 5;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 44px 54px 0 54px;
+  }
+
+  /* Header Brand Block */
+  .brand-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand-logo {
+    height: 52px;
+    filter: drop-shadow(0 3px 6px rgba(0,0,0,0.12));
+  }
+  .price-tag {
+    background: var(--navy);
+    color: var(--sun);
+    padding: 10px 22px;
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
+    box-shadow: 0 8px 18px rgba(29, 39, 102, 0.25);
+  }
+
+  /* Hero Headline Block */
+  .hero-copy {
+    max-width: 630px;
+    margin-top: 10px;
+  }
+  .labels {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  .label {
+    display: inline-block;
+    padding: 7px 18px 8px;
+    font-size: 20px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+  }
+  .label.sun-label {
+    background: var(--sun);
+    color: var(--navy);
+    transform: rotate(-3deg);
+    clip-path: polygon(2% 0, 100% 5%, 98% 100%, 0 95%);
+  }
+  .label.navy-label {
+    background: var(--navy);
+    color: var(--white);
+    transform: rotate(-1deg);
+    clip-path: polygon(0 0, 98% 3%, 100% 100%, 2% 97%);
+  }
+
+  .main-title {
+    margin: 0;
+    font-size: 64px;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    text-shadow: 0 4px 12px rgba(20, 24, 63, 0.16);
+  }
+  .main-title span {
+    color: var(--navy);
+    display: block;
+  }
+
+  .hero-desc {
+    margin: 18px 0 0;
+    font-size: 19px;
+    line-height: 1.45;
+    font-weight: 600;
+    color: var(--deep);
+    max-width: 540px;
+  }
+
+  /* Product Can Staging */
+  .can-stage {
+    position: absolute;
+    right: 120px;
+    bottom: -10px;
+    z-index: 6;
+  }
+  .hero-can {
+    height: 520px;
+    transform: rotate(5deg);
+    filter: drop-shadow(-16px 24px 32px rgba(20, 24, 63, 0.38));
+  }
+  .splash-accent {
+    position: absolute;
+    right: 320px;
+    bottom: 40px;
+    width: 200px;
+    opacity: 0.35;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+  }
+
+  /* Nutrition Pill Badges */
+  .pill-cluster {
+    display: flex;
+    gap: 10px;
+    margin-top: 22px;
+  }
+  .pill {
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--navy);
+    padding: 7px 14px;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  }
+
+  /* Bottom Ground Strip */
+  .bottom-strip {
+    background: var(--navy);
+    color: var(--white);
+    margin: 0 -54px;
+    padding: 16px 54px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    clip-path: polygon(0 26px, 100% 0, 100% 100%, 0 100%);
+    position: relative;
+    z-index: 7;
+  }
+  .vitamin-list {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    font-size: 15px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .vitamin-list span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--sun);
+  }
+  .vitamin-list span::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: var(--orange);
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  }
+
+  .retail-box {
+    background: var(--white);
+    padding: 6px 14px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .retail-box span {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .retail-box img {
+    height: 18px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Geometric Background Floating Triangles -->
+<i class="tri" style="--s:90px;--c:var(--sun);--r:26deg;left:-20px;top:180px;"></i>
+<i class="tri" style="--s:48px;--c:var(--navy);--r:-32deg;left:420px;top:40px;"></i>
+<i class="tri" style="--s:60px;--c:var(--white);--r:185deg;left:560px;top:310px;"></i>
+<i class="tri" style="--s:36px;--c:var(--sun);--r:44deg;left:140px;bottom:100px;"></i>
+
+<!-- Signature 10-Point Burst -->
+<div class="starburst-bg"></div>
+<div class="starburst-inner"></div>
+
+<!-- Splash Accent -->
+<img src="../assets/cola-splash.png" alt="" class="splash-accent">
+
+<!-- Hero Can -->
+<div class="can-stage">
+  <img src="../assets/can-original-hires.png" alt="VIVE Original Can" class="hero-can">
+</div>
+
+<div class="og-container">
+  <!-- Brand Top Bar -->
+  <div class="brand-bar">
+    <img src="../assets/logo-vive-navy-tagline.png" alt="VIVE · Vitamin-Charged Cola" class="brand-logo">
+    <div class="price-tag">₱67 · 12 OZ</div>
+  </div>
+
+  <!-- Hero Typography -->
+  <div class="hero-copy">
+    <div class="labels">
+      <span class="label sun-label">100% STEVIA · ZERO CALORIES</span>
+      <span class="label navy-label">CHARGED WITH VITAMINS A · C · B9 · B12</span>
+    </div>
+    <h1 class="main-title">
+      GOOD VIBES.
+      <span>ZERO GUILT.</span>
+    </h1>
+    <p class="hero-desc">
+      Classic cola refreshment fortified with four daily vitamins and sweetened naturally. Available now across Metro Manila.
+    </p>
+
+    <div class="pill-cluster">
+      <div class="pill">★ 0g Sugar</div>
+      <div class="pill">★ 0 Calories</div>
+      <div class="pill">★ Stevia Sweetened</div>
+      <div class="pill">★ 4 Daily Vitamins</div>
+    </div>
+  </div>
+
+  <!-- Bottom Matrix & Retail Ribbon -->
+  <div class="bottom-strip">
+    <div class="vitamin-list">
+      <span>Vitamin A</span>
+      <span>Vitamin C</span>
+      <span>Vitamin B9</span>
+      <span>Vitamin B12</span>
+    </div>
+
+    <div class="retail-box">
+      <span>Available at</span>
+      <img src="../assets/retailers.png" alt="Lawson, 7-Eleven, SM Supermarkets, Ayala Malls">
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

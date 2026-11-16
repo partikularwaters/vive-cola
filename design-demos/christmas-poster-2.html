@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>VIVE Christmas Poster — Direction 2: Midnight Noche Buena</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark: #0D1026;
+    --midnight: #14183F;
+    --deep: #1D2766;
+    --navy: #2B3990;
+    --orange: #F27A21;
+    --sun: #F4BD6A;
+    --white: #F9F9F9;
+    --tree-dark: #09341B;
+    --tree-mid: #0E4F2B;
+    --tree-light: #16703E;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1200px;
+    height: 1700px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: var(--dark);
+    font-family: 'Montserrat', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .poster {
+    position: relative;
+    width: 1200px;
+    height: 1700px;
+    background: radial-gradient(circle at 50% 25%, #182054 0%, var(--dark) 75%);
+    overflow: hidden;
+  }
+
+  /* Celestial starburst and festive bokeh points */
+  .celestial-glow {
+    position: absolute;
+    top: 360px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 900px;
+    height: 900px;
+    background: radial-gradient(circle, rgba(244, 189, 106, 0.28) 0%, rgba(20, 24, 63, 0) 70%);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* Fairy-light bokeh points */
+  .bokeh-wrap {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+  }
+  .bokeh {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(2px);
+  }
+  .b1 { top: 180px; left: 160px; width: 14px; height: 14px; background: var(--sun); opacity: 0.8; box-shadow: 0 0 12px var(--sun); }
+  .b2 { top: 240px; right: 220px; width: 18px; height: 18px; background: #FFF; opacity: 0.7; box-shadow: 0 0 16px #FFF; }
+  .b3 { top: 480px; left: 120px; width: 12px; height: 12px; background: var(--orange); opacity: 0.85; box-shadow: 0 0 14px var(--orange); }
+  .b4 { top: 560px; right: 140px; width: 16px; height: 16px; background: var(--sun); opacity: 0.9; box-shadow: 0 0 14px var(--sun); }
+  .b5 { top: 780px; left: 80px; width: 10px; height: 10px; background: #FFF; opacity: 0.6; }
+  .b6 { top: 820px; right: 90px; width: 14px; height: 14px; background: var(--sun); opacity: 0.75; }
+
+  /* Top Bar Branding */
+  .header {
+    position: absolute;
+    top: 54px;
+    left: 64px;
+    right: 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 30;
+  }
+  .brand-lockup {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .logo-vive {
+    height: 48px;
+  }
+  .brand-rule {
+    width: 2px;
+    height: 32px;
+    background: rgba(244, 189, 106, 0.4);
+  }
+  .brand-desc {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--sun);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+  .midnight-badge {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(244, 189, 106, 0.35);
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 10px 22px;
+    border-radius: 30px;
+    backdrop-filter: blur(8px);
+  }
+
+  /* Tree & Star Centerpiece */
+  .tree-container {
+    position: absolute;
+    top: 360px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1300px;
+    height: 1800px;
+    z-index: 5;
+    pointer-events: none;
+  }
+  .tree-svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 25px 60px rgba(0, 0, 0, 0.8));
+  }
+
+  /* Star sits at the top, center touching the tip of the tree */
+  .star-container {
+    position: absolute;
+    top: 360px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    height: 320px;
+    z-index: 6;
+  }
+  .star-svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 45px rgba(244, 189, 106, 0.7));
+  }
+
+  /* Main Headline Lockup */
+  .headline-lockup {
+    position: absolute;
+    top: 570px;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 15;
+    text-align: center;
+    pointer-events: none;
+  }
+  .headline-question {
+    font-size: 50px;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+    margin-bottom: 8px;
+  }
+  .headline-punch {
+    font-size: 110px;
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    color: var(--sun);
+    text-transform: uppercase;
+    text-shadow: 0 10px 40px rgba(0,0,0,0.9), 0 0 30px rgba(244, 189, 106, 0.4);
+  }
+  .headline-sub {
+    margin-top: 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(29, 39, 102, 0.8);
+    border: 1px solid rgba(244, 189, 106, 0.3);
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 10px 30px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+  }
+  .headline-sub .orange-text {
+    color: var(--orange);
+  }
+
+  /* Forefront Hero Objects */
+  .foreground {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 820px;
+    z-index: 20;
+    pointer-events: none;
+  }
+
+  /* Festive Warm Lighting Base */
+  .feast-glow {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1150px;
+    height: 220px;
+    background: radial-gradient(ellipse at center, rgba(242, 122, 33, 0.22) 0%, rgba(13, 16, 38, 0) 70%);
+    z-index: 18;
+  }
+
+  /* Left: Lechon Belly */
+  .lechon-wrap {
+    position: absolute;
+    bottom: 120px;
+    left: 50px;
+    width: 590px;
+    z-index: 22;
+    filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.85));
+    transform: rotate(-2deg);
+  }
+  .lechon-img {
+    width: 100%;
+    display: block;
+  }
+  .lechon-tag {
+    position: absolute;
+    top: 50px;
+    left: 30px;
+    background: rgba(242, 122, 33, 0.95);
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 4px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.4);
+  }
+
+  /* Right: VIVE Can */
+  .can-wrap {
+    position: absolute;
+    bottom: 110px;
+    right: 70px;
+    width: 390px;
+    z-index: 25;
+    filter: drop-shadow(0 32px 55px rgba(0, 0, 0, 0.9));
+    transform: rotate(3deg);
+  }
+  .can-img {
+    width: 100%;
+    display: block;
+  }
+
+  /* Ice cubes floating */
+  .ice-1 {
+    position: absolute;
+    bottom: 490px;
+    right: 410px;
+    width: 80px;
+    z-index: 24;
+    transform: rotate(25deg);
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.6));
+    opacity: 0.9;
+  }
+  .ice-2 {
+    position: absolute;
+    bottom: 160px;
+    right: 390px;
+    width: 70px;
+    z-index: 26;
+    transform: rotate(-15deg);
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.6));
+    opacity: 0.85;
+  }
+
+  /* Price Badge */
+  .price-badge {
+    position: absolute;
+    bottom: 530px;
+    left: 480px;
+    width: 155px;
+    height: 155px;
+    z-index: 28;
+    filter: drop-shadow(0 12px 28px rgba(0,0,0,0.6));
+    transform: rotate(8deg);
+  }
+
+  /* Footer: Retailers on bottom right */
+  .footer {
+    position: absolute;
+    bottom: 40px;
+    left: 64px;
+    right: 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    z-index: 30;
+    border-top: 1px solid rgba(244, 189, 106, 0.2);
+    padding-top: 20px;
+  }
+  .footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .footer-claim {
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--sun);
+  }
+  .footer-sub {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(249, 249, 249, 0.65);
+    letter-spacing: 0.08em;
+  }
+  .retailers-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+  }
+  .retailers-label {
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(249, 249, 249, 0.8);
+  }
+  .retailers-img {
+    height: 36px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 4px 12px;
+    border-radius: 4px;
+  }
+</style>
+</head>
+<body>
+
+<div class="poster">
+  <!-- Celestial Radiance & Bokeh -->
+  <div class="celestial-glow"></div>
+  <div class="bokeh-wrap">
+    <div class="bokeh b1"></div>
+    <div class="bokeh b2"></div>
+    <div class="bokeh b3"></div>
+    <div class="bokeh b4"></div>
+    <div class="bokeh b5"></div>
+    <div class="bokeh b6"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="brand-lockup">
+      <img class="logo-vive" src="../assets/wordmark-vive-white.png" alt="VIVE!">
+      <div class="brand-rule"></div>
+      <div class="brand-desc">THE VITAMIN-CHARGED<br>COLA</div>
+    </div>
+    <div class="midnight-badge">NOCHE BUENA • MIDNIGHT FEAST</div>
+  </header>
+
+  <!-- Acute Triangle Tree (Zoomed In, Center) -->
+  <div class="tree-container">
+    <svg class="tree-svg" viewBox="0 0 1024 1024" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="midnightTreeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#16703E" />
+          <stop offset="40%" stop-color="#0E4F2B" />
+          <stop offset="100%" stop-color="#072915" />
+        </linearGradient>
+      </defs>
+      <!-- Base acute triangle geometry -->
+      <polygon points="512.0,40.0 772.0,960.0 252.0,960.0" fill="url(#midnightTreeGrad)" />
+      <!-- Subtle festive geometric needle patterns -->
+      <polygon points="512,140 550,220 474,220" fill="#1DA55A" opacity="0.4" />
+      <polygon points="512,320 590,440 434,440" fill="#1DA55A" opacity="0.3" />
+      <polygon points="512,560 640,720 384,720" fill="#1DA55A" opacity="0.2" />
+    </svg>
+  </div>
+
+  <!-- Star sits at top, center touching tip of tree -->
+  <div class="star-container">
+    <svg class="star-svg" viewBox="0 0 1024 1024">
+      <polygon points="618.5,11.2 669.3,239.8 892.7,168.9 820.1,392.2 1021.8,458.1 858.6,585.7 955.8,768.6 744.8,746.8 720.3,980.3 545.0,824.7 405.5,1012.8 354.7,784.2 131.3,855.1 203.9,631.8 2.2,565.9 165.4,438.3 68.2,255.4 279.2,277.2 303.7,43.7 479.0,199.3" fill="#F4BD6A" />
+    </svg>
+  </div>
+
+  <!-- Headline -->
+  <div class="headline-lockup">
+    <div class="headline-question">
+      Noche Buena drink?
+    </div>
+    <div class="headline-punch">
+      WE GOTCHA!
+    </div>
+    <div class="headline-sub">
+      <span>0 Calories</span>
+      <span>•</span>
+      <span class="orange-text">100% Stevia</span>
+      <span>•</span>
+      <span>Vitamins A, C, B9, B12</span>
+    </div>
+  </div>
+
+  <!-- Forefront Elements: Lechon Belly & Vive Can -->
+  <div class="foreground">
+    <div class="feast-glow"></div>
+
+    <!-- Lechon Belly (Left) -->
+    <div class="lechon-wrap">
+      <div class="lechon-tag">CRISPY ROASTED LIEMPO</div>
+      <img class="lechon-img" src="../assets/lechon-belly-placeholder.png" alt="Crispy Roasted Lechon Belly">
+    </div>
+
+    <!-- Floating Ice Accents -->
+    <img class="ice-1" src="../assets/ice-cube.png" alt="Ice Cube">
+    <img class="ice-2" src="../assets/ice-cube.png" alt="Ice Cube">
+
+    <!-- Price Burst Badge -->
+    <img class="price-badge" src="../source/deck-extract/badge-price-67-navy.png" alt="₱67 Only">
+
+    <!-- Vive Original Can (Right) -->
+    <div class="can-wrap">
+      <img class="can-img" src="../assets/can-original-hires.png" alt="VIVE Original Vitamin-Charged Cola">
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-left">
+      <div class="footer-claim">GOOD VIBES • ZERO GUILT</div>
+      <div class="footer-sub">AUTHENTIC COLA TASTE WITH A HEALTHY VITAMIN KICK</div>
+    </div>
+    <div class="retailers-box">
+      <div class="retailers-label">AVAILABLE AT LEADING RETAILERS</div>
+      <img class="retailers-img" src="../assets/retailers.png" alt="Lawson, 7-Eleven, SM, Ayala Malls">
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>
