@@ -21,9 +21,9 @@ Then visit [http://localhost:8767/](http://localhost:8767/) (or `http://localhos
 | Page | File | Status | Highlights |
 |---|---|---|---|
 | **Home** | [index.html](index.html) | Draft v1 complete | Canonical homepage with vitamin-led burst hero, Glow, Classic, and Focus posters with buttons, ad mockups, and video player container |
-| **About Us** | `about.html` | In progress | Founding story (*revive* and *survive*), six-person team roster, and expanding panel cards |
-| **Product** | `product.html` | Planned | One product variant per strip, zero posters, and zero merchandise |
-| **Shop** | `shop.html` | Planned | E-commerce catalog with singles, bundles, merchandise, and live header cart count |
+| **About Us** | [about.html](about.html) | Draft v1 complete | Founding story (*revive* and *survive*), six-person team roster, and expanding panel cards |
+| **Product** | [product.html](product.html) | Draft v1 complete | Animated hero, one strip each for Classic, Glow, and Focus, an "In every can" strip, and a vitamin comparison table |
+| **Shop** | [shop.html](shop.html) | Draft v1 complete | Single cans, packs, and 11 merch items with quantity selectors, plus a header cart count that persists on every page |
 
 ---
 

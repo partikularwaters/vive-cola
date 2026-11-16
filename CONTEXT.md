@@ -6,10 +6,10 @@ This document is the canonical router and functional contract for the VIVE four-
 
 | Page | File | Status | Input Dependencies | Human Check Gate |
 |---|---|---|---|---|
-| 01 Home | [index.html](index.html) | Draft v1 complete | `assets/`, `brand-spec.md`, `direction-approved.md` | Gian / Client review of hero, posters, and video layout |
-| 02 About Us | `about.html` | Not started | Founding story, team roster, and team photos | Verify complete names, company roles, and photo look |
-| 03 Product | `product.html` | Not started | Can renders, flavor specifications, and nutritional facts | Verify one variant per strip, zero posters, and zero merch |
-| 04 Shop | `shop.html` | Not started | Merch catalog, bundle definitions, and pricing | Verify quantity inputs, cart count behavior, zero checkout |
+| 01 Home | [index.html](index.html) | Draft v2 complete | `assets/`, `brand-spec.md`, `direction-approved.md` | Gian / Client review of hero, posters, and video layout |
+| 02 About Us | [about.html](about.html) | Draft v1 complete | Founding story, team roster, and team photos | Verify complete names, company roles, and photo look |
+| 03 Product | [product.html](product.html) | Draft v1 complete | Can renders, flavor specifications, and nutritional facts | Verify one variant per strip, zero posters, and zero merch |
+| 04 Shop | [shop.html](shop.html) | Draft v1 complete | Merch catalog, bundle definitions, and pricing | Verify quantity inputs, cart count behavior, zero checkout |
 
 ---
 
@@ -55,6 +55,9 @@ This document is the canonical router and functional contract for the VIVE four-
 - **Interactive fidelity:** The site must feel like an authentic, finished web application. Every button, selector, and link must work. If an external link has no specific sub-page (such as social channels), wire it directly to the platform root (`https://facebook.com`, `https://instagram.com`, `https://tiktok.com`).
 - **High-stakes grading:** Gian will grade all assets appearing across these pages (posters, video, product variations, and branding).
 - **Asset integrity:** No placeholder photos and no placeholder texts (Lorem Ipsum). All content must be written and staged with genuine assets.
+  - **Approved stand-ins (client, 2026-11-16):** until real assets exist, the site may use (1) the VIVE Glow and VIVE Focus concept can renders recolored from the Classic can, (2) the flat merch mockups in `assets/merch/`, and (3) sample shop prices. Each is labeled on the page or in its alt text. Replace them when the real renders, product photos, and prices arrive.
+- **Shared system:** Every page loads [site.css](site.css) and [site.js](site.js). `site.js` renders the one global footer, adds the header cart button and cart panel to the primary nav, and keeps the cart count in `localStorage` so it persists across pages and visits. Page files keep only page-specific styles.
+- **Hover rule:** No hover effect may move its own hit area. Buttons show an offset shadow block behind them; tilting cards and images lift an inner `.lift` inside a static `.lift-zone`. This prevents repeated hover toggling when the pointer rests on an edge.
 - **Dynamic visual generosity:** Apply signature brand patterns generously (10-point star, triangles, diagonal cuts, and contrasting color grounds). Do not settle for plainness.
 - **GitHub and Vercel publishing (`/deploy-with-vercel`):** The `vive-website/` directory will be published as a standalone repository on GitHub and deployed directly to Vercel. All relative asset links and inter-page navigations must function cleanly in this standalone root structure.
 - **Out of scope:**
@@ -77,7 +80,9 @@ This document is the canonical router and functional contract for the VIVE four-
 | [brand-spec.md](brand-spec.md) | Brand reference | Palette (#F27A21, #2B3990, #F4BD6A, #F9F9F9), typography, cans, and assets |
 | [direction-approved.md](direction-approved.md) | Design decision | Decision record for Direction C base + Direction A headings + Direction B panels |
 | `index.html`, `about.html`, etc. | Product output | The canonical static HTML pages at root |
-| `assets/` | Asset library | High-resolution WebP posters, can cutouts, logos, and mockups |
+| `site.css`, `site.js` | Shared system | Tokens, nav, buttons, labels, cart, and the global footer |
+| `assets/` | Asset library | High-resolution WebP posters, can cutouts, logos, and mockups (`assets/merch/` holds the merch mockups) |
+| `scripts/` | Tooling | Link checkers and asset generators, including `generate_merch_mockups.py` |
 | `wix-assets/` | Source exports | Print exports and PDF materials for Wix migration |
 | `source/` | Archival source | Original 8-page brand deck and raw asset extracts |
 | `design-demos/` | Archive | Initial concept explorations (A: Sticker Pop, B: Three Moods, C: Charged Geometry) |

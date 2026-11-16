@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shop · VIVE</title>
+<meta name="description" content="Shop VIVE Classic, Glow, and Focus by the can or the pack, plus VIVE merch: jerseys, running sets, jackets, totes, caps, mugs, and more.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap">
+<link rel="stylesheet" href="site.css">
+<script src="site.js" defer></script>
+<script>if (matchMedia('(prefers-reduced-motion: no-preference)').matches) document.documentElement.classList.add('motion');</script>
+<!-- Shop: cans, packs, and merch with quantity selectors. The header cart count lives in site.js
+     and persists in localStorage. Cart, checkout, and payment pages are out of scope (CONTEXT.md). -->
+<style>
+  h2 { margin:0; font-weight:900; text-transform:uppercase; line-height:.95; font-size:clamp(36px,5vw,68px); }
+  section { position:relative; padding-top:clamp(72px,8vw,112px); padding-bottom:clamp(72px,8vw,112px); }
+
+  /* ---------- HERO ---------- */
+  .s-hero { position:relative; z-index:2; overflow:hidden; background:var(--navy); color:var(--white); padding-bottom:calc(var(--cut) + 56px); }
+  .s-hero .grid { position:relative; z-index:2; display:grid; grid-template-columns:1.1fr .9fr; gap:32px; align-items:end; margin-top:clamp(24px,4vw,56px); }
+  .s-hero h1 { margin:0; font-weight:900; text-transform:uppercase; line-height:.9; font-size:clamp(52px,8vw,124px); letter-spacing:-.01em; }
+  .s-hero h1 em { display:block; font-style:normal; color:var(--orange); }
+  .s-hero p { font-size:clamp(16px,1.4vw,19px); line-height:1.55; font-weight:600; max-width:30em; margin:24px 0 0; }
+  .jump { list-style:none; margin:28px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:12px; }
+  .s-hero .stack { position:relative; justify-self:end; width:min(100%,420px); aspect-ratio:1; }
+  .s-hero .stack .burst { position:absolute; inset:0; background:var(--sun); }
+  .s-hero .stack img { position:absolute; width:52%; filter:drop-shadow(0 18px 16px rgba(20,24,63,.3)); }
+  .s-hero .stack img:nth-of-type(1) { left:-2%; top:22%; rotate:-10deg; }
+  .s-hero .stack img:nth-of-type(2) { right:-2%; top:4%; width:46%; rotate:12deg; }
+  .s-hero .stack img:nth-of-type(3) { left:30%; bottom:-4%; width:44%; rotate:-4deg; }
+  .motion .s-hero .stack img { animation:drop .55s var(--ease-pop) both; }
+  .motion .s-hero .stack img:nth-of-type(2) { animation-delay:.08s; }
+  .motion .s-hero .stack img:nth-of-type(3) { animation-delay:.16s; }
+  @keyframes drop { from { opacity:0; transform:translateY(-40px) scale(.92); } }
+
+  /* ---------- SHELVES ---------- */
+  .shelf { background:var(--white); }
+  .shelf + .shelf { margin-top:calc(var(--cut) * -1); clip-path:polygon(0 var(--cut),100% 0,100% 100%,0 100%); padding-top:calc(var(--cut) + clamp(72px,8vw,112px)); }
+  .shelf.packs { background:var(--mist); }
+  .shelf.merch { background:var(--white); }
+  .shelf-head { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-end; gap:16px 40px; margin-bottom:44px; }
+  .shelf-head p { margin:0; max-width:34em; font-size:16px; line-height:1.6; font-weight:600; color:#2a3366; }
+  .grid-3, .grid-4 { display:grid; gap:clamp(20px,2.6vw,36px); }
+  .grid-3 { grid-template-columns:repeat(3,1fr); }
+  .grid-4 { grid-template-columns:repeat(4,1fr); }
+
+  /* ---------- PRODUCT CARD ---------- */
+  .item { display:grid; grid-template-rows:auto auto 1fr auto auto; align-content:start; }
+  .item .art { position:relative; aspect-ratio:1; display:grid; place-items:center; }
+  .item .art::before { content:""; position:absolute; inset:6% 4% 0 4%; background:var(--g); clip-path:polygon(3% 0,100% 4%,97% 100%,0 96%); }
+  .item .lift { position:relative; width:100%; height:100%; display:grid; place-items:center; }
+  .item:nth-child(3n+1) { --tilt:-1.5deg; }
+  .item:nth-child(3n+2) { --tilt:1deg; }
+  .item:nth-child(3n) { --tilt:-.6deg; }
+  .item .art img { width:82%; }
+  .item .art img.can { width:30%; filter:drop-shadow(0 20px 18px rgba(20,24,63,.35)); }
+  .pack { position:relative; width:100%; aspect-ratio:1; }
+  .item .pack img { position:absolute; bottom:10%; width:24%; filter:drop-shadow(0 16px 14px rgba(20,24,63,.35)); }
+  .item .pack img:nth-child(1) { left:18%; rotate:-10deg; }
+  .item .pack img:nth-child(2) { left:50%; translate:-50% 0; width:27%; bottom:8%; z-index:1; }
+  .item .pack img:nth-child(3) { right:18%; rotate:10deg; }
+  .item h3 { margin:26px 0 0; font-weight:900; text-transform:uppercase; font-size:clamp(18px,1.5vw,22px); line-height:1.1; color:var(--navy); }
+  .item .desc { margin:8px 0 0; font-size:14px; line-height:1.5; font-weight:600; color:#3a4370; }
+  .buy { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:18px; }
+  .price { margin:0; font-weight:900; font-size:22px; color:var(--deep); font-variant-numeric:tabular-nums; }
+  .qty { display:inline-grid; grid-template-columns:36px 44px 36px; height:40px; border:2px solid var(--navy); }
+  .qty button { border:0; background:none; color:var(--navy); font:900 18px/1 var(--f); cursor:pointer; transition:background-color .12s ease; }
+  .qty button:hover { background:var(--mist); }
+  .qty button:focus-visible, .qty input:focus-visible { outline:3px solid var(--orange); outline-offset:-3px; }
+  .qty input { width:100%; border:0; border-inline:2px solid var(--navy); text-align:center; font:800 16px/1 var(--f); color:var(--navy); background:var(--white); -moz-appearance:textfield; appearance:textfield; }
+  .qty input::-webkit-outer-spin-button, .qty input::-webkit-inner-spin-button { -webkit-appearance:none; margin:0; }
+  .item .add { margin-top:14px; justify-self:stretch; text-align:center; }
+
+  .note { margin:48px 0 0; font-size:13px; line-height:1.6; color:#4a5384; max-width:60em; }
+
+  @media (max-width:980px) { .grid-4 { grid-template-columns:repeat(2,1fr); } .grid-3 { grid-template-columns:1fr 1fr; } .s-hero .grid { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<header class="s-hero cut-down on-dark">
+  <i class="tri" aria-hidden="true" style="--s:110px;--c:var(--sun);--r:18deg;left:-26px;top:130px;--d:.05s"></i>
+  <i class="tri hide-sm" aria-hidden="true" style="--s:44px;--c:var(--orange);--r:-24deg;left:46%;top:96px;--d:.12s"></i>
+  <i class="tri hide-sm" aria-hidden="true" style="--s:56px;--c:var(--white);--r:200deg;left:52%;bottom:110px;--d:.2s"></i>
+
+  <nav class="wrap" aria-label="Primary">
+    <a href="index.html"><img src="assets/wordmark-vive-white.png" alt="VIVE home" width="125" height="32"></a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="product.html">Product</a></li>
+      <li><a href="shop.html" aria-current="page">Shop</a></li>
+    </ul>
+  </nav>
+
+  <div class="grid wrap">
+    <div>
+      <h1>Shop the <em>vibes</em></h1>
+      <p>Single cans, mixed packs, and VIVE merch. Add what you like, and the cart up top keeps count on every page.</p>
+      <ul class="jump">
+        <li><a class="btn orange" href="#cans">Cans</a></li>
+        <li><a class="btn white" href="#packs">Packs</a></li>
+        <li><a class="btn white" href="#merch">Merch</a></li>
+      </ul>
+    </div>
+    <div class="stack" aria-hidden="true">
+      <div class="burst star"></div>
+      <img src="assets/merch/tote-bag.svg" alt="" width="480" height="480">
+      <img src="assets/merch/cap.svg" alt="" width="480" height="480">
+      <img src="assets/merch/mug.svg" alt="" width="480" height="480">
+    </div>
+  </div>
+</header>
+
+<main id="content">
+
+<section class="shelf cans wrap" id="cans" aria-labelledby="cans-title">
+  <div class="shelf-head">
+    <h2 id="cans-title"><span class="label">Single cans</span></h2>
+    <p>Every 12 oz can carries four vitamins and zero calories. ₱67 each.</p>
+  </div>
+  <div class="grid-3">
+      <article class="item" data-item data-id="can-classic" data-name="VIVE Classic" data-price="67">
+        <div class="art lift-zone" style="--g:var(--orange)"><div class="lift"><img class="can" src="assets/can-original-web.webp" alt="VIVE Classic can" width="400" height="1064" loading="lazy"></div></div>
+        <h3>VIVE Classic</h3>
+        <p class="desc">The original orange can. Vitamins A, B9, B12, and C for everyday energy.</p>
+        <div class="buy">
+          <p class="price">₱67</p>
+          <div class="qty">
+            <button type="button" data-step="-1" aria-label="Decrease quantity for VIVE Classic">−</button>
+            <label class="vh" for="q-can-classic">Quantity for VIVE Classic</label>
+            <input id="q-can-classic" type="number" inputmode="numeric" min="1" max="99" value="1">
+            <button type="button" data-step="1" aria-label="Increase quantity for VIVE Classic">+</button>
+          </div>
+        </div>
+        <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: VIVE Classic</span></button>
+      </article>
+      <article class="item" data-item data-id="can-glow" data-name="VIVE Glow" data-price="67">
+        <div class="art lift-zone" style="--g:var(--sun)"><div class="lift"><img class="can" src="assets/can-glow-concept-web.webp" alt="VIVE Glow can (concept render)" width="400" height="1064" loading="lazy"></div></div>
+        <h3>VIVE Glow</h3>
+        <p class="desc">Vitamins A, B7, C, and E to support skin health.</p>
+        <div class="buy">
+          <p class="price">₱67</p>
+          <div class="qty">
+            <button type="button" data-step="-1" aria-label="Decrease quantity for VIVE Glow">−</button>
+            <label class="vh" for="q-can-glow">Quantity for VIVE Glow</label>
+            <input id="q-can-glow" type="number" inputmode="numeric" min="1" max="99" value="1">
+            <button type="button" data-step="1" aria-label="Increase quantity for VIVE Glow">+</button>
+          </div>
+        </div>
+        <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: VIVE Glow</span></button>
+      </article>
+      <article class="item" data-item data-id="can-focus" data-name="VIVE Focus" data-price="67">
+        <div class="art lift-zone" style="--g:var(--navy)"><div class="lift"><img class="can" src="assets/can-focus-concept-web.webp" alt="VIVE Focus can (concept render)" width="400" height="1064" loading="lazy"></div></div>
+        <h3>VIVE Focus</h3>
+        <p class="desc">Vitamins B6, B9, B12, and C to support mental performance.</p>
+        <div class="buy">
+          <p class="price">₱67</p>
+          <div class="qty">
+            <button type="button" data-step="-1" aria-label="Decrease quantity for VIVE Focus">−</button>
+            <label class="vh" for="q-can-focus">Quantity for VIVE Focus</label>
+            <input id="q-can-focus" type="number" inputmode="numeric" min="1" max="99" value="1">
+            <button type="button" data-step="1" aria-label="Increase quantity for VIVE Focus">+</button>
+          </div>
+        </div>
+        <button class="btn orange add" type="button" data-add>Add to cart<span class="vh">: VIVE Focus</span></button>
+      </article>
+  </div>
+</section>
+
+<section class="shelf packs wrap" id="packs" aria-labelledby="packs-title">
+  <div class="shelf-head">
+    <h2 id="packs-title"><span class="label orange">Packs</span></h2>
+    <p>Stock the fridge for the week, or bring a cooler to the court.</p>
+  </div>
+  <div class="grid-3">
+      <article class="item" data-item data-id="pack-trio" data-name="Trio sampler" data-price="195">
+        <div class="art lift-zone" style="--g:var(--white)"><div class="lift"><div class="pack" role="img" aria-label="One Glow, one Classic, and one Focus can"><img src="assets/can-glow-concept-web.webp" alt="" width="400" height="1064" loading="lazy"><img src="assets/can-original-web.webp" alt="" width="400" height="1064" loading="lazy"><img src="assets/can-focus-concept-web.webp" alt="" width="400" height="1064" loading="lazy"></div></div></div>
+        <h3>Trio sampler</h3>
+        <p class="desc">One of each: Classic, Glow, and Focus. The easy way to find your vibe.</p>
+        <div class="buy">
+          <p class="price">₱195</p>
+          <div class="qty">
+            <button type="button" data-step="-1" aria-label="Decrease quantity for Trio sampler">−</button>
+            <label class="vh" for="q-pack-trio">Quantity for Trio sampler</label>
+            <input id="q-pack-trio" type="number" inputmode="numeric" min="1" max="99" value="1">
+            <button type="button" data-step="1" aria-label="Increase quantity for Trio sampler">+</button>
+          </div>
+        </div>
+        <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: Trio sampler</span></button>
+      </article>
+      <article class="item" data-item data-id="pack-classic-6" data-name="Classic six-pack" data-price="380">
+        <div class="art lift-zone" style="--g:var(--sun)"><div class="lift"><div class="pack" role="img" aria-label="Six-pack of VIVE Classic cans"><img src="assets/can-original-web.webp" alt="" width="400" height="1064" loading="lazy"><img src="assets/can-original-web.webp" alt="" width="400" height="1064" loading="lazy"><img src="assets/can-original-web.webp" alt="" width="400" height="1064" loading="lazy"></div></div></div>
+        <h3>Classic six-pack</h3>
+        <p class="desc">Six cans of the original. Stock the office fridge for the week.</p>
+        <div class="buy">
+          <p class="price">₱380</p>
+          <div class="qty">
+            <button type="button" data-step="-1" aria-label="Decrease quantity for Classic six-pack">−</button>
+            <label class="vh" for="q-pack-classic-6">Quantity for Classic six-pack</label>
+            <input id="q-pack-classic-6" type="number" inputmode="numeric" min="1" max="99" value="1">
+            <button type="button" data-step="1" aria-label="Increase quantity for Classic six-pack">+</button>
+          </div>
+        </div>
+        <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: Classic six-pack</span></button>
+      </article>
+      <article class="item" data-item data-id="pack-party-12" data-name="12-can party pack" data-price="720">
+        <div class="art lift-zone" style="--g:var(--orange)"><div class="lift"><div class="pack" role="img" aria-label="Mixed pack of Focus, Classic, and Glow cans"><img src="assets/can-focus-concept-web.webp" alt="" width="400" height="1064" loading="lazy"><img src="assets/can-original-web.webp" alt="" width="400" height="1064" loading="lazy"><img src="assets/can-glow-concept-web.webp" alt="" width="400" height="1064" loading="lazy"></div></div></div>
+        <h3>12-can party pack</h3>
+        <p class="desc">Four of each vibe for game nights, team lunches, and courtside coolers.</p>
+        <div class="buy">
+          <p class="price">₱720</p>
+          <div class="qty">
+            <button type="button" data-step="-1" aria-label="Decrease quantity for 12-can party pack">−</button>
+            <label class="vh" for="q-pack-party-12">Quantity for 12-can party pack</label>
+            <input id="q-pack-party-12" type="number" inputmode="numeric" min="1" max="99" value="1">
+            <button type="button" data-step="1" aria-label="Increase quantity for 12-can party pack">+</button>
+          </div>
+        </div>
+        <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: 12-can party pack</span></button>
+      </article>
+  </div>
+</section>
+
+<section class="shelf merch wrap" id="merch" aria-labelledby="merch-title">
+  <div class="shelf-head">
+    <h2 id="merch-title"><span class="label sun">Merch</span></h2>
+    <p>Wear the vibe to the gym, the office, and the weekend game.</p>
+  </div>
+  <div class="grid-4">
+      <article class="item" data-item data-id="merch-baseball-jersey" data-name="Baseball jersey" data-price="1299">
+        <div class="art lift-zone" style="--g:var(--sun)"><div class="lift"><img src="assets/merch/baseball-jersey.svg" alt="Baseball jersey mockup" width="480" height="480" loading="lazy"></div></div>
+        <h3>Baseball jersey</h3>
+        <p class="desc">Button-front mesh jersey with the VIVE chest mark and IV on the front.</p>
+        <div class="buy">
+          <p class="price">₱1,299</p>
+          <div class="qty">
+            <button type="button" data-step="-1" aria-label="Decrease quantity for Baseball jersey">−</button>
+            <label class="vh" for="q-merch-baseball-jersey">Quantity for Baseball jersey</label>
+            <input id="q-merch-baseball-jersey" type="number" inputmode="numeric" min="1" max="99" value="1">
+            <button type="button" data-step="1" aria-label="Increase quantity for Baseball jersey">+</button>
+          </div>
+        </div>
+        <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: Baseball jersey</span></button>
+      </article>
+      <article class="item" data-item data-id="merch-running-set" data-name="Running shirt and shorts" data-price="1499">
+        <div class="art lift-zone" style="--g:var(--mist)"><div class="lift"><img src="assets/merch/running-set.svg" alt="Running shirt and shorts mockup" width="480" height="480" loading="lazy"></div></div>
+        <h3>Running shirt and shorts</h3>
+        <p class="desc">Quick-dry mesh singlet and split shorts for your morning run. Sold as a set.</p>
+        <div class="buy">
+          <p class="price">₱1,499</p>
+          <div class="qty">
+            <button type="button" data-step="-1" aria-label="Decrease quantity for Running shirt and shorts">−</button>
+            <label class="vh" for="q-merch-running-set">Quantity for Running shirt and shorts</label>
+            <input id="q-merch-running-set" type="number" inputmode="numeric" min="1" max="99" value="1">
+            <button type="button" data-step="1" aria-label="Increase quantity for Running shirt and shorts">+</button>
+          </div>
+        </div>
+        <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: Running shirt and shorts</span></button>
+      </article>
+      <article class="item" data-item data-id="merch-jacket" data-name="Bomber jacket" data-price="1899">
+        <div class="art lift-zone" style="--g:var(--sun)"><div class="lift"><img src="assets/merch/jacket.svg" alt="Bomber jacket mockup" width="480" height="480" loading="lazy"></div></div>
+        <h3>Bomber jacket</h3>
+        <p class="desc">Navy bomber with an orange ribbed collar, cuffs, and hem.</p>
+        <div class="buy">
+          <p class="price">₱1,899</p>
+          <div class="qty">
+            <button type="button" data-step="-1" aria-label="Decrease quantity for Bomber jacket">−</button>
+            <label class="vh" for="q-merch-jacket">Quantity for Bomber jacket</label>
+            <input id="q-merch-jacket" type="number" inputmode="numeric" min="1" max="99" value="1">
+            <button type="button" data-step="1" aria-label="Increase quantity for Bomber jacket">+</button>
+          </div>
+        </div>
+        <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: Bomber jacket</span></button>
+      </article>
+      <article class="item" data-item data-id="merch-tote-bag" data-name="Canvas tote bag" data-price="449">
+        <div class="art lift-zone" style="--g:var(--orange)"><div class="lift"><img src="assets/merch/tote-bag.svg" alt="Canvas tote bag mockup" width="480" height="480" loading="lazy"></div></div>
+        <h3>Canvas tote bag</h3>
+        <p class="desc">Heavy cotton canvas with a 10-point star print. Fits a laptop and a six-pack.</p>
+        <div class="buy">
+          <p class="price">₱449</p>
+          <div class="qty">
+            <button type="button" data-step="-1" aria-label="Decrease quantity for Canvas tote bag">−</button>
+            <label class="vh" for="q-merch-tote-bag">Quantity for Canvas tote bag</label>
+            <input id="q-merch-tote-bag" type="number" inputmode="numeric" min="1" max="99" value="1">
+            <button type="button" data-step="1" aria-label="Increase quantity for Canvas tote bag">+</button>
+          </div>
+        </div>
+        <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: Canvas tote bag</span></button>
+      </article>
+      <article class="item" data-item data-id="merch-coasters" data-name="Coaster set" data-price="299">
+        <div class="art lift-zone" style="--g:var(--sun)"><div class="lift"><img src="assets/merch/coasters.svg" alt="Coaster set mockup" width="480" height="480" loading="lazy"></div></div>
+        <h3>Coaster set</h3>
+        <p class="desc">Four cork-backed coasters, two navy and two orange.</p>
+        <div class="buy">
+          <p class="price">₱299</p>
+          <div class="qty">
+            <button type="button" data-step="-1" aria-label="Decrease quantity for Coaster set">−</button>
+            <label class="vh" for="q-merch-coasters">Quantity for Coaster set</label>
+            <input id="q-merch-coasters" type="number" inputmode="numeric" min="1" max="99" value="1">
+            <button type="button" data-step="1" aria-label="Increase quantity for Coaster set">+</button>
+          </div>
+        </div>
+        <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: Coaster set</span></button>
+      </article>
+      <article class="item" data-item data-id="merch-cap" data-name="Six-panel cap" data-price="599">
+        <div class="art lift-zone" style="--g:var(--mist)"><div class="lift"><img src="assets/merch/cap.svg" alt="Six-panel cap mockup" width="480" height="480" loading="lazy"></div></div>
+        <h3>Six-panel cap</h3>
+        <p class="desc">Navy cap with an orange brim and an adjustable strap.</p>
+        <div class="buy">
+          <p class="price">₱599</p>
+          <div class="qty">
+            <button type="button" data-step="-1" aria-label="Decrease quantity for Six-panel cap">−</button>
+            <label class="vh" for="q-merch-cap">Quantity for Six-panel cap</label>
+            <input id="q-merch-cap" type="number" inputmode="numeric" min="1" max="99" value="1">
+            <button type="button" data-step="1" aria-label="Increase quantity for Six-panel cap">+</button>
+          </div>
+        </div>
+        <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: Six-panel cap</span></button>
+      </article>
+      <article class="item" data-item data-id="merch-notebook" data-name="A5 notebook" data-price="249">
+        <div class="art lift-zone" style="--g:var(--navy)"><div class="lift"><img src="assets/merch/notebook.svg" alt="A5 notebook mockup" width="480" height="480" loading="lazy"></div></div>
+        <h3>A5 notebook</h3>
+        <p class="desc">Dotted pages, an elastic band, and a sun-yellow cover.</p>
+        <div class="buy">
+          <p class="price">₱249</p>
+          <div class="qty">
+            <button type="button" data-step="-1" aria-label="Decrease quantity for A5 notebook">−</button>
+            <label class="vh" for="q-merch-notebook">Quantity for A5 notebook</label>
+            <input id="q-merch-notebook" type="number" inputmode="numeric" min="1" max="99" value="1">
+            <button type="button" data-step="1" aria-label="Increase quantity for A5 notebook">+</button>
+          </div>
+        </div>
+        <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: A5 notebook</span></button>
+      </article>
+      <article class="item" data-item data-id="merch-pens" data-name="Pen set" data-price="149">
+        <div class="art lift-zone" style="--g:var(--mist)"><div class="lift"><img src="assets/merch/pens.svg" alt="Pen set mockup" width="480" height="480" loading="lazy"></div></div>
+        <h3>Pen set</h3>
+        <p class="desc">Three gel pens in orange, navy, and sun.</p>
+        <div class="buy">
+          <p class="price">₱149</p>
+          <div class="qty">
+            <button type="button" data-step="-1" aria-label="Decrease quantity for Pen set">−</button>
+            <label class="vh" for="q-merch-pens">Quantity for Pen set</label>
+            <input id="q-merch-pens" type="number" inputmode="numeric" min="1" max="99" value="1">
+            <button type="button" data-step="1" aria-label="Increase quantity for Pen set">+</button>
+          </div>
+        </div>
+        <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: Pen set</span></button>
+      </article>
+      <article class="item" data-item data-id="merch-stickers" data-name="Sticker pack" data-price="99">
+        <div class="art lift-zone" style="--g:var(--orange)"><div class="lift"><img src="assets/merch/stickers.svg" alt="Sticker pack mockup" width="480" height="480" loading="lazy"></div></div>
+        <h3>Sticker pack</h3>
+        <p class="desc">Six vinyl stickers for your laptop, bottle, or notebook.</p>
+        <div class="buy">
+          <p class="price">₱99</p>
+          <div class="qty">
+            <button type="button" data-step="-1" aria-label="Decrease quantity for Sticker pack">−</button>
+            <label class="vh" for="q-merch-stickers">Quantity for Sticker pack</label>
+            <input id="q-merch-stickers" type="number" inputmode="numeric" min="1" max="99" value="1">
+            <button type="button" data-step="1" aria-label="Increase quantity for Sticker pack">+</button>
+          </div>
+        </div>
+        <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: Sticker pack</span></button>
+      </article>
+      <article class="item" data-item data-id="merch-tumbler" data-name="Tumbler with straw" data-price="699">
+        <div class="art lift-zone" style="--g:var(--sun)"><div class="lift"><img src="assets/merch/tumbler.svg" alt="Tumbler with straw mockup" width="480" height="480" loading="lazy"></div></div>
+        <h3>Tumbler with straw</h3>
+        <p class="desc">Double-wall 20 oz tumbler with a reusable straw.</p>
+        <div class="buy">
+          <p class="price">₱699</p>
+          <div class="qty">
+            <button type="button" data-step="-1" aria-label="Decrease quantity for Tumbler with straw">−</button>
+            <label class="vh" for="q-merch-tumbler">Quantity for Tumbler with straw</label>
+            <input id="q-merch-tumbler" type="number" inputmode="numeric" min="1" max="99" value="1">
+            <button type="button" data-step="1" aria-label="Increase quantity for Tumbler with straw">+</button>
+          </div>
+        </div>
+        <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: Tumbler with straw</span></button>
+      </article>
+      <article class="item" data-item data-id="merch-mug" data-name="Ceramic mug" data-price="399">
+        <div class="art lift-zone" style="--g:var(--navy)"><div class="lift"><img src="assets/merch/mug.svg" alt="Ceramic mug mockup" width="480" height="480" loading="lazy"></div></div>
+        <h3>Ceramic mug</h3>
+        <p class="desc">12 oz ceramic mug with an orange glaze inside.</p>
+        <div class="buy">
+          <p class="price">₱399</p>
+          <div class="qty">
+            <button type="button" data-step="-1" aria-label="Decrease quantity for Ceramic mug">−</button>
+            <label class="vh" for="q-merch-mug">Quantity for Ceramic mug</label>
+            <input id="q-merch-mug" type="number" inputmode="numeric" min="1" max="99" value="1">
+            <button type="button" data-step="1" aria-label="Increase quantity for Ceramic mug">+</button>
+          </div>
+        </div>
+        <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: Ceramic mug</span></button>
+      </article>
+  </div>
+  <p class="note">Merch images are design mockups. Glow and Focus cans are concept renders. Prices are sample prototype prices.</p>
+</section>
+
+</main>
+
+<footer class="site-footer"></footer>
+</body>
+</html>

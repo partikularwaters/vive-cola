@@ -3,9 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>VIVE · About Us</title>
+<title>About Us · VIVE</title>
+<meta name="description" content="How VIVE started, the team behind the can, and the three vitamin-charged colas: VIVE Classic, Glow, and Focus.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap">
 <link rel="stylesheet" href="site.css">
+<script src="site.js" defer></script>
 <style>
   /* ==========================================================================
      About Us Page-Specific Styles
@@ -16,7 +18,7 @@
     position: relative;
     overflow: hidden;
     padding-bottom: calc(var(--cut) + 50px);
-    background: var(--orange);
+    background: var(--navy);
   }
   .hero-content {
     position: relative;
@@ -35,14 +37,14 @@
   }
   .hero-content h1 em {
     font-style: normal;
-    color: var(--navy);
+    color: var(--orange);
     display: block;
   }
   .hero-intro {
     font-size: clamp(16px, 1.4vw, 20px);
     line-height: 1.6;
     font-weight: 600;
-    color: var(--deep);
+    color: var(--white);
     margin: 28px 0 0;
     max-width: 38em;
   }
@@ -180,7 +182,7 @@
     padding: 24px 18px;
     text-decoration: none;
     color: var(--white);
-    transition: flex .6s cubic-bezier(.2, .7, .2, 1), transform .3s ease;
+    transition: flex .45s var(--ease-out);
     border: 1px solid rgba(244, 189, 106, .2);
   }
   .member-card img.avatar {
@@ -254,7 +256,8 @@
   }
 
   /* Expanding interaction states */
-  .team-panels:hover .member-card {
+  /* :has() keys the squeeze to a hovered card, so resting in the gaps between cards changes nothing */
+  .team-panels:has(.member-card:hover) .member-card {
     flex: .75;
   }
   .team-panels .member-card:hover {
@@ -349,6 +352,7 @@
     text-transform: uppercase;
     line-height: .95;
     max-width: 18ch;
+    color: var(--deep);
   }
   .about-cta-strip p {
     margin: 0 auto 32px;
@@ -393,15 +397,15 @@
 <body>
 
 <!-- Header / Hero Section -->
-<header class="about-hero cut-down">
+<header class="about-hero cut-down on-dark">
   <!-- Dynamic Brand Triangles -->
   <i class="tri" style="--s:110px;--c:var(--sun);--r:22deg;left:-20px;top:110px;--d:.06s"></i>
-  <i class="tri hide-sm" style="--s:42px;--c:var(--navy);--r:-28deg;left:48%;top:90px;--d:.14s"></i>
+  <i class="tri hide-sm" style="--s:42px;--c:var(--orange);--r:-28deg;left:48%;top:90px;--d:.14s"></i>
   <i class="tri hide-sm" style="--s:64px;--c:var(--white);--r:190deg;left:34%;bottom:90px;--d:.2s"></i>
-  <i class="tri" style="--s:38px;--c:var(--navy);--r:38deg;right:8%;top:100px;--d:.26s"></i>
+  <i class="tri" style="--s:38px;--c:var(--orange);--r:38deg;right:8%;top:100px;--d:.26s"></i>
 
-  <nav class="wrap">
-    <a href="index.html"><img src="assets/wordmark-vive-navy.png" alt="VIVE"></a>
+  <nav class="wrap" aria-label="Primary">
+    <a href="index.html"><img src="assets/wordmark-vive-white.png" alt="VIVE home" width="125" height="32"></a>
     <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html" aria-current="page">About Us</a></li>
@@ -412,27 +416,26 @@
 
   <div class="wrap hero-content">
     <h1>
-      <span class="label">Born from the vibes</span>
+      <span class="label sun">Born from the vibes</span>
       <em>Crafted for life</em>
     </h1>
     <p class="hero-intro">
-      VIVE started with a straightforward aim: giving active people classic cola taste charged with vitamins A, C, B9, and B12, sweetened with 100% stevia, and finished with zero calories.
+      VIVE started with one aim: put real vitamins in the cola people already love. Today that means three cans with four vitamins each. VIVE Classic is for everyday energy, VIVE Glow supports skin health, and VIVE Focus supports mental performance.
     </p>
     <div class="hero-nav-strip">
-      <a class="btn navy" href="#story">The Founding Story</a>
+      <a class="btn orange" href="#story">The Founding Story</a>
       <a class="btn white" href="#team">Leadership Team</a>
-      <a class="btn navy" href="#pillars">Brand Pillars</a>
+      <a class="btn orange" href="#pillars">Brand Pillars</a>
     </div>
   </div>
 </header>
 
 <!-- Facts Banner -->
 <div class="facts wrap">
-  <span>Vitamins A, C, B9, and B12</span>
-  <span>100% stevia</span>
+  <span>Four vitamins in every can</span>
+  <span>VIVE Classic, Glow, and Focus</span>
   <span>0 calories</span>
   <span>12 oz can</span>
-  <span>₱67 at retail</span>
 </div>
 
 <!-- Section 1: The Founding Story -->
@@ -447,13 +450,13 @@
         The name <strong>VIVE</strong> comes directly from the ending letters of <em>revive</em> and <em>survive</em>. It captures the daily reset people need between morning focus, afternoon deadlines, and evening sports.
       </p>
       <p>
-        On every can, the middle letters stand out as the Roman numeral <strong>IV</strong>. That marks the four essential micronutrients built into each recipe: <strong>Vitamin A</strong> for cellular defense, <strong>Vitamin C</strong> for antioxidant support, <strong>Vitamin B9</strong> for healthy cell production, and <strong>Vitamin B12</strong> for sustained energy.
+        On every can, the middle letters stand out as the Roman numeral <strong>IV</strong>. That marks the four vitamins in each recipe. <strong>VIVE Classic</strong> carries vitamins A, B9, B12, and C for everyday energy. <strong>VIVE Glow</strong> carries vitamins A, B7, C, and E to support skin health. <strong>VIVE Focus</strong> carries vitamins B6, B9, B12, and C to support mental performance.
       </p>
       <p>
-        Standard colas rely on heavy high-fructose corn syrup or synthetic artificial sweeteners. VIVE uses 100% natural stevia extract, which provides crisp cola sweetness and zero calories without spiking blood sugar.
+        All three keep the cola taste you know. We sweeten them with 100% stevia, so every can has zero calories.
       </p>
       <div style="margin-top:28px;">
-        <a class="btn orange" href="product.html">See the formulation</a>
+        <a class="btn orange" href="product.html">Meet the three cans</a>
       </div>
     </div>
 
@@ -462,11 +465,11 @@
       <ul>
         <li>
           <span class="bullet"></span>
-          <div><strong>Four Added Vitamins:</strong> Standardized dosages of Vitamins A, C, B9, and B12 per 12 oz serving.</div>
+          <div><strong>Four vitamins per can:</strong> Each recipe pairs four vitamins with one daily need: energy, skin, or focus.</div>
         </li>
         <li>
           <span class="bullet"></span>
-          <div><strong>100% Stevia Leaf Extract:</strong> Botanical plant-derived sweetener without sugar spikes.</div>
+          <div><strong>Three vibes:</strong> VIVE Classic, VIVE Glow, and VIVE Focus, all in a 12 oz can.</div>
         </li>
         <li>
           <span class="bullet"></span>
@@ -474,7 +477,7 @@
         </li>
         <li>
           <span class="bullet"></span>
-          <div><strong>Zero Artificial Preservatives:</strong> Clean pasteurization to protect vitamin stability.</div>
+          <div><strong>Sweetened with stevia:</strong> Zero calories and no added sugar.</div>
         </li>
       </ul>
     </aside>
@@ -586,22 +589,22 @@
   <div class="pillars-grid">
     <div class="pillar-card">
       <div>
-        <h3>Vitamin Fortification</h3>
+        <h3>Vitamins First</h3>
         <p>
-          Each can delivers standardized daily doses of Vitamins A, C, B9, and B12. We test each batch to ensure micronutrient stability and potency from canning through opening.
+          Every can carries four vitamins matched to one daily need: energy, skin, or focus. We test each batch so the vitamins hold their potency from canning to opening.
         </p>
       </div>
-      <div class="pillar-tag">Four Added Vitamins</div>
+      <div class="pillar-tag">Four vitamins per can</div>
     </div>
 
     <div class="pillar-card">
       <div>
-        <h3>100% Stevia Sweetness</h3>
+        <h3>Real Cola Taste</h3>
         <p>
-          We balance plant-extracted stevia with natural cola spices and citrus extracts. You get refreshing cola sweetness without added sugar, calories, or glycemic impact.
+          We balance natural cola spices and citrus with plant-based stevia, so each can tastes like the cola you know and has zero calories.
         </p>
       </div>
-      <div class="pillar-tag">Zero Sugar Spikes</div>
+      <div class="pillar-tag">Zero calories</div>
     </div>
 
     <div class="pillar-card">
@@ -611,7 +614,7 @@
           Premium vitamin-charged refreshment should fit everyday routines. Priced at ₱67 per 12 oz can across convenience chains, grocery supermarkets, and major retail malls.
         </p>
       </div>
-      <div class="pillar-tag">₱67 at Lawson, 7-Eleven, SM, Ayala</div>
+      <div class="pillar-tag">₱67 at Lawson, 7-Eleven, SM, and Ayala Malls</div>
     </div>
   </div>
 </section>
@@ -619,18 +622,14 @@
 <!-- Section 4: Call to Action Strip -->
 <section class="about-cta-strip wrap">
   <h2>Ready for your dose of good vibes?</h2>
-  <p>Find VIVE chilled in the beverage aisle or order direct delivery in single cans and party bundles.</p>
+  <p>Get your VIVE at your nearest store, or order single cans, packs, and merch online.</p>
   <div class="cta-buttons">
     <a class="btn navy" href="shop.html">Grab a VIVE!</a>
-    <a class="btn white" href="product.html">Explore all 3 flavors</a>
+    <a class="btn white" href="product.html">Explore all three vibes</a>
   </div>
 </section>
 
-<!-- Footer -->
-<footer class="wrap">
-  <b>Grab a VIVE! at</b>
-  <img class="retail" src="assets/retailers.png" alt="Lawson, 7-Eleven, SM, and Ayala Malls">
-</footer>
+<footer class="site-footer"></footer>
 
 </body>
 </html>

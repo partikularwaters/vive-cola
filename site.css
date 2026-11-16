@@ -1,6 +1,7 @@
 /* ==========================================================================
    VIVE Brand Design System — Shared Styles (site.css)
-   Direction C Base (Charged Geometry) + Direction A Labels + Direction B Panels
+   Direction C base (charged geometry) + Direction A labels + Direction B panels.
+   Every page loads this file and site.js. Page files keep only page-specific rules.
    ========================================================================== */
 
 :root {
@@ -13,6 +14,9 @@
   --mist: #F1F2F8;
   --f: "Montserrat", "Avenir Next", Arial, sans-serif;
   --cut: clamp(28px, 5vw, 72px);
+  /* Emil Kowalski curves: strong ease-out for UI response, springy overshoot for brand pops */
+  --ease-out: cubic-bezier(.23, 1, .32, 1);
+  --ease-pop: cubic-bezier(.2, 1.5, .4, 1);
 }
 
 * {
@@ -33,6 +37,7 @@ a {
 
 img {
   max-width: 100%;
+  height: auto;
   display: block;
 }
 
@@ -41,8 +46,18 @@ img {
   padding-right: clamp(16px, 5vw, 72px);
 }
 
+/* Visually hidden, still announced */
+.vh {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 /* ==========================================================================
-   Navigation
+   Navigation (the cart button is added by site.js on every page)
    ========================================================================== */
 nav {
   display: flex;
@@ -56,6 +71,7 @@ nav {
 
 nav img {
   height: 32px;
+  width: auto;
 }
 
 nav ul {
@@ -71,11 +87,15 @@ nav ul {
   color: var(--white);
 }
 
+nav[aria-label="Primary"] ul {
+  margin-left: auto;
+}
+
 nav a {
   text-decoration: none;
   display: inline-block;
   padding: 10px 0;
-  transition: color .15s;
+  transition: color .15s ease;
 }
 
 nav a:hover,
@@ -85,8 +105,203 @@ nav a:focus-visible {
 
 /* Current page: color and an inset underline only, so no tab changes width or height */
 nav a[aria-current="page"] {
+  color: var(--sun);
+  box-shadow: inset 0 -2px var(--sun);
+}
+
+/* Cart button: fixed size, so a count change never shifts the nav */
+.cart-btn {
+  margin-left: clamp(16px, 2.6vw, 32px);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  padding: 0 6px 0 14px;
+  border: 2px solid var(--sun);
+  background: none;
+  color: var(--sun);
+  font: 800 13px/1 var(--f);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  cursor: pointer;
+  transition: background-color .15s ease, color .15s ease, transform .16s var(--ease-out);
+}
+
+.cart-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.cart-btn:hover,
+.cart-btn:focus-visible {
+  background: var(--sun);
+  color: var(--deep);
+}
+
+.cart-btn:focus-visible {
+  outline: 3px solid var(--sun);
+  outline-offset: 3px;
+}
+
+.cart-btn:active {
+  transform: scale(.97);
+}
+
+.cart-count {
+  min-width: 26px;
+  height: 26px;
+  padding: 0 6px;
+  display: grid;
+  place-items: center;
+  background: var(--orange);
+  color: var(--deep);
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+}
+
+.cart-count.bump {
+  animation: bump .32s var(--ease-pop);
+}
+
+@keyframes bump {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.28); }
+  100% { transform: scale(1); }
+}
+
+/* Cart panel: native popover, scales in from its trigger corner */
+.cart-panel {
+  position: fixed;
+  inset: 72px clamp(16px, 5vw, 72px) auto auto;
+  width: min(380px, calc(100vw - 32px));
+  max-height: min(70vh, 560px);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: var(--white);
   color: var(--navy);
-  box-shadow: inset 0 -2px var(--navy);
+  box-shadow: 0 24px 60px rgba(20, 24, 63, .35);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
+  transform-origin: top right;
+  opacity: 1;
+  transform: none;
+  transition: opacity .18s var(--ease-out), transform .18s var(--ease-out), display .18s allow-discrete, overlay .18s allow-discrete;
+}
+
+.cart-panel:popover-open {
+  display: flex;
+  flex-direction: column;
+}
+
+@starting-style {
+  .cart-panel:popover-open {
+    opacity: 0;
+    transform: scale(.96) translateY(-6px);
+  }
+}
+
+.cart-panel:not(:popover-open) {
+  opacity: 0;
+  transform: scale(.96) translateY(-6px);
+}
+
+.cart-panel header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  background: var(--navy);
+  color: var(--white);
+}
+
+.cart-panel h2 {
+  margin: 0;
+  font: 900 18px/1 var(--f);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.cart-panel .close {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  background: none;
+  color: var(--white);
+  font: 900 20px/1 var(--f);
+  cursor: pointer;
+}
+
+.cart-panel .close:focus-visible {
+  outline: 2px solid var(--sun);
+}
+
+.cart-lines {
+  list-style: none;
+  margin: 0;
+  padding: 8px 20px;
+  overflow: auto;
+  flex: 1;
+}
+
+.cart-lines li {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(43, 57, 144, .12);
+  font-size: 14px;
+}
+
+.cart-lines b {
+  display: block;
+  font-weight: 800;
+}
+
+.cart-lines small {
+  color: #4a5384;
+}
+
+.cart-lines .remove {
+  border: 0;
+  background: none;
+  color: var(--navy);
+  font: 800 12px/1 var(--f);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 8px 4px;
+}
+
+.cart-empty {
+  margin: 0;
+  padding: 28px 20px;
+  font-weight: 600;
+  color: #4a5384;
+}
+
+.cart-foot {
+  padding: 16px 20px 22px;
+  border-top: 2px solid var(--navy);
+  display: grid;
+  gap: 12px;
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+.cart-foot p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #4a5384;
 }
 
 /* ==========================================================================
@@ -105,18 +320,20 @@ nav a[aria-current="page"] {
 
 @keyframes snap {
   from {
-    transform: rotate(calc(var(--r) - 40deg)) scale(0);
+    transform: rotate(calc(var(--r) - 40deg)) scale(.4);
+    opacity: 0;
   }
   to {
     transform: rotate(var(--r)) scale(1);
+    opacity: 1;
   }
 }
 
 .star {
   clip-path: polygon(
-    50% 0%, 59.5% 20.8%, 79.4% 9.5%, 77% 32.3%, 97.6% 34.5%, 
-    84.6% 50%, 97.6% 65.5%, 77% 67.7%, 79.4% 90.5%, 59.5% 79.2%, 
-    50% 100%, 40.5% 79.2%, 20.6% 90.5%, 23% 67.7%, 2.4% 65.5%, 
+    50% 0%, 59.5% 20.8%, 79.4% 9.5%, 77% 32.3%, 97.6% 34.5%,
+    84.6% 50%, 97.6% 65.5%, 77% 67.7%, 79.4% 90.5%, 59.5% 79.2%,
+    50% 100%, 40.5% 79.2%, 20.6% 90.5%, 23% 67.7%, 2.4% 65.5%,
     15.4% 50%, 2.4% 34.5%, 23% 32.3%, 20.6% 9.5%, 40.5% 20.8%
   );
 }
@@ -154,9 +371,10 @@ nav a[aria-current="page"] {
   transform: rotate(-1.5deg);
 }
 
+/* Orange labels carry deep navy text: white on orange is 2.63:1 */
 .label.orange {
   background: var(--orange);
-  color: var(--white);
+  color: var(--deep);
 }
 
 .label.sun {
@@ -179,44 +397,111 @@ h3 .label {
 
 /* ==========================================================================
    Buttons
+   The angled cut lives on ::before so clip-path never clips the focus ring.
+   Hover never moves the button itself, so its hit area is fixed and pointing at an
+   edge cannot start a hover loop. Instead an offset shadow block (::after) slides
+   out behind it. That block only grows the hit area, so the state stays stable.
    ========================================================================== */
 .btn {
+  position: relative;
+  isolation: isolate;
+  display: inline-block;
+  padding: 17px 24px;
+  border: 0;
+  background: none;
   font: 900 15px/1 var(--f);
   text-transform: uppercase;
   letter-spacing: .04em;
   text-decoration: none;
-  padding: 17px 24px;
-  display: inline-block;
+  cursor: pointer;
+  transition: transform .16s var(--ease-out);
+}
+
+.btn::before,
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
   clip-path: polygon(0 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
-  transition: transform .15s;
 }
 
-.btn:hover,
+.btn::before {
+  z-index: -1;
+  background: var(--btn-bg);
+}
+
+.btn::after {
+  z-index: -2;
+  background: var(--btn-shadow, var(--deep));
+  opacity: 0;
+  transition: transform .18s var(--ease-out), opacity .12s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover::after {
+    opacity: 1;
+    transform: translate(5px, 5px);
+  }
+}
+
+.btn:focus-visible::after {
+  opacity: 1;
+  transform: translate(5px, 5px);
+}
+
 .btn:focus-visible {
-  transform: translateY(-2px);
+  outline: 3px solid var(--deep);
+  outline-offset: 6px;
 }
 
-.btn.navy {
-  background: var(--navy);
-  color: var(--white);
+/* Press feedback: a quick squeeze, and the shadow tucks back in */
+.btn:active {
+  transform: scale(.97);
+  transition-duration: .1s;
 }
 
-.btn.white {
-  background: var(--white);
-  color: var(--navy);
+.btn:active::after {
+  transform: translate(2px, 2px);
 }
 
-.btn.orange {
-  background: var(--orange);
-  color: var(--white);
+.btn.navy { --btn-bg: var(--navy); --btn-shadow: var(--orange); color: var(--white); }
+.btn.white { --btn-bg: var(--white); --btn-shadow: var(--orange); color: var(--navy); }
+.btn.sun { --btn-bg: var(--sun); --btn-shadow: var(--orange); color: var(--navy); }
+/* Deep navy on orange is 4.94:1; white on orange (2.63:1) fails WCAG AA */
+.btn.orange { --btn-bg: var(--orange); --btn-shadow: var(--sun); color: var(--deep); }
+
+/* Added-to-cart flash: the button fills sun for a beat */
+.btn.is-added { --btn-bg: var(--sun); color: var(--navy); }
+
+/* On navy and deep grounds the focus ring switches to sun */
+:is(.on-dark, .site-footer) .btn:focus-visible {
+  outline-color: var(--sun);
+}
+
+/* ==========================================================================
+   Hover lift without edge flicker
+   .lift-zone is the static hit area; only its .lift child moves. Use it for any
+   card or image that tilts or rises on hover.
+   ========================================================================== */
+.lift {
+  transform: rotate(var(--tilt, 0deg)) translateY(var(--rise, 0px));
+  transition: transform .22s var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .lift-zone:hover > .lift {
+    --tilt: 0deg;
+    --rise: -6px;
+  }
 }
 
 /* ==========================================================================
    Facts Ribbon
    ========================================================================== */
+/* Sun ribbon under a navy hero: navy text at 5.9:1 */
 .facts {
-  background: var(--navy);
-  color: var(--white);
+  background: var(--sun);
+  color: var(--navy);
   margin-top: calc(var(--cut) * -1);
   padding-top: calc(var(--cut) + 28px);
   padding-bottom: 28px;
@@ -240,34 +525,142 @@ h3 .label {
   content: "";
   width: 14px;
   height: 14px;
-  background: var(--sun);
+  background: var(--navy);
   clip-path: polygon(50% 0, 100% 100%, 0 100%);
 }
 
 /* ==========================================================================
-   Footer
+   Global footer (markup rendered by site.js into <footer class="site-footer">)
    ========================================================================== */
-footer {
+.site-footer {
+  position: relative;
+  overflow: hidden;
   background: var(--deep);
   color: var(--white);
-  padding-top: 44px;
-  padding-bottom: 44px;
+  padding-top: clamp(64px, 7vw, 104px);
+  padding-bottom: 32px;
+}
+
+.site-footer h2 {
+  margin: 0 0 24px;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: .95;
+  font-size: clamp(34px, 5vw, 68px);
+}
+
+.foot-cta {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 40px 64px;
+}
+
+.foot-cta .lede {
+  font-size: clamp(16px, 1.4vw, 19px);
+  line-height: 1.55;
+  font-weight: 600;
+  max-width: 32em;
+  margin: 0 0 32px;
+}
+
+.retailers {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 24px;
-  justify-content: space-between;
   align-items: center;
+  gap: 24px 48px;
 }
 
-footer b {
+.retailers img {
+  height: var(--h);
+  width: auto;
+}
+
+.foot-cta .btn {
+  font-size: 17px;
+  padding: 22px 34px;
+}
+
+.foot-base {
+  position: relative;
+  z-index: 1;
+  margin-top: clamp(56px, 6vw, 80px);
+  padding-top: 24px;
+  border-top: 1px solid rgba(249, 249, 249, .2);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.foot-base img {
+  height: 24px;
+  width: auto;
+}
+
+.foot-base nav {
+  padding: 0;
+}
+
+.foot-base ul {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  font-weight: 800;
   text-transform: uppercase;
-  font-weight: 900;
-  letter-spacing: .05em;
+  letter-spacing: .06em;
 }
 
-footer .retail {
-  background: var(--white);
-  padding: 10px 14px;
+.foot-base a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 6px 0;
+}
+
+.foot-base small {
+  font-size: 13px;
+  opacity: .8;
+}
+
+/* Social icons: Simple Icons glyphs, sun on deep navy, filled square on hover/focus */
+.social ul {
+  gap: 8px;
+}
+
+.social a {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  color: var(--sun);
+  transition: background-color .15s ease, color .15s ease;
+}
+
+.social a:hover,
+.social a:focus-visible {
+  background: var(--sun);
+  color: var(--deep);
+}
+
+.social a:focus-visible {
+  outline: 3px solid var(--sun);
+  outline-offset: 3px;
+}
+
+.social svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
 }
 
 /* ==========================================================================
@@ -289,11 +682,25 @@ footer .retail {
   .tri.hide-sm {
     display: none;
   }
+  .foot-cta {
+    grid-template-columns: 1fr;
+  }
 }
 
+/* Reduced motion: drop movement, keep color and opacity feedback */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation: none !important;
-    transition: none !important;
+  }
+  .btn,
+  .lift,
+  .cart-btn {
+    transition-property: color, background-color, opacity !important;
+  }
+  .btn:active,
+  .btn:hover::after,
+  .btn:focus-visible::after,
+  .lift-zone:hover > .lift {
+    transform: none !important;
   }
 }

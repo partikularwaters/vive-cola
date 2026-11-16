@@ -25,7 +25,7 @@ Built on ICM principles: one place per truth, folders carry structure, and plain
 5. **Follow `/snowe-ui-skill` for brand visual hierarchy:** Enforce brand visual generosity: 10-point stars, triangle cuts, angled header labels, bold color grounds (#F27A21, #2B3990, #F4BD6A, #F9F9F9), and clear typographic hierarchy (Montserrat Bold/Regular with display headings) across all desktop views.
 6. **Oxford comma mandatory:** Use the Oxford comma consistently across all newly authored copy, lists, documentation, and headings.
 7. **Working links only:** Every link and button must function. Internal navigation links must point to existing site pages (`index.html`, `about.html`, `product.html`, and `shop.html`). External and social links must target the platform root (such as `https://facebook.com` or `https://instagram.com`), never `#`.
-8. **Zero placeholders:** Do not use placeholder photos or lorem ipsum text. Use actual brand imagery and copy.
+8. **Zero placeholders:** Do not use placeholder photos or lorem ipsum text. Use actual brand imagery and copy. The only exceptions are the labeled stand-ins the client approved on 2026-11-16 (concept can renders, merch mockups, and sample prices), listed in [CONTEXT.md](CONTEXT.md).
 9. **Dynamic visual generosity:** Apply the brand visual language (10-point stars, triangles, angled cuts, and bold color grounds). Avoid plain layouts; implement brand patterns generously.
 10. **Scope boundaries:**
    - Dedicated cart, checkout, and payment pages are **out of scope**. Use a live numeric cart count in the header navigation instead.
