@@ -121,21 +121,25 @@
 </head>
 <body>
 
-<header class="p-hero cut-down on-dark">
+<header class="site-header">
+<nav class="wrap" aria-label="Primary">
+  <a href="index.html"><img src="assets/wordmark-vive-white.png" alt="VIVE home" width="125" height="32"></a>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="product.html" aria-current="page">Product</a></li>
+    <li><a href="shop.html">Shop</a></li>
+  </ul>
+</nav>
+</header>
+
+<main id="content">
+<section class="p-hero cut-down on-dark">
   <i class="tri" aria-hidden="true" style="--s:110px;--c:var(--sun);--r:18deg;left:-26px;top:130px;--d:.05s"></i>
   <i class="tri hide-sm" aria-hidden="true" style="--s:44px;--c:var(--orange);--r:-24deg;left:44%;top:96px;--d:.12s"></i>
   <i class="tri hide-sm" aria-hidden="true" style="--s:60px;--c:var(--white);--r:200deg;left:40%;bottom:120px;--d:.2s"></i>
   <i class="tri" aria-hidden="true" style="--s:34px;--c:var(--orange);--r:40deg;right:5%;top:110px;--d:.26s"></i>
 
-  <nav class="wrap" aria-label="Primary">
-    <a href="index.html"><img src="assets/wordmark-vive-white.png" alt="VIVE home" width="125" height="32"></a>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="product.html" aria-current="page">Product</a></li>
-      <li><a href="shop.html">Shop</a></li>
-    </ul>
-  </nav>
 
   <div class="grid wrap">
     <div>
@@ -156,9 +160,8 @@
       </div>
     </div>
   </div>
-</header>
+</section>
 
-<main id="content">
 
 <section class="variant v-classic wrap" id="classic" aria-labelledby="classic-title">
   <div class="numeral" aria-hidden="true">IV</div>

@@ -55,14 +55,16 @@
   .row .lift { position:relative; }
   /* Base tilt is inherited from the figure, so the hover values set on .lift itself always win */
   .row figure:nth-child(1) { --tilt:-2deg; }
-  .row figure:nth-child(2) { --tilt:1.2deg; --rise:24px; }
+  .row figure:nth-child(2) { --tilt:1.2deg; }
+  /* The middle poster sits lower through its zone, not a transform, so the hover zone moves with it */
+  .row figure:nth-child(2) .art { margin-top:24px; }
   .row figure:nth-child(3) { --tilt:-.8deg; }
   .intro > img { transform:rotate(-2.5deg); box-shadow:0 18px 30px rgba(29,39,102,.2); }
   .row .lift::before { content:""; position:absolute; inset:5% -4% -10px 6%; background:var(--b); clip-path:polygon(4% 0,100% 3%,96% 100%,0 96%); z-index:0; }
   .row img { position:relative; z-index:1; box-shadow:0 18px 30px rgba(29,39,102,.2); }
   /* Variant caption and CTA under each poster */
   .row figcaption > * { position:relative; z-index:1; }
-  .row figcaption h3 { margin:52px 0 0; font-weight:900; text-transform:uppercase; font-size:clamp(22px,2vw,28px); line-height:1; letter-spacing:-.01em; color:var(--navy); }
+  .row figcaption h3 { margin:36px 0 0; font-weight:900; text-transform:uppercase; font-size:clamp(22px,2vw,28px); line-height:1; letter-spacing:-.01em; color:var(--navy); }
   .row figcaption .tagline { margin:8px 0 0; font-weight:800; font-size:15px; text-transform:uppercase; letter-spacing:.04em; color:var(--orange); }
   .row figcaption .vits { margin:8px 0 0; font-size:15px; line-height:1.5; font-weight:600; color:var(--deep); }
   .row figcaption .btn { margin-top:18px; align-self:start; }
@@ -97,21 +99,25 @@
 </head>
 <body>
 
-<header class="hero cut-down on-dark">
+<header class="site-header">
+<nav class="wrap" aria-label="Primary">
+  <a href="index.html"><img src="assets/wordmark-vive-white.png" alt="VIVE home" width="125" height="32"></a>
+  <ul>
+    <li><a href="index.html" aria-current="page">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="product.html">Product</a></li>
+    <li><a href="shop.html">Shop</a></li>
+  </ul>
+</nav>
+</header>
+
+<main id="content">
+<section class="hero cut-down on-dark">
   <i class="tri" style="--s:120px;--c:var(--sun);--r:18deg;left:-30px;top:120px;--d:.05s"></i>
   <i class="tri hide-sm" style="--s:46px;--c:var(--orange);--r:-24deg;left:42%;top:84px;--d:.12s"></i>
   <i class="tri" style="--s:34px;--c:var(--orange);--r:40deg;right:6%;top:96px;--d:.24s"></i>
   <i class="tri hide-sm" style="--s:58px;--c:var(--sun);--r:-150deg;left:8%;bottom:70px;--d:.3s"></i>
 
-  <nav class="wrap" aria-label="Primary">
-    <a href="index.html"><img src="assets/wordmark-vive-white.png" alt="VIVE home" width="125" height="32"></a>
-    <ul>
-      <li><a href="index.html" aria-current="page">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="product.html">Product</a></li>
-      <li><a href="shop.html">Shop</a></li>
-    </ul>
-  </nav>
 
   <div class="grid wrap">
     <div>
@@ -130,9 +136,8 @@
     </div>
   </div>
   <button class="motion-toggle" type="button"><span class="vh">Pause </span>Motion <span class="icon" aria-hidden="true"></span></button>
-</header>
+</section>
 
-<main id="content">
 <section class="posters wrap">
   <h2><span class="label">Pick your vibe</span></h2>
   <div class="row">

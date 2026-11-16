@@ -182,7 +182,8 @@
     padding: 24px 18px;
     text-decoration: none;
     color: var(--white);
-    transition: flex .45s var(--ease-out);
+    /* 100ms leave grace so brushing past a card edge does not reshuffle the row */
+    transition: flex .45s var(--ease-out) .1s;
     border: 1px solid rgba(244, 189, 106, .2);
   }
   .member-card img.avatar {
@@ -262,6 +263,7 @@
   }
   .team-panels .member-card:hover {
     flex: 2.25;
+    transition-delay: 0s;
     border-color: var(--orange);
   }
   .team-panels .member-card:hover img.avatar {
@@ -396,23 +398,27 @@
 </head>
 <body>
 
+<header class="site-header">
+<nav class="wrap" aria-label="Primary">
+  <a href="index.html"><img src="assets/wordmark-vive-white.png" alt="VIVE home" width="125" height="32"></a>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" aria-current="page">About Us</a></li>
+    <li><a href="product.html">Product</a></li>
+    <li><a href="shop.html">Shop</a></li>
+  </ul>
+</nav>
+</header>
+
 <!-- Header / Hero Section -->
-<header class="about-hero cut-down on-dark">
+<main id="content">
+<section class="about-hero cut-down on-dark">
   <!-- Dynamic Brand Triangles -->
   <i class="tri" style="--s:110px;--c:var(--sun);--r:22deg;left:-20px;top:110px;--d:.06s"></i>
   <i class="tri hide-sm" style="--s:42px;--c:var(--orange);--r:-28deg;left:48%;top:90px;--d:.14s"></i>
   <i class="tri hide-sm" style="--s:64px;--c:var(--white);--r:190deg;left:34%;bottom:90px;--d:.2s"></i>
   <i class="tri" style="--s:38px;--c:var(--orange);--r:38deg;right:8%;top:100px;--d:.26s"></i>
 
-  <nav class="wrap" aria-label="Primary">
-    <a href="index.html"><img src="assets/wordmark-vive-white.png" alt="VIVE home" width="125" height="32"></a>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html" aria-current="page">About Us</a></li>
-      <li><a href="product.html">Product</a></li>
-      <li><a href="shop.html">Shop</a></li>
-    </ul>
-  </nav>
 
   <div class="wrap hero-content">
     <h1>
@@ -428,7 +434,7 @@
       <a class="btn orange" href="#pillars">Brand Pillars</a>
     </div>
   </div>
-</header>
+</section>
 
 <!-- Facts Banner -->
 <div class="facts wrap">
@@ -628,6 +634,8 @@
     <a class="btn white" href="product.html">Explore all three vibes</a>
   </div>
 </section>
+
+</main>
 
 <footer class="site-footer"></footer>
 
