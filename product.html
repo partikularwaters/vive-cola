@@ -78,6 +78,9 @@
   .facts-grid li:nth-child(4) { background:var(--deep); }
   .facts-grid strong { display:block; font-size:clamp(40px,4.4vw,64px); font-weight:900; line-height:1; letter-spacing:-.02em; }
   .facts-grid span { display:block; margin-top:10px; font-weight:800; text-transform:uppercase; letter-spacing:.06em; font-size:13px; }
+  .label-spread { margin:clamp(40px,5vw,72px) 0 0; }
+  .label-spread img { width:100%; max-width:1180px; box-shadow:0 24px 50px rgba(20,24,63,.18); clip-path:polygon(0 0,100% 0,100% calc(100% - 22px),calc(100% - 22px) 100%,0 100%); }
+  .label-spread figcaption { margin-top:16px; font-size:14px; font-weight:700; color:#3a4370; }
 
   /* ---------- COMPARE TABLE (family strip) ---------- */
   .compare { background:var(--deep); color:var(--white); margin-top:calc(var(--cut) * -1); clip-path:polygon(0 var(--cut),100% 0,100% 100%,0 100%); padding-top:calc(var(--cut) + clamp(72px,8vw,120px)); }
@@ -154,9 +157,9 @@
       <div class="burst star"></div>
       <div class="burst front star"></div>
       <div class="cans">
-        <img src="assets/can-glow-concept-web.webp" alt="" width="400" height="1064" fetchpriority="high">
-        <img src="assets/can-original-web.webp" alt="" width="400" height="1064" fetchpriority="high">
-        <img src="assets/can-focus-concept-web.webp" alt="" width="400" height="1064">
+        <img src="assets/can-glow-web.webp" alt="" width="600" height="1570" fetchpriority="high">
+        <img src="assets/can-classic-web.webp" alt="" width="600" height="1570" fetchpriority="high">
+        <img src="assets/can-focus-web.webp" alt="" width="600" height="1570">
       </div>
     </div>
   </div>
@@ -168,7 +171,7 @@
   <div class="inner">
     <div class="can-col" data-reveal>
       <div class="burst star" aria-hidden="true"></div>
-      <div class="lift-zone"><div class="lift"><img src="assets/can-original-web.webp" alt="VIVE Classic can, orange, 12 oz" width="400" height="1064" loading="lazy"></div></div>
+      <div class="lift-zone"><div class="lift"><img src="assets/can-classic-web.webp" alt="VIVE Classic can, orange, 12 oz" width="600" height="1570" loading="lazy"></div></div>
     </div>
     <div>
       <p class="kicker" data-reveal>VIVE Classic · The original</p>
@@ -190,7 +193,7 @@
   <div class="inner">
     <div class="can-col" data-reveal>
       <div class="burst star" aria-hidden="true"></div>
-      <div class="lift-zone"><div class="lift"><img src="assets/can-glow-concept-web.webp" alt="VIVE Glow can, pink, 12 oz (concept render)" width="400" height="1064" loading="lazy"></div></div>
+      <div class="lift-zone"><div class="lift"><img src="assets/can-glow-web.webp" alt="VIVE Glow can, pink, 12 oz" width="600" height="1570" loading="lazy"></div></div>
     </div>
     <div>
       <p class="kicker" data-reveal>VIVE Glow · Skin health</p>
@@ -212,7 +215,7 @@
   <div class="inner">
     <div class="can-col" data-reveal>
       <div class="burst star" aria-hidden="true"></div>
-      <div class="lift-zone"><div class="lift"><img src="assets/can-focus-concept-web.webp" alt="VIVE Focus can, teal, 12 oz (concept render)" width="400" height="1064" loading="lazy"></div></div>
+      <div class="lift-zone"><div class="lift"><img src="assets/can-focus-web.webp" alt="VIVE Focus can, teal, 12 oz" width="600" height="1570" loading="lazy"></div></div>
     </div>
     <div>
       <p class="kicker" data-reveal>VIVE Focus · Mental performance</p>
@@ -237,6 +240,10 @@
     <li data-reveal style="--i:3"><strong>100%</strong><span>Stevia sweetened</span></li>
     <li data-reveal style="--i:4"><strong>12 oz</strong><span>Cold can of cola</span></li>
   </ul>
+  <figure class="label-spread" data-reveal style="--i:5">
+    <img src="assets/label-classic-nutrition.webp" alt="VIVE Classic can label laid flat, with the ingredient list on the left and the nutrition facts panel on the right: 0 calories, 25 mg sodium, and vitamins A at 10%, B9 at 25%, B12 at 50%, and C at 50% of the daily value per 12 fl oz can." width="1600" height="1280" loading="lazy">
+    <figcaption>The VIVE Classic label, with nutrition facts per 12 fl oz can.</figcaption>
+  </figure>
 </section>
 
 <section class="compare wrap on-dark" id="compare" aria-labelledby="compare-title">
