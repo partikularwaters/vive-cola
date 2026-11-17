@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VIVE Product Router — Three Cans. Four Vitamins Each.</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap');
+
+    @page {
+      size: 595.28pt 841.89pt;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    :root {
+      --orange: #F27A21;
+      --navy: #2B3990;
+      --sun: #F4BD6A;
+      --white: #F9F9F9;
+      --deep: #1D2766;
+      --ink: #14183F;
+      --cut: 20pt;
+    }
+
+    html, body {
+      width: 595.28pt;
+      height: 841.89pt;
+      overflow: hidden;
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      position: relative;
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    /* 100% full-page clickable router overlay for PDF export */
+    a.global-router-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 595.28pt;
+      height: 841.89pt;
+      z-index: 1000;
+      display: block;
+      background: transparent;
+      text-decoration: none;
+    }
+
+    .poster-page {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: var(--navy);
+    }
+
+    /* Ambient Brand Triangles from /product hero */
+    .tri {
+      position: absolute;
+      clip-path: polygon(50% 0, 100% 100%, 0 100%);
+      pointer-events: none;
+      z-index: 2;
+    }
+    .tri-1 { width: 55pt; height: 55pt; background: var(--sun); transform: rotate(18deg); top: 35pt; left: -14pt; }
+    .tri-2 { width: 24pt; height: 24pt; background: var(--orange); transform: rotate(-24deg); top: 50pt; right: 80pt; }
+    .tri-3 { width: 34pt; height: 34pt; background: var(--white); transform: rotate(200deg); top: 160pt; left: 16pt; opacity: 0.85; }
+    .tri-4 { width: 22pt; height: 22pt; background: var(--orange); transform: rotate(40deg); top: 110pt; right: 28pt; }
+
+    /* ==========================================================================
+       SECTION 1: PRODUCT HERO (Navy ground, fanned trio over 10-point star)
+       ========================================================================== */
+    .hero-section {
+      position: relative;
+      z-index: 5;
+      padding: 24pt 30pt 16pt;
+    }
+
+    /* Header Nav Bar */
+    .header-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12pt;
+    }
+
+    .header-nav img.brand-wordmark {
+      height: 24pt;
+      width: auto;
+    }
+
+    .portal-beacon-pill {
+      display: flex;
+      align-items: center;
+      gap: 6pt;
+      background: rgba(29, 39, 102, 0.85);
+      border: 1.5pt solid var(--sun);
+      padding: 4pt 10pt;
+      clip-path: polygon(0 0, 100% 0, calc(100% - 6pt) 100%, 0 100%);
+    }
+
+    .beacon-dot {
+      width: 6pt;
+      height: 6pt;
+      background: #34D399;
+      border-radius: 50%;
+    }
+
+    .beacon-text {
+      font-size: 8pt;
+      font-weight: 800;
+      color: var(--sun);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* Hero Grid: Typography on Left, Fanned Trio on Right */
+    .hero-grid {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16pt;
+    }
+
+    .hero-copy {
+      flex: 1.1;
+      max-width: 280pt;
+    }
+
+    .hero-kicker {
+      font-weight: 900;
+      font-size: 8.5pt;
+      color: var(--sun);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 6pt;
+    }
+
+    .hero-copy h1 {
+      font-size: 27pt;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 8pt;
+    }
+
+    .hero-copy h1 em {
+      display: block;
+      font-style: normal;
+      color: var(--orange);
+    }
+
+    .hero-copy p.lede {
+      font-size: 9pt;
+      line-height: 1.45;
+      font-weight: 600;
+      color: #E2E4F0;
+      margin-bottom: 10pt;
+    }
+
+    .hero-pill-badge {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--deep);
+      font-weight: 900;
+      font-size: 8pt;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 4pt 10pt;
+      clip-path: polygon(0 0, 100% 0, calc(100% - 6pt) 100%, 0 100%);
+    }
+
+    /* Fanned Trio Visual */
+    .hero-trio-stage {
+      flex: 0.95;
+      position: relative;
+      height: 175pt;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* 10-point stars from /product hero */
+    .star-bg {
+      position: absolute;
+      width: 175pt;
+      height: 175pt;
+      clip-path: polygon(
+        50% 0%, 59.5% 20.8%, 79.4% 9.5%, 77% 32.3%, 97.6% 34.5%,
+        84.6% 50%, 97.6% 65.5%, 77% 67.7%, 79.4% 90.5%, 59.5% 79.2%,
+        50% 100%, 40.5% 79.2%, 20.6% 90.5%, 23% 67.7%, 2.4% 65.5%,
+        15.4% 50%, 2.4% 34.5%, 23% 32.3%, 20.6% 9.5%, 40.5% 20.8%
+      );
+    }
+    .star-outer {
+      background: var(--sun);
+      transform: scale(0.96) rotate(-8deg);
+      opacity: 0.95;
+    }
+    .star-inner {
+      background: var(--white);
+      transform: scale(0.78) rotate(12deg);
+      opacity: 0.95;
+    }
+
+    .trio-cans {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+    }
+
+    .can-fan-glow {
+      height: 145pt;
+      width: auto;
+      transform: rotate(-13deg) translateY(6pt);
+      margin-right: -16pt;
+      filter: drop-shadow(0 14pt 16pt rgba(20, 24, 63, 0.45));
+    }
+
+    .can-fan-classic {
+      height: 168pt;
+      width: auto;
+      position: relative;
+      z-index: 12;
+      filter: drop-shadow(0 18pt 22pt rgba(20, 24, 63, 0.5));
+    }
+
+    .can-fan-focus {
+      height: 145pt;
+      width: auto;
+      transform: rotate(13deg) translateY(6pt);
+      margin-left: -16pt;
+      filter: drop-shadow(0 14pt 16pt rgba(20, 24, 63, 0.45));
+    }
+
+    /* ==========================================================================
+       SECTION 2: THE THREE VARIANTS STRIP (Representing the 3 product strips)
+       ========================================================================== */
+    .variants-container {
+      position: relative;
+      z-index: 8;
+      margin-top: -6pt;
+      padding: 0 24pt;
+    }
+
+    .variants-section-title {
+      display: flex;
+      align-items: center;
+      gap: 10pt;
+      margin-bottom: 8pt;
+    }
+
+    .label-title {
+      display: inline-block;
+      background: var(--sun);
+      color: var(--deep);
+      font-weight: 900;
+      font-size: 11pt;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 3pt 10pt 4pt;
+      transform: rotate(-1.5deg);
+      clip-path: polygon(1% 0, 100% 4%, 99% 100%, 0 96%);
+    }
+
+    .variant-cards-row {
+      display: flex;
+      gap: 10pt;
+    }
+
+    .v-strip-card {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      border-radius: 2pt;
+      padding: 10pt 11pt 10pt;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10pt), calc(100% - 10pt) 100%, 0 100%);
+      box-shadow: 0 8pt 20pt rgba(20, 24, 63, 0.3);
+    }
+
+    /* Giant Numeral IV Watermark from /product */
+    .card-numeral {
+      position: absolute;
+      right: -8pt;
+      bottom: -16pt;
+      font-weight: 900;
+      font-size: 78pt;
+      line-height: 0.8;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* Glow Card Theme */
+    .card-glow {
+      background: var(--sun);
+      color: var(--navy);
+    }
+    .card-glow .card-numeral { color: rgba(43, 57, 144, 0.12); }
+    .card-glow .v-kicker { color: var(--navy); }
+    .card-glow .v-chip { background: var(--navy); color: var(--white); }
+
+    /* Classic Card Theme */
+    .card-classic {
+      background: var(--orange);
+      color: var(--deep);
+      transform: translateY(-4pt);
+      box-shadow: 0 12pt 26pt rgba(20, 24, 63, 0.4);
+    }
+    .card-classic .card-numeral { color: rgba(29, 39, 102, 0.14); }
+    .card-classic .v-kicker { color: var(--deep); }
+    .card-classic .v-chip { background: var(--white); color: var(--deep); }
+
+    /* Focus Card Theme */
+    .card-focus {
+      background: var(--deep);
+      color: var(--white);
+      border: 1pt solid rgba(244, 189, 106, 0.35);
+    }
+    .card-focus .card-numeral { color: rgba(249, 249, 249, 0.08); }
+    .card-focus .v-kicker { color: var(--sun); }
+    .card-focus .v-chip { background: var(--sun); color: var(--deep); }
+
+    .card-top {
+      position: relative;
+      z-index: 5;
+    }
+
+    .v-kicker {
+      font-weight: 900;
+      font-size: 6.8pt;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 2pt;
+    }
+
+    .v-headline {
+      font-size: 13pt;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1;
+      letter-spacing: 0.01em;
+      margin-bottom: 4pt;
+    }
+
+    .v-desc {
+      font-size: 7.2pt;
+      line-height: 1.35;
+      font-weight: 600;
+      opacity: 0.92;
+      margin-bottom: 8pt;
+    }
+
+    .v-chip {
+      position: relative;
+      z-index: 5;
+      padding: 6pt 8pt;
+      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6pt), calc(100% - 6pt) 100%, 0 100%);
+    }
+
+    .v-chip b {
+      display: block;
+      font-size: 7.5pt;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .v-chip span {
+      display: block;
+      font-size: 6.8pt;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-top: 2pt;
+      opacity: 0.95;
+    }
+
+    /* ==========================================================================
+       SECTION 3: "IN EVERY CAN" FACTS GRID (from line 237 of /product)
+       ========================================================================== */
+    .every-can-section {
+      position: relative;
+      z-index: 8;
+      background: var(--white);
+      color: var(--navy);
+      margin-top: 10pt;
+      padding: 12pt 24pt 12pt;
+      clip-path: polygon(0 var(--cut), 100% 0, 100% 100%, 0 100%);
+    }
+
+    .every-can-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8pt;
+      padding-top: 4pt;
+    }
+
+    .every-title-label {
+      background: var(--orange);
+      color: var(--deep);
+      font-weight: 900;
+      font-size: 9pt;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 2.5pt 8pt 3.5pt;
+      transform: rotate(-1.5deg);
+    }
+
+    .every-subtitle {
+      font-size: 7.5pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #4A5384;
+    }
+
+    .facts-grid-row {
+      display: flex;
+      gap: 8pt;
+    }
+
+    .fact-item {
+      flex: 1;
+      padding: 8pt 10pt 9pt;
+      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 7pt), calc(100% - 7pt) 100%, 0 100%);
+    }
+
+    .fact-item:nth-child(1) { background: var(--navy); color: var(--white); }
+    .fact-item:nth-child(2) { background: var(--orange); color: var(--deep); }
+    .fact-item:nth-child(3) { background: var(--sun); color: var(--navy); }
+    .fact-item:nth-child(4) { background: var(--deep); color: var(--white); }
+
+    .fact-item strong {
+      display: block;
+      font-size: 16pt;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .fact-item span {
+      display: block;
+      margin-top: 3pt;
+      font-size: 6.8pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      line-height: 1.2;
+    }
+
+    /* ==========================================================================
+       SECTION 4: LAUNCHPAD ROUTER & RETAILER FOOTER
+       ========================================================================== */
+    .router-bottom-launchpad {
+      position: relative;
+      z-index: 10;
+      background: var(--deep);
+      color: var(--white);
+      padding: 12pt 24pt 12pt;
+      border-top: 2.5pt solid var(--sun);
+      box-shadow: 0 -8pt 20pt rgba(20, 24, 63, 0.4);
+    }
+
+    .launch-button-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10pt;
+      background: var(--orange);
+      color: var(--deep);
+      padding: 9pt 14pt;
+      clip-path: polygon(0 0, 100% 0, calc(100% - 9pt) 100%, 0 100%);
+      box-shadow: 0 3pt 0 #0f1538;
+    }
+
+    .launch-title {
+      font-weight: 900;
+      font-size: 10.5pt;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .launch-action-tag {
+      background: var(--navy);
+      color: var(--white);
+      font-weight: 900;
+      font-size: 7.5pt;
+      padding: 3.5pt 8pt;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    .footer-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8pt;
+      padding-top: 7pt;
+      border-top: 1pt solid rgba(244, 189, 106, 0.25);
+    }
+
+    .url-display {
+      display: flex;
+      align-items: center;
+      gap: 5pt;
+    }
+
+    .live-dot {
+      width: 6pt;
+      height: 6pt;
+      background: #34D399;
+      border-radius: 50%;
+    }
+
+    .live-url-text {
+      font-weight: 900;
+      font-size: 9pt;
+      color: var(--sun);
+      letter-spacing: 0.04em;
+    }
+
+    .retailers-strip {
+      display: flex;
+      align-items: center;
+      gap: 12pt;
+    }
+
+    .retailers-strip span {
+      font-size: 6.2pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(249, 249, 249, 0.7);
+    }
+
+    .retailers-strip img {
+      height: 9.5pt;
+      width: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body>
+  <!-- Full-Page Interactive PDF Link Overlay -->
+  <a class="global-router-overlay" href="https://vive-cola.vercel.app" aria-label="Enter live VIVE website at vive-cola.vercel.app">&nbsp;</a>
+
+  <div class="poster-page">
+    <!-- Ambient Triangles from /product hero -->
+    <div class="tri tri-1"></div>
+    <div class="tri tri-2"></div>
+    <div class="tri tri-3"></div>
+    <div class="tri tri-4"></div>
+
+    <!-- 1. Hero Section (Product Page Style) -->
+    <header class="hero-section">
+      <div class="header-nav">
+        <img class="brand-wordmark" src="assets/wordmark-vive-white.png" alt="VIVE">
+        <div class="portal-beacon-pill">
+          <div class="beacon-dot"></div>
+          <span class="beacon-text">Official Digital Router</span>
+        </div>
+      </div>
+
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="hero-kicker">VIVE Product Showcase</div>
+          <h1>Three cans. <em>Four vitamins each.</em></h1>
+          <p class="lede">Every VIVE is the cola taste you know, charged with four vitamins for one daily need. Pick the vibe that fits your day.</p>
+          <div class="hero-pill-badge">Zero Calories • Naturally Sweetened</div>
+        </div>
+
+        <div class="hero-trio-stage">
+          <div class="star-bg star-outer"></div>
+          <div class="star-bg star-inner"></div>
+          <div class="trio-cans">
+            <img class="can-fan-glow" src="assets/can-glow-web.webp" alt="VIVE Glow Can">
+            <img class="can-fan-classic" src="assets/can-classic-web.webp" alt="VIVE Classic Can">
+            <img class="can-fan-focus" src="assets/can-focus-web.webp" alt="VIVE Focus Can">
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 2. The Three Variants Strip Cards (Representing the 3 product strips) -->
+    <section class="variants-container">
+      <div class="variants-section-title">
+        <span class="label-title">Pick Your Vibe</span>
+      </div>
+
+      <div class="variant-cards-row">
+        <!-- VIVE Glow -->
+        <article class="v-strip-card card-glow">
+          <div class="card-numeral">IV</div>
+          <div class="card-top">
+            <p class="v-kicker">VIVE Glow · Skin Health</p>
+            <h2 class="v-headline">Radiant Vibes</h2>
+            <p class="v-desc">Cola with four vitamins that support healthy, vibrant skin.</p>
+          </div>
+          <div class="v-chip">
+            <b>4 Vitamins</b>
+            <span>Vitamins A, B7, C, and E</span>
+          </div>
+        </article>
+
+        <!-- VIVE Classic -->
+        <article class="v-strip-card card-classic">
+          <div class="card-numeral">IV</div>
+          <div class="card-top">
+            <p class="v-kicker">VIVE Classic · The Original</p>
+            <h2 class="v-headline">Good Vibes</h2>
+            <p class="v-desc">Crisp cola with four vitamins for everyday uplifting energy.</p>
+          </div>
+          <div class="v-chip">
+            <b>4 Vitamins</b>
+            <span>Vitamins A, B9, B12, and C</span>
+          </div>
+        </article>
+
+        <!-- VIVE Focus -->
+        <article class="v-strip-card card-focus">
+          <div class="card-numeral">IV</div>
+          <div class="card-top">
+            <p class="v-kicker">VIVE Focus · Mental Edge</p>
+            <h2 class="v-headline">Sharp Vibes</h2>
+            <p class="v-desc">Cola with four vitamins that support sharp mental performance.</p>
+          </div>
+          <div class="v-chip">
+            <b>4 Vitamins</b>
+            <span>Vitamins B6, B9, B12, and C</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 3. "In Every Can" Facts Strip (Directly from /product) -->
+    <section class="every-can-section">
+      <div class="every-can-header">
+        <span class="every-title-label">In Every Can</span>
+        <span class="every-subtitle">12 FL OZ (355 ML) Cold Can</span>
+      </div>
+      <div class="facts-grid-row">
+        <div class="fact-item">
+          <strong>4</strong>
+          <span>Vitamins Per Can</span>
+        </div>
+        <div class="fact-item">
+          <strong>0</strong>
+          <span>Calories</span>
+        </div>
+        <div class="fact-item">
+          <strong>100%</strong>
+          <span>Naturally Sweetened</span>
+        </div>
+        <div class="fact-item">
+          <strong>12 oz</strong>
+          <span>Ice-Cold Cola</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Interactive Router Launchpad & Retailer Strip -->
+    <footer class="router-bottom-launchpad">
+      <div class="launch-button-bar">
+        <span class="launch-title">Tap Anywhere to Enter Official Website</span>
+        <span class="launch-action-tag">Open Link ➔</span>
+      </div>
+
+      <div class="footer-meta-row">
+        <div class="url-display">
+          <div class="live-dot"></div>
+          <span class="live-url-text">vive-cola.vercel.app</span>
+        </div>
+
+        <div class="retailers-strip">
+          <span>In Stores:</span>
+          <img src="assets/lawson-logo-white.png" alt="Lawson">
+          <img src="assets/seven-eleven-logo.svg" alt="7-Eleven">
+          <img src="assets/sm-logo-white.svg" alt="SM Supermalls">
+          <img src="assets/ayala-malls-logo-white.png" alt="Ayala Malls">
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
