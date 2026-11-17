@@ -54,6 +54,105 @@ def make_star_points(size, rotation_deg=0.0, scale_factor=1.0):
         pts.append((x, y))
     return pts
 
+# Spiky variant: same 10 tip angles as the brand star, with inner vertices pulled in to
+# 0.40 of the outer radius (the brand star sits near 0.61) for sharper spikes.
+SPIKY_INNER_RATIO = 0.40
+
+# Deep-cut sparkle proportion, matching star-4pt-sparkle (110 / 480)
+SPARKLE_INNER_RATIO = 110.0 / 480.0
+
+def make_spiky_star_points(size, inner_ratio=SPIKY_INNER_RATIO, scale_factor=1.0, rotation_deg=0.0):
+    cx = size / 2.0
+    cy = size / 2.0
+    outer_r = (size / 2.0) * scale_factor
+    pts = []
+    for i in range(20):
+        # Tips at 0, 36, 72... degrees clockwise from 12 o'clock; valleys halfway between
+        angle = math.radians(i * 18.0)
+        radius = outer_r if i % 2 == 0 else outer_r * inner_ratio
+        x = cx + radius * math.sin(angle)
+        y = cy - radius * math.cos(angle)
+        if rotation_deg != 0.0:
+            x, y = rotate_point(x, y, cx, cy, rotation_deg)
+        pts.append((x, y))
+    return pts
+
+def generate_spiky_family(size, target_dirs):
+    """Spiky 10-point family. Variant set mirrors the star-4pt family: solid, sparkle, outline, concentric, tilted."""
+    spiky_pts = make_spiky_star_points(size)
+
+    # Solid (all 7 colors)
+    for c_name, hex_code in COLORS.items():
+        svg = make_svg_polygon(spiky_pts, size, hex_code)
+        png = render_polygon_png(spiky_pts, size, hex_code)
+        save_asset(f"star-10pt-spiky-{c_name}", svg, png, target_dirs)
+        print(f"Generated: star-10pt-spiky-{c_name}")
+
+    # Sparkle (deep-cut spikes, 5 colors as in star-4pt-sparkle)
+    sparkle_pts = make_spiky_star_points(size, inner_ratio=SPARKLE_INNER_RATIO)
+    for c_name in ["sun", "orange", "navy", "white", "deep"]:
+        hex_code = COLORS[c_name]
+        svg = make_svg_polygon(sparkle_pts, size, hex_code)
+        png = render_polygon_png(sparkle_pts, size, hex_code)
+        save_asset(f"star-10pt-spiky-sparkle-{c_name}", svg, png, target_dirs)
+        print(f"Generated: star-10pt-spiky-sparkle-{c_name}")
+
+    # Outlines (28px stroke, inset to 0.96 as in star-10pt-outline)
+    outline_pts = make_spiky_star_points(size, scale_factor=0.96)
+    for c_name in ["sun", "orange", "navy", "white", "deep"]:
+        hex_code = COLORS[c_name]
+        svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {size} {size}" width="{size}" height="{size}">
+  <polygon points="{' '.join(f'{x:.1f},{y:.1f}' for x, y in outline_pts)}" fill="none" stroke="{hex_code}" stroke-width="28" stroke-linejoin="round"/>
+</svg>'''
+        super_scale = 4
+        large_size = size * super_scale
+        im = Image.new("RGBA", (large_size, large_size), (0, 0, 0, 0))
+        draw = ImageDraw.Draw(im)
+        scaled_pts = [(x * super_scale, y * super_scale) for x, y in outline_pts]
+        draw.polygon(scaled_pts, fill=None, outline=hex_code, width=28 * super_scale)
+        png = im.resize((size, size), Image.Resampling.LANCZOS)
+        save_asset(f"star-10pt-spiky-outline-{c_name}", svg, png, target_dirs)
+        print(f"Generated: star-10pt-spiky-outline-{c_name}")
+
+    # Concentric two-tone badges (inner star at 0.62 scale, as in star-10pt-concentric)
+    concentric_pairs = [
+        ("sun-navy", "sun", "navy"),
+        ("navy-sun", "navy", "sun"),
+        ("orange-white", "orange", "white"),
+        ("deep-sun", "deep", "sun")
+    ]
+    inner_pts = make_spiky_star_points(size, scale_factor=0.62)
+    for pair_name, outer_c, inner_c in concentric_pairs:
+        outer_hex = COLORS[outer_c]
+        inner_hex = COLORS[inner_c]
+        svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {size} {size}" width="{size}" height="{size}">
+  <polygon points="{' '.join(f'{x:.1f},{y:.1f}' for x, y in spiky_pts)}" fill="{outer_hex}"/>
+  <polygon points="{' '.join(f'{x:.1f},{y:.1f}' for x, y in inner_pts)}" fill="{inner_hex}"/>
+</svg>'''
+        super_scale = 4
+        large_size = size * super_scale
+        im = Image.new("RGBA", (large_size, large_size), (0, 0, 0, 0))
+        draw = ImageDraw.Draw(im)
+        draw.polygon([(x * super_scale, y * super_scale) for x, y in spiky_pts], fill=outer_hex)
+        draw.polygon([(x * super_scale, y * super_scale) for x, y in inner_pts], fill=inner_hex)
+        png = im.resize((size, size), Image.Resampling.LANCZOS)
+        save_asset(f"star-10pt-spiky-concentric-{pair_name}", svg, png, target_dirs)
+        print(f"Generated: star-10pt-spiky-concentric-{pair_name}")
+
+    # Tilted (same three angles and colors as star-4pt-tilted)
+    tilted_spiky = [
+        ("tilted-15deg-sun", 15.0, "sun"),
+        ("tilted-minus15deg-navy", -15.0, "navy"),
+        ("tilted-25deg-orange", 25.0, "orange")
+    ]
+    for t_name, angle, c_name in tilted_spiky:
+        hex_code = COLORS[c_name]
+        pts = make_spiky_star_points(size, rotation_deg=angle)
+        svg = make_svg_polygon(pts, size, hex_code)
+        png = render_polygon_png(pts, size, hex_code)
+        save_asset(f"star-10pt-spiky-{t_name}", svg, png, target_dirs)
+        print(f"Generated: star-10pt-spiky-{t_name}")
+
 def render_polygon_png(pts, size, fill_color, stroke_color=None, stroke_width=0):
     super_scale = 4
     large_size = size * super_scale
@@ -166,6 +265,11 @@ def main():
         png = render_polygon_png(pts, size, hex_code)
         save_asset(f"star-10pt-{t_name}", svg, png, target_dirs)
         print(f"Generated: star-10pt-{t_name}")
+
+    # -------------------------------------------------------------
+    # 4b. 10-Point Star (Spiky family, same variant set as star-4pt)
+    # -------------------------------------------------------------
+    generate_spiky_family(size, target_dirs)
 
     # -------------------------------------------------------------
     # 5. Triangles (Equilateral — 0°, 90°, 180°, 270°)
