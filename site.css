@@ -206,7 +206,10 @@ nav a[aria-current="page"] {
   100% { transform: scale(1); }
 }
 
-/* Cart panel: native popover, scales in from its trigger corner */
+/* Cart panel: native popover that scales in from its trigger corner.
+   The base rule is the closed (exit) state; the open rule is the entry target.
+   flex-direction lives on the base rule so the column layout holds while the panel fades out.
+   Exit is shorter than entry and fades on a plain ease, so the shrink stays visible until the end. */
 .cart-panel {
   position: fixed;
   inset: 72px clamp(16px, 5vw, 72px) auto auto;
@@ -215,31 +218,58 @@ nav a[aria-current="page"] {
   margin: 0;
   padding: 0;
   border: 0;
+  flex-direction: column;
   background: var(--white);
   color: var(--navy);
   box-shadow: 0 24px 60px rgba(20, 24, 63, .35);
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
   transform-origin: top right;
-  opacity: 1;
-  transform: none;
-  transition: opacity .18s var(--ease-out), transform .18s var(--ease-out), display .18s allow-discrete, overlay .18s allow-discrete;
+  opacity: 0;
+  transition-property: opacity, transform, display, overlay;
+  transition-duration: .14s;
+  transition-timing-function: ease;
+  /* Separate from the shorthand so older browsers keep the rest of the transition */
+  transition-behavior: allow-discrete;
 }
 
 .cart-panel:popover-open {
   display: flex;
-  flex-direction: column;
+}
+
+/* [data-closing] lets site.js play the exit in browsers that cannot transition display and overlay */
+.cart-panel:popover-open:where(:not([data-closing])) {
+  opacity: 1;
+  transition-duration: .2s;
+  transition-timing-function: var(--ease-out);
 }
 
 @starting-style {
-  .cart-panel:popover-open {
+  .cart-panel:popover-open:where(:not([data-closing])) {
     opacity: 0;
-    transform: scale(.96) translateY(-6px);
   }
 }
 
-.cart-panel:not(:popover-open) {
-  opacity: 0;
-  transform: scale(.96) translateY(-6px);
+@media (prefers-reduced-motion: no-preference) {
+  .cart-panel {
+    transform: scale(.96) translateY(-6px);
+  }
+
+  .cart-panel:popover-open:where(:not([data-closing])) {
+    transform: none;
+  }
+
+  @starting-style {
+    .cart-panel:popover-open:where(:not([data-closing])) {
+      transform: scale(.96) translateY(-6px);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cart-panel,
+  .cart-panel:popover-open:where(:not([data-closing])) {
+    transition-duration: .1s;
+  }
 }
 
 .cart-panel header {

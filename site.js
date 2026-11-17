@@ -63,6 +63,41 @@
       </div>`;
     document.body.append(panel);
 
+    /* Firefox and older Safari cannot transition display and overlay, so a plain hidePopover() cuts the
+       exit short. There, the close button and the cart button set data-closing, wait for the exit
+       transition, then hide. Light dismiss (Esc, outside click) cannot be intercepted and stays instant. */
+    let displayTransitions;
+    const canTransitionDisplay = () => {
+      if (displayTransitions !== undefined) return displayTransitions;
+      if (!window.CSS?.supports?.('transition-behavior', 'allow-discrete')) return (displayTransitions = false);
+      const probe = document.createElement('div');
+      probe.style.cssText = 'transition: display 1s allow-discrete !important; display: block;';
+      document.body.append(probe);
+      getComputedStyle(probe).display;
+      probe.style.display = 'none';
+      displayTransitions = getComputedStyle(probe).display === 'block';
+      probe.remove();
+      return displayTransitions;
+    };
+    const closeWithExit = async () => {
+      panel.setAttribute('data-closing', '');
+      const anims = panel.getAnimations();
+      if (anims.length) {
+        await Promise.race([Promise.allSettled(anims.map((a) => a.finished)), new Promise((r) => setTimeout(r, 600))]);
+      }
+      if (!panel.hasAttribute('data-closing')) return;
+      panel.removeAttribute('data-closing');
+      panel.hidePopover();
+    };
+    const interceptClose = (e) => {
+      if (!panel.matches(':popover-open') || (window.CSS?.supports?.('overlay', 'auto') && canTransitionDisplay())) return;
+      e.preventDefault();
+      closeWithExit();
+    };
+    btn.addEventListener('click', interceptClose);
+    panel.querySelector('.close').addEventListener('click', interceptClose);
+    panel.addEventListener('toggle', (e) => { if (e.newState === 'open') panel.removeAttribute('data-closing'); });
+
     panel.addEventListener('click', (e) => {
       const remove = e.target.closest('[data-remove]');
       if (remove) {

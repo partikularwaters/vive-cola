@@ -61,8 +61,7 @@
   .row figure:nth-child(3) { --tilt:-.8deg; }
   .intro > img { transform:rotate(-2.5deg); box-shadow:0 18px 30px rgba(29,39,102,.2); }
   .row .lift::before { content:""; position:absolute; inset:5% -4% -10px 6%; background:var(--b); clip-path:polygon(4% 0,100% 3%,96% 100%,0 96%); z-index:0; }
-  /* One frame for all three posters: the Classic poster is 1024×1636, so the older 1587×2245 posters crop slightly at the sides */
-  .row img { position:relative; z-index:1; aspect-ratio:1024/1636; object-fit:cover; box-shadow:0 18px 30px rgba(29,39,102,.2); }
+  .row img { position:relative; z-index:1; box-shadow:0 18px 30px rgba(29,39,102,.2); }
   /* Variant caption and CTA under each poster */
   .row figcaption > * { position:relative; z-index:1; }
   .row figcaption h3 { margin:36px 0 0; font-weight:900; text-transform:uppercase; font-size:clamp(22px,2vw,28px); line-height:1; letter-spacing:-.01em; color:var(--navy); }
@@ -85,15 +84,43 @@
   /* MORE POSTERS (seasonal), bottom of page */
   .more { background:var(--orange); }
   
-  .slots { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
-  .slot { aspect-ratio:2/3; background:rgba(249,249,249,.16); outline:3px dashed rgba(249,249,249,.7); outline-offset:-3px; display:grid; place-items:center;
-          text-align:center; color:var(--white); font-weight:800; padding:16px; }
+  .more .lede { margin:14px 0 32px; max-width:560px; font-size:17px; line-height:1.5; font-weight:600; color:var(--deep); }
+  /* Five posters in one row at equal height: each grows in proportion to its aspect ratio (--ar) */
+  .seasonal { display:flex; gap:20px; align-items:flex-start; margin:0; padding:0; list-style:none; }
+  .seasonal li { flex:var(--ar) 1 0; min-width:0; }
+  .seasonal li:nth-child(odd) { --tilt:-1.2deg; }
+  .seasonal li:nth-child(even) { --tilt:1deg; }
+  .seasonal .lift { display:block; }
+  .seasonal button { display:block; width:100%; padding:0; border:0; background:none; cursor:zoom-in; }
+  .seasonal button:focus-visible { outline:3px solid var(--deep); outline-offset:6px; }
+  .seasonal img { display:block; width:100%; aspect-ratio:var(--ar); box-shadow:0 16px 28px rgba(29,39,102,.28); }
+
+  /* Full-size poster viewer: native modal dialog, light-dismissable, animates in and out of the top layer */
+  .poster-view { width:auto; max-width:min(92vw, 1100px); max-height:94vh; margin:auto; padding:0; border:0; background:none; overflow:visible;
+                 opacity:0; transition-property:opacity, transform, display, overlay; transition-duration:.16s; transition-timing-function:ease; transition-behavior:allow-discrete; }
+  .poster-view[open] { display:grid; justify-items:center; gap:14px; opacity:1; transition-duration:.24s; transition-timing-function:var(--ease-out); }
+  @starting-style { .poster-view[open] { opacity:0; } }
+  @media (prefers-reduced-motion: no-preference) {
+    .poster-view { transform:scale(.96); }
+    .poster-view[open] { transform:none; }
+    @starting-style { .poster-view[open] { transform:scale(.96); } }
+  }
+  @media (prefers-reduced-motion: reduce) { .poster-view, .poster-view[open] { transition-duration:.1s; } }
+  .poster-view:modal { overscroll-behavior:contain; }
+  .poster-view::backdrop { background:rgb(29 39 102 / 0); overflow:hidden; overscroll-behavior:contain;
+                           transition-property:background-color, display, overlay; transition-duration:.16s; transition-behavior:allow-discrete; }
+  .poster-view[open]::backdrop { background:rgb(29 39 102 / .86); transition-duration:.24s; }
+  @starting-style { .poster-view[open]::backdrop { background:rgb(29 39 102 / 0); } }
+  .poster-view img { display:block; max-width:100%; max-height:calc(94vh - 64px); width:auto; height:auto; box-shadow:0 24px 60px rgba(0,0,0,.4); }
+  .poster-view .bar { display:flex; align-items:center; gap:16px; color:var(--white); }
+  .poster-view h2 { margin:0; font-size:15px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; }
+  .poster-view form { margin:0; }
 
 
   @media (max-width:820px) {
     .hero .grid { grid-template-columns:1fr; }
     .stage { max-width:380px; margin:0 auto; width:100%; }
-    .row, .slots { grid-template-columns:1fr; } .row figure { --tilt:0deg; --rise:0px; }
+    .row { grid-template-columns:1fr; } .seasonal { flex-wrap:wrap; } .row figure { --tilt:0deg; --rise:0px; }
     .intro > * { min-width:0; } h2 .label { width:auto; } .intro { grid-template-columns:1fr; }
   }
 </style>
@@ -143,7 +170,7 @@
   <h2><span class="label">Pick your vibe</span></h2>
   <div class="row">
     <figure style="--b:var(--sun)">
-      <div class="art lift-zone"><div class="lift"><img src="assets/poster-relaxing-vibes-hires.webp" alt="Your dose of relaxing vibes poster" width="1587" height="2245" loading="lazy"></div></div>
+      <div class="art lift-zone"><div class="lift"><img src="assets/poster-glow-hires.webp" alt="VIVE Glow poster: a woman in pink closes her eyes and holds up a pink VIVE Glow can" width="1024" height="1636" loading="lazy"></div></div>
       <figcaption>
         <h3>VIVE Glow</h3>
         <p class="tagline">Your dose of radiant vibes</p>
@@ -161,7 +188,7 @@
       </figcaption>
     </figure>
     <figure style="--b:var(--navy)">
-      <div class="art lift-zone"><div class="lift"><img src="assets/poster-grind-vibes-hires.webp" alt="Your dose of grind vibes poster" width="1587" height="2245" loading="lazy"></div></div>
+      <div class="art lift-zone"><div class="lift"><img src="assets/poster-focus-hires.webp" alt="VIVE Focus poster: a young man at a desk in a night-time office raises a teal VIVE Focus can" width="1024" height="1636" loading="lazy"></div></div>
       <figcaption>
         <h3>VIVE Focus</h3>
         <p class="tagline">Your dose of sharp vibes</p>
@@ -186,13 +213,46 @@
 </section>
 
 <section class="more wrap">
-  <h2><span class="label">More from VIVE</span></h2>
-  <div class="slots">
-    <div class="slot">Christmas poster<br>(placeholder)</div>
-    <div class="slot">Seasonal poster<br>(placeholder)</div>
-    <div class="slot">Seasonal poster<br>(placeholder)</div>
-  </div>
+  <h2 id="more-title"><span class="label">Christmas with VIVE</span></h2>
+  <p class="lede">Five holiday posters from the VIVE team. Select a poster to see it full size.</p>
+  <ul class="seasonal" aria-labelledby="more-title">
+    <li class="lift-zone" style="--ar:0.707"><button type="button" data-full="assets/seasonal/christmas-czar-full.webp" data-title="Sleigh the holidays with a charged Christmas spirit"><span class="lift"><img src="assets/seasonal/christmas-czar-thumb.webp" alt="Christmas poster: a VIVE Classic can in a Santa hat rides a red sleigh under the line “Sleigh the holidays with a charged Christmas spirit.”" width="636" height="900" loading="lazy"></span></button></li>
+    <li class="lift-zone" style="--ar:0.8"><button type="button" data-full="assets/seasonal/christmas-louie-full.webp" data-title="Have a chilling VIVE this Christmas"><span class="lift"><img src="assets/seasonal/christmas-louie-thumb.webp" alt="Christmas poster: a VIVE Classic can wrapped in a knit scarf stands among skiers in the snow, under the line “Have a chilling VIVE this Christmas.”" width="720" height="900" loading="lazy"></span></button></li>
+    <li class="lift-zone" style="--ar:0.75"><button type="button" data-full="assets/seasonal/christmas-venson-full.webp" data-title="Busy like Santa? Get your dose of good vibes"><span class="lift"><img src="assets/seasonal/christmas-venson-thumb.webp" alt="Christmas poster: Santa reads his list in the workshop and raises a VIVE Classic can, under the line “Busy like Santa? Get your dose of good vibes.”" width="675" height="900" loading="lazy"></span></button></li>
+    <li class="lift-zone" style="--ar:0.707"><button type="button" data-full="assets/seasonal/christmas-warren-full.webp" data-title="Ignite your festive fire"><span class="lift"><img src="assets/seasonal/christmas-warren-thumb.webp" alt="Christmas poster: a frosted VIVE Classic can stands in a snowy mountain scene framed by pine branches, under the line “Ignite your festive fire.”" width="637" height="900" loading="lazy"></span></button></li>
+    <li class="lift-zone" style="--ar:0.707"><button type="button" data-full="assets/seasonal/christmas-aya-full.webp" data-title="Charge up your holidays with festive vibes"><span class="lift"><img src="assets/seasonal/christmas-aya-thumb.webp" alt="Christmas poster: VIVE Classic cans hang like ornaments on a snowy tree beside the line “Charge up your holidays with festive vibes.”" width="636" height="900" loading="lazy"></span></button></li>
+  </ul>
+  <dialog class="poster-view" id="poster-view" closedby="any" aria-labelledby="poster-view-title">
+    <img alt="">
+    <div class="bar">
+      <h2 id="poster-view-title"></h2>
+      <form method="dialog"><button class="btn white" autofocus>Close</button></form>
+    </div>
+  </dialog>
 </section>
+<script>
+  /* Seasonal poster viewer: open the full-size poster in the modal dialog */
+  (() => {
+    const view = document.getElementById('poster-view');
+    const img = view.querySelector('img');
+    const title = view.querySelector('h2');
+    document.querySelector('.seasonal').addEventListener('click', (e) => {
+      const btn = e.target.closest('button[data-full]');
+      if (!btn) return;
+      img.src = btn.dataset.full;
+      img.alt = btn.querySelector('img').alt;
+      title.textContent = btn.dataset.title;
+      view.showModal();
+    });
+    /* Light dismiss for browsers without closedby (Safari): close only when press and release land outside */
+    if (!('closedBy' in HTMLDialogElement.prototype)) {
+      const outside = (e) => { const r = view.getBoundingClientRect(); return e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom; };
+      let pressedOutside = false;
+      view.addEventListener('pointerdown', (e) => { pressedOutside = outside(e); });
+      view.addEventListener('pointerup', (e) => { if (pressedOutside && outside(e)) view.close(); });
+    }
+  })();
+</script>
 
 </main>
 
