@@ -36,3 +36,25 @@ Client's words:
   - VIVE Focus (Sharp Vibes · Mental Edge): Vitamins B6, B9, B12, and C.
 - **Interactive Routing:** Single-page PDF with 100% full-surface click target routing to `https://vive-cola.vercel.app`.
 - **Target Deliverable Constraint:** Exactly one file in the target location (`VIVE.pdf`), with zero extra files or preview images in that folder. Master HTML maintained at `router.html` and compiled via `scripts/build_router_pdf.py`.
+
+---
+
+# Web Portal Poster Approved (2026-11-18)
+
+Supersedes the router poster above. The client called the earlier poster "too complicated".
+
+Shown: `design-demos/portal-dir-1.html` (Sun Burst Trio), `portal-dir-2.html` (Three Columns), and `portal-dir-3.html` (Night Stage), side by side in `design-demos/portal-thumbs.png`.
+
+Client's words:
+> Let's change the "Official Digital Router" to "Official Web Portal"
+> Remove the stores, no logos, no store names.
+> website should be one-line.
+> Three bottles should be the dominant.
+> Three Columns.
+
+## What that means for the build
+- `router.html` is now Three Columns: an off-white page, the navy V!VE wordmark, the "Official Web Portal" tag, three full-height color columns (sun, orange, and navy) with one upright can each (Glow, Classic, and Focus), and `vive-cola.vercel.app` on one line under a "Tap anywhere to visit" hint.
+- No stores, store names, or retailer logos. No vitamin lists or price.
+- Brand shapes are SVG images, because WeasyPrint ignores CSS `clip-path`.
+- The whole page links to `https://vive-cola.vercel.app`. The final file in the Drive `Website` folder is `VIVE.pdf`, built by `scripts/build_router_pdf.py`.
+- The previous `router.html` is kept as `design-demos/router-before-portal.html`.

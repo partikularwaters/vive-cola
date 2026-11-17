@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VIVE Web Portal — Direction 2: Three Columns</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800;900&display=swap');
+  @page { size: 595.28pt 841.89pt; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --orange:#F27A21; --navy:#2B3990; --sun:#F4BD6A; --white:#F9F9F9; --deep:#1D2766; }
+  html, body { width: 595.28pt; height: 841.89pt; overflow: hidden; position: relative;
+               font-family: 'Montserrat', sans-serif; }
+  a.global-router-overlay { position:absolute; top:0; left:0; width:595.28pt; height:841.89pt; z-index:1000; display:block; text-decoration:none; }
+  .abs { position:absolute; display:block; }
+  .tag { font-size:10.5pt; font-weight:800; letter-spacing:.16em; text-transform:uppercase; white-space:nowrap; }
+  .url { font-weight:900; white-space:nowrap; letter-spacing:-.01em; }
+  .hint { font-size:10pt; font-weight:600; letter-spacing:.04em; white-space:nowrap; }
+
+  body { background: var(--white); }
+  .col { top:118pt; width:198.43pt; height:606pt; }
+
+</style>
+</head>
+<body>
+<a class="global-router-overlay" href="https://vive-cola.vercel.app" aria-label="Visit the VIVE website at vive-cola.vercel.app">&nbsp;</a>
+<img class="abs" src="assets/wordmark-vive-navy.png" alt="VIVE" style="left:34pt;top:40pt;width:150pt;height:38.2pt">
+<span class="abs tag" style="right:34pt;top:52pt;color:var(--navy)">Official Web Portal</span>
+<div class="abs col" style="left:0;background:var(--sun)"></div>
+<div class="abs col" style="left:198.43pt;background:var(--orange)"></div>
+<div class="abs col" style="left:396.85pt;background:var(--navy)"></div>
+<img class="abs" src="assets/shapes/triangle-equilateral-orange.svg" alt="" style="left:14pt;top:132pt;width:30pt;height:30pt">
+<img class="abs" src="assets/shapes/triangle-equilateral-sun.svg" alt="" style="left:212pt;top:132pt;width:30pt;height:30pt">
+<img class="abs" src="assets/shapes/triangle-equilateral-orange.svg" alt="" style="left:411pt;top:132pt;width:30pt;height:30pt">
+<img class="abs" src="assets/can-glow-web.webp" alt="VIVE Glow can" style="width:183.6pt;height:480pt;left:7.4pt;top:180pt;transform:rotate(0deg);z-index:2">
+<img class="abs" src="assets/can-classic-web.webp" alt="VIVE Classic can" style="width:183.6pt;height:480pt;left:205.9pt;top:180pt;transform:rotate(0deg);z-index:2">
+<img class="abs" src="assets/can-focus-web.webp" alt="VIVE Focus can" style="width:183.6pt;height:480pt;left:404.3pt;top:180pt;transform:rotate(0deg);z-index:2">
+<span class="abs hint" style="left:0;width:595.28pt;text-align:center;top:748pt;color:var(--navy)">Tap anywhere to visit</span>
+<span class="abs url" style="left:0;width:595.28pt;text-align:center;top:770pt;font-size:38pt;color:var(--navy)">vive-cola.vercel.app</span>
+</body>
+</html>
