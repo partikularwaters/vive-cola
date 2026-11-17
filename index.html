@@ -23,8 +23,8 @@
   .cta { position:relative; width:fit-content; display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
   .cta .tri { left:calc(100% + 40px); top:calc(50% - var(--s) / 2); z-index:-1; }
   .stage { position:relative; aspect-ratio:1/1.15; display:grid; place-items:center; }
-  .stage .burst { position:absolute; inset:2% -6%; background:var(--white); animation:spin 90s linear infinite; }
-  .stage .burst.back { inset:-4% -12%; background:var(--sun); animation-direction:reverse; opacity:.9; }
+  .stage .burst { position:absolute; inset:2% -6%; background-image:url(assets/shapes/star-10pt-white.svg); animation:spin 90s linear infinite; }
+  .stage .burst.back { inset:-4% -12%; background-image:url(assets/shapes/star-10pt-sun.svg); animation-direction:reverse; opacity:.9; }
   @keyframes spin { to { transform:rotate(360deg); } }
   .hero.is-still .burst { animation-play-state:paused; }
   /* Discreet pause for the always-spinning stars (WCAG 2.2.2), bottom right of the hero */
@@ -79,7 +79,7 @@
   .player { aspect-ratio:16/9; max-width:1120px; margin:0 auto; position:relative; display:grid; place-items:center; text-align:center; font-weight:800;
             background:var(--deep); clip-path:polygon(0 0,100% 0,100% 92%,96% 100%,0 100%); outline:2px dashed rgba(249,249,249,.35); outline-offset:-14px; }
   .player .playbtn { width:96px; height:96px; background:var(--orange); margin:0 auto 14px; display:grid; place-items:center; }
-  .player .playbtn::after { content:""; width:34px; height:34px; background:var(--white); clip-path:polygon(0 0,100% 50%,0 100%); margin-left:6px; }
+  .player .playbtn::after { content:""; width:34px; height:34px; background:url(assets/shapes/triangle-right-white.svg) 81% 50% / 138% 120% no-repeat; margin-left:6px; }
 
   /* MORE POSTERS (seasonal), bottom of page */
   .more { background:var(--orange); }
@@ -113,10 +113,10 @@
 
 <main id="content">
 <section class="hero cut-down on-dark">
-  <i class="tri" style="--s:120px;--c:var(--sun);--r:18deg;left:-30px;top:120px;--d:.05s"></i>
-  <i class="tri hide-sm" style="--s:46px;--c:var(--orange);--r:-24deg;left:42%;top:84px;--d:.12s"></i>
-  <i class="tri" style="--s:34px;--c:var(--orange);--r:40deg;right:6%;top:96px;--d:.24s"></i>
-  <i class="tri hide-sm" style="--s:58px;--c:var(--sun);--r:-150deg;left:8%;bottom:70px;--d:.3s"></i>
+  <i class="tri" style="--s:120px;--c:url(assets/shapes/triangle-equilateral-sun.svg);--r:18deg;left:-30px;top:120px;--d:.05s"></i>
+  <i class="tri hide-sm" style="--s:46px;--c:url(assets/shapes/triangle-equilateral-orange.svg);--r:-24deg;left:42%;top:84px;--d:.12s"></i>
+  <i class="tri" style="--s:34px;--c:url(assets/shapes/triangle-equilateral-orange.svg);--r:40deg;right:6%;top:96px;--d:.24s"></i>
+  <i class="tri hide-sm" style="--s:58px;--c:url(assets/shapes/triangle-equilateral-sun.svg);--r:-150deg;left:8%;bottom:70px;--d:.3s"></i>
 
 
   <div class="grid wrap">
@@ -124,7 +124,7 @@
       <h1>Your dose of <em>good vibes</em></h1>
       <p>The vitamin-charged cola. A convenient, refreshing way to get your vitamins A, B9, B12, and C from a cold can of cola.</p>
       <div class="cta">
-        <i class="tri hide-sm" aria-hidden="true" style="--s:70px;--c:var(--white);--r:200deg;--d:.18s"></i>
+        <i class="tri hide-sm" aria-hidden="true" style="--s:70px;--c:url(assets/shapes/triangle-equilateral-white.svg);--r:200deg;--d:.18s"></i>
         <a class="btn orange" href="shop.html">Grab a VIVE!</a>
         <a class="btn white" href="product.html">See the flavors</a>
       </div>
@@ -132,7 +132,7 @@
     <div class="stage">
       <div class="burst back star"></div>
       <div class="burst star"></div>
-      <img class="can" src="assets/can-classic-web.webp" alt="VIVE Classic can, 12 oz" width="600" height="1570" fetchpriority="high">
+      <img class="can" src="assets/can-classic-web.webp" alt="VIVE Classic can, 12 oz" width="600" height="1569" fetchpriority="high">
     </div>
   </div>
   <button class="motion-toggle" type="button"><span class="vh">Pause </span>Motion <span class="icon" aria-hidden="true"></span></button>

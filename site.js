@@ -131,9 +131,9 @@
   const footer = document.querySelector('footer.site-footer');
   if (footer && !footer.children.length) {
     footer.innerHTML = `
-  <i class="tri" aria-hidden="true" style="--s:140px;--c:var(--navy);--r:14deg;right:-30px;top:-24px"></i>
-  <i class="tri hide-sm" aria-hidden="true" style="--s:56px;--c:var(--orange);--r:-32deg;right:22%;top:48px"></i>
-  <i class="tri hide-sm" aria-hidden="true" style="--s:40px;--c:var(--sun);--r:200deg;left:46%;bottom:96px"></i>
+  <i class="tri" aria-hidden="true" style="--s:140px;--c:url(assets/shapes/triangle-equilateral-navy.svg);--r:14deg;right:-30px;top:-24px"></i>
+  <i class="tri hide-sm" aria-hidden="true" style="--s:56px;--c:url(assets/shapes/triangle-equilateral-orange.svg);--r:-32deg;right:22%;top:48px"></i>
+  <i class="tri hide-sm" aria-hidden="true" style="--s:40px;--c:url(assets/shapes/triangle-equilateral-sun.svg);--r:200deg;left:46%;bottom:96px"></i>
   <div class="foot-cta wrap">
     <div>
       <h2><span class="label sun">Grab a VIVE!</span></h2>

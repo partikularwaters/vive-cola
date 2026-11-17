@@ -25,8 +25,8 @@
   .p-hero p { font-size:clamp(16px,1.4vw,19px); line-height:1.55; font-weight:600; max-width:30em; margin:24px 0 0; }
   .p-hero .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
   .trio { position:relative; aspect-ratio:1/0.9; display:grid; place-items:center; }
-  .trio .burst { position:absolute; inset:4% 6%; background:var(--sun); }
-  .trio .burst.front { inset:12% 14%; background:var(--white); }
+  .trio .burst { position:absolute; inset:4% 6%; background-image:url(assets/shapes/star-10pt-sun.svg); }
+  .trio .burst.front { inset:12% 14%; background-image:url(assets/shapes/star-10pt-white.svg); }
   .trio .cans { position:relative; display:flex; align-items:flex-end; justify-content:center; width:100%; height:86%; }
   .trio img { width:23%; filter:drop-shadow(0 24px 20px rgba(20,24,63,.4)); margin:0 -2.5%; }
   .trio img:nth-child(1) { rotate:-12deg; translate:0 4%; }
@@ -46,12 +46,12 @@
   .variant .inner { position:relative; z-index:1; display:grid; grid-template-columns:.85fr 1.15fr; gap:clamp(32px,5vw,80px); align-items:center; }
   .variant.flip .inner { grid-template-columns:1.15fr .85fr; }
   .variant.flip .can-col { order:2; }
-  .v-classic { background:var(--orange); color:var(--deep); --chip:var(--white); --chip-ink:var(--navy); --star:var(--white); --numeral:rgba(29,39,102,.12); }
-  .v-glow { background:var(--sun); color:var(--navy); --chip:var(--navy); --chip-ink:var(--white); --star:var(--white); --numeral:rgba(43,57,144,.12); }
-  .v-focus { background:var(--navy); color:var(--white); --chip:var(--sun); --chip-ink:var(--navy); --star:var(--deep); --numeral:rgba(249,249,249,.08); }
+  .v-classic { background:var(--orange); color:var(--deep); --chip:var(--white); --chip-ink:var(--navy); --star:url(assets/shapes/star-10pt-white.svg); --numeral:rgba(29,39,102,.12); }
+  .v-glow { background:var(--sun); color:var(--navy); --chip:var(--navy); --chip-ink:var(--white); --star:url(assets/shapes/star-10pt-white.svg); --numeral:rgba(43,57,144,.12); }
+  .v-focus { background:var(--navy); color:var(--white); --chip:var(--sun); --chip-ink:var(--navy); --star:url(assets/shapes/star-10pt-deep.svg); --numeral:rgba(249,249,249,.08); }
 
   .can-col { position:relative; display:grid; place-items:center; aspect-ratio:1/1.05; }
-  .can-col .burst { position:absolute; inset:2%; background:var(--star); }
+  .can-col .burst { position:absolute; inset:2%; background-image:var(--star); }
   .can-col .lift-zone { position:relative; width:42%; display:grid; place-items:center; }
   .can-col .lift { --tilt:-8deg; width:100%; }
   .variant.flip .can-col .lift { --tilt:8deg; }
@@ -138,10 +138,10 @@
 
 <main id="content">
 <section class="p-hero cut-down on-dark">
-  <i class="tri" aria-hidden="true" style="--s:110px;--c:var(--sun);--r:18deg;left:-26px;top:130px;--d:.05s"></i>
-  <i class="tri hide-sm" aria-hidden="true" style="--s:44px;--c:var(--orange);--r:-24deg;left:44%;top:96px;--d:.12s"></i>
-  <i class="tri hide-sm" aria-hidden="true" style="--s:60px;--c:var(--white);--r:200deg;left:40%;bottom:120px;--d:.2s"></i>
-  <i class="tri" aria-hidden="true" style="--s:34px;--c:var(--orange);--r:40deg;right:5%;top:110px;--d:.26s"></i>
+  <i class="tri" aria-hidden="true" style="--s:110px;--c:url(assets/shapes/triangle-equilateral-sun.svg);--r:18deg;left:-26px;top:130px;--d:.05s"></i>
+  <i class="tri hide-sm" aria-hidden="true" style="--s:44px;--c:url(assets/shapes/triangle-equilateral-orange.svg);--r:-24deg;left:44%;top:96px;--d:.12s"></i>
+  <i class="tri hide-sm" aria-hidden="true" style="--s:60px;--c:url(assets/shapes/triangle-equilateral-white.svg);--r:200deg;left:40%;bottom:120px;--d:.2s"></i>
+  <i class="tri" aria-hidden="true" style="--s:34px;--c:url(assets/shapes/triangle-equilateral-orange.svg);--r:40deg;right:5%;top:110px;--d:.26s"></i>
 
 
   <div class="grid wrap">
@@ -157,9 +157,9 @@
       <div class="burst star"></div>
       <div class="burst front star"></div>
       <div class="cans">
-        <img src="assets/can-glow-web.webp" alt="" width="600" height="1570" fetchpriority="high">
-        <img src="assets/can-classic-web.webp" alt="" width="600" height="1570" fetchpriority="high">
-        <img src="assets/can-focus-web.webp" alt="" width="600" height="1570">
+        <img src="assets/can-glow-web.webp" alt="" width="600" height="1568" fetchpriority="high">
+        <img src="assets/can-classic-web.webp" alt="" width="600" height="1569" fetchpriority="high">
+        <img src="assets/can-focus-web.webp" alt="" width="600" height="1569">
       </div>
     </div>
   </div>
@@ -171,7 +171,7 @@
   <div class="inner">
     <div class="can-col" data-reveal>
       <div class="burst star" aria-hidden="true"></div>
-      <div class="lift-zone"><div class="lift"><img src="assets/can-classic-web.webp" alt="VIVE Classic can, orange, 12 oz" width="600" height="1570" loading="lazy"></div></div>
+      <div class="lift-zone"><div class="lift"><img src="assets/can-classic-web.webp" alt="VIVE Classic can, orange, 12 oz" width="600" height="1569" loading="lazy"></div></div>
     </div>
     <div>
       <p class="kicker" data-reveal>VIVE Classic · The original</p>
@@ -193,7 +193,7 @@
   <div class="inner">
     <div class="can-col" data-reveal>
       <div class="burst star" aria-hidden="true"></div>
-      <div class="lift-zone"><div class="lift"><img src="assets/can-glow-web.webp" alt="VIVE Glow can, pink, 12 oz" width="600" height="1570" loading="lazy"></div></div>
+      <div class="lift-zone"><div class="lift"><img src="assets/can-glow-web.webp" alt="VIVE Glow can, pink, 12 oz" width="600" height="1568" loading="lazy"></div></div>
     </div>
     <div>
       <p class="kicker" data-reveal>VIVE Glow · Skin health</p>
@@ -215,7 +215,7 @@
   <div class="inner">
     <div class="can-col" data-reveal>
       <div class="burst star" aria-hidden="true"></div>
-      <div class="lift-zone"><div class="lift"><img src="assets/can-focus-web.webp" alt="VIVE Focus can, teal, 12 oz" width="600" height="1570" loading="lazy"></div></div>
+      <div class="lift-zone"><div class="lift"><img src="assets/can-focus-web.webp" alt="VIVE Focus can, teal, 12 oz" width="600" height="1569" loading="lazy"></div></div>
     </div>
     <div>
       <p class="kicker" data-reveal>VIVE Focus · Mental performance</p>
