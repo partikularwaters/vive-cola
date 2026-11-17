@@ -6,10 +6,16 @@ This document is the canonical router and functional contract for the VIVE four-
 
 | Page | File | Status | Input Dependencies | Human Check Gate |
 |---|---|---|---|---|
-| 01 Home | [index.html](index.html) | Draft v2 complete | `assets/`, `brand-spec.md`, `direction-approved.md` | Gian / Client review of hero, posters, and video layout |
+| 01 Home | [index.html](index.html) | Draft v3 complete: team Glow, Classic, and Focus posters; Christmas section with full-size viewer | `assets/`, `brand-spec.md`, `direction-approved.md` | Gian / Client review of hero, posters, and video layout |
 | 02 About Us | [about.html](about.html) | Draft v1 complete | Founding story, team roster, and team photos | Verify complete names, company roles, and photo look |
 | 03 Product | [product.html](product.html) | Draft v1 complete | Can renders, flavor specifications, and nutritional facts | Verify one variant per strip, zero posters, and zero merch |
-| 04 Shop | [shop.html](shop.html) | Draft v1 complete | Merch catalog, bundle definitions, and pricing | Verify quantity inputs, cart count behavior, zero checkout |
+| 04 Shop | [shop.html](shop.html) | Draft v2 complete: transparent can renders and the scene hover reveal | Merch catalog, bundle definitions, and pricing | Verify quantity inputs, cart count behavior, zero checkout |
+| Web portal poster | [router.html](router.html) → `VIVE.pdf` on Drive | Locked: Three Columns (2026-11-18), see [direction-approved.md](direction-approved.md) | Can renders, `site.css` tokens | Change only when the client asks; rebuild by hand with `scripts/build_router_pdf.py` |
+
+**Open checks (as of 2026-11-18, commit `6225632`):**
+- The team's Classic poster headline reads "Your dose of radiant vibes" (the Glow line); a corrected export is needed (see [brand-spec.md](brand-spec.md)).
+- Not yet seen in Firefox or Safari: the cart panel exit fallback and the Christmas viewer's light-dismiss fallback. The open viewer was also never captured in a screenshot.
+- `source/deck-extract/brand-assets-contact-sheet.png` still shows the old outline shapes; its build script needs headless Brave.
 
 ---
 
