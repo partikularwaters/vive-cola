@@ -58,3 +58,8 @@ Client's words:
 - Brand shapes are SVG images, because WeasyPrint ignores CSS `clip-path`.
 - The whole page links to `https://vive-cola.vercel.app`. The final file in the Drive `Website` folder is `VIVE.pdf`, built by `scripts/build_router_pdf.py`.
 - The previous `router.html` is kept as `design-demos/router-before-portal.html`.
+
+**Locked (2026-11-18).** Client's words:
+> We should settle with this design until I decide otherwise
+
+Do not redesign `router.html` or rebuild `VIVE.pdf` with a different design until the client asks. The automatic PDF rebuild in the pre-commit hook is off; run `python3 scripts/build_router_pdf.py` by hand when a rebuild is wanted.
