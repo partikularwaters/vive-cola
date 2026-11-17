@@ -14,6 +14,8 @@ import math
 import subprocess
 from PIL import Image, ImageDraw
 
+from outline_ring import outline_png, outline_svg
+
 # Exact Brand Palette from brand-spec.md
 COLORS = {
     "sun": "#F4BD6A",       # Sun Yellow (triangles / stars)
@@ -101,16 +103,8 @@ def generate_spiky_family(size, target_dirs):
     outline_pts = make_spiky_star_points(size, scale_factor=0.96)
     for c_name in ["sun", "orange", "navy", "white", "deep"]:
         hex_code = COLORS[c_name]
-        svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {size} {size}" width="{size}" height="{size}">
-  <polygon points="{' '.join(f'{x:.1f},{y:.1f}' for x, y in outline_pts)}" fill="none" stroke="{hex_code}" stroke-width="28" stroke-linejoin="round"/>
-</svg>'''
-        super_scale = 4
-        large_size = size * super_scale
-        im = Image.new("RGBA", (large_size, large_size), (0, 0, 0, 0))
-        draw = ImageDraw.Draw(im)
-        scaled_pts = [(x * super_scale, y * super_scale) for x, y in outline_pts]
-        draw.polygon(scaled_pts, fill=None, outline=hex_code, width=28 * super_scale)
-        png = im.resize((size, size), Image.Resampling.LANCZOS)
+        svg = outline_svg(outline_pts, size, hex_code, 28)
+        png = outline_png(outline_pts, size, hex_code, 28)
         save_asset(f"star-10pt-spiky-outline-{c_name}", svg, png, target_dirs)
         print(f"Generated: star-10pt-spiky-outline-{c_name}")
 
@@ -208,16 +202,8 @@ def main():
     for c_name in ["sun", "orange", "navy", "white", "deep"]:
         hex_code = COLORS[c_name]
         pts = make_star_points(size, scale_factor=0.96)
-        svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {size} {size}" width="{size}" height="{size}">
-  <polygon points="{' '.join(f'{x:.1f},{y:.1f}' for x, y in pts)}" fill="none" stroke="{hex_code}" stroke-width="28" stroke-linejoin="round"/>
-</svg>'''
-        super_scale = 4
-        large_size = size * super_scale
-        im = Image.new("RGBA", (large_size, large_size), (0, 0, 0, 0))
-        draw = ImageDraw.Draw(im)
-        scaled_pts = [(x * super_scale, y * super_scale) for x, y in pts]
-        draw.polygon(scaled_pts, fill=None, outline=hex_code, width=28 * super_scale)
-        png = im.resize((size, size), Image.Resampling.LANCZOS)
+        svg = outline_svg(pts, size, hex_code, 28)
+        png = outline_png(pts, size, hex_code, 28)
         save_asset(f"star-10pt-outline-{c_name}", svg, png, target_dirs)
         print(f"Generated: star-10pt-outline-{c_name}")
 
@@ -339,16 +325,8 @@ def main():
     for c_name in ["sun", "navy", "orange", "white"]:
         hex_code = COLORS[c_name]
         pts = equi_up
-        svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {size} {size}" width="{size}" height="{size}">
-  <polygon points="{' '.join(f'{x:.1f},{y:.1f}' for x, y in pts)}" fill="none" stroke="{hex_code}" stroke-width="32" stroke-linejoin="round"/>
-</svg>'''
-        super_scale = 4
-        large_size = size * super_scale
-        im = Image.new("RGBA", (large_size, large_size), (0, 0, 0, 0))
-        draw = ImageDraw.Draw(im)
-        scaled_pts = [(x * super_scale, y * super_scale) for x, y in pts]
-        draw.polygon(scaled_pts, fill=None, outline=hex_code, width=32 * super_scale)
-        png = im.resize((size, size), Image.Resampling.LANCZOS)
+        svg = outline_svg(pts, size, hex_code, 32)
+        png = outline_png(pts, size, hex_code, 32)
         save_asset(f"triangle-outline-{c_name}", svg, png, target_dirs)
         print(f"Generated: triangle-outline-{c_name}")
 

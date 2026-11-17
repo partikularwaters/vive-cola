@@ -64,3 +64,6 @@ yarn-error.log*
 memory/
 .memory/
 .tmp.driveupload/
+
+# Python bytecode caches
+__pycache__/

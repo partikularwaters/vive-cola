@@ -53,12 +53,33 @@
   .item:nth-child(3n+2) { --tilt:1deg; }
   .item:nth-child(3n) { --tilt:-.6deg; }
   .item .art img { width:82%; }
-  .item .art img.can { width:30%; filter:drop-shadow(0 20px 18px rgba(20,24,63,.35)); }
+  .item .art img.can { width:25%; filter:drop-shadow(0 18px 16px rgba(20,24,63,.35)); }
   .pack { position:relative; width:100%; aspect-ratio:1; }
   .item .pack img { position:absolute; bottom:10%; width:24%; filter:drop-shadow(0 16px 14px rgba(20,24,63,.35)); }
   .item .pack img:nth-child(1) { left:18%; rotate:-10deg; }
   .item .pack img:nth-child(2) { left:50%; translate:-50% 0; width:27%; bottom:8%; z-index:1; }
   .item .pack img:nth-child(3) { right:18%; rotate:10deg; }
+  /* Can hover reveal, modeled on Olipop's product-card wave (700ms, ease-out cubic, both directions, and it
+     reverses from wherever it is). The scene rises from the bottom behind a row of three large triangles,
+     which flatten into a straight edge over the last 16% of the rise so the scene ends square.
+     Armed by .is-ready once the scene image is decoded. The layer ignores the pointer and the card never moves. */
+  @property --reveal { syntax:'<number>'; inherits:false; initial-value:0; }
+  .item .reveal { position:absolute; inset:6% 4% 0 4%; clip-path:polygon(3% 0,100% 4%,97% 100%,0 96%); pointer-events:none; }
+  .item .reveal .scene { position:absolute; inset:0; --reveal:0;
+    --base:calc((1 - var(--reveal)) * 100%);
+    --tooth:calc(16% * (1 - clamp(0, (var(--reveal) - .84) / .16, 1)));
+    clip-path:polygon(0 100%, 0 calc(var(--base) + var(--tooth)), 16.67% var(--base), 33.33% calc(var(--base) + var(--tooth)),
+                      50% var(--base), 66.67% calc(var(--base) + var(--tooth)), 83.33% var(--base),
+                      100% calc(var(--base) + var(--tooth)), 100% 100%);
+    transition:--reveal .7s cubic-bezier(.33,1,.68,1) .12s; }
+  .item .reveal img { width:100%; height:100%; object-fit:cover; object-position:50% 100%; display:block; }
+  @media (hover:hover) and (pointer:fine) {
+    .item .art.is-ready:hover .reveal .scene { --reveal:1; transition-delay:0s; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .item .reveal .scene { clip-path:none; opacity:0; transition:opacity .2s ease .12s; }
+    .item .art.is-ready:hover .reveal .scene { opacity:1; transition:opacity .25s ease 0s; }
+  }
   .item h3 { margin:26px 0 0; font-weight:900; text-transform:uppercase; font-size:clamp(18px,1.5vw,22px); line-height:1.1; color:var(--navy); }
   .item .desc { margin:8px 0 0; font-size:14px; line-height:1.5; font-weight:600; color:#3a4370; }
   .buy { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:18px; }
@@ -124,7 +145,7 @@
   </div>
   <div class="grid-3">
       <article class="item" data-item data-id="can-classic" data-name="VIVE Classic" data-price="67">
-        <div class="art lift-zone" style="--g:var(--orange)"><div class="lift"><img class="can" src="assets/can-classic-web.webp" alt="VIVE Classic can" width="600" height="1569" loading="lazy"></div></div>
+        <div class="art lift-zone" style="--g:var(--orange)"><div class="lift"><img class="can" src="assets/can-classic-web.webp" alt="VIVE Classic can" width="600" height="1569" loading="lazy"></div><div class="reveal" aria-hidden="true"><div class="scene"><img src="assets/scene-classic-web.webp" alt="" width="800" height="800" decoding="async"></div></div></div>
         <h3>VIVE Classic</h3>
         <p class="desc">The original orange can. Vitamins A, B9, B12, and C for everyday energy.</p>
         <div class="buy">
@@ -139,7 +160,7 @@
         <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: VIVE Classic</span></button>
       </article>
       <article class="item" data-item data-id="can-glow" data-name="VIVE Glow" data-price="67">
-        <div class="art lift-zone" style="--g:var(--sun)"><div class="lift"><img class="can" src="assets/can-glow-web.webp" alt="VIVE Glow can" width="600" height="1568" loading="lazy"></div></div>
+        <div class="art lift-zone" style="--g:var(--sun)"><div class="lift"><img class="can" src="assets/can-glow-web.webp" alt="VIVE Glow can" width="600" height="1568" loading="lazy"></div><div class="reveal" aria-hidden="true"><div class="scene"><img src="assets/scene-glow-web.webp" alt="" width="800" height="800" decoding="async"></div></div></div>
         <h3>VIVE Glow</h3>
         <p class="desc">Vitamins A, B7, C, and E to support skin health.</p>
         <div class="buy">
@@ -154,7 +175,7 @@
         <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: VIVE Glow</span></button>
       </article>
       <article class="item" data-item data-id="can-focus" data-name="VIVE Focus" data-price="67">
-        <div class="art lift-zone" style="--g:var(--navy)"><div class="lift"><img class="can" src="assets/can-focus-web.webp" alt="VIVE Focus can" width="600" height="1569" loading="lazy"></div></div>
+        <div class="art lift-zone" style="--g:var(--navy)"><div class="lift"><img class="can" src="assets/can-focus-web.webp" alt="VIVE Focus can" width="600" height="1569" loading="lazy"></div><div class="reveal" aria-hidden="true"><div class="scene"><img src="assets/scene-focus-web.webp" alt="" width="800" height="800" decoding="async"></div></div></div>
         <h3>VIVE Focus</h3>
         <p class="desc">Vitamins B6, B9, B12, and C to support mental performance.</p>
         <div class="buy">
@@ -403,5 +424,16 @@
 </main>
 
 <footer class="site-footer"></footer>
+<script>
+  /* Arm each can's hover reveal once its scene image is decoded, so the star never opens on an empty layer.
+     If decoding stalls (a background tab, for example), arm it 1.2s after the image loads anyway. */
+  document.querySelectorAll('.item .reveal img').forEach((img) => {
+    const art = img.closest('.art');
+    const arm = () => art.classList.add('is-ready');
+    const loaded = img.complete ? Promise.resolve() : new Promise((res) => img.addEventListener('load', res, { once: true }));
+    const decoded = img.decode ? img.decode() : loaded;
+    Promise.race([decoded, loaded.then(() => new Promise((res) => setTimeout(res, 1200)))]).then(arm, arm);
+  });
+</script>
 </body>
 </html>

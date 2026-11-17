@@ -12,6 +12,8 @@ import os
 import math
 from PIL import Image, ImageDraw
 
+from outline_ring import outline_png, outline_svg
+
 COLORS = {
     "sun": "#F4BD6A",       # Sun Yellow
     "orange": "#F27A21",    # VIVE Orange
@@ -110,10 +112,8 @@ def main():
     # 1c. Outlined 4-Point Stars
     for c_name in ["sun", "orange", "navy", "white", "deep"]:
         hex_code = COLORS[c_name]
-        svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {size} {size}" width="{size}" height="{size}">
-  <polygon points="{' '.join(f'{x:.1f},{y:.1f}' for x, y in pts_4pt)}" fill="none" stroke="{hex_code}" stroke-width="28" stroke-linejoin="round"/>
-</svg>'''
-        png = render_polygon_png(pts_4pt, size, "none", stroke_color=hex_code, stroke_width=28)
+        svg = outline_svg(pts_4pt, size, hex_code, 28)
+        png = outline_png(pts_4pt, size, hex_code, 28)
         save_asset(f"star-4pt-outline-{c_name}", svg, png, target_dirs)
         print(f"Generated: star-4pt-outline-{c_name}")
 
@@ -174,10 +174,8 @@ def main():
     # 2b. Outlined 5-Point Stars
     for c_name in ["sun", "orange", "navy", "white", "deep"]:
         hex_code = COLORS[c_name]
-        svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {size} {size}" width="{size}" height="{size}">
-  <polygon points="{' '.join(f'{x:.1f},{y:.1f}' for x, y in pts_5pt)}" fill="none" stroke="{hex_code}" stroke-width="28" stroke-linejoin="round"/>
-</svg>'''
-        png = render_polygon_png(pts_5pt, size, "none", stroke_color=hex_code, stroke_width=28)
+        svg = outline_svg(pts_5pt, size, hex_code, 28)
+        png = outline_png(pts_5pt, size, hex_code, 28)
         save_asset(f"star-5pt-outline-{c_name}", svg, png, target_dirs)
         print(f"Generated: star-5pt-outline-{c_name}")
 
@@ -279,18 +277,14 @@ def main():
     for c_name in ["sun", "orange", "navy", "white"]:
         hex_code = COLORS[c_name]
         # Square outline
-        svg_sq_out = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {size} {size}" width="{size}" height="{size}">
-  <polygon points="{' '.join(f'{x:.1f},{y:.1f}' for x, y in pts_sq)}" fill="none" stroke="{hex_code}" stroke-width="32" stroke-linejoin="round"/>
-</svg>'''
-        png_sq_out = render_polygon_png(pts_sq, size, "none", stroke_color=hex_code, stroke_width=32)
+        svg_sq_out = outline_svg(pts_sq, size, hex_code, 32)
+        png_sq_out = outline_png(pts_sq, size, hex_code, 32)
         save_asset(f"square-outline-{c_name}", svg_sq_out, png_sq_out, target_dirs)
         print(f"Generated: square-outline-{c_name}")
 
         # Diamond outline
-        svg_d_out = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {size} {size}" width="{size}" height="{size}">
-  <polygon points="{' '.join(f'{x:.1f},{y:.1f}' for x, y in pts_diamond)}" fill="none" stroke="{hex_code}" stroke-width="32" stroke-linejoin="round"/>
-</svg>'''
-        png_d_out = render_polygon_png(pts_diamond, size, "none", stroke_color=hex_code, stroke_width=32)
+        svg_d_out = outline_svg(pts_diamond, size, hex_code, 32)
+        png_d_out = outline_png(pts_diamond, size, hex_code, 32)
         save_asset(f"square-diamond-outline-{c_name}", svg_d_out, png_d_out, target_dirs)
         print(f"Generated: square-diamond-outline-{c_name}")
 
