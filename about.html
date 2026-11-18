@@ -17,15 +17,43 @@
   .about-hero {
     position: relative;
     overflow: hidden;
-    padding-bottom: calc(var(--cut) + 50px);
+    /* Same rhythm as Home: equal space above and below the content */
+    padding-top: clamp(64px, 8vw, 112px);
+    padding-bottom: calc(var(--cut) + 40px);
     background: var(--navy);
   }
-  .hero-content {
+  .hero-grid {
     position: relative;
     z-index: 2;
-    max-width: 860px;
-    margin-top: clamp(24px, 4vw, 56px);
+    display: grid;
+    grid-template-columns: 1.35fr minmax(240px, .65fr);
+    align-items: center;
+    gap: clamp(24px, 4vw, 64px);
   }
+  .hero-content {
+    max-width: 760px;
+  }
+  /* VIVI on a slow-turning 10-point star fills the right half of the hero */
+  .hero-vivi {
+    position: relative;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+  }
+  .hero-vivi .burst {
+    position: absolute;
+    inset: 0;
+    background-image: url(assets/shapes/star-10pt-sun.svg);
+    animation: about-spin 90s linear infinite;
+  }
+  .hero-vivi img {
+    position: relative;
+    width: 66%;
+    filter: drop-shadow(0 22px 20px rgba(20, 24, 63, .35));
+    animation: about-pop .55s .15s var(--ease-pop) both;
+  }
+  @keyframes about-spin { to { transform: rotate(360deg); } }
+  @keyframes about-pop { from { opacity: 0; transform: translateY(36px) rotate(-10deg) scale(.88); } }
   .hero-content h1 {
     margin: 0;
     font-weight: 900;
@@ -163,11 +191,16 @@
     color: #a7acc8;
   }
 
+  /* Two rows of three; each row keeps the Direction B expanding panels */
   .team-panels {
-    display: flex;
-    gap: 12px;
-    min-height: 580px;
+    display: grid;
+    gap: 16px;
     margin-top: 10px;
+  }
+  .team-row {
+    display: flex;
+    gap: 16px;
+    height: clamp(440px, 36vw, 540px);
   }
   .member-card {
     flex: 1;
@@ -185,12 +218,26 @@
     transition: flex .45s var(--ease-out) .1s;
     border: 1px solid rgba(244, 189, 106, .2);
   }
+  /* Each cutout stands on a 10-point star; the star color alternates down the row */
+  .member-card {
+    --star: url(assets/shapes/star-10pt-orange.svg);
+    /* Star sized by card height, so it stays put while the card widens */
+    background: var(--deep) var(--star) 50% 4% / auto 74% no-repeat;
+  }
+  .member-card:nth-child(3n+2) { --star: url(assets/shapes/star-10pt-sun.svg); }
+  .member-card:nth-child(3n) { --star: url(assets/shapes/star-10pt-cream.svg); }
+  /* Sized by the card's height and centered, so every head sits at the same
+     height and size, and widening a card on hover only shows more star.
+     sync_assets.py frames each cutout with its face at the same spot. */
   .member-card img.avatar {
     position: absolute;
-    inset: 0;
-    width: 100%;
+    top: 0;
+    left: 50%;
+    width: auto;
+    max-width: none;
     height: 100%;
-    object-fit: cover;
+    translate: -50% 0;
+    transform-origin: 50% 30%;
     transition: transform .8s cubic-bezier(.2, .7, .2, 1);
   }
   .member-card::after {
@@ -257,23 +304,23 @@
 
   /* Expanding interaction states */
   /* :has() keys the squeeze to a hovered card, so resting in the gaps between cards changes nothing */
-  .team-panels:has(.member-card:hover) .member-card {
-    flex: .75;
+  .team-row:has(.member-card:hover) .member-card {
+    flex: .8;
   }
-  .team-panels .member-card:hover {
-    flex: 2.25;
+  .team-row .member-card:hover {
+    flex: 1.5;
     transition-delay: 0s;
     border-color: var(--orange);
   }
-  .team-panels .member-card:hover img.avatar {
-    transform: scale(1.04);
+  .team-row .member-card:hover img.avatar {
+    transform: scale(1.03);
   }
-  .team-panels .member-card:hover .member-bio {
+  .team-row .member-card:hover .member-bio {
     opacity: 1;
     max-height: 140px;
     transform: translateY(0);
   }
-  .team-panels .member-card:hover .member-badge {
+  .team-row .member-card:hover .member-badge {
     opacity: 1;
     transform: translateY(0);
   }
@@ -377,9 +424,9 @@
     .pillars-grid {
       grid-template-columns: 1fr;
     }
-    .team-panels {
+    .team-row {
       flex-direction: column;
-      min-height: auto;
+      height: auto;
     }
     .member-card {
       min-height: 320px;
@@ -418,7 +465,8 @@
   <i class="tri" style="--s:38px;--c:url(assets/shapes/triangle-equilateral-orange.svg);--r:38deg;right:8%;top:100px;--d:.26s"></i>
 
 
-  <div class="wrap hero-content">
+  <div class="wrap hero-grid">
+  <div class="hero-content">
     <h1>
       <span class="label sun">Born from the vibes</span>
       <em>Crafted for life</em>
@@ -431,6 +479,11 @@
       <a class="btn white" href="#team">Leadership Team</a>
       <a class="btn orange" href="#pillars">Brand Pillars</a>
     </div>
+  </div>
+  <div class="hero-vivi" aria-hidden="true">
+    <div class="burst star"></div>
+    <img src="assets/mascot/vivi-pointing.webp" alt="" width="671" height="720">
+  </div>
   </div>
 </section>
 
@@ -447,9 +500,15 @@
   <div class="story-grid">
     <div class="story-copy">
       <h2>
-        <span class="label">The name,</span>
-        <span class="label orange">the mission</span>
+        <span class="label">How VIVE</span>
+        <span class="label orange">got started</span>
       </h2>
+      <p>
+        VIVE started with a group of friends unwinding after a long day at work, sharing a few colas and good vibes. Talk turned to health and vitamins: how hard it is to take supplements every day, how easy it is to forget a dose, and how confusing it is to pick the right brand.
+      </p>
+      <p>
+        Then one friend looked at the cola in his hand and asked, <q>What if this cola had vitamins in it?</q> That simple question sparked the idea, and <strong>VIVE</strong> was born.
+      </p>
       <p>
         The name <strong>VIVE</strong> comes directly from the ending letters of <em>revive</em> and <em>survive</em>. It captures the daily reset people need between morning focus, afternoon deadlines, and evening sports.
       </p>
@@ -503,9 +562,10 @@
   </div>
 
   <div class="team-panels" aria-label="Leadership Team Interactive Roster">
+    <div class="team-row">
     <!-- 1. Venson Sanchez -->
     <article class="member-card">
-      <img class="avatar" src="assets/team/venson-sanchez.svg" alt="Venson Sanchez portrait placeholder">
+      <img class="avatar" src="assets/team/venson-sanchez.webp" alt="Portrait of Venson Sanchez" width="1000" height="1250" loading="lazy">
       <div class="member-info">
         <span class="member-role">Chief Executive Officer</span>
         <h3 class="member-name">Venson Sanchez</h3>
@@ -518,7 +578,7 @@
 
     <!-- 2. Ayanna Yarra -->
     <article class="member-card">
-      <img class="avatar" src="assets/team/ayanna-yarra.svg" alt="Ayanna Yarra portrait placeholder">
+      <img class="avatar" src="assets/team/ayanna-yarra.webp" alt="Portrait of Ayanna Yarra" width="1000" height="1250" loading="lazy">
       <div class="member-info">
         <span class="member-role">Chief Commercial Officer</span>
         <h3 class="member-name">Ayanna Yarra</h3>
@@ -531,7 +591,7 @@
 
     <!-- 3. Czar Bambao -->
     <article class="member-card">
-      <img class="avatar" src="assets/team/czar-bambao.svg" alt="Czar Bambao portrait placeholder">
+      <img class="avatar" src="assets/team/czar-bambao.webp" alt="Portrait of Czar Bambao" width="1000" height="1250" loading="lazy">
       <div class="member-info">
         <span class="member-role">Chief Marketing Officer</span>
         <h3 class="member-name">Czar Bambao</h3>
@@ -542,9 +602,11 @@
       </div>
     </article>
 
+    </div>
+    <div class="team-row">
     <!-- 4. Louie Latoreno -->
     <article class="member-card">
-      <img class="avatar" src="assets/team/louie-latoreno.svg" alt="Louie Latoreno portrait placeholder">
+      <img class="avatar" src="assets/team/louie-latoreno.webp" alt="Portrait of Louie Latoreno" width="1000" height="1250" loading="lazy">
       <div class="member-info">
         <span class="member-role">Chief Operating Officer</span>
         <h3 class="member-name">Louie Latoreno</h3>
@@ -557,7 +619,7 @@
 
     <!-- 5. Warren Gumapac -->
     <article class="member-card">
-      <img class="avatar" src="assets/team/warren-gumapac.svg" alt="Warren Gumapac portrait placeholder">
+      <img class="avatar" src="assets/team/warren-gumapac.webp" alt="Portrait of Warren Gumapac" width="1000" height="1250" loading="lazy">
       <div class="member-info">
         <span class="member-role">Chief Financial Officer</span>
         <h3 class="member-name">Warren Gumapac</h3>
@@ -570,7 +632,7 @@
 
     <!-- 6. John Madrid -->
     <article class="member-card">
-      <img class="avatar" src="assets/team/john-madrid.svg" alt="John Madrid portrait placeholder">
+      <img class="avatar" src="assets/team/john-madrid.webp" alt="Portrait of John Madrid" width="1000" height="1250" loading="lazy">
       <div class="member-info">
         <span class="member-role">Chief R&amp;D Officer</span>
         <h3 class="member-name">John Madrid</h3>
@@ -580,6 +642,7 @@
         <span class="member-badge">Formulation &amp; R&amp;D</span>
       </div>
     </article>
+    </div>
   </div>
 </section>
 

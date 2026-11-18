@@ -1,0 +1,218 @@
+{
+  "assets/mascot/vivi-dizzy.webp": {
+    "source": "Mascot/VIVI Dizzy.png",
+    "size": 91122,
+    "mtime": 1795019760,
+    "recipe": [
+      "fit",
+      720
+    ]
+  },
+  "assets/mascot/vivi-pointing.webp": {
+    "source": "Mascot/VIVI pointing.png",
+    "size": 73398,
+    "mtime": 1795019745,
+    "recipe": [
+      "fit",
+      720
+    ]
+  },
+  "assets/mascot/vivi-running.webp": {
+    "source": "Mascot/Vivi Running.png",
+    "size": 74951,
+    "mtime": 1795019784,
+    "recipe": [
+      "fit",
+      720
+    ]
+  },
+  "assets/merch/baseball-jersey.webp": {
+    "source": "vive-mockups/Merch/VIVE Jersey.jpg",
+    "size": 2539663,
+    "mtime": 1795017463,
+    "recipe": [
+      "square",
+      900
+    ]
+  },
+  "assets/merch/cap.webp": {
+    "source": "vive-mockups/Merch/VIVE Cap.jpg",
+    "size": 2355730,
+    "mtime": 1795019025,
+    "recipe": [
+      "square",
+      900
+    ]
+  },
+  "assets/merch/coasters.webp": {
+    "source": "vive-mockups/Merch/VIVE Coasters.jpg",
+    "size": 1773749,
+    "mtime": 1795018932,
+    "recipe": [
+      "square",
+      900
+    ]
+  },
+  "assets/merch/jacket.webp": {
+    "source": "vive-mockups/Merch/Vive Bomber jacket.jpg",
+    "size": 1672866,
+    "mtime": 1795018208,
+    "recipe": [
+      "square",
+      900
+    ]
+  },
+  "assets/merch/mug.webp": {
+    "source": "vive-mockups/Merch/VIVE-mug.jpg",
+    "size": 1298545,
+    "mtime": 1795019839,
+    "recipe": [
+      "square",
+      900
+    ]
+  },
+  "assets/merch/notebook.webp": {
+    "source": "vive-mockups/Merch/VIVE-A5-Notebook.jpg",
+    "size": 1966357,
+    "mtime": 1795019221,
+    "recipe": [
+      "square",
+      900
+    ]
+  },
+  "assets/merch/pens.webp": {
+    "source": "vive-mockups/Merch/VIVE-pens.jpg",
+    "size": 1361203,
+    "mtime": 1795019333,
+    "recipe": [
+      "square",
+      900
+    ]
+  },
+  "assets/merch/running-set.webp": {
+    "source": "vive-mockups/Merch/VIVE-singlet-and-shorts.jpg",
+    "size": 1904353,
+    "mtime": 1795017920,
+    "recipe": [
+      "square",
+      900
+    ]
+  },
+  "assets/merch/stickers.webp": {
+    "source": "vive-mockups/Merch/Sticker VIVE.png",
+    "size": 2239353,
+    "mtime": 1795020564,
+    "recipe": [
+      "square",
+      900
+    ]
+  },
+  "assets/merch/tote-bag.webp": {
+    "source": "vive-mockups/Merch/Playful VIVE Tote in Sunlit Studio.png",
+    "size": 2048817,
+    "mtime": 1795020554,
+    "recipe": [
+      "square",
+      900
+    ]
+  },
+  "assets/merch/tumbler.webp": {
+    "source": "vive-mockups/Merch/VIVE-tumblr.jpg",
+    "size": 1315244,
+    "mtime": 1795019671,
+    "recipe": [
+      "square",
+      900
+    ]
+  },
+  "assets/seasonal/christmas-madrid-full.webp": {
+    "source": "[Madrid] John Madrid v3.pdf",
+    "size": 3912470,
+    "mtime": 1794834111,
+    "recipe": [
+      "pdf",
+      2000
+    ]
+  },
+  "assets/seasonal/christmas-madrid-thumb.webp": {
+    "source": "[Madrid] John Madrid v3.pdf",
+    "size": 3912470,
+    "mtime": 1794834111,
+    "recipe": [
+      "pdf",
+      900
+    ]
+  },
+  "assets/team/ayanna-yarra.webp": {
+    "source": "About Us Picture/Aya.png",
+    "size": 5907800,
+    "mtime": 1795020643,
+    "recipe": [
+      "portrait",
+      2
+    ]
+  },
+  "assets/team/czar-bambao.webp": {
+    "source": "About Us Picture/Czar.png",
+    "size": 8100026,
+    "mtime": 1795020635,
+    "recipe": [
+      "portrait",
+      2
+    ]
+  },
+  "assets/team/john-madrid.webp": {
+    "source": "About Us Picture/Madrid.png",
+    "size": 5319838,
+    "mtime": 1795020622,
+    "recipe": [
+      "portrait",
+      2
+    ]
+  },
+  "assets/team/louie-latoreno.webp": {
+    "source": "About Us Picture/Louie.png",
+    "size": 6147977,
+    "mtime": 1795020609,
+    "recipe": [
+      "portrait",
+      2
+    ]
+  },
+  "assets/team/venson-sanchez.webp": {
+    "source": "About Us Picture/Venson.png",
+    "size": 8153010,
+    "mtime": 1795020629,
+    "recipe": [
+      "portrait",
+      2
+    ]
+  },
+  "assets/team/warren-gumapac.webp": {
+    "source": "About Us Picture/Warren.png",
+    "size": 6992262,
+    "mtime": 1795020601,
+    "recipe": [
+      "portrait",
+      2
+    ]
+  },
+  "assets/video/vive-ad-poster.webp": {
+    "source": "video-recordings/draft.mov",
+    "size": 42890614,
+    "mtime": 1795009974,
+    "recipe": [
+      "frame",
+      52.0
+    ]
+  },
+  "assets/video/vive-ad.mp4": {
+    "source": "video-recordings/draft.mov",
+    "size": 42890614,
+    "mtime": 1795009974,
+    "recipe": [
+      "video",
+      1920
+    ]
+  }
+}

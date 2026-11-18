@@ -41,9 +41,59 @@ img {
   display: block;
 }
 
+/* Generous side gutters: at least 7vw, and on wide screens the content holds at
+   1240px while the gutters take the rest. Color grounds still run full bleed.
+   Percentages resolve against the parent's width, the same box the padding uses. */
 .wrap {
-  padding-left: clamp(16px, 5vw, 72px);
-  padding-right: clamp(16px, 5vw, 72px);
+  --gutter: max(clamp(16px, 7vw, 120px), calc((100% - 1240px) / 2));
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+html {
+  overflow-x: clip;
+}
+
+/* VIVI, the VIVE mascot, stands in the side gutter of a .wrap section,
+   centered in the gutter so it never covers the content column. */
+.mascot {
+  position: absolute;
+  z-index: 3;
+  width: clamp(96px, calc(var(--gutter) * .8), 220px);
+  height: auto;
+  translate: -50% 0;
+  pointer-events: none;
+  filter: drop-shadow(0 14px 14px rgba(20, 24, 63, .25));
+}
+
+.mascot.left {
+  left: calc(var(--gutter) / 2);
+}
+
+.mascot.right {
+  left: calc(100% - var(--gutter) / 2);
+}
+
+/* Narrow gutters cannot hold VIVI without crowding the content */
+@media (max-width: 1279px) {
+  .mascot {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .mascot {
+    animation: vivi-in .6s var(--ease-pop) both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 60%;
+  }
+}
+
+@keyframes vivi-in {
+  from {
+    opacity: 0;
+    transform: translateY(40px) rotate(-8deg) scale(.9);
+  }
 }
 
 /* Visually hidden, still announced */
@@ -677,6 +727,40 @@ h3 .label {
 
 .foot-base nav {
   padding: 0;
+}
+
+/* Location and contact details */
+.foot-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 32px;
+  margin: 0;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.foot-contact span,
+.foot-contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+}
+
+.foot-contact a {
+  transition: color .15s ease;
+}
+
+.foot-contact a:hover,
+.foot-contact a:focus-visible {
+  color: var(--sun);
+}
+
+.foot-contact svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--sun);
+  flex-shrink: 0;
 }
 
 .foot-base ul {

@@ -184,13 +184,11 @@
   </div>
   <div class="foot-base wrap">
     <a href="index.html"><img src="assets/wordmark-vive-white.png" alt="VIVE home" width="94" height="24" loading="lazy"></a>
-    <nav aria-label="Footer">
-      <ul>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="product.html">Product</a></li>
-        <li><a href="shop.html">Shop</a></li>
-      </ul>
-    </nav>
+    <address class="foot-contact">
+      <span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>123 Street, Quezon City, Philippines</span>
+      <a href="mailto:hello@vivecola.com"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 5h18v14H3V5Zm2 2v.5l7 4.6 7-4.6V7H5Zm14 2.9-7 4.6-7-4.6V17h14V9.9Z"/></svg>hello@vivecola.com</a>
+      <a href="tel:+639220001234"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8Z"/></svg>+63 922 000 1234</a>
+    </address>
     <nav class="social" aria-label="Social media">
       <ul>
         <li><a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="${ICONS.facebook}"/></svg></a></li>

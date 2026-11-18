@@ -16,8 +16,8 @@
   section { position:relative; padding-top:clamp(72px,8vw,112px); padding-bottom:clamp(72px,8vw,112px); }
 
   /* ---------- HERO ---------- */
-  .s-hero { position:relative; z-index:2; overflow:hidden; background:var(--navy); color:var(--white); padding-bottom:calc(var(--cut) + 56px); }
-  .s-hero .grid { position:relative; z-index:2; display:grid; grid-template-columns:1.1fr .9fr; gap:32px; align-items:end; margin-top:clamp(24px,4vw,56px); }
+  .s-hero { position:relative; z-index:2; overflow:hidden; background:var(--navy); color:var(--white); padding-bottom:calc(var(--cut) + 40px); }
+  .s-hero .grid { position:relative; z-index:2; display:grid; grid-template-columns:1.1fr .9fr; gap:32px; align-items:center; }
   .s-hero h1 { margin:0; font-weight:900; text-transform:uppercase; line-height:.9; font-size:clamp(52px,8vw,124px); letter-spacing:-.01em; }
   .s-hero h1 em { display:block; font-style:normal; color:var(--orange); }
   .s-hero p { font-size:clamp(16px,1.4vw,19px); line-height:1.55; font-weight:600; max-width:30em; margin:24px 0 0; }
@@ -53,6 +53,8 @@
   .item:nth-child(3n+2) { --tilt:1deg; }
   .item:nth-child(3n) { --tilt:-.6deg; }
   .item .art img { width:82%; }
+  /* Merch mockup photos sit square on the tilted color block, cut on the same angle */
+  .item .art img.photo { position:relative; width:84%; clip-path:polygon(3% 0,100% 2%,97% 100%,0 98%); }
   .item .art img.can { width:25%; filter:drop-shadow(0 18px 16px rgba(20,24,63,.35)); }
   .pack { position:relative; width:100%; aspect-ratio:1; }
   .item .pack img { position:absolute; bottom:10%; width:24%; filter:drop-shadow(0 16px 14px rgba(20,24,63,.35)); }
@@ -139,6 +141,7 @@
 
 
 <section class="shelf cans wrap" id="cans" aria-labelledby="cans-title">
+  <img class="mascot right" src="assets/mascot/vivi-pointing.webp" alt="" width="671" height="720" loading="lazy" style="top:clamp(140px,14vw,200px)">
   <div class="shelf-head">
     <h2 id="cans-title"><span class="label">Single cans</span></h2>
     <p>Every 12 oz can carries four vitamins and zero calories. ₱67 each.</p>
@@ -247,6 +250,7 @@
 </section>
 
 <section class="shelf merch wrap" id="merch" aria-labelledby="merch-title">
+  <img class="mascot left" src="assets/mascot/vivi-running.webp" alt="" width="595" height="720" loading="lazy" style="top:clamp(120px,12vw,180px)">
   <div class="shelf-head">
     <h2 id="merch-title"><span class="label sun">Merch</span></h2>
     <p>Wear the vibe to the gym, the office, and the weekend game.</p>
@@ -268,7 +272,7 @@
         <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: Baseball jersey</span></button>
       </article>
       <article class="item" data-item data-id="merch-running-set" data-name="Running shirt and shorts" data-price="1499">
-        <div class="art lift-zone" style="--g:var(--mist)"><div class="lift"><img src="assets/merch/running-set.svg" alt="Running shirt and shorts mockup" width="480" height="480" loading="lazy"></div></div>
+        <div class="art lift-zone" style="--g:var(--mist)"><div class="lift"><img class="photo" src="assets/merch/running-set.webp" alt="Running shirt and shorts mockup" width="900" height="900" loading="lazy"></div></div>
         <h3>Running shirt and shorts</h3>
         <p class="desc">Quick-dry mesh singlet and split shorts for your morning run. Sold as a set.</p>
         <div class="buy">
@@ -283,7 +287,7 @@
         <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: Running shirt and shorts</span></button>
       </article>
       <article class="item" data-item data-id="merch-jacket" data-name="Bomber jacket" data-price="1899">
-        <div class="art lift-zone" style="--g:var(--sun)"><div class="lift"><img src="assets/merch/jacket.svg" alt="Bomber jacket mockup" width="480" height="480" loading="lazy"></div></div>
+        <div class="art lift-zone" style="--g:var(--sun)"><div class="lift"><img class="photo" src="assets/merch/jacket.webp" alt="Bomber jacket mockup" width="900" height="900" loading="lazy"></div></div>
         <h3>Bomber jacket</h3>
         <p class="desc">Navy bomber with an orange ribbed collar, cuffs, and hem.</p>
         <div class="buy">
@@ -298,7 +302,7 @@
         <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: Bomber jacket</span></button>
       </article>
       <article class="item" data-item data-id="merch-tote-bag" data-name="Canvas tote bag" data-price="449">
-        <div class="art lift-zone" style="--g:var(--orange)"><div class="lift"><img src="assets/merch/tote-bag.svg" alt="Canvas tote bag mockup" width="480" height="480" loading="lazy"></div></div>
+        <div class="art lift-zone" style="--g:var(--orange)"><div class="lift"><img class="photo" src="assets/merch/tote-bag.webp" alt="Canvas tote bag mockup" width="900" height="900" loading="lazy"></div></div>
         <h3>Canvas tote bag</h3>
         <p class="desc">Heavy cotton canvas with a 10-point star print. Fits a laptop and a six-pack.</p>
         <div class="buy">
@@ -313,7 +317,7 @@
         <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: Canvas tote bag</span></button>
       </article>
       <article class="item" data-item data-id="merch-coasters" data-name="Coaster set" data-price="299">
-        <div class="art lift-zone" style="--g:var(--sun)"><div class="lift"><img src="assets/merch/coasters.svg" alt="Coaster set mockup" width="480" height="480" loading="lazy"></div></div>
+        <div class="art lift-zone" style="--g:var(--sun)"><div class="lift"><img class="photo" src="assets/merch/coasters.webp" alt="Coaster set mockup" width="900" height="900" loading="lazy"></div></div>
         <h3>Coaster set</h3>
         <p class="desc">Four cork-backed coasters, two navy and two orange.</p>
         <div class="buy">
@@ -328,7 +332,7 @@
         <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: Coaster set</span></button>
       </article>
       <article class="item" data-item data-id="merch-cap" data-name="Six-panel cap" data-price="599">
-        <div class="art lift-zone" style="--g:var(--mist)"><div class="lift"><img src="assets/merch/cap.svg" alt="Six-panel cap mockup" width="480" height="480" loading="lazy"></div></div>
+        <div class="art lift-zone" style="--g:var(--mist)"><div class="lift"><img class="photo" src="assets/merch/cap.webp" alt="Six-panel cap mockup" width="900" height="900" loading="lazy"></div></div>
         <h3>Six-panel cap</h3>
         <p class="desc">Navy cap with an orange brim and an adjustable strap.</p>
         <div class="buy">
@@ -343,7 +347,7 @@
         <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: Six-panel cap</span></button>
       </article>
       <article class="item" data-item data-id="merch-notebook" data-name="A5 notebook" data-price="249">
-        <div class="art lift-zone" style="--g:var(--navy)"><div class="lift"><img src="assets/merch/notebook.svg" alt="A5 notebook mockup" width="480" height="480" loading="lazy"></div></div>
+        <div class="art lift-zone" style="--g:var(--navy)"><div class="lift"><img class="photo" src="assets/merch/notebook.webp" alt="A5 notebook mockup" width="900" height="900" loading="lazy"></div></div>
         <h3>A5 notebook</h3>
         <p class="desc">Dotted pages, an elastic band, and a sun-yellow cover.</p>
         <div class="buy">
@@ -358,7 +362,7 @@
         <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: A5 notebook</span></button>
       </article>
       <article class="item" data-item data-id="merch-pens" data-name="Pen set" data-price="149">
-        <div class="art lift-zone" style="--g:var(--mist)"><div class="lift"><img src="assets/merch/pens.svg" alt="Pen set mockup" width="480" height="480" loading="lazy"></div></div>
+        <div class="art lift-zone" style="--g:var(--mist)"><div class="lift"><img class="photo" src="assets/merch/pens.webp" alt="Pen set mockup" width="900" height="900" loading="lazy"></div></div>
         <h3>Pen set</h3>
         <p class="desc">Three gel pens in orange, navy, and sun.</p>
         <div class="buy">
@@ -373,7 +377,7 @@
         <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: Pen set</span></button>
       </article>
       <article class="item" data-item data-id="merch-stickers" data-name="Sticker pack" data-price="99">
-        <div class="art lift-zone" style="--g:var(--orange)"><div class="lift"><img src="assets/merch/stickers.svg" alt="Sticker pack mockup" width="480" height="480" loading="lazy"></div></div>
+        <div class="art lift-zone" style="--g:var(--orange)"><div class="lift"><img class="photo" src="assets/merch/stickers.webp" alt="Sticker pack mockup" width="900" height="900" loading="lazy"></div></div>
         <h3>Sticker pack</h3>
         <p class="desc">Six vinyl stickers for your laptop, bottle, or notebook.</p>
         <div class="buy">
@@ -388,7 +392,7 @@
         <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: Sticker pack</span></button>
       </article>
       <article class="item" data-item data-id="merch-tumbler" data-name="Tumbler with straw" data-price="699">
-        <div class="art lift-zone" style="--g:var(--sun)"><div class="lift"><img src="assets/merch/tumbler.svg" alt="Tumbler with straw mockup" width="480" height="480" loading="lazy"></div></div>
+        <div class="art lift-zone" style="--g:var(--sun)"><div class="lift"><img class="photo" src="assets/merch/tumbler.webp" alt="Tumbler with straw mockup" width="900" height="900" loading="lazy"></div></div>
         <h3>Tumbler with straw</h3>
         <p class="desc">Double-wall 20 oz tumbler with a reusable straw.</p>
         <div class="buy">
@@ -403,7 +407,7 @@
         <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: Tumbler with straw</span></button>
       </article>
       <article class="item" data-item data-id="merch-mug" data-name="Ceramic mug" data-price="399">
-        <div class="art lift-zone" style="--g:var(--navy)"><div class="lift"><img src="assets/merch/mug.svg" alt="Ceramic mug mockup" width="480" height="480" loading="lazy"></div></div>
+        <div class="art lift-zone" style="--g:var(--navy)"><div class="lift"><img class="photo" src="assets/merch/mug.webp" alt="Ceramic mug mockup" width="900" height="900" loading="lazy"></div></div>
         <h3>Ceramic mug</h3>
         <p class="desc">12 oz ceramic mug with an orange glaze inside.</p>
         <div class="buy">

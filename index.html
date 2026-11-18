@@ -76,10 +76,10 @@
   /* VIDEO */
   .video { background:var(--navy); color:var(--white); }
   
-  .player { aspect-ratio:16/9; max-width:1120px; margin:0 auto; position:relative; display:grid; place-items:center; text-align:center; font-weight:800;
-            background:var(--deep); clip-path:polygon(0 0,100% 0,100% 92%,96% 100%,0 100%); outline:2px dashed rgba(249,249,249,.35); outline-offset:-14px; }
-  .player .playbtn { width:96px; height:96px; background:var(--orange); margin:0 auto 14px; display:grid; place-items:center; }
-  .player .playbtn::after { content:""; width:34px; height:34px; background:url(assets/shapes/triangle-right-white.svg) 81% 50% / 138% 120% no-repeat; margin-left:6px; }
+  /* The ad sits on an offset orange block with the brand's chamfered corner */
+  .player { position:relative; max-width:1120px; margin:0 auto; }
+  .player::before { content:""; position:absolute; inset:18px -18px -18px 18px; background:var(--orange); clip-path:polygon(0 0,100% 0,100% 92%,96% 100%,0 100%); }
+  .player video { position:relative; display:block; width:100%; height:auto; aspect-ratio:16/9; background:var(--deep); clip-path:polygon(0 0,100% 0,100% 92%,96% 100%,0 100%); }
 
   /* MORE POSTERS (seasonal), bottom of page */
   .more { background:var(--orange); }
@@ -167,6 +167,7 @@
 </section>
 
 <section class="posters wrap">
+  <img class="mascot right" src="assets/mascot/vivi-pointing.webp" alt="" width="671" height="720" loading="lazy" style="top:clamp(220px,22vw,320px)">
   <h2><span class="label">Pick your vibe</span></h2>
   <div class="row">
     <figure style="--b:var(--sun)">
@@ -209,18 +210,25 @@
 
 <section class="video wrap">
   <h2><span class="label orange">Watch the ad</span></h2>
-  <div class="player"><div><div class="playbtn"></div>VIVE ad video goes here<br><small>Placeholder, 16:9</small></div></div>
+  <img class="mascot left" src="assets/mascot/vivi-running.webp" alt="" width="595" height="720" loading="lazy" style="top:38%">
+  <div class="player">
+    <video controls preload="metadata" playsinline poster="assets/video/vive-ad-poster.webp" width="1920" height="1080" aria-label="VIVE ad, 54 seconds">
+      <source src="assets/video/vive-ad.mp4" type="video/mp4">
+    </video>
+  </div>
 </section>
 
 <section class="more wrap">
+  <img class="mascot right" src="assets/mascot/vivi-dizzy.webp" alt="" width="608" height="720" loading="lazy" style="top:42%">
   <h2 id="more-title"><span class="label">Christmas with VIVE</span></h2>
-  <p class="lede">Five holiday posters from the VIVE team. Select a poster to see it full size.</p>
+  <p class="lede">Six holiday posters from the VIVE team. Select a poster to see it full size.</p>
   <ul class="seasonal" aria-labelledby="more-title">
     <li class="lift-zone" style="--ar:0.707"><button type="button" data-full="assets/seasonal/christmas-czar-full.webp" data-title="Sleigh the holidays with a charged Christmas spirit"><span class="lift"><img src="assets/seasonal/christmas-czar-thumb.webp" alt="Christmas poster: a VIVE Classic can in a Santa hat rides a red sleigh under the line “Sleigh the holidays with a charged Christmas spirit.”" width="636" height="900" loading="lazy"></span></button></li>
     <li class="lift-zone" style="--ar:0.8"><button type="button" data-full="assets/seasonal/christmas-louie-full.webp" data-title="Have a chilling VIVE this Christmas"><span class="lift"><img src="assets/seasonal/christmas-louie-thumb.webp" alt="Christmas poster: a VIVE Classic can wrapped in a knit scarf stands among skiers in the snow, under the line “Have a chilling VIVE this Christmas.”" width="720" height="900" loading="lazy"></span></button></li>
     <li class="lift-zone" style="--ar:0.747"><button type="button" data-full="assets/seasonal/christmas-venson-full.webp" data-title="Busy like Santa? Get your dose of good vibes"><span class="lift"><img src="assets/seasonal/christmas-venson-thumb.webp" alt="Christmas poster: Santa reads his list in the workshop and raises a VIVE Classic can, under the line “Busy like Santa? Get your dose of good vibes.”" width="672" height="900" loading="lazy"></span></button></li>
     <li class="lift-zone" style="--ar:0.707"><button type="button" data-full="assets/seasonal/christmas-warren-full.webp" data-title="Ignite your festive fire"><span class="lift"><img src="assets/seasonal/christmas-warren-thumb.webp" alt="Christmas poster: a frosted VIVE Classic can stands in a snowy mountain scene framed by pine branches, under the line “Ignite your festive fire.”" width="637" height="900" loading="lazy"></span></button></li>
     <li class="lift-zone" style="--ar:0.706"><button type="button" data-full="assets/seasonal/christmas-aya-full.webp" data-title="Charge up your holidays with festive vibes"><span class="lift"><img src="assets/seasonal/christmas-aya-thumb.webp" alt="Christmas poster: VIVE Classic cans hang like ornaments on a snowy tree beside the line “Charge up your holidays with festive vibes.”" width="636" height="900" loading="lazy"></span></button></li>
+    <li class="lift-zone" style="--ar:0.707"><button type="button" data-full="assets/seasonal/christmas-madrid-full.webp" data-title="Noche Buena drink? We gotcha!"><span class="lift"><img src="assets/seasonal/christmas-madrid-thumb.webp" alt="Christmas poster: a VIVE Classic can stands beside a lechon belly roll in front of a Christmas tree, under the line “Noche Buena drink? We gotcha!” with vitamins A, B9, B12, and C." width="636" height="900" loading="lazy"></span></button></li>
   </ul>
   <dialog class="poster-view" id="poster-view" closedby="any" aria-labelledby="poster-view-title">
     <img alt="">
