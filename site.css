@@ -43,9 +43,13 @@ img {
 
 /* Generous side gutters: at least 7vw, and on wide screens the content holds at
    1240px while the gutters take the rest. Color grounds still run full bleed.
-   Percentages resolve against the parent's width, the same box the padding uses. */
-.wrap {
+   --gutter is defined once here; its percentage resolves wherever it is used
+   (the parent's width for padding, the containing block for left and right). */
+:root {
   --gutter: max(clamp(16px, 7vw, 120px), calc((100% - 1240px) / 2));
+}
+
+.wrap {
   padding-left: var(--gutter);
   padding-right: var(--gutter);
 }
@@ -59,7 +63,7 @@ html {
 .mascot {
   position: absolute;
   z-index: 3;
-  width: clamp(96px, calc(var(--gutter) * .8), 220px);
+  width: clamp(76px, calc(var(--gutter) * .72), 220px);
   height: auto;
   translate: -50% 0;
   pointer-events: none;
@@ -72,6 +76,61 @@ html {
 
 .mascot.right {
   left: calc(100% - var(--gutter) / 2);
+}
+
+/* Motion pause for always-turning hero stars (WCAG 2.2.2). site.js toggles
+   .is-still on the button's section and keeps the hidden verb accurate. */
+/* Two classes on the burst so this outranks page rules like .stage .burst,
+   whose animation shorthand would otherwise reset the play state */
+.is-still .burst.star {
+  animation-play-state: paused;
+}
+
+.motion-toggle {
+  position: absolute;
+  z-index: 3;
+  right: var(--gutter);
+  bottom: calc(var(--cut) + 16px);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font: 800 11px/1 var(--f);
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--white);
+  opacity: .75;
+  transition: opacity .15s;
+}
+
+.motion-toggle:hover,
+.motion-toggle:focus-visible {
+  opacity: 1;
+}
+
+.motion-toggle:focus-visible {
+  outline: 2px solid var(--sun);
+  outline-offset: 2px;
+}
+
+.motion-toggle .icon::before {
+  content: "II" / "";
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.is-still .motion-toggle .icon::before {
+  content: "\25B6\FE0E" / "";
+  font-size: 9px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-toggle {
+    display: none;
+  }
 }
 
 /* Narrow gutters cannot hold VIVI without crowding the content */

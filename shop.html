@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shop · VIVE</title>
-<meta name="description" content="Shop VIVE Classic, Glow, and Focus by the can or the pack, plus VIVE merch: jerseys, running sets, jackets, totes, caps, mugs, and more.">
+<meta name="description" content="Shop VIVE Classic, Glow, and Focus by the can or the pack, plus VIVE merch: jerseys, running sets, jackets, totes, caps, mugs, keychains, scarves, and more.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap">
 <link rel="stylesheet" href="site.css">
 <script src="site.js" defer></script>
@@ -74,7 +74,8 @@
                       50% var(--base), 66.67% calc(var(--base) + var(--tooth)), 83.33% var(--base),
                       100% calc(var(--base) + var(--tooth)), 100% 100%);
     transition:--reveal .7s cubic-bezier(.33,1,.68,1) .12s; }
-  .item .reveal img { width:100%; height:100%; object-fit:cover; object-position:50% 100%; display:block; }
+  /* Each can reveals its own poster, cropped to keep the headline and the person */
+  .item .reveal img { width:100%; height:100%; object-fit:cover; object-position:50% 6%; display:block; }
   @media (hover:hover) and (pointer:fine) {
     .item .art.is-ready:hover .reveal .scene { --reveal:1; transition-delay:0s; }
   }
@@ -115,8 +116,8 @@
 
 <main id="content">
 <section class="s-hero cut-down on-dark">
-  <i class="tri" aria-hidden="true" style="--s:110px;--c:url(assets/shapes/triangle-equilateral-sun.svg);--r:18deg;left:-26px;top:130px;--d:.05s"></i>
-  <i class="tri hide-sm" aria-hidden="true" style="--s:44px;--c:url(assets/shapes/triangle-equilateral-orange.svg);--r:-24deg;left:46%;top:96px;--d:.12s"></i>
+  <i class="tri" aria-hidden="true" style="--s:110px;--c:url(assets/shapes/triangle-equilateral-sun.svg);--r:18deg;left:calc(var(--gutter) - var(--s) - 28px);top:130px;--d:.05s"></i>
+  <i class="tri hide-sm" aria-hidden="true" style="--s:44px;--c:url(assets/shapes/triangle-equilateral-orange.svg);--r:-24deg;left:46%;top:28px;--d:.12s"></i>
   <i class="tri hide-sm" aria-hidden="true" style="--s:56px;--c:url(assets/shapes/triangle-equilateral-white.svg);--r:200deg;left:52%;bottom:110px;--d:.2s"></i>
 
 
@@ -148,7 +149,7 @@
   </div>
   <div class="grid-3">
       <article class="item" data-item data-id="can-classic" data-name="VIVE Classic" data-price="67">
-        <div class="art lift-zone" style="--g:var(--orange)"><div class="lift"><img class="can" src="assets/can-classic-web.webp" alt="VIVE Classic can" width="600" height="1569" loading="lazy"></div><div class="reveal" aria-hidden="true"><div class="scene"><img src="assets/scene-classic-web.webp" alt="" width="800" height="800" decoding="async"></div></div></div>
+        <div class="art lift-zone" style="--g:var(--orange)"><div class="lift"><img class="can" src="assets/can-classic-web.webp" alt="VIVE Classic can" width="600" height="1569" loading="lazy"></div><div class="reveal" aria-hidden="true"><div class="scene"><img src="assets/poster-classic-hires.webp" alt="" width="1024" height="1636" decoding="async"></div></div></div>
         <h3>VIVE Classic</h3>
         <p class="desc">The original orange can. Vitamins A, B9, B12, and C for everyday energy.</p>
         <div class="buy">
@@ -163,7 +164,7 @@
         <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: VIVE Classic</span></button>
       </article>
       <article class="item" data-item data-id="can-glow" data-name="VIVE Glow" data-price="67">
-        <div class="art lift-zone" style="--g:var(--sun)"><div class="lift"><img class="can" src="assets/can-glow-web.webp" alt="VIVE Glow can" width="600" height="1568" loading="lazy"></div><div class="reveal" aria-hidden="true"><div class="scene"><img src="assets/scene-glow-web.webp" alt="" width="800" height="800" decoding="async"></div></div></div>
+        <div class="art lift-zone" style="--g:var(--sun)"><div class="lift"><img class="can" src="assets/can-glow-web.webp" alt="VIVE Glow can" width="600" height="1568" loading="lazy"></div><div class="reveal" aria-hidden="true"><div class="scene"><img src="assets/poster-glow-hires.webp" alt="" width="1024" height="1636" decoding="async"></div></div></div>
         <h3>VIVE Glow</h3>
         <p class="desc">Vitamins A, B7, C, and E to support skin health.</p>
         <div class="buy">
@@ -178,7 +179,7 @@
         <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: VIVE Glow</span></button>
       </article>
       <article class="item" data-item data-id="can-focus" data-name="VIVE Focus" data-price="67">
-        <div class="art lift-zone" style="--g:var(--navy)"><div class="lift"><img class="can" src="assets/can-focus-web.webp" alt="VIVE Focus can" width="600" height="1569" loading="lazy"></div><div class="reveal" aria-hidden="true"><div class="scene"><img src="assets/scene-focus-web.webp" alt="" width="800" height="800" decoding="async"></div></div></div>
+        <div class="art lift-zone" style="--g:var(--navy)"><div class="lift"><img class="can" src="assets/can-focus-web.webp" alt="VIVE Focus can" width="600" height="1569" loading="lazy"></div><div class="reveal" aria-hidden="true"><div class="scene"><img src="assets/poster-focus-hires.webp" alt="" width="1024" height="1636" decoding="async"></div></div></div>
         <h3>VIVE Focus</h3>
         <p class="desc">Vitamins B6, B9, B12, and C to support mental performance.</p>
         <div class="buy">
@@ -257,7 +258,7 @@
   </div>
   <div class="grid-4">
       <article class="item" data-item data-id="merch-baseball-jersey" data-name="Baseball jersey" data-price="1299">
-        <div class="art lift-zone" style="--g:var(--sun)"><div class="lift"><img src="assets/merch/baseball-jersey.svg" alt="Baseball jersey mockup" width="480" height="480" loading="lazy"></div></div>
+        <div class="art lift-zone" style="--g:var(--sun)"><div class="lift"><img class="photo" src="assets/merch/baseball-jersey.webp" alt="Baseball jersey mockup" width="900" height="900" loading="lazy"></div></div>
         <h3>Baseball jersey</h3>
         <p class="desc">Button-front mesh jersey with the VIVE chest mark and IV on the front.</p>
         <div class="buy">
@@ -421,6 +422,36 @@
         </div>
         <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: Ceramic mug</span></button>
       </article>
+      <article class="item" data-item data-id="merch-keychain" data-name="Acrylic keychain" data-price="199">
+        <div class="art lift-zone" style="--g:var(--orange)"><div class="lift"><img class="photo" src="assets/merch/keychain.webp" alt="Acrylic keychain mockup: VIVI with the line “I need more VIVE”" width="900" height="900" loading="lazy"></div></div>
+        <h3>Acrylic keychain</h3>
+        <p class="desc">Clear acrylic keychain with VIVI and the line “I need more VIVE.”</p>
+        <div class="buy">
+          <p class="price">₱199</p>
+          <div class="qty">
+            <button type="button" data-step="-1" aria-label="Decrease quantity for Acrylic keychain">−</button>
+            <label class="vh" for="q-merch-keychain">Quantity for Acrylic keychain</label>
+            <input id="q-merch-keychain" type="number" inputmode="numeric" min="1" max="99" value="1">
+            <button type="button" data-step="1" aria-label="Increase quantity for Acrylic keychain">+</button>
+          </div>
+        </div>
+        <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: Acrylic keychain</span></button>
+      </article>
+      <article class="item" data-item data-id="merch-scarf" data-name="Knit scarf" data-price="549">
+        <div class="art lift-zone" style="--g:var(--sun)"><div class="lift"><img class="photo" src="assets/merch/scarf.webp" alt="Knit scarf mockup: navy scarf with orange squares and sun triangles" width="900" height="900" loading="lazy"></div></div>
+        <h3>Knit scarf</h3>
+        <p class="desc">Navy knit scarf with orange squares, sun triangles, and fringed ends.</p>
+        <div class="buy">
+          <p class="price">₱549</p>
+          <div class="qty">
+            <button type="button" data-step="-1" aria-label="Decrease quantity for Knit scarf">−</button>
+            <label class="vh" for="q-merch-scarf">Quantity for Knit scarf</label>
+            <input id="q-merch-scarf" type="number" inputmode="numeric" min="1" max="99" value="1">
+            <button type="button" data-step="1" aria-label="Increase quantity for Knit scarf">+</button>
+          </div>
+        </div>
+        <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: Knit scarf</span></button>
+      </article>
   </div>
   <p class="note">Merch images are design mockups. Prices are sample prototype prices.</p>
 </section>
@@ -429,7 +460,7 @@
 
 <footer class="site-footer"></footer>
 <script>
-  /* Arm each can's hover reveal once its scene image is decoded, so the star never opens on an empty layer.
+  /* Arm each can's hover reveal once its poster image is decoded, so the star never opens on an empty layer.
      If decoding stalls (a background tab, for example), arm it 1.2s after the image loads anyway. */
   document.querySelectorAll('.item .reveal img').forEach((img) => {
     const art = img.closest('.art');

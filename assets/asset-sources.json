@@ -31,7 +31,7 @@
     "size": 2539663,
     "mtime": 1795017463,
     "recipe": [
-      "square",
+      "cutout-square",
       900
     ]
   },
@@ -57,6 +57,15 @@
     "source": "vive-mockups/Merch/Vive Bomber jacket.jpg",
     "size": 1672866,
     "mtime": 1795018208,
+    "recipe": [
+      "square",
+      900
+    ]
+  },
+  "assets/merch/keychain.webp": {
+    "source": "vive-mockups/Merch/I Need More V!VE Keychain.png",
+    "size": 2623228,
+    "mtime": 1795021557,
     "recipe": [
       "square",
       900
@@ -93,6 +102,15 @@
     "source": "vive-mockups/Merch/VIVE-singlet-and-shorts.jpg",
     "size": 1904353,
     "mtime": 1795017920,
+    "recipe": [
+      "square",
+      900
+    ]
+  },
+  "assets/merch/scarf.webp": {
+    "source": "vive-mockups/Merch/shawl.png",
+    "size": 2490591,
+    "mtime": 1795022508,
     "recipe": [
       "square",
       900

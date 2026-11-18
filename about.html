@@ -26,29 +26,34 @@
     position: relative;
     z-index: 2;
     display: grid;
-    grid-template-columns: 1.35fr minmax(240px, .65fr);
+    grid-template-columns: 1fr minmax(360px, 1fr);
     align-items: center;
     gap: clamp(24px, 4vw, 64px);
   }
   .hero-content {
     max-width: 760px;
   }
-  /* VIVI on a slow-turning 10-point star fills the right half of the hero */
+  /* VIVI on a slow-turning white 10-point star fills the right half of the hero.
+     The star bleeds a little past the column, like Home's burst behind the can. */
   .hero-vivi {
     position: relative;
     aspect-ratio: 1;
     display: grid;
     place-items: center;
+    margin-block: -10%;
+    /* Reach halfway into the right gutter: the headline labels set the text
+       column's width, so VIVI grows sideways instead */
+    margin-right: calc(var(--gutter) / -2);
   }
   .hero-vivi .burst {
     position: absolute;
-    inset: 0;
-    background-image: url(assets/shapes/star-10pt-sun.svg);
+    inset: -12%;
+    background-image: url(assets/shapes/star-10pt-white.svg);
     animation: about-spin 90s linear infinite;
   }
   .hero-vivi img {
     position: relative;
-    width: 66%;
+    width: 86%;
     filter: drop-shadow(0 22px 20px rgba(20, 24, 63, .35));
     animation: about-pop .55s .15s var(--ease-pop) both;
   }
@@ -161,7 +166,7 @@
     flex-shrink: 0;
   }
 
-  /* Team Section — Direction B Expanding Panels */
+  /* Team Section: portraits on stars with a rising name plate */
   .team-section {
     background: var(--ink);
     color: var(--white);
@@ -191,44 +196,32 @@
     color: #a7acc8;
   }
 
-  /* Two rows of three; each row keeps the Direction B expanding panels */
+  /* Two rows of three equal cards. Each portrait stands plain on its star; a
+     solid sun name plate carries the role and name, and on hover it rises to
+     reveal the bio. Nothing tints or moves the portrait. */
   .team-panels {
     display: grid;
     gap: 16px;
     margin-top: 10px;
   }
   .team-row {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
     height: clamp(440px, 36vw, 540px);
   }
   .member-card {
-    flex: 1;
+    --star: url(assets/shapes/star-10pt-orange.svg);
     position: relative;
     overflow: hidden;
-    background: var(--deep);
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 24px 18px;
-    text-decoration: none;
-    color: var(--white);
-    /* 100ms leave grace so brushing past a card edge does not reshuffle the row */
-    transition: flex .45s var(--ease-out) .1s;
-    border: 1px solid rgba(244, 189, 106, .2);
-  }
-  /* Each cutout stands on a 10-point star; the star color alternates down the row */
-  .member-card {
-    --star: url(assets/shapes/star-10pt-orange.svg);
-    /* Star sized by card height, so it stays put while the card widens */
+    color: var(--deep);
+    /* Star sized by card height, centered behind the head */
     background: var(--deep) var(--star) 50% 4% / auto 74% no-repeat;
   }
   .member-card:nth-child(3n+2) { --star: url(assets/shapes/star-10pt-sun.svg); }
   .member-card:nth-child(3n) { --star: url(assets/shapes/star-10pt-cream.svg); }
   /* Sized by the card's height and centered, so every head sits at the same
-     height and size, and widening a card on hover only shows more star.
-     sync_assets.py frames each cutout with its face at the same spot. */
+     height and size. sync_assets.py frames each cutout with its face at the same spot. */
   .member-card img.avatar {
     position: absolute;
     top: 0;
@@ -237,92 +230,70 @@
     max-width: none;
     height: 100%;
     translate: -50% 0;
-    transform-origin: 50% 30%;
-    transition: transform .8s cubic-bezier(.2, .7, .2, 1);
   }
-  .member-card::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      180deg,
-      rgba(20, 24, 63, .05) 0%,
-      rgba(20, 24, 63, .5) 45%,
-      rgba(20, 24, 63, .92) 80%,
-      rgba(20, 24, 63, .98) 100%
-    );
-    z-index: 1;
-    transition: opacity .4s ease;
-  }
+  /* Solid name plate with the brand's angled top edge */
   .member-info {
-    position: relative;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
     z-index: 2;
+    padding: 30px 22px 20px;
+    background: var(--sun);
+    clip-path: polygon(0 16px, 100% 0, 100% 100%, 0 100%);
   }
   .member-role {
+    display: block;
+    margin-bottom: 6px;
     font-weight: 800;
     font-size: 11px;
     letter-spacing: .12em;
     text-transform: uppercase;
-    color: var(--sun);
-    display: block;
-    margin-bottom: 6px;
+    color: var(--deep);
   }
   .member-name {
     margin: 0;
     font-weight: 900;
-    font-size: clamp(17px, 1.3vw, 22px);
-    line-height: 1.1;
+    font-size: clamp(18px, 1.5vw, 24px);
+    line-height: 1.05;
     text-transform: uppercase;
-    color: var(--white);
+    color: var(--deep);
+  }
+  /* The bio opens by growing its row from 0fr to 1fr: real height, no max-height guess */
+  .member-more {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows .26s var(--ease-out) .12s;
+  }
+  .member-more > div {
+    overflow: hidden;
+    min-height: 0;
   }
   .member-bio {
-    margin: 10px 0 0;
-    font-size: 13px;
-    line-height: 1.55;
-    color: #e0e3f5;
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transform: translateY(10px);
-    transition: opacity .4s ease, max-height .4s ease, transform .4s ease;
+    margin: 12px 0 0;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 600;
+    color: var(--deep);
   }
   .member-badge {
     display: inline-block;
     margin-top: 12px;
-    padding: 4px 8px;
-    background: rgba(242, 122, 33, .25);
-    border: 1px solid var(--orange);
+    padding: 5px 9px;
+    background: var(--deep);
     color: var(--sun);
     font-size: 11px;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: .08em;
-    opacity: 0;
-    transform: translateY(6px);
-    transition: opacity .4s ease, transform .4s ease;
   }
-
-  /* Expanding interaction states */
-  /* :has() keys the squeeze to a hovered card, so resting in the gaps between cards changes nothing */
-  .team-row:has(.member-card:hover) .member-card {
-    flex: .8;
-  }
-  .team-row .member-card:hover {
-    flex: 1.5;
+  .member-card:hover .member-more,
+  .member-card:focus-within .member-more {
+    grid-template-rows: 1fr;
     transition-delay: 0s;
-    border-color: var(--orange);
   }
-  .team-row .member-card:hover img.avatar {
-    transform: scale(1.03);
-  }
-  .team-row .member-card:hover .member-bio {
-    opacity: 1;
-    max-height: 140px;
-    transform: translateY(0);
-  }
-  .team-row .member-card:hover .member-badge {
-    opacity: 1;
-    transform: translateY(0);
+  @media (prefers-reduced-motion: reduce) {
+    .member-more { transition: none; }
   }
 
   /* Pillars Section */
@@ -425,18 +396,14 @@
       grid-template-columns: 1fr;
     }
     .team-row {
-      flex-direction: column;
+      grid-template-columns: 1fr;
       height: auto;
     }
     .member-card {
-      min-height: 320px;
-      flex: none !important;
+      min-height: 420px;
     }
-    .member-bio,
-    .member-badge {
-      opacity: 1 !important;
-      max-height: none !important;
-      transform: none !important;
+    .member-more {
+      grid-template-rows: 1fr;
     }
   }
 </style>
@@ -459,9 +426,9 @@
 <main id="content">
 <section class="about-hero cut-down on-dark">
   <!-- Dynamic Brand Triangles -->
-  <i class="tri" style="--s:110px;--c:url(assets/shapes/triangle-equilateral-sun.svg);--r:22deg;left:-20px;top:110px;--d:.06s"></i>
-  <i class="tri hide-sm" style="--s:42px;--c:url(assets/shapes/triangle-equilateral-orange.svg);--r:-28deg;left:48%;top:90px;--d:.14s"></i>
-  <i class="tri hide-sm" style="--s:64px;--c:url(assets/shapes/triangle-equilateral-white.svg);--r:190deg;left:34%;bottom:90px;--d:.2s"></i>
+  <i class="tri" style="--s:110px;--c:url(assets/shapes/triangle-equilateral-sun.svg);--r:22deg;left:calc(var(--gutter) - var(--s) - 28px);top:110px;--d:.06s"></i>
+  <i class="tri hide-sm" style="--s:42px;--c:url(assets/shapes/triangle-equilateral-orange.svg);--r:-28deg;left:48%;top:28px;--d:.14s"></i>
+  <i class="tri hide-sm" style="--s:64px;--c:url(assets/shapes/triangle-equilateral-white.svg);--r:190deg;left:calc(var(--gutter) / 2 - 32px);bottom:calc(var(--cut) + 24px);--d:.2s"></i>
   <i class="tri" style="--s:38px;--c:url(assets/shapes/triangle-equilateral-orange.svg);--r:38deg;right:8%;top:100px;--d:.26s"></i>
 
 
@@ -485,6 +452,7 @@
     <img src="assets/mascot/vivi-pointing.webp" alt="" width="671" height="720">
   </div>
   </div>
+  <button class="motion-toggle" type="button"><span class="vh">Pause </span>Motion <span class="icon" aria-hidden="true"></span></button>
 </section>
 
 <!-- Facts Banner -->
@@ -547,7 +515,7 @@
   </div>
 </section>
 
-<!-- Section 2: Leadership Team (Direction B Expanding Panels) -->
+<!-- Section 2: Leadership Team (name plates rise on hover to reveal each bio) -->
 <section id="team" class="team-section wrap cut-both">
   <div class="team-header">
     <div>
@@ -569,10 +537,12 @@
       <div class="member-info">
         <span class="member-role">Chief Executive Officer</span>
         <h3 class="member-name">Venson Sanchez</h3>
-        <p class="member-bio">
-          Steers corporate strategy, market expansion, and key enterprise partnerships to establish VIVE across major retail chains.
-        </p>
-        <span class="member-badge">Executive Leadership</span>
+        <div class="member-more"><div>
+          <p class="member-bio">
+            Steers corporate strategy, market expansion, and key enterprise partnerships to establish VIVE across major retail chains.
+          </p>
+          <span class="member-badge">Executive Leadership</span>
+        </div></div>
       </div>
     </article>
 
@@ -582,10 +552,12 @@
       <div class="member-info">
         <span class="member-role">Chief Commercial Officer</span>
         <h3 class="member-name">Ayanna Yarra</h3>
-        <p class="member-bio">
-          Oversees national account distribution, commercial partnerships, retail shelf presence, and institutional accounts nationwide.
-        </p>
-        <span class="member-badge">Commercial Strategy</span>
+        <div class="member-more"><div>
+          <p class="member-bio">
+            Oversees national account distribution, commercial partnerships, retail shelf presence, and institutional accounts nationwide.
+          </p>
+          <span class="member-badge">Commercial Strategy</span>
+        </div></div>
       </div>
     </article>
 
@@ -595,10 +567,12 @@
       <div class="member-info">
         <span class="member-role">Chief Marketing Officer</span>
         <h3 class="member-name">Czar Bambao</h3>
-        <p class="member-bio">
-          Leads national brand identity, creative campaigns, outdoor media, digital community growth, and consumer communications.
-        </p>
-        <span class="member-badge">Brand &amp; Creative</span>
+        <div class="member-more"><div>
+          <p class="member-bio">
+            Leads national brand identity, creative campaigns, outdoor media, digital community growth, and consumer communications.
+          </p>
+          <span class="member-badge">Brand &amp; Creative</span>
+        </div></div>
       </div>
     </article>
 
@@ -610,10 +584,12 @@
       <div class="member-info">
         <span class="member-role">Chief Operating Officer</span>
         <h3 class="member-name">Louie Latoreno</h3>
-        <p class="member-bio">
-          Manages canning facility logistics, supplier quality control, warehouse inventory, and cold-chain fulfillment operations.
-        </p>
-        <span class="member-badge">Operations &amp; Supply</span>
+        <div class="member-more"><div>
+          <p class="member-bio">
+            Manages canning facility logistics, supplier quality control, warehouse inventory, and cold-chain fulfillment operations.
+          </p>
+          <span class="member-badge">Operations &amp; Supply</span>
+        </div></div>
       </div>
     </article>
 
@@ -623,10 +599,12 @@
       <div class="member-info">
         <span class="member-role">Chief Financial Officer</span>
         <h3 class="member-name">Warren Gumapac</h3>
-        <p class="member-bio">
-          Directs financial planning, capital allocation, supplier unit economics, and accessible pricing across retail channels.
-        </p>
-        <span class="member-badge">Finance &amp; Governance</span>
+        <div class="member-more"><div>
+          <p class="member-bio">
+            Directs financial planning, capital allocation, supplier unit economics, and accessible pricing across retail channels.
+          </p>
+          <span class="member-badge">Finance &amp; Governance</span>
+        </div></div>
       </div>
     </article>
 
@@ -636,10 +614,12 @@
       <div class="member-info">
         <span class="member-role">Chief R&amp;D Officer</span>
         <h3 class="member-name">John Madrid</h3>
-        <p class="member-bio">
-          Spearheads beverage formulation, vitamin bio-availability stabilization, sensory profiling, and stevia sweetening optimization.
-        </p>
-        <span class="member-badge">Formulation &amp; R&amp;D</span>
+        <div class="member-more"><div>
+          <p class="member-bio">
+            Spearheads beverage formulation, vitamin bio-availability stabilization, sensory profiling, and stevia sweetening optimization.
+          </p>
+          <span class="member-badge">Formulation &amp; R&amp;D</span>
+        </div></div>
       </div>
     </article>
     </div>

@@ -26,16 +26,7 @@
   .stage .burst { position:absolute; inset:2% -6%; background-image:url(assets/shapes/star-10pt-white.svg); animation:spin 90s linear infinite; }
   .stage .burst.back { inset:-4% -12%; background-image:url(assets/shapes/star-10pt-sun.svg); animation-direction:reverse; opacity:.9; }
   @keyframes spin { to { transform:rotate(360deg); } }
-  .hero.is-still .burst { animation-play-state:paused; }
-  /* Discreet pause for the always-spinning stars (WCAG 2.2.2), bottom right of the hero */
-  .motion-toggle { position:absolute; z-index:3; right:clamp(16px,5vw,72px); bottom:calc(var(--cut) + 16px);
-                   display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border:0; background:none; cursor:pointer;
-                   font:800 11px/1 var(--f); text-transform:uppercase; letter-spacing:.12em; color:var(--white); opacity:.75; transition:opacity .15s; }
-  .motion-toggle:hover, .motion-toggle:focus-visible { opacity:1; }
-  .motion-toggle:focus-visible { outline:2px solid var(--sun); outline-offset:2px; }
-  .motion-toggle .icon::before { content:"II" / ""; font-weight:900; letter-spacing:1px; }
-  .hero.is-still .motion-toggle .icon::before { content:"\25B6\FE0E" / ""; font-size:9px; }
-  @media (prefers-reduced-motion:reduce) { .motion-toggle { display:none; } }
+  /* The Motion pause button lives in site.css and site.js */
   .stage .can { position:relative; width:34%; transform:rotate(-9deg); filter:drop-shadow(0 26px 22px rgba(29,39,102,.35)); animation:pop .5s .15s cubic-bezier(.2,1.5,.4,1) both; }
   @keyframes pop { from { transform:rotate(-30deg) translateY(40px) scale(.8); opacity:0; } }
 
@@ -141,10 +132,10 @@
 
 <main id="content">
 <section class="hero cut-down on-dark">
-  <i class="tri" style="--s:120px;--c:url(assets/shapes/triangle-equilateral-sun.svg);--r:18deg;left:-30px;top:120px;--d:.05s"></i>
-  <i class="tri hide-sm" style="--s:46px;--c:url(assets/shapes/triangle-equilateral-orange.svg);--r:-24deg;left:42%;top:84px;--d:.12s"></i>
-  <i class="tri" style="--s:34px;--c:url(assets/shapes/triangle-equilateral-orange.svg);--r:40deg;right:6%;top:96px;--d:.24s"></i>
-  <i class="tri hide-sm" style="--s:58px;--c:url(assets/shapes/triangle-equilateral-sun.svg);--r:-150deg;left:8%;bottom:70px;--d:.3s"></i>
+  <i class="tri" style="--s:120px;--c:url(assets/shapes/triangle-equilateral-sun.svg);--r:18deg;left:calc(var(--gutter) - var(--s) - 28px);top:120px;--d:.05s"></i>
+  <i class="tri hide-sm" style="--s:46px;--c:url(assets/shapes/triangle-equilateral-orange.svg);--r:-24deg;left:42%;top:28px;--d:.12s"></i>
+  <i class="tri" style="--s:34px;--c:url(assets/shapes/triangle-equilateral-orange.svg);--r:40deg;right:6%;top:36px;--d:.24s"></i>
+  <i class="tri hide-sm" style="--s:58px;--c:url(assets/shapes/triangle-equilateral-sun.svg);--r:-150deg;left:calc(var(--gutter) / 2 - 29px);bottom:calc(var(--cut) + 20px);--d:.3s"></i>
 
 
   <div class="grid wrap">
@@ -219,7 +210,6 @@
 </section>
 
 <section class="more wrap">
-  <img class="mascot right" src="assets/mascot/vivi-dizzy.webp" alt="" width="608" height="720" loading="lazy" style="top:42%">
   <h2 id="more-title"><span class="label">Christmas with VIVE</span></h2>
   <p class="lede">Six holiday posters from the VIVE team. Select a poster to see it full size.</p>
   <ul class="seasonal" aria-labelledby="more-title">
@@ -265,14 +255,5 @@
 </main>
 
 <footer class="site-footer"></footer>
-<script>
-  // Pause or resume the spinning hero stars; the hidden word keeps the button's name accurate.
-  const hero = document.querySelector('.hero');
-  const toggle = hero.querySelector('.motion-toggle');
-  toggle.addEventListener('click', () => {
-    const still = hero.classList.toggle('is-still');
-    toggle.querySelector('.vh').textContent = still ? 'Play ' : 'Pause ';
-  });
-</script>
 </body>
 </html>

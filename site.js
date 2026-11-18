@@ -4,6 +4,7 @@
    2. Adds the cart button and cart panel to the primary nav.
    3. Keeps the cart in localStorage so the count persists across pages and visits.
    4. Wires quantity steppers and "Add to cart" buttons ([data-add]) on any page.
+   5. Wires any .motion-toggle to pause the turning stars in its section.
    ========================================================================== */
 (() => {
   const STORE_KEY = 'vive-cart-v1';
@@ -167,8 +168,8 @@
   if (footer && !footer.children.length) {
     footer.innerHTML = `
   <i class="tri" aria-hidden="true" style="--s:140px;--c:url(assets/shapes/triangle-equilateral-navy.svg);--r:14deg;right:-30px;top:-24px"></i>
-  <i class="tri hide-sm" aria-hidden="true" style="--s:56px;--c:url(assets/shapes/triangle-equilateral-orange.svg);--r:-32deg;right:22%;top:48px"></i>
-  <i class="tri hide-sm" aria-hidden="true" style="--s:40px;--c:url(assets/shapes/triangle-equilateral-sun.svg);--r:200deg;left:46%;bottom:96px"></i>
+  <i class="tri hide-sm" aria-hidden="true" style="--s:56px;--c:url(assets/shapes/triangle-equilateral-orange.svg);--r:-32deg;right:22%;top:14px"></i>
+  <i class="tri hide-sm" aria-hidden="true" style="--s:40px;--c:url(assets/shapes/triangle-equilateral-sun.svg);--r:200deg;left:46%;top:20px"></i>
   <div class="foot-cta wrap">
     <div>
       <h2><span class="label sun">Grab a VIVE!</span></h2>
@@ -199,6 +200,15 @@
     <small>© 2026 VIVE. The vitamin-charged cola.</small>
   </div>`;
   }
+
+  /* ---------- Motion pause for turning hero stars ---------- */
+  document.querySelectorAll('.motion-toggle').forEach((toggle) => {
+    const section = toggle.closest('section');
+    toggle.addEventListener('click', () => {
+      const still = section.classList.toggle('is-still');
+      toggle.querySelector('.vh').textContent = still ? 'Play ' : 'Pause ';
+    });
+  });
 
   render();
 })();

@@ -45,9 +45,14 @@ DEFAULT_SOURCE = Path.home() / "client-work/pineapple/training/ponce-advertising
 #   ("pdf", N)          rasterize page 1 of a PDF to N px tall, WebP
 #   ("video", N)        H.264 MP4 at most N px wide, AAC audio, fast start
 #   ("frame", seconds)  one video frame as WebP, for the <video> poster
-#   ("portrait", None)  team cutout on a PORTRAIT canvas with the face at the
+#   ("cutout-square", N) cut the product out of its background (cutout.swift),
+#                       then center it on an N x N light studio square. For
+#                       mockups exported with a fake transparency checkerboard.
+#   ("portrait", n)     team photo on a PORTRAIT canvas with the face at the
 #                       same size and spot in every photo (face found by
-#                       scripts/face_boxes.swift, macOS Vision)
+#                       scripts/face_boxes.swift, macOS Vision). A photo with
+#                       no transparency is cut out first by scripts/cutout.swift.
+#                       n is a version; bump it to force a rebuild.
 ASSETS: list[tuple[str, str, tuple]] = [
     # Home: John Madrid's Christmas poster (v3 is the final export)
     ("assets/seasonal/christmas-madrid-full.webp", "[Madrid] John Madrid v3.pdf", ("pdf", 2000)),
@@ -67,7 +72,7 @@ ASSETS: list[tuple[str, str, tuple]] = [
     ("assets/team/warren-gumapac.webp", "About Us Picture/Warren.png", ("portrait", 2)),
     ("assets/team/john-madrid.webp", "About Us Picture/Madrid.png", ("portrait", 2)),
     # Shop: merch mockups
-    ("assets/merch/baseball-jersey.webp", "vive-mockups/Merch/VIVE Jersey.jpg", ("square", 900)),
+    ("assets/merch/baseball-jersey.webp", "vive-mockups/Merch/VIVE Jersey.jpg", ("cutout-square", 900)),
     ("assets/merch/running-set.webp", "vive-mockups/Merch/VIVE-singlet-and-shorts.jpg", ("square", 900)),
     ("assets/merch/jacket.webp", "vive-mockups/Merch/Vive Bomber jacket.jpg", ("square", 900)),
     ("assets/merch/tote-bag.webp", "vive-mockups/Merch/Playful VIVE Tote in Sunlit Studio.png", ("square", 900)),
@@ -78,6 +83,8 @@ ASSETS: list[tuple[str, str, tuple]] = [
     ("assets/merch/stickers.webp", "vive-mockups/Merch/Sticker VIVE.png", ("square", 900)),
     ("assets/merch/tumbler.webp", "vive-mockups/Merch/VIVE-tumblr.jpg", ("square", 900)),
     ("assets/merch/mug.webp", "vive-mockups/Merch/VIVE-mug.jpg", ("square", 900)),
+    ("assets/merch/keychain.webp", "vive-mockups/Merch/I Need More V!VE Keychain.png", ("square", 900)),
+    ("assets/merch/scarf.webp", "vive-mockups/Merch/shawl.png", ("square", 900)),
 ]
 
 WEBP = {"quality": 82, "method": 6}
@@ -138,7 +145,32 @@ def frame(src: Path, out: Path, t: float) -> None:
         save_webp(Image.open(png).convert("RGB"), out)
 
 
+def cutout_square(src: Path, out: Path, n: int) -> None:
+    with tempfile.TemporaryDirectory() as tmp:
+        cut = Path(tmp) / "cutout.png"
+        subprocess.run(["swift", str(SITE / "scripts" / "cutout.swift"), str(src), str(cut)],
+                       check=True, capture_output=True)
+        item = Image.open(cut).convert("RGBA")
+        item = item.crop(item.getchannel("A").getbbox())
+        item.thumbnail((round(n * .84), round(n * .84)), Image.LANCZOS)
+        # Same light studio ground as the team's other mockup photos
+        canvas = Image.new("RGBA", (n, n), (244, 244, 242, 255))
+        canvas.alpha_composite(item, ((n - item.width) // 2, (n - item.height) // 2))
+        save_webp(canvas.convert("RGB"), out)
+
+
 def portrait(src: Path, out: Path) -> None:
+    with tempfile.TemporaryDirectory() as tmp:
+        im = Image.open(src)
+        if im.mode != "RGBA" or im.getchannel("A").getextrema()[0] == 255:
+            cut = Path(tmp) / "cutout.png"
+            subprocess.run(["swift", str(SITE / "scripts" / "cutout.swift"), str(src), str(cut)],
+                           check=True, capture_output=True)
+            src = cut
+        place_portrait(src, out)
+
+
+def place_portrait(src: Path, out: Path) -> None:
     res = subprocess.run(["swift", str(SITE / "scripts" / "face_boxes.swift"), str(src)],
                          check=True, capture_output=True, text=True)
     box = json.loads(res.stdout.strip().splitlines()[-1])
@@ -169,6 +201,8 @@ def build(recipe: tuple, src: Path, out: Path) -> None:
         video(src, out, arg)
     elif kind == "frame":
         frame(src, out, arg)
+    elif kind == "cutout-square":
+        cutout_square(src, out, arg)
     elif kind == "portrait":
         portrait(src, out)
     else:
