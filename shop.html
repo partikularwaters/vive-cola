@@ -22,15 +22,16 @@
   .s-hero h1 em { display:block; font-style:normal; color:var(--orange); }
   .s-hero p { font-size:clamp(16px,1.4vw,19px); line-height:1.55; font-weight:600; max-width:30em; margin:24px 0 0; }
   .jump { list-style:none; margin:28px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:12px; }
-  .s-hero .stack { position:relative; justify-self:end; width:min(100%,420px); aspect-ratio:1; }
-  .s-hero .stack .burst { position:absolute; inset:0; background-image:url(assets/shapes/star-10pt-sun.svg); }
-  .s-hero .stack img { position:absolute; width:52%; filter:drop-shadow(0 18px 16px rgba(20,24,63,.3)); }
-  .s-hero .stack img:nth-of-type(1) { left:-2%; top:22%; rotate:-10deg; }
-  .s-hero .stack img:nth-of-type(2) { right:-2%; top:4%; width:46%; rotate:12deg; }
-  .s-hero .stack img:nth-of-type(3) { left:30%; bottom:-4%; width:44%; rotate:-4deg; }
-  .motion .s-hero .stack img { animation:drop .55s var(--ease-pop) both; }
-  .motion .s-hero .stack img:nth-of-type(2) { animation-delay:.08s; }
-  .motion .s-hero .stack img:nth-of-type(3) { animation-delay:.16s; }
+  /* VIVI says "I need more VIVE", drawn like the team's sticker and keychain: the line and
+     the dizzy mascot sit together on a sun star, cut out with a thick white sticker edge */
+  .s-hero .sticker { position:relative; margin:0; justify-self:end; width:min(100%,460px); aspect-ratio:1; display:grid; place-items:center; }
+  .s-hero .sticker .burst { position:absolute; inset:0; background-image:url(assets/shapes/star-10pt-sun.svg); }
+  .s-hero .sticker .art { position:relative; display:flex; align-items:center; gap:2%; width:96%; rotate:-6deg;
+    filter:drop-shadow(5px 0 0 var(--white)) drop-shadow(-5px 0 0 var(--white)) drop-shadow(0 5px 0 var(--white)) drop-shadow(0 -5px 0 var(--white)) drop-shadow(0 18px 16px rgba(20,24,63,.3)); }
+  .s-hero .sticker .say { margin:0; flex:1.25; display:grid; gap:4px; font-weight:900; text-transform:uppercase; color:var(--navy); font-size:clamp(26px,2.6vw,40px); line-height:.92; letter-spacing:-.01em; }
+  .s-hero .sticker .say img { width:100%; height:auto; }
+  .s-hero .sticker .vivi { flex:1; min-width:0; width:100%; height:auto; }
+  .motion .s-hero .sticker .art { animation:drop .55s var(--ease-pop) both; }
   @keyframes drop { from { opacity:0; transform:translateY(-40px) scale(.92); } }
 
   /* ---------- SHELVES ---------- */
@@ -131,12 +132,13 @@
         <li><a class="btn white" href="#merch">Merch</a></li>
       </ul>
     </div>
-    <div class="stack" aria-hidden="true">
-      <div class="burst star"></div>
-      <img src="assets/merch/tote-bag.svg" alt="" width="480" height="480">
-      <img src="assets/merch/cap.svg" alt="" width="480" height="480">
-      <img src="assets/merch/mug.svg" alt="" width="480" height="480">
-    </div>
+    <figure class="sticker">
+      <div class="burst star" aria-hidden="true"></div>
+      <div class="art">
+        <p class="say">I need more <img src="assets/wordmark-vive-navy.png" alt="VIVE" width="412" height="105"></p>
+        <img class="vivi" src="assets/mascot/vivi-dizzy.webp" alt="VIVI, the VIVE mascot, dizzy for more" width="608" height="720">
+      </div>
+    </figure>
   </div>
 </section>
 

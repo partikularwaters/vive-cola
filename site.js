@@ -60,7 +60,6 @@
         <div class="cart-total"><span>Total</span><span class="cart-sum">₱0</span></div>
         <a class="btn navy" href="shop.html">Keep shopping</a>
         <button class="btn white clear-cart" type="button">Clear cart</button>
-        <p>Checkout is not part of this prototype. Your picks stay saved on this device.</p>
       </div>`;
     document.body.append(panel);
 

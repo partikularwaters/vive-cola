@@ -42,7 +42,8 @@ DEFAULT_SOURCE = Path.home() / "client-work/pineapple/training/ponce-advertising
 #   ("fit", N)          longest side at most N px, keep transparency, WebP
 #   ("height", N)       height exactly N px, WebP
 #   ("square", N)       center-crop to a square, then N x N px, WebP
-#   ("pdf", N)          rasterize page 1 of a PDF to N px tall, WebP
+#   ("pdf", N)          rasterize page 1 of a PDF, trim light export lines off
+#                       its edges, then N px tall, WebP
 #   ("video", N)        H.264 MP4 at most N px wide, AAC audio, fast start
 #   ("frame", seconds)  one video frame as WebP, for the <video> poster
 #   ("cutout-square", N) cut the product out of its background (cutout.swift),
@@ -58,8 +59,8 @@ ASSETS: list[tuple[str, str, tuple]] = [
     ("assets/seasonal/christmas-madrid-full.webp", "[Madrid] John Madrid v3.pdf", ("pdf", 2000)),
     ("assets/seasonal/christmas-madrid-thumb.webp", "[Madrid] John Madrid v3.pdf", ("pdf", 900)),
     # Home: the VIVE ad
-    ("assets/video/vive-ad.mp4", "video-recordings/draft.mov", ("video", 1920)),
-    ("assets/video/vive-ad-poster.webp", "video-recordings/draft.mov", ("frame", 52.0)),
+    ("assets/video/vive-ad.mp4", "video-recordings/draft12.mov", ("video", 1920)),
+    ("assets/video/vive-ad-poster.webp", "video-recordings/draft12.mov", ("frame", 43.0)),
     # Mascot: VIVI
     ("assets/mascot/vivi-pointing.webp", "Mascot/VIVI pointing.png", ("fit", 720)),
     ("assets/mascot/vivi-running.webp", "Mascot/Vivi Running.png", ("fit", 720)),
@@ -127,7 +128,35 @@ def pdf(src: Path, out: Path, n: int) -> None:
         subprocess.run(["qlmanage", "-t", "-s", str(round(n * 1.2)), "-o", tmp, str(src)],
                        check=True, capture_output=True)
         png = next(Path(tmp).glob("*.png"))
-        height(Image.open(png), out, n)
+        height(trim_light_edges(Image.open(png).convert("RGB")), out, n)
+
+
+def trim_light_edges(im: Image.Image, depth: float = .01, lift: int = 25) -> Image.Image:
+    """Drop thin light lines that PDF exports leave on an edge. A row or column
+    within the outer 1% counts as an edge line when it is at least `lift`
+    levels brighter than the artwork just inside it."""
+    g = im.convert("L")
+    w, h = g.size
+
+    def mean_row(y):
+        return sum(g.crop((0, y, w, y + 1)).getdata()) / w
+
+    def mean_col(x):
+        return sum(g.crop((x, 0, x + 1, h)).getdata()) / h
+
+    def cut(n, mean, inward):
+        limit = max(1, int(n * depth))
+        ref = mean(inward(limit))
+        k = 0
+        while k < limit and mean(inward(k)) > ref + lift:
+            k += 1
+        return k
+
+    top = cut(h, mean_row, lambda k: k)
+    bottom = cut(h, mean_row, lambda k: h - 1 - k)
+    left = cut(w, mean_col, lambda k: k)
+    right = cut(w, mean_col, lambda k: w - 1 - k)
+    return im.crop((left, top, w - right, h - bottom))
 
 
 def video(src: Path, out: Path, n: int) -> None:

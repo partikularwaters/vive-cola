@@ -203,7 +203,7 @@
   <h2><span class="label orange">Watch the ad</span></h2>
   <img class="mascot left" src="assets/mascot/vivi-running.webp" alt="" width="595" height="720" loading="lazy" style="top:38%">
   <div class="player">
-    <video controls preload="metadata" playsinline poster="assets/video/vive-ad-poster.webp" width="1920" height="1080" aria-label="VIVE ad, 54 seconds">
+    <video controls preload="metadata" playsinline poster="assets/video/vive-ad-poster.webp" width="1280" height="720" aria-label="VIVE ad, 45 seconds">
       <source src="assets/video/vive-ad.mp4" type="video/mp4">
     </video>
   </div>
@@ -218,7 +218,7 @@
     <li class="lift-zone" style="--ar:0.747"><button type="button" data-full="assets/seasonal/christmas-venson-full.webp" data-title="Busy like Santa? Get your dose of good vibes"><span class="lift"><img src="assets/seasonal/christmas-venson-thumb.webp" alt="Christmas poster: Santa reads his list in the workshop and raises a VIVE Classic can, under the line “Busy like Santa? Get your dose of good vibes.”" width="672" height="900" loading="lazy"></span></button></li>
     <li class="lift-zone" style="--ar:0.707"><button type="button" data-full="assets/seasonal/christmas-warren-full.webp" data-title="Ignite your festive fire"><span class="lift"><img src="assets/seasonal/christmas-warren-thumb.webp" alt="Christmas poster: a frosted VIVE Classic can stands in a snowy mountain scene framed by pine branches, under the line “Ignite your festive fire.”" width="637" height="900" loading="lazy"></span></button></li>
     <li class="lift-zone" style="--ar:0.706"><button type="button" data-full="assets/seasonal/christmas-aya-full.webp" data-title="Charge up your holidays with festive vibes"><span class="lift"><img src="assets/seasonal/christmas-aya-thumb.webp" alt="Christmas poster: VIVE Classic cans hang like ornaments on a snowy tree beside the line “Charge up your holidays with festive vibes.”" width="636" height="900" loading="lazy"></span></button></li>
-    <li class="lift-zone" style="--ar:0.707"><button type="button" data-full="assets/seasonal/christmas-madrid-full.webp" data-title="Noche Buena drink? We gotcha!"><span class="lift"><img src="assets/seasonal/christmas-madrid-thumb.webp" alt="Christmas poster: a VIVE Classic can stands beside a lechon belly roll in front of a Christmas tree, under the line “Noche Buena drink? We gotcha!” with vitamins A, B9, B12, and C." width="636" height="900" loading="lazy"></span></button></li>
+    <li class="lift-zone" style="--ar:0.708"><button type="button" data-full="assets/seasonal/christmas-madrid-full.webp" data-title="Noche Buena drink? We gotcha!"><span class="lift"><img src="assets/seasonal/christmas-madrid-thumb.webp" alt="Christmas poster: a VIVE Classic can stands beside a lechon belly roll in front of a Christmas tree, under the line “Noche Buena drink? We gotcha!” with vitamins A, B9, B12, and C." width="637" height="900" loading="lazy"></span></button></li>
   </ul>
   <dialog class="poster-view" id="poster-view" closedby="any" aria-labelledby="poster-view-title">
     <img alt="">
@@ -242,13 +242,12 @@
       title.textContent = btn.dataset.title;
       view.showModal();
     });
-    /* Light dismiss for browsers without closedby (Safari): close only when press and release land outside */
-    if (!('closedBy' in HTMLDialogElement.prototype)) {
-      const outside = (e) => { const r = view.getBoundingClientRect(); return e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom; };
-      let pressedOutside = false;
-      view.addEventListener('pointerdown', (e) => { pressedOutside = outside(e); });
-      view.addEventListener('pointerup', (e) => { if (pressedOutside && outside(e)) view.close(); });
-    }
+    /* Close on any click outside the poster and its bar. Backdrop clicks land on the dialog
+       itself, so close only when both the press and the release land on it; a drag that starts
+       on the poster never closes it. closedby="any" covers the same case in newer browsers. */
+    let pressedOutside = false;
+    view.addEventListener('pointerdown', (e) => { pressedOutside = e.target === view; });
+    view.addEventListener('click', (e) => { if (pressedOutside && e.target === view) view.close(); });
   })();
 </script>
 
