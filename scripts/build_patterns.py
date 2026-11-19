@@ -43,21 +43,33 @@ for name, cols in TILES.items():
 
 
 def seal(star, mark, tri):
-    """Star Seal: 10-point stars on the diagonal, each stamped with a 4-point sparkle, plus small triangles."""
-    body = (f'<use href="#s10" x="6" y="6" width="58" height="58" fill="{star}"/>'
-            f'<use href="#s4" x="23" y="23" width="24" height="24" fill="{mark}"/>'
-            f'<use href="#s10" x="76" y="76" width="58" height="58" fill="{star}"/>'
-            f'<use href="#s4" x="93" y="93" width="24" height="24" fill="{mark}"/>'
+    """Star Seal: 10-point stars on the diagonal, each stamped with a 4-point sparkle, plus small triangles.
+    mark="cut" punches the sparkle out of the star, so a single-color tile still shows it."""
+    if mark == "cut":
+        cut = ('<mask id="cut" maskUnits="userSpaceOnUse" x="0" y="0" width="140" height="140">'
+               '<rect width="140" height="140" fill="#fff"/>'
+               '<use href="#s4" x="23" y="23" width="24" height="24" fill="#000"/>'
+               '<use href="#s4" x="93" y="93" width="24" height="24" fill="#000"/></mask>')
+        stars = (f'<g mask="url(#cut)"><use href="#s10" x="6" y="6" width="58" height="58" fill="{star}"/>'
+                 f'<use href="#s10" x="76" y="76" width="58" height="58" fill="{star}"/></g>')
+    else:
+        cut = ""
+        stars = (f'<use href="#s10" x="6" y="6" width="58" height="58" fill="{star}"/>'
+                 f'<use href="#s4" x="23" y="23" width="24" height="24" fill="{mark}"/>'
+                 f'<use href="#s10" x="76" y="76" width="58" height="58" fill="{star}"/>'
+                 f'<use href="#s4" x="93" y="93" width="24" height="24" fill="{mark}"/>')
+    body = (stars +
             f'<use href="#tri" x="94" y="22" width="22" height="19" fill="{tri}" transform="rotate(20 105 31)"/>'
             f'<use href="#tri" x="24" y="98" width="22" height="19" fill="{tri}" transform="rotate(-20 35 107)"/>')
     return ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" width="140" height="140">'
-            f"<defs>{S.SYM}</defs>{body}</svg>\n")
+            f"<defs>{S.SYM}{cut}</defs>{body}</svg>\n")
 
 SEALS = {
     "seal-color": (ORANGE, NAVY, NAVY),   # on sun or cream
     "seal-sun": (SUN, NAVY, ORANGE),      # on navy or deep
-    "seal-white": (WHITE, "none", WHITE), # quiet tone-on-tone
+    "seal-white": (WHITE, "cut", WHITE),  # quiet tone-on-tone, sparkle punched out
     "seal-blue": (NAVY, DEEP, NAVY),      # tone-on-tone for ink grounds
+    "seal-deep": (DEEP, NAVY, DEEP),      # tone-on-tone for navy grounds
 }
 for name, cols in SEALS.items():
     out = ROOT / f"assets/patterns/{name}.svg"

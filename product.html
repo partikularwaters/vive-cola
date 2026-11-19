@@ -36,31 +36,43 @@
   h2 { margin:0; font-weight:900; text-transform:uppercase; line-height:.95; font-size:clamp(36px,5vw,72px); }
   section { position:relative; padding-top:clamp(72px,8vw,120px); padding-bottom:clamp(72px,8vw,120px); }
 
-  /* ---------- HERO: three cans fan in over the star ---------- */
-  .p-hero { position:relative; z-index:2; overflow:hidden; background:var(--navy); color:var(--white); padding-bottom:calc(var(--cut) + 40px); }
-  .p-hero .grid { display:grid; grid-template-columns:1fr 1.05fr; align-items:center; gap:32px; position:relative; z-index:2; }
-  .p-hero h1 { margin:0; font-weight:900; text-transform:uppercase; line-height:.9; font-size:clamp(46px,7vw,108px); letter-spacing:-.01em; }
+  /* ---------- HERO: a deep headline band over a lineup of three color panels ----------
+     Each panel is one can on its own color, cut on the brand angle, and jumps to its strip. */
+  .p-hero { position:relative; z-index:2; overflow:hidden; background:var(--deep); color:var(--white); padding-top:0; padding-bottom:10px; }
+  /* Navy band, not deep: on deep, the navbar's deep base line vanished and the bar looked shorter than on Home and About */
+  .p-hero .head { position:relative; z-index:1; background:var(--navy); display:grid; grid-template-columns:1.25fr .75fr; align-items:end; gap:24px 48px; padding-top:clamp(48px,5vw,76px); padding-bottom:clamp(36px,4vw,56px); }
+  .p-hero h1 { margin:0; font-weight:900; text-transform:uppercase; line-height:.9; font-size:clamp(44px,6vw,96px); letter-spacing:-.01em; }
   .p-hero h1 em { display:block; font-style:normal; color:var(--orange); }
-  .p-hero p { font-size:clamp(16px,1.4vw,19px); line-height:1.55; font-weight:600; max-width:30em; margin:24px 0 0; }
-  .p-hero .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
-  .trio { position:relative; aspect-ratio:1/0.9; display:grid; place-items:center; }
-  .trio .burst { position:absolute; inset:4% 6%; background-image:url(assets/shapes/star-10pt-sun.svg); }
-  .trio .burst.front { inset:12% 14%; background-image:url(assets/shapes/star-10pt-white.svg); }
-  .trio .cans { position:relative; display:flex; align-items:flex-end; justify-content:center; width:100%; height:86%; }
-  .trio img { width:23%; filter:drop-shadow(0 24px 20px rgba(20,24,63,.4)); margin:0 -2.5%; }
-  .trio img:nth-child(1) { rotate:-12deg; translate:0 4%; }
-  .trio img:nth-child(2) { rotate:0deg; width:26%; z-index:1; }
-  .trio img:nth-child(3) { rotate:12deg; translate:0 4%; }
-  .motion .trio img { animation:fan .6s var(--ease-pop) both; }
-  .motion .trio img:nth-child(1) { animation-delay:.12s; --from:-40deg; }
-  .motion .trio img:nth-child(2) { animation-delay:.04s; --from:0deg; }
-  .motion .trio img:nth-child(3) { animation-delay:.2s; --from:40deg; }
-  @keyframes fan { from { opacity:0; transform:translateY(60px) rotate(var(--from)) scale(.9); } }
-  .motion .trio .burst { animation:burst .7s var(--ease-out) both; }
-  @keyframes burst { from { opacity:0; transform:scale(.85) rotate(-20deg); } }
+  .p-hero p { font-size:clamp(16px,1.3vw,18px); line-height:1.55; font-weight:600; margin:0; }
+  .p-hero .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:22px; }
+  .lineup { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(3,1fr); gap:10px; height:clamp(340px,30vw,460px); }
+  .lineup a { position:relative; display:block; height:100%; overflow:hidden; background:var(--g); color:var(--ink); text-decoration:none; clip-path:polygon(7% 0,100% 0,93% 100%,0 100%); }
+  .lineup li:first-child a { clip-path:polygon(0 0,100% 0,93% 100%,0 100%); }
+  .lineup li:last-child a { clip-path:polygon(7% 0,100% 0,100% 100%,0 100%); }
+  /* A subtle Star Seal, as in Compare the three but a little smaller (110px tile), fills each panel outside its star:
+     white seals on the orange and sun panels, deep navy seals on Focus's navy */
+  .lineup a::before { content:""; position:absolute; inset:0; background:var(--lp, url(assets/patterns/seal-white.svg)) 0 0 / 110px; opacity:var(--lpo, .2); }
+  .lineup .burst { position:absolute; left:50%; bottom:-38%; width:92%; aspect-ratio:1; translate:-50% 0; background-image:var(--star); transition:rotate .5s var(--ease-out); }
+  .lineup img { position:absolute; left:50%; bottom:5%; width:clamp(80px,7.4vw,118px); translate:-50% 0; rotate:var(--r); filter:drop-shadow(0 22px 18px rgba(20,24,63,.4)); transition:translate .3s var(--ease-out), rotate .3s var(--ease-out); }
+  .lineup .name { position:absolute; left:clamp(28px,3vw,48px); top:clamp(22px,2.4vw,34px); display:grid; gap:6px; text-align:left; }
+  .lineup .name b { font-size:clamp(22px,2.2vw,34px); font-weight:900; text-transform:uppercase; line-height:1; }
+  .lineup .name small { font-size:13px; font-weight:800; text-transform:uppercase; letter-spacing:.1em; }
+  .lineup .go { position:absolute; right:clamp(32px,3.4vw,56px); bottom:20px; font:900 12px/1 var(--f); letter-spacing:.12em; text-transform:uppercase; }
+  .lineup a:focus-visible { outline:none; }
+  .lineup a:focus-visible .name b { text-decoration:underline; text-decoration-thickness:3px; text-underline-offset:6px; }
+  @media (hover:hover) and (pointer:fine) {
+    .lineup a:hover img { translate:-50% -8%; rotate:0deg; }
+    .lineup a:hover .burst { rotate:18deg; }
+  }
+  .motion .lineup img { animation:rise .6s var(--ease-pop) both; }
+  .motion .lineup li:nth-child(2) img { animation-delay:.08s; }
+  .motion .lineup li:nth-child(3) img { animation-delay:.16s; }
+  @keyframes rise { from { opacity:0; transform:translateY(80px); } }
 
   /* ---------- VARIANT STRIPS: one can per strip ---------- */
-  .variant { overflow:hidden; }
+  /* Each strip keeps its large brand shapes (.deco) and no pattern: one layer of background
+     detail per section, as on Home and About */
+  .variant { overflow:hidden; isolation:isolate; }
   .variant + .variant, .every { margin-top:calc(var(--cut) * -1); clip-path:polygon(0 var(--cut),100% 0,100% 100%,0 100%); padding-top:calc(var(--cut) + clamp(72px,8vw,120px)); }
   .variant .inner { position:relative; z-index:1; display:grid; grid-template-columns:.85fr 1.15fr; gap:clamp(32px,5vw,80px); align-items:center; }
   .variant.flip .inner { grid-template-columns:1.15fr .85fr; }
@@ -88,7 +100,7 @@
   .variant .btn { margin-top:32px; }
 
   /* ---------- EVERY CAN ---------- */
-  .every { background:var(--white); }
+  .every { background:var(--white); --pat-op:.4; }
   .every h2 { margin-bottom:40px; }
   .facts-grid { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
   .facts-grid li { position:relative; background:var(--navy); color:var(--white); padding:28px 24px 30px; clip-path:polygon(0 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%); }
@@ -102,18 +114,18 @@
   .label-spread figcaption { margin-top:16px; font-size:14px; font-weight:700; color:#3a4370; }
 
   /* ---------- COMPARE TABLE (family strip) ---------- */
-  .compare { background:var(--deep); color:var(--white); margin-top:calc(var(--cut) * -1); clip-path:polygon(0 var(--cut),100% 0,100% 100%,0 100%); padding-top:calc(var(--cut) + clamp(72px,8vw,120px)); }
+  .compare { --pat-op:.4; background:var(--deep); color:var(--white); margin-top:calc(var(--cut) * -1); clip-path:polygon(0 var(--cut),100% 0,100% 100%,0 100%); padding-top:calc(var(--cut) + clamp(72px,8vw,120px)); }
   .compare h2 { margin-bottom:40px; }
-  table { width:100%; max-width:980px; border-collapse:collapse; font-size:16px; }
-  caption { text-align:left; font-weight:600; color:#c8cce6; padding-bottom:18px; font-size:15px; }
-  th, td { padding:16px 14px; text-align:center; border-bottom:1px solid rgba(249,249,249,.14); }
+  table { width:100%; max-width:1040px; border-collapse:collapse; font-size:18px; }
+  caption { text-align:left; font-weight:600; color:#c8cce6; padding-bottom:20px; font-size:17px; }
+  th, td { padding:18px 14px; text-align:center; border-bottom:1px solid rgba(249,249,249,.14); }
   th[scope="row"] { text-align:left; font-weight:800; }
-  thead th { font-weight:900; text-transform:uppercase; letter-spacing:.06em; font-size:14px; color:var(--sun); }
-  td .yes { display:inline-block; width:18px; height:18px; background:var(--orange); clip-path:polygon(50% 0,100% 100%,0 100%); }
+  thead th { font-weight:900; text-transform:uppercase; letter-spacing:.06em; font-size:16px; color:var(--sun); }
+  td .yes { display:inline-block; width:20px; height:20px; background:var(--orange); clip-path:polygon(50% 0,100% 100%,0 100%); }
   td .no { color:rgba(249,249,249,.35); }
 
   /* ---------- CTA ---------- */
-  .p-cta { background:var(--orange); text-align:center; color:var(--deep); }
+  .p-cta { --pat-op:.16; background:var(--white); text-align:center; color:var(--navy); }
   .p-cta h2 { margin:0 auto 18px; max-width:16ch; }
   .p-cta p { margin:0 auto 32px; font-size:18px; font-weight:600; max-width:32em; line-height:1.5; }
   .p-cta .actions { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
@@ -135,7 +147,7 @@
   @keyframes slide { from { transform:translateX(8%); } to { transform:translateX(-8%); } }
 
   @media (max-width:860px) {
-    .p-hero .grid, .variant .inner, .variant.flip .inner { grid-template-columns:1fr; }
+    .p-hero .head, .variant .inner, .variant.flip .inner { grid-template-columns:1fr; }
     .variant.flip .can-col { order:0; }
     .facts-grid { grid-template-columns:repeat(2,1fr); }
   }
@@ -156,36 +168,27 @@
 </header>
 
 <main id="content">
-<section class="p-hero cut-down on-dark">
-  <i class="tri" aria-hidden="true" style="--s:110px;--c:url(assets/shapes/triangle-equilateral-sun.svg);--r:18deg;left:calc(var(--gutter) - var(--s) - 28px);top:130px;--d:.05s"></i>
-  <i class="tri hide-sm" aria-hidden="true" style="--s:44px;--c:url(assets/shapes/triangle-equilateral-orange.svg);--r:-24deg;left:44%;top:28px;--d:.12s"></i>
-  <i class="tri hide-sm" aria-hidden="true" style="--s:60px;--c:url(assets/shapes/triangle-equilateral-white.svg);--r:200deg;left:calc(var(--gutter) / 2 - 30px);bottom:calc(var(--cut) + 24px);--d:.2s"></i>
-  <i class="tri" aria-hidden="true" style="--s:34px;--c:url(assets/shapes/triangle-equilateral-orange.svg);--r:40deg;right:5%;top:110px;--d:.26s"></i>
-
-
-  <div class="grid wrap">
+<section class="p-hero on-dark" aria-labelledby="p-title">
+  <div class="head wrap pat pat-confetti-deep" style="--pat-op:.5;--pat-mask:linear-gradient(100deg,#000 0%,transparent 60%)">
+    <h1 id="p-title">Three cans. <em>Four vitamins each.</em></h1>
     <div>
-      <h1>Three cans. <em>Four vitamins each.</em></h1>
       <p>Every VIVE is the cola taste you know, charged with four vitamins for one daily need. Pick the vibe that fits your day.</p>
       <div class="actions">
         <a class="btn orange" href="shop.html">Grab a VIVE!</a>
         <a class="btn white" href="#compare">Compare the three</a>
       </div>
     </div>
-    <div class="trio" aria-hidden="true">
-      <div class="burst star"></div>
-      <div class="burst front star"></div>
-      <div class="cans">
-        <img src="assets/can-glow-web.webp" alt="" width="600" height="1568" fetchpriority="high">
-        <img src="assets/can-classic-web.webp" alt="" width="600" height="1569" fetchpriority="high">
-        <img src="assets/can-focus-web.webp" alt="" width="600" height="1569">
-      </div>
-    </div>
   </div>
+  <ul class="lineup">
+    <li><a href="#classic" style="--g:var(--orange);--star:url(assets/shapes/star-10pt-white.svg);--r:-8deg"><span class="burst star" aria-hidden="true"></span><img src="assets/can-classic-web.webp" alt="" width="600" height="1569" fetchpriority="high"><span class="name"><b>VIVE Classic</b><small>Everyday energy</small></span><span class="go" aria-hidden="true">See Classic</span></a></li>
+    <li><a href="#glow" style="--g:var(--sun);--lpo:.3;--star:url(assets/shapes/star-10pt-white.svg);--r:6deg"><span class="burst star" aria-hidden="true"></span><img src="assets/can-glow-web.webp" alt="" width="600" height="1568" fetchpriority="high"><span class="name"><b>VIVE Glow</b><small>Skin health</small></span><span class="go" aria-hidden="true">See Glow</span></a></li>
+    <li><a href="#focus" style="--g:var(--navy);--lp:url(assets/patterns/seal-deep.svg);--lpo:.4;--star:url(assets/shapes/star-10pt-deep.svg);--r:-6deg;color:var(--white)"><span class="burst star" aria-hidden="true"></span><img src="assets/can-focus-web.webp" alt="" width="600" height="1569"><span class="name"><b>VIVE Focus</b><small>Mental performance</small></span><span class="go" aria-hidden="true">See Focus</span></a></li>
+  </ul>
 </section>
 
 
 <section class="variant v-classic wrap" id="classic" aria-labelledby="classic-title">
+  <div class="deco" aria-hidden="true"><i style="--s:clamp(260px,26vw,400px);--img:url(assets/shapes/star-10pt-spiky-outline-white.svg);right:-6%;top:-12%;--r:12deg;--o:.7"></i><i style="--s:160px;--img:url(assets/shapes/triangle-acute-deep.svg);left:38%;top:-30px;--r:-152deg;--o:.9"></i><i style="--s:120px;--img:url(assets/shapes/square-chamfer-sun.svg);left:2%;top:8%;--r:14deg"></i><i style="--s:46px;--img:url(assets/shapes/star-4pt-sparkle-white.svg);left:6%;bottom:14%"></i></div>
   <div class="numeral" aria-hidden="true">IV</div>
   <div class="inner">
     <div class="can-col" data-reveal>
@@ -208,6 +211,7 @@
 </section>
 
 <section class="variant v-glow wrap flip" id="glow" aria-labelledby="glow-title">
+  <div class="deco" aria-hidden="true"><i style="--s:clamp(280px,28vw,420px);--img:url(assets/shapes/star-10pt-concentric-orange-white.svg);right:-7%;top:-6%;--r:-10deg;--o:.75"></i><i style="--s:150px;--img:url(assets/shapes/triangle-acute-navy.svg);right:44%;top:-30px;--r:24deg"></i><i style="--s:110px;--img:url(assets/shapes/square-diamond-orange.svg);left:2%;bottom:14%;--r:10deg"></i><i style="--s:46px;--img:url(assets/shapes/star-4pt-sparkle-navy.svg);left:44%;bottom:16%"></i></div>
   <div class="numeral" aria-hidden="true">IV</div>
   <div class="inner">
     <div class="can-col" data-reveal>
@@ -230,6 +234,7 @@
 </section>
 
 <section class="variant v-focus wrap on-dark" id="focus" aria-labelledby="focus-title">
+  <div class="deco" aria-hidden="true"><i style="--s:clamp(280px,28vw,420px);--img:url(assets/shapes/star-10pt-spiky-outline-sun.svg);left:-6%;top:-10%;--r:-14deg;--o:.6"></i><i style="--s:150px;--img:url(assets/shapes/triangle-acute-orange.svg);left:40%;bottom:6%;--r:30deg"></i><i style="--s:120px;--img:url(assets/shapes/square-concentric-deep-sun.svg);right:3%;top:10%;--r:-12deg"></i><i style="--s:46px;--img:url(assets/shapes/star-4pt-sparkle-sun.svg);right:6%;bottom:18%"></i></div>
   <div class="numeral" aria-hidden="true">IV</div>
   <div class="inner">
     <div class="can-col" data-reveal>
@@ -251,7 +256,7 @@
   </div>
 </section>
 
-<section class="every wrap" aria-labelledby="every-title">
+<section class="every wrap pat pat-sparse" aria-labelledby="every-title">
   <img class="mascot right" src="assets/mascot/vivi-running.webp" alt="" width="595" height="720" loading="lazy" style="top:clamp(60px,8vw,110px)">
   <h2 id="every-title" data-reveal><span class="label orange">In every can</span></h2>
   <ul class="facts-grid">
@@ -266,7 +271,7 @@
   </figure>
 </section>
 
-<section class="compare wrap on-dark" id="compare" aria-labelledby="compare-title">
+<section class="compare wrap on-dark pat pat-seal-blue" id="compare" aria-labelledby="compare-title">
   <h2 id="compare-title" data-reveal><span class="label sun">Compare the three</span></h2>
   <table data-reveal style="--i:1">
     <caption>Which vitamins each VIVE carries</caption>
@@ -286,12 +291,12 @@
   </table>
 </section>
 
-<section class="p-cta wrap" aria-labelledby="cta-title">
+<section class="p-cta wrap pat pat-confetti" aria-labelledby="cta-title">
   <h2 id="cta-title" data-reveal>Pick your vibe</h2>
   <p data-reveal style="--i:1">Get single cans, mixed packs, and merch in the shop.</p>
   <div class="actions" data-reveal style="--i:2">
     <a class="btn navy" href="shop.html">Shop VIVE</a>
-    <a class="btn white" href="about.html">Our story</a>
+    <a class="btn orange" href="about.html">Our story</a>
   </div>
 </section>
 

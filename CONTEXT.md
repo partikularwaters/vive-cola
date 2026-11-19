@@ -47,7 +47,8 @@ This document is the canonical router and functional contract for the VIVE four-
 
 ### 3. Product Page (`product.html`)
 - **Brand product showcase:** Deep focus on the cans, vitamin formulation per variant (see the product line in [brand-spec.md](brand-spec.md)), stevia sweetening, and zero-calorie benefits.
-- **Strip structure:** Exactly one product variation per strip, except where variants are showcased together as a cohesive family strip.
+- **Hero:** A navy headline band over a lineup of three color panels (Classic, Glow, and Focus), each linking to its strip. Each panel carries a subtle Star Seal outside its star: white seals on Classic and Glow, deep navy seals on Focus.
+- **Strip structure:** Each strip carries large brand shapes behind its content and no pattern, so each section has one layer of background detail. The hero band carries a deep Confetti Toss fading from the left; "In every can" sits on Confetti Sparse, the comparison on a subtle blue-toned Star Seal, and the closing call to action on off-white with Confetti Toss. Exactly one product variation per strip, except where variants are showcased together as a cohesive family strip.
 - **Strict negative constraints:**
   - **NO** product posters are allowed on this page.
   - **NO** merchandise items are allowed on this page.
