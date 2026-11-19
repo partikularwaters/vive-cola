@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
   <polygon points="512,120 840,780 184,780" fill="#2B3990" transform="rotate(15 512 512)"/>
-  <polygon points="512,160 810,760 214,760" fill="#F27A21" transform="rotate(-10 512 512)"/>
+  <polygon points="512,160 810,760 214,760" fill="#FF9447" transform="rotate(-10 512 512)"/>
   <polygon points="512,200 780,740 244,740" fill="#F4BD6A"/>
 </svg>

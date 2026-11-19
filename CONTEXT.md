@@ -26,13 +26,17 @@ This document is the canonical router and functional contract for the VIVE four-
 
 ## Canonical Page Specifications
 
+### All pages
+- **Header:** The sticky navbar is orange on every page with deep navy links, the navy wordmark, and a deep navy cart, so it always stands apart from the hero below (instructor critique, 2026-11-20).
+- **Brand patterns:** Selected sections carry the Confetti Toss, Confetti Sparse, or Star Seal pattern (`assets/patterns/`, `.pat` in `site.css`), so the color grounds read as branded surfaces. Use them sparingly: the user found the first, heavier pass suffocating (2026-11-20).
+
 ### 1. Homepage (`index.html`)
 - **Hero section:** Bold brand statement, 10-point burst, Classic can visual, a vitamin-led paragraph, and clear calls to action. No price in the hero.
-- **Posters section:** Present one poster per variant (VIVE Glow, VIVE Classic, and VIVE Focus) at slight angles under the tilted "Pick your vibe" label. Each poster carries the variant name, its tagline, its vitamins, and a "Grab VIVE …" button to `shop.html`. The posters are the team's 1024×1636 Classic, Glow, and Focus posters (see [brand-spec.md](brand-spec.md)).
-- **Video section:** The team's 45-second ad (`assets/video/vive-ad.mp4`, synced from `video-recordings/VIVE.mp4`) plays in a native `<video controls>` element at 16:9, with its "Sip the vibe now" end card as the poster image.
-- **Additional posters:** Feature campaign extensions and introductory ads (including the courtside volleyball poster and street mockups).
+- **Intro poster section:** Its own sun strip right after the hero, under a Star Seal pattern. The courtside volleyball poster leads at full size, with VIVI in the right gutter; the bus-shelter and street-wall mockups sit small under "Spotted around town" as supporting proof.
+- **Posters section:** Its own off-white strip after the intro, under the low-density Confetti Sparse pattern and with no mascot. Present one poster per variant (VIVE Glow, VIVE Classic, and VIVE Focus) at slight angles under the tilted "Pick your vibe" label. Each poster carries the variant name, its tagline, its vitamins, and a "Grab VIVE …" button to `shop.html`. The posters are the team's 1024×1636 Classic, Glow, and Focus posters (see [brand-spec.md](brand-spec.md)).
+- **Video section:** The team's 45-second ad (`assets/video/vive-ad.mp4`, synced from `video-recordings/Vive Draft1.mp4`) plays in a native `<video controls>` element at 16:9, with a designed cover graphic as the poster image (`assets/video/vive-ad-cover.webp`, rendered from `design-demos/ad-cover.html`). The strip is sun with the intro's Star Seal layer. Until the first press, a custom cover shows that graphic with a large sun-star play button in its open center; pressing it removes the cover and plays the ad with native controls. Without JavaScript the native player shows as usual.
 - **Collabs strip:** a thin off-white bar between the ad and the Christmas posters. "Collabs with" leads a slow, looping marquee of Filipino brand logos: Jollibee, Bench, Mercury Drug, Goldilocks, Cebu Pacific, Penshoppe, National Book Store, Chowking, Max's Restaurant, and Greenwich. The logos sit muted in grayscale and show their own colors on hover. The strip pauses on hover, on focus, and with its Motion button (WCAG 2.2.2), and it holds still under `prefers-reduced-motion`. The SVGs in `assets/collabs/` were downloaded on 2026-11-19 from the brands' Wikipedia and Wikimedia Commons file pages and checked for scripts and external references. The collaborations are fictional, written for the prototype story at the user's request on 2026-11-19.
-- **Seasonal poster footer:** "Christmas with VIVE" at the end of the page shows the six team Christmas posters (Czar, Louie, Venson, Warren, Aya, and Madrid) in one row at equal height. On the page, the lede credits them to the VIVE community; that framing is fictional, chosen on 2026-11-19. Selecting a poster opens it full size in a native modal `<dialog>` (`showModal()` and a Close button). A click outside the poster closes it in every browser: a script closes the dialog when both the press and the release land on its backdrop, and `closedby="any"` covers the same case natively.
+- **Seasonal poster footer:** "Christmas with VIVE" on an off-white ground with the warm Confetti Toss layer at the end of the page shows the six team Christmas posters (Czar, Louie, Venson, Warren, Aya, and Madrid) in one row at equal height. On the page, the lede credits them to the VIVE community; that framing is fictional, chosen on 2026-11-19. Selecting a poster opens it full size in a native modal `<dialog>` (`showModal()` and a Close button). A click outside the poster closes it in every browser: a script closes the dialog when both the press and the release land on its backdrop, and `closedby="any"` covers the same case natively.
 - **All ads created live here:** The homepage acts as the comprehensive advertising showcase for the brand.
 
 ### 2. About Us (`about.html`)
@@ -95,7 +99,7 @@ This document is the canonical router and functional contract for the VIVE four-
 | `README.md` | Human overview | Welcome, live preview, submission tracking, and reference links |
 | `AGENTS.md` | Agent contract | Execution invariants, strict constraints, and agent routing |
 | `CONTEXT.md` | Canonical router | This file: pipeline status, page requirements, and system contracts |
-| [brand-spec.md](brand-spec.md) | Brand reference | Palette (#F27A21, #2B3990, #F4BD6A, #F9F9F9), typography, cans, and assets |
+| [brand-spec.md](brand-spec.md) | Brand reference | Palette (#FF9447 on the web, #2B3990, #F4BD6A, #F9F9F9), typography, cans, and assets |
 | [direction-approved.md](direction-approved.md) | Design decision | Decision record for Direction C base + Direction A headings + Direction B panels |
 | `index.html`, `about.html`, etc. | Product output | The canonical static HTML pages at root |
 | `site.css`, `site.js` | Shared system | Tokens, nav, buttons, labels, cart, and the global footer |

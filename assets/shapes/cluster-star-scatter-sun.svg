@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
   <!-- Outer scatter triangles -->
   <polygon points="180,240 220,310 140,310" fill="#2B3990" transform="rotate(-25 180 275)"/>
-  <polygon points="860,260 900,330 820,330" fill="#F27A21" transform="rotate(30 860 295)"/>
+  <polygon points="860,260 900,330 820,330" fill="#FF9447" transform="rotate(30 860 295)"/>
   <polygon points="140,740 180,810 100,810" fill="#F4BD6A" transform="rotate(45 140 775)"/>
   <polygon points="880,720 920,790 840,790" fill="#1D2766" transform="rotate(-15 880 755)"/>
-  <polygon points="512,60 540,110 484,110" fill="#F27A21"/>
+  <polygon points="512,60 540,110 484,110" fill="#FF9447"/>
   <polygon points="512,940 540,990 484,990" fill="#2B3990" transform="rotate(180 512 965)"/>
   <!-- Central 10-point Sun Star -->
   <polygon points="512.0,163.8 578.2,308.7 716.7,230.0 700.0,388.8 843.4,404.1 752.9,512.0 843.4,619.9 700.0,635.2 716.7,794.0 578.2,715.3 512.0,860.2 445.8,715.3 307.3,794.0 324.0,635.2 180.6,619.9 271.1,512.0 180.6,404.1 324.0,388.8 307.3,230.0 445.8,308.7" fill="#F4BD6A"/>

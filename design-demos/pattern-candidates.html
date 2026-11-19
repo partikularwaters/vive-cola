@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>VIVE pattern candidates</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap">
+<style>
+  :root { --orange:#F27A21; --navy:#2B3990; --sun:#F4BD6A; --white:#F9F9F9; --deep:#1D2766; }
+  body { margin:0; width:1320px; padding:40px; box-sizing:border-box; background:#ECEDF3; font-family:Montserrat, sans-serif; color:var(--deep); }
+  h1 { margin:0 0 6px; font-size:28px; font-weight:900; }
+  p.sub { margin:0 0 28px; font-size:15px; font-weight:700; color:#4a5288; }
+  .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+  figure { margin:0; }
+  figure svg { display:block; width:100%; aspect-ratio:1; }
+  figcaption { margin-top:12px; font-size:16px; font-weight:900; }
+  figcaption span { display:block; margin-top:4px; font-size:13px; font-weight:700; color:#4a5288; }
+</style>
+</head>
+<body>
+<h1>VIVE pattern candidates</h1>
+<p class="sub">Six repeat ideas from the !V monogram, the V, and the brand's stars and triangles. Three go forward as full directions.</p>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="bang" viewBox="0 0 120 261"><rect width="120" height="176" rx="5"/><rect y="206" width="120" height="55" rx="5"/></symbol>
+    <symbol id="v" viewBox="138 0 311 261"><polygon points="138,0 258,0 290,124 325,0 448,0 363,261 222,261"/></symbol>
+    <symbol id="bangv" viewBox="0 0 449 261"><rect width="120" height="176" rx="5"/><rect y="206" width="120" height="55" rx="5"/><polygon points="138,0 258,0 290,124 325,0 448,0 363,261 222,261"/></symbol>
+    <symbol id="star" viewBox="0 0 1024 1024"><polygon points="512.0,0.0 609.3,213.0 813.1,97.3 788.5,330.8 999.4,353.3 866.3,512.0 999.4,670.7 788.5,693.2 813.1,926.7 609.3,811.0 512.0,1024.0 414.7,811.0 210.9,926.7 235.5,693.2 24.6,670.7 157.7,512.0 24.6,353.3 235.5,330.8 210.9,97.3 414.7,213.0"/></symbol>
+    <symbol id="tri" viewBox="0 0 100 87"><polygon points="50,0 100,87 0,87"/></symbol>
+
+    <!-- A: Bang Rows -->
+    <pattern id="pA" width="72" height="150" patternUnits="userSpaceOnUse">
+      <rect width="72" height="150" fill="#F27A21"/>
+      <use href="#bang" x="12" y="10" width="24" height="52" fill="#2B3990"/>
+      <use href="#bang" x="48" y="85" width="24" height="52" fill="#2B3990" transform="rotate(180 60 111)"/>
+    </pattern>
+    <!-- B: Monogram Canvas -->
+    <pattern id="pB" width="170" height="130" patternUnits="userSpaceOnUse">
+      <rect width="170" height="130" fill="#2B3990"/>
+      <use href="#bangv" x="14" y="16" width="66" height="38" fill="#F4BD6A"/>
+      <use href="#bangv" x="99" y="81" width="66" height="38" fill="#F4BD6A"/>
+      <use href="#star" x="113" y="22" width="22" height="22" fill="#F9F9F9"/>
+      <use href="#star" x="28" y="88" width="22" height="22" fill="#F9F9F9"/>
+    </pattern>
+    <!-- C: Charged Chevron (V and inverted V interlock) -->
+    <pattern id="pC" width="145.4" height="176" patternUnits="userSpaceOnUse">
+      <rect width="145.4" height="176" fill="#F9F9F9"/>
+      <use href="#v" x="0" y="2" width="100" height="84" fill="#F27A21"/>
+      <use href="#v" x="72.7" y="2" width="100" height="84" fill="#F4BD6A" transform="rotate(180 122.7 44)"/>
+      <use href="#v" x="-72.7" y="2" width="100" height="84" fill="#F4BD6A" transform="rotate(180 -22.7 44)"/>
+      <use href="#v" x="0" y="90" width="100" height="84" fill="#2B3990"/>
+      <use href="#v" x="72.7" y="90" width="100" height="84" fill="#F27A21" transform="rotate(180 122.7 132)"/>
+      <use href="#v" x="-72.7" y="90" width="100" height="84" fill="#F27A21" transform="rotate(180 -22.7 132)"/>
+    </pattern>
+    <!-- D: Confetti Kit -->
+    <pattern id="pD" width="260" height="260" patternUnits="userSpaceOnUse">
+      <rect width="260" height="260" fill="#F9F9F9"/>
+      <use href="#v" x="20" y="22" width="52" height="44" fill="#F27A21" transform="rotate(-14 46 44)"/>
+      <use href="#star" x="140" y="14" width="46" height="46" fill="#F4BD6A" transform="rotate(10 163 37)"/>
+      <use href="#bang" x="214" y="40" width="16" height="35" fill="#2B3990" transform="rotate(18 222 57)"/>
+      <use href="#tri" x="92" y="86" width="34" height="30" fill="#2B3990" transform="rotate(32 109 101)"/>
+      <rect x="30" y="118" width="24" height="24" fill="#F4BD6A" transform="rotate(20 42 130)"/>
+      <use href="#v" x="160" y="110" width="44" height="37" fill="#2B3990" transform="rotate(12 182 128)"/>
+      <use href="#bang" x="100" y="160" width="16" height="35" fill="#F27A21" transform="rotate(-22 108 177)"/>
+      <use href="#star" x="18" y="188" width="38" height="38" fill="#F27A21" transform="rotate(-8 37 207)"/>
+      <use href="#tri" x="190" y="196" width="40" height="35" fill="#F4BD6A" transform="rotate(-28 210 213)"/>
+      <use href="#tri" x="58" y="58" width="18" height="16" fill="#F4BD6A" transform="rotate(64 67 66)"/>
+    </pattern>
+    <!-- E: Star Seal -->
+    <pattern id="pE" width="140" height="140" patternUnits="userSpaceOnUse">
+      <rect width="140" height="140" fill="#F4BD6A"/>
+      <use href="#star" x="6" y="6" width="58" height="58" fill="#F27A21"/>
+      <use href="#bangv" x="20" y="27" width="30" height="17" fill="#2B3990"/>
+      <use href="#star" x="76" y="76" width="58" height="58" fill="#F27A21"/>
+      <use href="#bangv" x="90" y="97" width="30" height="17" fill="#2B3990"/>
+      <use href="#tri" x="94" y="22" width="22" height="19" fill="#2B3990" transform="rotate(20 105 31)"/>
+      <use href="#tri" x="24" y="98" width="22" height="19" fill="#2B3990" transform="rotate(-20 35 107)"/>
+    </pattern>
+    <!-- F: Exclaim Stripe -->
+    <pattern id="pF" width="120" height="100" patternUnits="userSpaceOnUse" patternTransform="rotate(-28)">
+      <rect width="120" height="50" fill="#2B3990"/>
+      <rect y="50" width="120" height="50" fill="#F27A21"/>
+      <use href="#bang" x="16" y="10" width="14" height="30" fill="#F9F9F9"/>
+      <use href="#bang" x="76" y="10" width="14" height="30" fill="#F9F9F9"/>
+      <use href="#bang" x="46" y="60" width="14" height="30" fill="#2B3990"/>
+      <use href="#bang" x="106" y="60" width="14" height="30" fill="#2B3990"/>
+    </pattern>
+  </defs>
+</svg>
+<div class="grid">
+  <figure><svg viewBox="0 0 400 400"><rect width="400" height="400" fill="url(#pA)"/></svg><figcaption>A · Bang Rows<span>The logo's ! marches in half-drop rows, every second one flipped.</span></figcaption></figure>
+  <figure><svg viewBox="0 0 400 400"><rect width="400" height="400" fill="url(#pB)"/></svg><figcaption>B · Monogram Canvas<span>Sun !V monograms on navy with white 10-point stars, like a luggage print.</span></figcaption></figure>
+  <figure><svg viewBox="0 0 400 400"><rect width="400" height="400" fill="url(#pC)"/></svg><figcaption>C · Charged Chevron<span>The V and its upside-down twin lock edge to edge into zigzag bands.</span></figcaption></figure>
+  <figure><svg viewBox="0 0 400 400"><rect width="400" height="400" fill="url(#pD)"/></svg><figcaption>D · Confetti Kit<span>V, !, stars, triangles, and squares tossed at angles, like the ad's end card.</span></figcaption></figure>
+  <figure><svg viewBox="0 0 400 400"><rect width="400" height="400" fill="url(#pE)"/></svg><figcaption>E · Star Seal<span>Orange 10-point stars stamped with !V, set on the diagonal.</span></figcaption></figure>
+  <figure><svg viewBox="0 0 400 400"><rect width="400" height="400" fill="url(#pF)"/></svg><figcaption>F · Exclaim Stripe<span>Slanted navy and orange bands, each carrying a line of ! marks.</span></figcaption></figure>
+</div>
+</body>
+</html>

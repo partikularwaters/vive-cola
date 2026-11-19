@@ -242,19 +242,10 @@
       2
     ]
   },
-  "assets/video/vive-ad-poster.webp": {
-    "source": "video-recordings/VIVE.mp4",
-    "size": 360702415,
-    "mtime": 1795092945,
-    "recipe": [
-      "frame",
-      43.0
-    ]
-  },
   "assets/video/vive-ad.mp4": {
-    "source": "video-recordings/VIVE.mp4",
-    "size": 360702415,
-    "mtime": 1795092945,
+    "source": "video-recordings/Vive Draft1.mp4",
+    "size": 352467589,
+    "mtime": 1795114837,
     "recipe": [
       "video",
       1920

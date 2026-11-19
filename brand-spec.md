@@ -31,7 +31,8 @@ The older leaf wordmark and purple can in `training/vive-copy.md` are superseded
 | `merch/*.webp` | The team's merch mockup photos, synced by `scripts/sync_assets.py` |
 | `team/*.webp` | Transparent team cutouts, synced by `scripts/sync_assets.py` |
 | `mascot/vivi-*.webp` | VIVI, the mascot: pointing, running, and dizzy |
-| `video/vive-ad.mp4` | The 45-second VIVE ad (H.264, 1080p, from `VIVE.mp4`) and its end-card poster |
+| `video/vive-ad.mp4` | The 45-second VIVE ad (H.264, 1080p, from `Vive Draft1.mp4`) |
+| `video/vive-ad-cover.webp` | The ad's custom cover graphic, rendered from `design-demos/ad-cover.html` |
 | `shapes/` (`source/deck-extract/`, mirrored to `assets/shapes/`) | 148 standalone vector SVGs and 1024×1024 transparent PNGs: 10-point stars, 5-point stars, 4-point stars, squares & diamonds (solids, outlines, concentric badges, tilts, chamfers), triangles (equilateral, directional, acute energy, wireframe, corner wedges), angled banners, clusters, and price/vitamin burst badges |
 
 ## Visual language (client's words, 2026-11-14)
@@ -43,12 +44,13 @@ Sharp and energetic. Vibrant and optimistic. Intense but sweet. Cheerful. Dynami
 ## Color (client-specified, 2026-11-14)
 | Role | Hex |
 |---|---|
-| Orange | #F27A21 |
+| Orange (print) | #F27A21 |
+| Orange (website) | #FF9447 |
 | Navy | #2B3990 |
 | Sun (triangles) | #F4BD6A |
 | Off-white | #F9F9F9 |
 
-Orange is the main ground for the site. Do not use the deck's purple (#2A2882) as a page ground (client, 2026-11-14).
+The website uses the lighter #FF9447 (chosen 2026-11-20, see [direction-approved.md](direction-approved.md)); print pieces and the deck keep #F27A21. Orange is the main ground for the site. Do not use the deck's purple (#2A2882) as a page ground (client, 2026-11-14).
 
 Flavor grounds seen on the retired deck-era cans (not part of the core four): cream #E4CEAF (Decaffeinated), black (Extra Caffeine).
 

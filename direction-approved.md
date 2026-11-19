@@ -65,3 +65,56 @@ Client's words:
 > We should settle with this design until I decide otherwise
 
 Do not redesign `router.html` or rebuild `VIVE.pdf` with a different design until the client asks. The automatic PDF rebuild in the pre-commit hook is off; run `python3 scripts/build_router_pdf.py` by hand when a rebuild is wanted.
+
+---
+
+# Brand Repeating Pattern (shown 2026-11-19, awaiting choice)
+
+The user asked for a repeating pattern from the `!`, the `!V` monogram, or the V with other brand shapes. The `!V` shapes are traced as vectors from `assets/logo-vive-navy-tagline.png`.
+
+Candidates (`design-demos/pattern-candidates.html` and `.png`): A Bang Rows, B Monogram Canvas, C Charged Chevron, D Confetti Kit, E Star Seal, and F Exclaim Stripe.
+
+Full directions, each with three colorways, a tone-on-tone page background, and a six-pack sleeve:
+- `design-demos/pattern-dir-1.html` (Monogram Canvas, from B)
+- `design-demos/pattern-dir-2.html` (Charged Chevron, from C)
+- `design-demos/pattern-dir-3.html` (Confetti Kit, from D)
+
+`design-demos/pattern-directions-build.py` regenerates the three pages.
+
+Client's choice: pending.
+
+## Batch 2: shapes only (shown 2026-11-19, awaiting choice)
+
+The user kept batch 1 as reference and asked for a new batch with no logo characters, using only the brand shape library.
+
+Candidates (`design-demos/shape-pattern-candidates.html` and `.png`): G Triangle Mosaic, H Star Lattice, I Star Halftone, J Chamfer Checker, K Energy Shards, and L Angled Tape.
+
+Full directions, each with three colorways, a tone-on-tone page background, and a six-pack sleeve:
+- `design-demos/shape-pattern-dir-1.html` (Triangle Mosaic, from G)
+- `design-demos/shape-pattern-dir-2.html` (Star Halftone, from I)
+- `design-demos/shape-pattern-dir-3.html` (Angled Tape, from L)
+
+`design-demos/shape-patterns-build/` regenerates the sheet and the three pages.
+
+Client's choice: pending.
+
+### Confetti Toss (shown 2026-11-19, chosen 2026-11-20)
+
+The user asked to try batch 1's Confetti Kit without the logo characters. `design-demos/shape-pattern-dir-4.html` keeps its layout and angles: each V became a 10-point star, a spiky star, a concentric star badge, or a chamfered square; each `!` became the slim acute triangle; 4-point sparkles, diamonds, and short angled-banner strips fill the gaps.
+
+### Choice (2026-11-20)
+
+User, on Confetti Toss: "Yes. Let's apply that with these notes". Mid-turn the user added: "E. Star Seal is also acceptable for a pattern, but strictly no Vive logo."
+
+- `scripts/build_patterns.py` writes both patterns to `assets/patterns/`: Confetti Toss tiles (`confetti-*.svg`) and Star Seal tiles (`seal-*.svg`). Star Seal stamps a 4-point sparkle in each 10-point star where batch 1 used the !V mark.
+- `site.css` `.pat` puts a tile on a section through a `::before` layer with its own opacity.
+
+# Lighter Orange (2026-11-20)
+
+The instructor suggested a lighter orange against the brand navy; the user asked to apply it everywhere if an experiment worked. `design-demos/orange-experiment.html` and `.png` compare the print orange #F27A21 with #F98A3A, #FF9447, and #FF9D52 in the navbar, the hero accent, beside sun, and on a patterned ground.
+
+Applied: #FF9447 (option B). Navy text on it is 4.58:1 (from 3.63:1), deep navy is 6.24:1, and it still separates from sun. The lighter options C and above start to merge with sun. `build_patterns.py` recolors the shape SVGs in `assets/shapes/` to match.
+
+# Pattern restraint (2026-11-20)
+
+User: "the brand patterns have been applied excessively and feels suffocating. We should apply them more strategically." Then, for the three variant posters: "create a new pattern with less population to create more breathing room." `build_patterns.py` adds Confetti Sparse (`sparse-*.svg`): nine Confetti Toss shapes on a 640px tile.

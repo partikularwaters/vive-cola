@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>VIVE pattern · Direction 1: Monogram Canvas</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&display=swap">
+<style>
+  :root { --orange:#F27A21; --navy:#2B3990; --sun:#F4BD6A; --white:#F9F9F9; --deep:#1D2766; }
+  * { box-sizing:border-box; }
+  body { margin:0; width:1440px; background:#ECEDF3; font-family:Montserrat, sans-serif; color:var(--deep); }
+  .top { display:grid; grid-template-columns:760px 1fr; gap:48px; padding:48px; align-items:start; }
+  .swatch svg { display:block; width:760px; height:560px; }
+  h1 { margin:0; font-size:44px; font-weight:900; line-height:1; text-transform:uppercase; }
+  h1 small { display:block; font-size:15px; letter-spacing:.12em; color:var(--orange); margin-bottom:12px; }
+  p { font-size:17px; line-height:1.55; font-weight:600; margin:18px 0 0; max-width:30em; }
+  p b { font-weight:800; }
+  .ways { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:28px; }
+  .ways figure { margin:0; } .ways svg { display:block; width:100%; }
+  .ways figcaption { margin-top:8px; font-size:13px; font-weight:800; }
+  .uses { display:grid; grid-template-columns:1.25fr 1fr; gap:32px; padding:0 48px 48px; }
+  .uses h2 { grid-column:1/-1; margin:0; font-size:15px; font-weight:900; letter-spacing:.12em; text-transform:uppercase; }
+  /* Use 1: a site section with the quiet tone-on-tone pattern behind real content */
+  .site { position:relative; height:380px; overflow:hidden; background:#2B3990; }
+  .site svg { position:absolute; inset:0; width:100%; height:100%; }
+  .site .in { position:relative; padding:56px 52px; color:var(--white); }
+  .site .label { display:inline-block; background:var(--sun); color:var(--navy); font-weight:900; font-size:40px; text-transform:uppercase; padding:6px 30px 6px 18px; transform:rotate(-2deg); clip-path:polygon(0 0,100% 0,calc(100% - 18px) 100%,0 100%); }
+  .site .in p { color:var(--white); font-size:18px; max-width:24em; }
+  .site .btn { display:inline-block; margin-top:22px; background:var(--orange); color:var(--white); font-weight:800; font-size:14px; letter-spacing:.06em; text-transform:uppercase; padding:14px 26px 14px 20px; clip-path:polygon(0 0,100% 0,calc(100% - 12px) 100%,0 100%); }
+  .site .note, .pack .note { position:absolute; right:14px; bottom:12px; font-size:12px; font-weight:800; color:var(--white); background:rgba(20,24,63,.82); padding:5px 9px; }
+  /* Use 2: a six-pack sleeve face with the full-strength pattern and the real can renders */
+  .pack { position:relative; height:380px; overflow:hidden; background:var(--deep); }
+  .pack svg { position:absolute; inset:0; width:100%; height:100%; }
+  .pack .band { position:absolute; left:0; right:0; top:118px; height:150px; background:var(--white); clip-path:polygon(0 12%,100% 0,100% 88%,0 100%); }
+  .pack .band img { position:absolute; left:34px; top:48px; width:190px; }
+  .pack .band span { position:absolute; left:36px; top:96px; font-size:13px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--navy); }
+  .pack .cans { position:absolute; right:30px; top:70px; display:flex; gap:6px; align-items:flex-end; }
+  .pack .cans img { width:72px; filter:drop-shadow(0 12px 14px rgba(20,24,63,.4)); }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs><symbol id="bang" viewBox="0 0 120 261"><rect width="120" height="176" rx="5"/><rect y="206" width="120" height="55" rx="5"/></symbol>
+<symbol id="v" viewBox="138 0 311 261"><polygon points="138,0 258,0 290,124 325,0 448,0 363,261 222,261"/></symbol>
+<symbol id="bangv" viewBox="0 0 449 261"><rect width="120" height="176" rx="5"/><rect y="206" width="120" height="55" rx="5"/><polygon points="138,0 258,0 290,124 325,0 448,0 363,261 222,261"/></symbol>
+<symbol id="star" viewBox="0 0 1024 1024"><polygon points="512.0,0.0 609.3,213.0 813.1,97.3 788.5,330.8 999.4,353.3 866.3,512.0 999.4,670.7 788.5,693.2 813.1,926.7 609.3,811.0 512.0,1024.0 414.7,811.0 210.9,926.7 235.5,693.2 24.6,670.7 157.7,512.0 24.6,353.3 235.5,330.8 210.9,97.3 414.7,213.0"/></symbol>
+<symbol id="tri" viewBox="0 0 100 87"><polygon points="50,0 100,87 0,87"/></symbol><pattern id="main" width="170" height="130" patternUnits="userSpaceOnUse"><g transform="scale(1)">
+<rect width="170" height="130" fill="#2B3990"/>
+<use href="#bangv" x="14" y="16" width="66" height="38" fill="#F4BD6A"/>
+<use href="#bangv" x="99" y="81" width="66" height="38" fill="#F4BD6A"/>
+<use href="#star" x="113" y="22" width="22" height="22" fill="#F9F9F9"/>
+<use href="#star" x="28" y="88" width="22" height="22" fill="#F9F9F9"/></g></pattern><pattern id="hero" width="127.5" height="97.5" patternUnits="userSpaceOnUse"><g transform="scale(0.75)">
+<rect width="170" height="130" fill="#2B3990"/>
+<use href="#bangv" x="14" y="16" width="66" height="38" fill="#F4BD6A"/>
+<use href="#bangv" x="99" y="81" width="66" height="38" fill="#F4BD6A"/>
+<use href="#star" x="113" y="22" width="22" height="22" fill="#F9F9F9"/>
+<use href="#star" x="28" y="88" width="22" height="22" fill="#F9F9F9"/></g></pattern><pattern id="w0" width="118.99999999999999" height="91.0" patternUnits="userSpaceOnUse"><g transform="scale(0.7)">
+<rect width="170" height="130" fill="#2B3990"/>
+<use href="#bangv" x="14" y="16" width="66" height="38" fill="#F4BD6A"/>
+<use href="#bangv" x="99" y="81" width="66" height="38" fill="#F4BD6A"/>
+<use href="#star" x="113" y="22" width="22" height="22" fill="#F9F9F9"/>
+<use href="#star" x="28" y="88" width="22" height="22" fill="#F9F9F9"/></g></pattern><pattern id="w1" width="118.99999999999999" height="91.0" patternUnits="userSpaceOnUse"><g transform="scale(0.7)">
+<rect width="170" height="130" fill="#F27A21"/>
+<use href="#bangv" x="14" y="16" width="66" height="38" fill="#2B3990"/>
+<use href="#bangv" x="99" y="81" width="66" height="38" fill="#2B3990"/>
+<use href="#star" x="113" y="22" width="22" height="22" fill="#F9F9F9"/>
+<use href="#star" x="28" y="88" width="22" height="22" fill="#F9F9F9"/></g></pattern><pattern id="w2" width="118.99999999999999" height="91.0" patternUnits="userSpaceOnUse"><g transform="scale(0.7)">
+<rect width="170" height="130" fill="#F9F9F9"/>
+<use href="#bangv" x="14" y="16" width="66" height="38" fill="#F27A21"/>
+<use href="#bangv" x="99" y="81" width="66" height="38" fill="#F27A21"/>
+<use href="#star" x="113" y="22" width="22" height="22" fill="#F4BD6A"/>
+<use href="#star" x="28" y="88" width="22" height="22" fill="#F4BD6A"/></g></pattern><pattern id="quiet" width="136.0" height="104.0" patternUnits="userSpaceOnUse"><g transform="scale(0.8)">
+<rect width="170" height="130" fill="#2B3990"/>
+<use href="#bangv" x="14" y="16" width="66" height="38" fill="#3646A3"/>
+<use href="#bangv" x="99" y="81" width="66" height="38" fill="#3646A3"/>
+<use href="#star" x="113" y="22" width="22" height="22" fill="#3646A3"/>
+<use href="#star" x="28" y="88" width="22" height="22" fill="#3646A3"/></g></pattern></defs></svg>
+<div class="top">
+  <div class="swatch"><svg viewBox="0 0 760 560"><rect width="760" height="560" fill="url(#main)"/></svg></div>
+  <div>
+    <h1><small>Pattern direction 1</small>Monogram Canvas</h1>
+    <p>Ordered and collectible: the !V monogram repeats like a luggage or scarf print, with the brand's 10-point star as the spacer.</p>
+    <p><b>Best for:</b> Merch (scarf, tote, cap lining), packaging sleeves, and quiet page backgrounds.</p>
+    <div class="ways"><figure><svg viewBox="0 0 300 200"><rect width="300" height="200" fill="url(#w0)"/></svg><figcaption>Navy / sun</figcaption></figure><figure><svg viewBox="0 0 300 200"><rect width="300" height="200" fill="url(#w1)"/></svg><figcaption>Orange / navy</figcaption></figure><figure><svg viewBox="0 0 300 200"><rect width="300" height="200" fill="url(#w2)"/></svg><figcaption>Cream / orange</figcaption></figure></div>
+  </div>
+</div>
+<div class="uses">
+  <h2>In use</h2>
+  <div class="site">
+    <svg><rect width="100%" height="100%" fill="url(#quiet)"/></svg>
+    <div class="in">
+      <span class="label">Pick your vibe</span>
+      <p>The quiet, tone-on-tone version sits behind headings and copy without fighting them.</p>
+      <span class="btn">Grab a VIVE!</span>
+    </div>
+    <span class="note">Website section background</span>
+  </div>
+  <div class="pack">
+    <svg><rect width="100%" height="100%" fill="url(#hero)"/></svg>
+    <div class="band"><img src="../assets/wordmark-vive-navy.png" alt="VIVE"><span>Six-pack</span></div>
+    <div class="cans"><img src="../assets/can-glow-web.webp" alt=""><img src="../assets/can-classic-web.webp" alt=""><img src="../assets/can-focus-web.webp" alt=""></div>
+    <span class="note">Six-pack sleeve</span>
+  </div>
+</div>
+</body>
+</html>

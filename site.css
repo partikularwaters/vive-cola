@@ -5,7 +5,9 @@
    ========================================================================== */
 
 :root {
-  --orange: #F27A21;
+  /* Lighter brand orange (2026-11-20 experiment, option B): navy text on it is 4.58:1,
+     up from 3.63:1 on the print orange #F27A21, and it still separates from sun */
+  --orange: #FF9447;
   --navy: #2B3990;
   --sun: #F4BD6A;
   --white: #F9F9F9;
@@ -169,9 +171,9 @@ html {
    Navigation (the cart button is added by site.js on every page)
    ========================================================================== */
 /* Sticky site header: the nav and cart stay in reach on every page.
-   It is navy everywhere (every hero is navy), and gains a deeper ground and a
-   shadow only while stuck, through a scroll-state query. Browsers without
-   scroll-state queries still get the sticky header, just without the shadow. */
+   It is orange on every page, so it always stands apart from the hero below it,
+   and its text flips to deep navy. While stuck it gains a shadow and a deep base
+   line through a scroll-state query; other browsers get the plain sticky header. */
 .site-header {
   position: sticky;
   top: 0;
@@ -180,16 +182,44 @@ html {
   container-name: site-header;
 }
 
+/* A real border (not an inset shadow) draws the deep base line, and the header overlaps
+   the hero by 1px, so a scaled or zoomed screen never shows an orange hairline between
+   the line and a clipped hero edge. */
+.site-header {
+  margin-bottom: -1px;
+}
+
 .site-header nav {
-  background: var(--navy);
-  transition: background-color .2s ease, box-shadow .2s ease;
+  background: var(--orange);
+  border-bottom: 4px solid var(--deep);
+  transition: box-shadow .2s ease;
 }
 
 @container site-header scroll-state(stuck: top) {
   .site-header nav {
-    background: var(--deep);
     box-shadow: 0 10px 28px rgba(20, 24, 63, .3);
   }
+}
+
+/* Deep navy on orange is 6.24:1 */
+.site-header nav ul {
+  color: var(--deep);
+}
+
+.site-header nav a:hover,
+.site-header nav a:focus-visible {
+  color: var(--deep);
+  box-shadow: inset 0 -3px var(--white);
+}
+
+.site-header nav a[aria-current="page"] {
+  color: var(--deep);
+  box-shadow: inset 0 -3px var(--deep);
+}
+
+.site-header nav a:focus-visible {
+  outline: 2px solid var(--deep);
+  outline-offset: 4px;
 }
 
 /* In-page links glide to their target and stop below the sticky header */
@@ -261,9 +291,9 @@ nav a[aria-current="page"] {
   gap: 10px;
   min-height: 40px;
   padding: 0 6px 0 14px;
-  border: 2px solid var(--sun);
+  border: 2px solid var(--deep);
   background: none;
-  color: var(--sun);
+  color: var(--deep);
   font: 800 13px/1 var(--f);
   text-transform: uppercase;
   letter-spacing: .08em;
@@ -279,13 +309,13 @@ nav a[aria-current="page"] {
 
 .cart-btn:hover,
 .cart-btn:focus-visible {
-  background: var(--sun);
-  color: var(--deep);
+  background: var(--deep);
+  color: var(--sun);
   transition-delay: 0s, 0s, 0s;
 }
 
 .cart-btn:focus-visible {
-  outline: 3px solid var(--sun);
+  outline: 3px solid var(--deep);
   outline-offset: 3px;
 }
 
@@ -299,10 +329,18 @@ nav a[aria-current="page"] {
   padding: 0 6px;
   display: grid;
   place-items: center;
-  background: var(--orange);
-  color: var(--deep);
+  background: var(--deep);
+  color: var(--sun);
   font-weight: 900;
   font-variant-numeric: tabular-nums;
+  transition: background-color .15s ease .12s, color .15s ease .12s;
+}
+
+.cart-btn:hover .cart-count,
+.cart-btn:focus-visible .cart-count {
+  background: var(--sun);
+  color: var(--deep);
+  transition-delay: 0s;
 }
 
 .cart-count.bump {
@@ -509,6 +547,54 @@ nav a[aria-current="page"] {
   background-repeat: no-repeat;
 }
 
+/* Brand pattern layer. Add .pat and a pattern class to a section; the tile sits on a
+   ::before layer between the section's own ground and its content, so page rules can
+   keep setting background. --pat-op sets its strength and --pat-mask can fade it.
+   Tiles are built by scripts/build_patterns.py: Confetti Toss, Confetti Sparse, and Star Seal. */
+.pat {
+  position: relative;
+  isolation: isolate;
+}
+
+.pat::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--pat) 0 0 / var(--pat-size, 312px);
+  opacity: var(--pat-op, .16);
+  mask-image: var(--pat-mask, none);
+  pointer-events: none;
+}
+
+.pat-confetti { --pat: url(assets/patterns/confetti-color.svg); }
+.pat-confetti-warm { --pat: url(assets/patterns/confetti-warm.svg); }
+.pat-confetti-white { --pat: url(assets/patterns/confetti-white.svg); }
+.pat-confetti-deep { --pat: url(assets/patterns/confetti-deep.svg); }
+.pat-confetti-navy { --pat: url(assets/patterns/confetti-navy.svg); }
+.pat-sparse { --pat: url(assets/patterns/sparse-color.svg); --pat-size: 640px; }
+.pat-seal { --pat: url(assets/patterns/seal-color.svg); --pat-size: 140px; }
+.pat-seal-sun { --pat: url(assets/patterns/seal-sun.svg); --pat-size: 140px; }
+.pat-seal-white { --pat: url(assets/patterns/seal-white.svg); --pat-size: 140px; }
+
+/* Large static brand shapes behind a section's content */
+.deco {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.deco i {
+  position: absolute;
+  width: var(--s);
+  aspect-ratio: 1;
+  background: var(--img) center / contain no-repeat;
+  rotate: var(--r, 0deg);
+  opacity: var(--o, 1);
+}
+
 /* Diagonal cuts between sections */
 .cut-down {
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--cut)), 0 100%);
@@ -542,7 +628,7 @@ nav a[aria-current="page"] {
   transform: rotate(-1.5deg);
 }
 
-/* Orange labels carry deep navy text: white on orange is 2.63:1 */
+/* Orange labels carry deep navy text (6.24:1); white on orange is 2.08:1 */
 .label.orange {
   background: var(--orange);
   color: var(--deep);
@@ -641,7 +727,7 @@ h3 .label {
 .btn.navy { --btn-bg: var(--navy); --btn-shadow: var(--orange); color: var(--white); }
 .btn.white { --btn-bg: var(--white); --btn-shadow: var(--orange); color: var(--navy); }
 .btn.sun { --btn-bg: var(--sun); --btn-shadow: var(--orange); color: var(--navy); }
-/* Deep navy on orange is 4.94:1; white on orange (2.63:1) fails WCAG AA */
+/* Deep navy on orange is 6.24:1; white on orange (2.08:1) fails WCAG AA */
 .btn.orange { --btn-bg: var(--orange); --btn-shadow: var(--sun); color: var(--deep); }
 
 /* Added-to-cart flash: the button fills sun for a beat */

@@ -1,0 +1,59 @@
+<!doctype html>
+<!-- Source of assets/video/vive-ad-cover.webp, the home page's custom cover for the VIVE ad (1920x1080).
+     The center stays open for the page's sun-star play button.
+     Render from the repo root:
+     "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser" --headless=new --hide-scrollbars --force-device-scale-factor=1 --virtual-time-budget=4000 --window-size=1920,1080 --screenshot=design-demos/ad-cover.png "file://$PWD/design-demos/ad-cover.html"
+     then convert design-demos/ad-cover.png to assets/video/vive-ad-cover.webp. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>VIVE ad cover</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800;900&display=swap">
+<style>
+  * { box-sizing:border-box; }
+  body { margin:0; width:1920px; height:1080px; overflow:hidden; font-family:Montserrat, sans-serif; }
+  .cover { position:relative; width:1920px; height:1080px; overflow:hidden; background:#2B3990; }
+  .cover::before { content:""; position:absolute; inset:0; background:url(../assets/patterns/sparse-warm.svg) 0 0 / 640px; opacity:.16; }
+  /* Orange wedge on the right carries the cans */
+  .wedge { position:absolute; inset:0 0 0 auto; width:860px; background:#FF9447; clip-path:polygon(28% 0,100% 0,100% 100%,0 100%); }
+  .s { position:absolute; background:center / contain no-repeat; }
+  .copy { position:absolute; left:120px; top:170px; width:640px; color:#F9F9F9; }
+  .kicker { display:inline-block; padding:10px 16px; background:#F4BD6A; color:#2B3990; font:900 26px/1 Montserrat; letter-spacing:.14em; text-transform:uppercase; transform:rotate(-3deg); }
+  h1 { margin:34px 0 0; font:900 136px/.9 Montserrat; text-transform:uppercase; letter-spacing:-.01em; }
+  h1 em { display:block; font-style:normal; color:#FF9447; }
+  .copy p { margin:34px 0 0; font:700 34px/1.35 Montserrat; max-width:18em; }
+  .time { position:absolute; left:120px; bottom:110px; display:flex; align-items:center; gap:18px; color:#F9F9F9; font:900 30px/1 Montserrat; text-transform:uppercase; letter-spacing:.08em; }
+  .time b { padding:10px 14px; background:#F9F9F9; color:#2B3990; }
+  .cans { position:absolute; right:110px; bottom:120px; width:620px; height:640px; }
+  .cans .burst { position:absolute; inset:0; background:url(../assets/shapes/star-10pt-white.svg) center / contain no-repeat; }
+  .cans img { position:absolute; bottom:70px; width:170px; filter:drop-shadow(0 26px 22px rgba(20,24,63,.4)); }
+  .cans img:nth-child(2) { left:110px; rotate:-12deg; bottom:90px; }
+  .cans img:nth-child(3) { left:225px; width:190px; z-index:1; bottom:60px; }
+  .cans img:nth-child(4) { left:350px; rotate:12deg; bottom:90px; }
+  .logo { position:absolute; right:120px; top:80px; width:250px; }
+</style>
+</head>
+<body>
+<div class="cover">
+  <div class="wedge"></div>
+  <i class="s" style="left:640px;top:80px;width:70px;height:70px;background-image:url(../assets/shapes/triangle-equilateral-sun.svg);rotate:24deg"></i>
+  <i class="s" style="left:860px;top:880px;width:96px;height:96px;background-image:url(../assets/shapes/triangle-equilateral-white.svg);rotate:-150deg"></i>
+  <i class="s" style="left:560px;top:820px;width:40px;height:40px;background-image:url(../assets/shapes/star-4pt-sparkle-sun.svg)"></i>
+  <i class="s" style="left:1180px;top:110px;width:60px;height:60px;background-image:url(../assets/shapes/square-chamfer-sun.svg);rotate:18deg"></i>
+  <i class="s" style="left:1240px;top:900px;width:120px;height:120px;background-image:url(../assets/shapes/triangle-acute-navy.svg);rotate:28deg"></i>
+  <img class="logo" src="../assets/wordmark-vive-navy.png" alt="">
+  <div class="copy">
+    <span class="kicker">The VIVE ad</span>
+    <h1>Sip the <em>vibe now!</em></h1>
+    <p>Good vibes from the fridge to the office, in one cold can.</p>
+  </div>
+  <div class="time"><b>0:45</b>Press play</div>
+  <div class="cans">
+    <div class="burst"></div>
+    <img src="../assets/can-glow-web.webp" alt="">
+    <img src="../assets/can-classic-web.webp" alt="">
+    <img src="../assets/can-focus-web.webp" alt="">
+  </div>
+</div>
+</body>
+</html>

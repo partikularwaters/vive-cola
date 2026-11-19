@@ -34,7 +34,7 @@
 
   /* HERO */
   /* Navy hero: white and sun for text (9.5:1 and 5.9:1), orange only for large display type and fills */
-  .hero { position:relative; z-index:1; overflow:hidden; background:var(--navy); padding-bottom:calc(var(--cut) + 40px); }
+  .hero { position:relative; z-index:1; overflow:hidden; background:var(--navy); --pat-op:.14; --pat-mask:linear-gradient(100deg,#000 0%,transparent 55%); padding-bottom:calc(var(--cut) + 40px); }
   .hero .grid { display:grid; grid-template-columns:1fr minmax(260px,.85fr); align-items:center; gap:24px; position:relative; z-index:2; }
   .hero h1 { margin:0; font-weight:900; text-transform:uppercase; line-height:.9; font-size:clamp(48px,8.6vw,128px); letter-spacing:-.01em; color:var(--white); }
   .hero h1 em { font-style:normal; color:var(--orange); display:block; }
@@ -53,8 +53,22 @@
   section { position:relative; padding-top:clamp(64px,8vw,112px); padding-bottom:clamp(64px,8vw,112px); }
   h2 { margin:0 0 36px; font-weight:900; text-transform:uppercase; line-height:.95; font-size:clamp(34px,5vw,68px); }
 
-  /* POSTERS: on off-white, each poster sits on its own tilted color block */
-  .posters { background:var(--white); margin-top:calc(var(--cut) * -1); padding-top:calc(var(--cut) + clamp(64px,8vw,112px)); }
+  /* INTRO POSTER: its own sun strip right under the hero. The poster leads at full size;
+     the street mockups sit small beside the copy as supporting proof. */
+  .intro { background:var(--sun); --pat-op:.22; margin-top:calc(var(--cut) * -1); padding-top:calc(var(--cut) + clamp(64px,8vw,112px)); }
+  .intro .grid { display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(32px,5vw,80px); align-items:center; }
+  .intro .poster { position:relative; margin:0; }
+  .intro .poster::before { content:""; position:absolute; inset:-4% 6% 6% -5%; background:var(--navy); clip-path:polygon(4% 0,100% 3%,96% 100%,0 96%); }
+  .intro .poster img { position:relative; transform:rotate(-2deg); box-shadow:0 26px 44px rgba(20,24,63,.3); }
+  .intro p { font-size:clamp(16px,1.35vw,19px); line-height:1.6; font-weight:600; max-width:30em; margin:0 0 28px; color:var(--deep); }
+  .intro .seen { margin:clamp(32px,4vw,48px) 0 0; }
+  .intro .seen h3 { margin:0 0 12px; font:800 12px/1 var(--f); letter-spacing:.12em; text-transform:uppercase; color:var(--deep); }
+  .intro .mock { display:grid; grid-template-columns:1.6fr 1fr; gap:12px; max-width:420px; }
+  .intro .mock img { width:100%; height:100%; aspect-ratio:4/3; object-fit:cover; border:4px solid var(--white); box-shadow:0 10px 20px rgba(20,24,63,.18); }
+  .intro .mock img:last-child { aspect-ratio:auto; }
+
+  /* VARIATIONS: on off-white, each poster sits on its own tilted color block */
+  .posters { background:var(--white); --pat-op:.4; margin-top:calc(var(--cut) * -1); padding-top:calc(var(--cut) + clamp(64px,8vw,112px)); }
   
   /* Posters tilt; captions sit level on shared subgrid rows so names, lines, and buttons align across all three */
   .row { display:grid; grid-template-columns:repeat(3,1fr); column-gap:clamp(20px,3.4vw,48px); row-gap:0; }
@@ -69,7 +83,6 @@
   /* The middle poster sits lower through its zone, not a transform, so the hover zone moves with it */
   .row figure:nth-child(2) .art { margin-top:24px; }
   .row figure:nth-child(3) { --tilt:-.8deg; }
-  .intro > img { transform:rotate(-2.5deg); box-shadow:0 18px 30px rgba(29,39,102,.2); }
   .row .lift::before { content:""; position:absolute; inset:5% -4% -10px 6%; background:var(--b); clip-path:polygon(4% 0,100% 3%,96% 100%,0 96%); z-index:0; }
   .row img { position:relative; z-index:1; box-shadow:0 18px 30px rgba(29,39,102,.2); }
   /* Variant caption and CTA under each poster */
@@ -78,21 +91,31 @@
   .row figcaption .tagline { margin:8px 0 0; font-weight:800; font-size:15px; text-transform:uppercase; letter-spacing:.04em; color:var(--orange); }
   .row figcaption .vits { margin:8px 0 0; font-size:15px; line-height:1.5; font-weight:600; color:var(--deep); }
   .row figcaption .btn { margin-top:18px; align-self:start; }
-  .intro { display:grid; grid-template-columns:.7fr 1.3fr; gap:clamp(24px,4vw,56px); align-items:center; margin-top:clamp(72px,8vw,120px); }
-  .intro p { font-size:17px; line-height:1.6; max-width:30em; margin:0 0 24px; color:#2a3366; }
-  .intro .mock { display:grid; grid-template-columns:2fr 1fr; gap:14px; }
-  .intro .mock img { height:100%; object-fit:cover; }
 
   /* VIDEO */
-  .video { background:var(--navy); color:var(--white); }
-  
-  /* The ad sits on an offset orange block with the brand's chamfered corner */
+  /* Sun ground under the same Star Seal layer as the intro poster */
+  .video { background:var(--sun); color:var(--deep); --pat-op:.22; }
+
+  /* The ad sits on an offset deep navy block with the brand's chamfered corner */
   .player { position:relative; max-width:1120px; margin:0 auto; }
-  .player::before { content:""; position:absolute; inset:18px -18px -18px 18px; background:var(--orange); clip-path:polygon(0 0,100% 0,100% 92%,96% 100%,0 100%); }
-  .player video { position:relative; display:block; width:100%; height:auto; aspect-ratio:16/9; background:var(--deep); clip-path:polygon(0 0,100% 0,100% 92%,96% 100%,0 100%); }
+  .player::before { content:""; position:absolute; inset:22px -22px -22px 22px; background:var(--deep); clip-path:polygon(0 0,100% 0,100% 92%,96% 100%,0 100%); }
+  /* A white frame inside the chamfer makes the player read as the section's centerpiece */
+  .player .frame { position:relative; padding:10px; background:var(--white); clip-path:polygon(0 0,100% 0,100% 92%,96% 100%,0 100%); box-shadow:0 30px 60px rgba(20,24,63,.3); }
+  .player video { position:relative; display:block; width:100%; height:auto; aspect-ratio:16/9; background:var(--deep); }
+  /* Custom cover: a designed graphic (design-demos/ad-cover.html) with a big sun-star play button
+     in its open center.
+     The page script shows it, then removes it and plays the ad with native controls on the first press. */
+  .player .cover[hidden] { display:none; }
+  .player .cover { position:absolute; inset:10px; display:grid; place-items:center; padding:0; border:0; cursor:pointer; background:var(--deep) url(assets/video/vive-ad-cover.webp) center / cover no-repeat; }
+  .player .play { position:relative; width:clamp(150px,16vw,224px); aspect-ratio:1; display:grid; place-items:center; background:url(assets/shapes/star-10pt-sun.svg) center / 82% no-repeat, url(assets/shapes/star-10pt-white.svg) center / contain no-repeat; filter:drop-shadow(0 14px 18px rgba(20,24,63,.45)); transition:transform .22s var(--ease-pop); }
+  .player .play::after { content:""; width:30%; aspect-ratio:1; margin-left:7%; background:var(--deep); clip-path:polygon(0 0,100% 50%,0 100%); }
+  @media (hover:hover) and (pointer:fine) { .player .cover:hover .play { transform:scale(1.08) rotate(-12deg); } }
+  .player .cover:active .play { transform:scale(.96); }
+  .player .cover:focus-visible { outline:4px solid var(--deep); outline-offset:6px; }
+  .player .cover:focus-visible .play { transform:scale(1.08); }
 
   /* COLLABS: a thin white bar of partner logos that drifts left; pauses on hover, focus, or Motion */
-  .collabs { position:relative; display:flex; align-items:center; gap:24px; min-height:60px; padding-inline:var(--gutter); background:var(--white); color:var(--navy); }
+  .collabs { position:relative; display:flex; align-items:center; gap:24px; min-height:60px; padding-inline:var(--gutter); background:var(--white); color:var(--navy); border-bottom:1px solid rgb(43 57 144 / .14); }
   .collabs h2 { flex:none; margin:0; font:800 11px/1 var(--f); letter-spacing:.12em; text-transform:uppercase; }
   .collabs .marquee { flex:1; min-width:0; overflow:hidden; mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent); }
   .collabs .track { display:flex; width:max-content; animation:collab-drift 48s linear infinite; }
@@ -113,8 +136,7 @@
   }
 
   /* MORE POSTERS (seasonal), bottom of page */
-  .more { background:var(--orange); }
-  
+  .more { background:var(--white); color:var(--navy); --pat-op:.2; }
   .more .lede { margin:14px 0 32px; max-width:560px; font-size:17px; line-height:1.5; font-weight:600; color:var(--deep); }
   /* Five posters in one row at equal height: each grows in proportion to its aspect ratio (--ar) */
   .seasonal { display:flex; gap:20px; align-items:flex-start; margin:0; padding:0; list-style:none; }
@@ -123,7 +145,7 @@
   .seasonal li:nth-child(even) { --tilt:1deg; }
   .seasonal .lift { display:block; }
   .seasonal button { display:block; width:100%; padding:0; border:0; background:none; cursor:zoom-in; }
-  .seasonal button:focus-visible { outline:3px solid var(--deep); outline-offset:6px; }
+  .seasonal button:focus-visible { outline:3px solid var(--navy); outline-offset:6px; }
   .seasonal img { display:block; width:100%; aspect-ratio:var(--ar); box-shadow:0 16px 28px rgba(29,39,102,.28); }
 
   /* Full-size poster viewer: native modal dialog, light-dismissable, animates in and out of the top layer */
@@ -152,7 +174,7 @@
     .hero .grid { grid-template-columns:1fr; }
     .stage { max-width:380px; margin:0 auto; width:100%; }
     .row { grid-template-columns:1fr; } .seasonal { flex-wrap:wrap; } .row figure { --tilt:0deg; --rise:0px; }
-    .intro > * { min-width:0; } h2 .label { width:auto; } .intro { grid-template-columns:1fr; }
+    .intro .grid > * { min-width:0; } h2 .label { width:auto; } .intro .grid { grid-template-columns:1fr; }
   }
 </style>
 </head>
@@ -160,7 +182,7 @@
 
 <header class="site-header">
 <nav class="wrap" aria-label="Primary">
-  <a href="index.html"><img src="assets/wordmark-vive-white.png" alt="VIVE home" width="125" height="32"></a>
+  <a href="index.html"><img src="assets/wordmark-vive-navy.png" alt="VIVE home" width="125" height="32"></a>
   <ul>
     <li><a href="index.html" aria-current="page">Home</a></li>
     <li><a href="about.html">About Us</a></li>
@@ -171,7 +193,7 @@
 </header>
 
 <main id="content">
-<section class="hero cut-down on-dark">
+<section class="hero cut-down on-dark pat pat-confetti-warm">
   <i class="tri" style="--s:120px;--c:url(assets/shapes/triangle-equilateral-sun.svg);--r:18deg;left:calc(var(--gutter) - var(--s) - 28px);top:120px;--d:.05s"></i>
   <i class="tri hide-sm" style="--s:46px;--c:url(assets/shapes/triangle-equilateral-orange.svg);--r:-24deg;left:42%;top:28px;--d:.12s"></i>
   <i class="tri" style="--s:34px;--c:url(assets/shapes/triangle-equilateral-orange.svg);--r:40deg;right:6%;top:36px;--d:.24s"></i>
@@ -197,9 +219,26 @@
   <button class="motion-toggle" type="button"><span class="vh">Pause </span>Motion <span class="icon" aria-hidden="true"></span></button>
 </section>
 
-<section class="posters wrap">
+<section class="intro wrap pat pat-seal" aria-labelledby="intro-title">
   <img class="mascot right" src="assets/mascot/vivi-pointing.webp" alt="" width="671" height="720" loading="lazy" style="top:clamp(220px,22vw,320px)">
-  <h2><span class="label">Pick your vibe</span></h2>
+  <div class="grid">
+    <figure class="poster">
+      <img src="assets/poster-intro-good-vibes.jpg" alt="Introductory poster: VIVE can over a volleyball net" width="1080" height="1440" loading="lazy">
+    </figure>
+    <div>
+      <h2 id="intro-title"><span class="label">Spread</span><span class="label orange">the vibes!</span></h2>
+      <p>Our poster puts VIVE courtside, right where the game gets loud. Now it's on bus stops and city walls near you.</p>
+      <a class="btn navy" href="shop.html">Grab a VIVE!</a>
+      <div class="seen">
+        <h3>Spotted around town</h3>
+        <div class="mock"><img src="assets/mockup-bus-shelter.jpg" alt="The poster at a bus shelter" width="1440" height="1008" loading="lazy"><img src="assets/mockup-wall-street.jpg" alt="The poster on a street wall" width="720" height="1280" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="posters wrap cut-up pat pat-sparse" aria-labelledby="vibe-title">
+  <h2 id="vibe-title"><span class="label">Pick your vibe</span></h2>
   <div class="row">
     <figure style="--b:var(--sun)">
       <div class="art lift-zone"><div class="lift"><img src="assets/poster-glow-hires.webp" alt="VIVE Glow poster: a woman in pink closes her eyes and holds up a pink VIVE Glow can" width="1024" height="1636" loading="lazy"></div></div>
@@ -229,23 +268,18 @@
       </figcaption>
     </figure>
   </div>
-  <div class="intro">
-    <img src="assets/poster-intro-good-vibes.jpg" alt="Introductory poster: VIVE can over a volleyball net" width="1080" height="1440" loading="lazy">
-    <div>
-      <h2><span class="label orange">Spread the vibes!</span></h2>
-      <p>Our first poster put VIVE courtside. Now it's on bus stops and city walls near you.</p>
-      <div class="mock"><img src="assets/mockup-bus-shelter.jpg" alt="Poster at a bus shelter" width="1440" height="1008" loading="lazy"><img src="assets/mockup-wall-street.jpg" alt="Poster on a street wall" width="720" height="1280" loading="lazy"></div>
-    </div>
-  </div>
 </section>
 
-<section class="video wrap">
-  <h2><span class="label orange">Watch the ad</span></h2>
+<section class="video wrap cut-up pat pat-seal">
+  <h2><span class="label">Watch the ad</span></h2>
   <img class="mascot left" src="assets/mascot/vivi-running.webp" alt="" width="595" height="720" loading="lazy" style="top:38%">
   <div class="player">
-    <video controls preload="metadata" playsinline poster="assets/video/vive-ad-poster.webp" width="1280" height="720" aria-label="VIVE ad, 45 seconds">
-      <source src="assets/video/vive-ad.mp4" type="video/mp4">
-    </video>
+    <div class="frame">
+      <video controls preload="metadata" playsinline poster="assets/video/vive-ad-cover.webp" width="1280" height="720" aria-label="VIVE ad, 45 seconds">
+        <source src="assets/video/vive-ad.mp4" type="video/mp4">
+      </video>
+      <button class="cover" type="button" hidden aria-label="Play the VIVE ad, 45 seconds"><span class="play" aria-hidden="true"></span></button>
+    </div>
   </div>
 </section>
 
@@ -260,7 +294,7 @@
   <button class="motion-toggle" type="button"><span class="vh">Pause </span>Motion <span class="icon" aria-hidden="true"></span></button>
 </aside>
 
-<section class="more wrap">
+<section class="more wrap pat pat-confetti-warm">
   <h2 id="more-title"><span class="label">Christmas with VIVE</span></h2>
   <p class="lede">Six holiday posters made by the VIVE community. Select a poster to see it full size.</p>
   <ul class="seasonal" aria-labelledby="more-title">
@@ -280,6 +314,21 @@
   </dialog>
 </section>
 <script>
+  /* Ad cover: shown only when this script runs, so the native player works without it.
+     The first press removes the cover and plays the ad with its native controls. */
+  (() => {
+    const cover = document.querySelector('.player .cover');
+    const video = document.querySelector('.player video');
+    video.controls = false;
+    cover.hidden = false;
+    cover.addEventListener('click', () => {
+      cover.remove();
+      video.controls = true;
+      video.play();
+      video.focus();
+    });
+  })();
+
   /* Seasonal poster viewer: open the full-size poster in the modal dialog */
   (() => {
     const view = document.getElementById('poster-view');
