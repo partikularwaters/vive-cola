@@ -4,7 +4,7 @@
    2. Adds the cart button and cart panel to the primary nav.
    3. Keeps the cart in localStorage so the count persists across pages and visits.
    4. Wires quantity steppers and "Add to cart" buttons ([data-add]) on any page.
-   5. Wires any .motion-toggle to pause the turning stars in its section.
+   5. Wires any .motion-toggle to pause the motion in its section or aside.
    ========================================================================== */
 (() => {
   const STORE_KEY = 'vive-cart-v1';
@@ -200,9 +200,9 @@
   </div>`;
   }
 
-  /* ---------- Motion pause for turning hero stars ---------- */
+  /* ---------- Motion pause for turning stars and drifting strips ---------- */
   document.querySelectorAll('.motion-toggle').forEach((toggle) => {
-    const section = toggle.closest('section');
+    const section = toggle.closest('section, aside');
     toggle.addEventListener('click', () => {
       const still = section.classList.toggle('is-still');
       toggle.querySelector('.vh').textContent = still ? 'Play ' : 'Pause ';

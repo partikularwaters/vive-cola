@@ -91,6 +91,24 @@
   .player::before { content:""; position:absolute; inset:18px -18px -18px 18px; background:var(--orange); clip-path:polygon(0 0,100% 0,100% 92%,96% 100%,0 100%); }
   .player video { position:relative; display:block; width:100%; height:auto; aspect-ratio:16/9; background:var(--deep); clip-path:polygon(0 0,100% 0,100% 92%,96% 100%,0 100%); }
 
+  /* COLLABS: a thin white bar of partner names that drifts left; pauses on hover, focus, or Motion */
+  .collabs { position:relative; display:flex; align-items:center; gap:24px; min-height:52px; padding-inline:var(--gutter); background:var(--white); color:var(--navy); }
+  .collabs h2 { flex:none; margin:0; font:800 11px/1 var(--f); letter-spacing:.12em; text-transform:uppercase; }
+  .collabs .marquee { flex:1; min-width:0; overflow:hidden; mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent); }
+  .collabs .track { display:flex; width:max-content; animation:collab-drift 48s linear infinite; }
+  .collabs ul { display:flex; align-items:center; margin:0; padding:0; list-style:none; }
+  .collabs li { display:flex; align-items:center; font:700 13px/1 var(--f); letter-spacing:.08em; text-transform:uppercase; color:rgb(43 57 144 / .72); white-space:nowrap; }
+  .collabs li::after { content:""; width:9px; height:9px; margin-inline:28px; background:url(assets/shapes/star-10pt-orange.svg) center / contain no-repeat; }
+  .collabs:hover .track, .collabs:focus-within .track, .collabs.is-still .track { animation-play-state:paused; }
+  @keyframes collab-drift { to { transform:translateX(-50%); } }
+  .collabs .motion-toggle { position:static; flex:none; color:var(--navy); }
+  .collabs .motion-toggle:focus-visible { outline-color:var(--orange); }
+  @media (prefers-reduced-motion: reduce) {
+    .collabs .track { animation:none; width:auto; }
+    .collabs ul { flex-wrap:wrap; row-gap:10px; padding-block:14px; }
+    .collabs ul[aria-hidden] { display:none; }
+  }
+
   /* MORE POSTERS (seasonal), bottom of page */
   .more { background:var(--orange); }
   
@@ -228,9 +246,20 @@
   </div>
 </section>
 
+<aside class="collabs" aria-labelledby="collabs-title">
+  <h2 id="collabs-title">Collabs with</h2>
+  <div class="marquee">
+    <div class="track">
+      <ul><li>Jollibee</li><li>Bench</li><li>Mercury Drug</li><li>Potato Corner</li><li>Goldilocks</li><li>Penshoppe</li><li>National Book Store</li><li>Kultura</li><li>Oishi</li><li>Max&rsquo;s Restaurant</li></ul>
+      <ul aria-hidden="true"><li>Jollibee</li><li>Bench</li><li>Mercury Drug</li><li>Potato Corner</li><li>Goldilocks</li><li>Penshoppe</li><li>National Book Store</li><li>Kultura</li><li>Oishi</li><li>Max&rsquo;s Restaurant</li></ul>
+    </div>
+  </div>
+  <button class="motion-toggle" type="button"><span class="vh">Pause </span>Motion <span class="icon" aria-hidden="true"></span></button>
+</aside>
+
 <section class="more wrap">
   <h2 id="more-title"><span class="label">Christmas with VIVE</span></h2>
-  <p class="lede">Six holiday posters from the VIVE team. Select a poster to see it full size.</p>
+  <p class="lede">Six holiday posters made by the VIVE community. Select a poster to see it full size.</p>
   <ul class="seasonal" aria-labelledby="more-title">
     <li class="lift-zone" style="--ar:0.707"><button type="button" data-full="assets/seasonal/christmas-czar-full.webp" data-title="Sleigh the holidays with a charged Christmas spirit"><span class="lift"><img src="assets/seasonal/christmas-czar-thumb.webp" alt="Christmas poster: a VIVE Classic can in a Santa hat rides a red sleigh under the line “Sleigh the holidays with a charged Christmas spirit.”" width="636" height="900" loading="lazy"></span></button></li>
     <li class="lift-zone" style="--ar:0.8"><button type="button" data-full="assets/seasonal/christmas-louie-full.webp" data-title="Have a chilling VIVE this Christmas"><span class="lift"><img src="assets/seasonal/christmas-louie-thumb.webp" alt="Christmas poster: a VIVE Classic can wrapped in a knit scarf stands among skiers in the snow, under the line “Have a chilling VIVE this Christmas.”" width="720" height="900" loading="lazy"></span></button></li>
