@@ -1,4 +1,4 @@
-# Deploy boundary: Vercel serves only the four pages, site.css, site.js,
+# Deploy boundary: Vercel serves only the four pages, the unlisted brand.html, site.css, site.js,
 # assets/, and vercel.json. Everything below is project material.
 design-demos/
 source/

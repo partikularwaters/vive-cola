@@ -6,17 +6,18 @@ This document is the canonical router and functional contract for the VIVE four-
 
 | Page | File | Status | Input Dependencies | Human Check Gate |
 |---|---|---|---|---|
-| 01 Home | [index.html](index.html) | Draft v5 complete: team posters, the 45-second ad in a native player, six Christmas posters, VIVI in two gutters (none in the Christmas section), and shapes clear of all content | `assets/`, `brand-spec.md`, `direction-approved.md` | Gian / Client review of hero, posters, and video layout |
+| 01 Home | [index.html](index.html) | Draft v6 complete (2026-11-20): intro poster and variant posters in separate strips, the Vive Draft1 ad behind a designed cover and sun-star play button, the collabs strip, and Christmas on off-white; patterns used sparingly | `assets/`, `brand-spec.md`, `direction-approved.md` | The hero will move to a photo background (user, 2026-11-20) |
 | 02 About Us | [about.html](about.html) | Draft v4 complete: the friends' founding story, VIVI on counter-turning navy and sun stars with Motion pause, and six team portraits in white frames with rising sun name plates | Founding story, team roster, and team photos | Verify complete names, company roles, and photo look |
-| 03 Product | [product.html](product.html) | Draft v1 complete | Can renders, flavor specifications, and nutritional facts | Verify one variant per strip, zero posters, and zero merch |
+| 03 Product | [product.html](product.html) | Draft v2 complete (2026-11-20): navy headline band over three can panels with a subtle Star Seal, strips with large brand shapes, and a larger comparison table | Can renders, flavor specifications, and nutritional facts | Verify one variant per strip, zero posters, and zero merch |
 | 04 Shop | [shop.html](shop.html) | Draft v5 complete: VIVI's "I need more VIVE" sticker in the hero, 13 merch mockup photos (jersey cut out of its checkerboard, keychain, and scarf added), can renders, and a poster hover reveal | Merch catalog, bundle definitions, and pricing | Verify quantity inputs, cart count behavior, zero checkout |
 | Share card | [design-demos/og-card.html](design-demos/og-card.html) → `assets/og-card.png` | Chosen: VIVI's Pick (2026-11-19), 1200×630, referenced by the OG and Twitter tags on all four pages | Wordmark, cans, VIVI, `star-10pt-white.svg` | After a change, re-render with headless Brave at 1200×630 (see the file's header comment) |
 | Favicon and app icons | `favicon.ico` and `assets/icons/`, built by `scripts/sync_assets.py` from `Mascot/VIVI pointing.png` | Chosen: VIVI on deep blue (2026-11-19; #1D2766 keeps the navy headband stripes visible), linked on all four pages | VIVI mascot source | Rebuilds with the other assets when the mascot source changes |
 | Web portal poster | [router.html](router.html) → `VIVE.pdf` on Drive | Locked: Three Columns (2026-11-18), see [direction-approved.md](direction-approved.md) | Can renders, `site.css` tokens | Change only when the client asks; rebuild by hand with `scripts/build_router_pdf.py` |
+| Brand Kit | [brand.html](brand.html), unlisted at `/brand` | Built 2026-11-20 by `scripts/build_brand_page.py`; no site page links to it | `assets/shapes/`, `assets/patterns/`, logos, VIVI, and cans | Rerun the script after adding shapes or patterns |
 
-**Next action:** Get the corrected Classic poster export from the team, run `python3 scripts/sync_assets.py` after any source change in `ponce-advertising/`, and decide whether the lone 13th merch card needs a different layout.
+**Next action:** Review the Shop page with the user, applying the decisions from Home, About, and Product (patterns sparingly, one layer of background detail per section, blue-toned tiles on blue grounds), then commit it on its own. Later: replace the Home hero with a photo background.
 
-**Open checks (as of 2026-11-19):**
+**Open checks (as of 2026-11-20):**
 - The Shop merch grid holds 13 items in four columns, so the knit scarf sits alone on the last row.
 - The team's Classic poster headline reads "Your dose of radiant vibes" (the Glow line); a corrected export is needed (see [brand-spec.md](brand-spec.md)). It now shows on Home and in the Shop Classic can reveal.
 - Not yet seen in Firefox or Safari: the cart panel exit fallback and the Christmas viewer's outside-click close.
@@ -109,5 +110,6 @@ This document is the canonical router and functional contract for the VIVE four-
 | `wix-assets/` | Source exports | Print exports and PDF materials for Wix migration |
 | `source/` | Archival source | Original 8-page brand deck and raw asset extracts |
 | `design-demos/` | Archive | Initial concept explorations (A: Sticker Pop, B: Three Moods, C: Charged Geometry) and `og-card.html`, the source of the share card. Earlier portal and OG drafts were removed on 2026-11-19 and remain in Git history |
+| [brand.html](brand.html) | Brand Kit | Unlisted page at `/brand`: every brand element (logo, color, type, all shapes, the approved patterns, VIVI, cans, components, voice, and the brand in use). Reachable only by direct link, marked `noindex`. Generated by `scripts/build_brand_page.py`; rerun it after adding shapes or patterns |
 | `router.html` | Print source | The locked Three Columns web portal poster, built into `VIVE.pdf`; never deployed |
-| `.vercelignore` | Deploy boundary | Keeps everything except the four pages, `site.css`, `site.js`, `assets/`, and `vercel.json` off the live site |
+| `.vercelignore` | Deploy boundary | Keeps everything except the four pages, the unlisted `brand.html`, `site.css`, `site.js`, `assets/`, and `vercel.json` off the live site |

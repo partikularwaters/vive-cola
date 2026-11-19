@@ -68,7 +68,7 @@ git push <NEW_GITHUB_REPO_URL> deploy-vive:main
 When importing this repository into Vercel:
 1. **Framework Preset:** Other / None.
 2. **Root Directory:** `./` (the repository root).
-3. **Deploy boundary:** [`.vercelignore`](.vercelignore) keeps project material (`design-demos/`, `source/`, `wix-assets/`, `scripts/`, the Markdown docs, and the `router.html` poster source) off the live site. Only the four pages, `site.css`, `site.js`, and `assets/` are served.
+3. **Deploy boundary:** [`.vercelignore`](.vercelignore) keeps project material (`design-demos/`, `source/`, `wix-assets/`, `scripts/`, the Markdown docs, and the `router.html` poster source) off the live site. Only the four pages, the unlisted Brand Kit (`brand.html`, at `/brand`), `site.css`, `site.js`, and `assets/` are served.
 4. **Clean URL Routing:** With [`vercel.json`](vercel.json) enabling clean URLs, Vercel natively serves `index.html` at `/`, `about.html` at `/about`, `product.html` at `/product`, and `shop.html` at `/shop` without URL redirects.
 
 ---
