@@ -1,4 +1,31 @@
 {
+  "assets/icons/apple-touch-icon.png": {
+    "source": "Mascot/VIVI pointing.png",
+    "size": 73398,
+    "mtime": 1795019745,
+    "recipe": [
+      "vivi-touch-icon",
+      180
+    ]
+  },
+  "assets/icons/favicon-32.png": {
+    "source": "Mascot/VIVI pointing.png",
+    "size": 73398,
+    "mtime": 1795019745,
+    "recipe": [
+      "vivi-icon",
+      32
+    ]
+  },
+  "assets/icons/icon-512.png": {
+    "source": "Mascot/VIVI pointing.png",
+    "size": 73398,
+    "mtime": 1795019745,
+    "recipe": [
+      "vivi-icon",
+      512
+    ]
+  },
   "assets/mascot/vivi-dizzy.webp": {
     "source": "Mascot/VIVI Dizzy.png",
     "size": 91122,
@@ -231,6 +258,15 @@
     "recipe": [
       "video",
       1920
+    ]
+  },
+  "favicon.ico": {
+    "source": "Mascot/VIVI pointing.png",
+    "size": 73398,
+    "mtime": 1795019745,
+    "recipe": [
+      "vivi-icon",
+      48
     ]
   }
 }

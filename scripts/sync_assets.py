@@ -31,7 +31,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-from PIL import Image
+from PIL import Image, ImageDraw
 
 SITE = Path(__file__).resolve().parent.parent
 LOCK = SITE / "assets" / "asset-sources.json"
@@ -54,6 +54,11 @@ DEFAULT_SOURCE = Path.home() / "client-work/pineapple/training/ponce-advertising
 #                       scripts/face_boxes.swift, macOS Vision). A photo with
 #                       no transparency is cut out first by scripts/cutout.swift.
 #                       n is a version; bump it to force a rebuild.
+#   ("vivi-icon", N)    VIVI's head (arms and shirt masked off) on a rounded
+#                       sun tile, N x N PNG. A .ico output holds 16, 32, and
+#                       48 px.
+#   ("vivi-touch-icon", N) the same head on a square sun tile with no rounded
+#                       corners, because iOS rounds home-screen icons itself.
 ASSETS: list[tuple[str, str, tuple]] = [
     # Home: John Madrid's Christmas poster (v3 is the final export)
     ("assets/seasonal/christmas-madrid-full.webp", "[Madrid] John Madrid v3.pdf", ("pdf", 2000)),
@@ -65,6 +70,11 @@ ASSETS: list[tuple[str, str, tuple]] = [
     ("assets/mascot/vivi-pointing.webp", "Mascot/VIVI pointing.png", ("fit", 720)),
     ("assets/mascot/vivi-running.webp", "Mascot/Vivi Running.png", ("fit", 720)),
     ("assets/mascot/vivi-dizzy.webp", "Mascot/VIVI Dizzy.png", ("fit", 720)),
+    # Favicon and app icons: VIVI on sun
+    ("favicon.ico", "Mascot/VIVI pointing.png", ("vivi-icon", 48)),
+    ("assets/icons/favicon-32.png", "Mascot/VIVI pointing.png", ("vivi-icon", 32)),
+    ("assets/icons/icon-512.png", "Mascot/VIVI pointing.png", ("vivi-icon", 512)),
+    ("assets/icons/apple-touch-icon.png", "Mascot/VIVI pointing.png", ("vivi-touch-icon", 180)),
     # About Us: transparent team cutouts
     ("assets/team/venson-sanchez.webp", "About Us Picture/Venson.png", ("portrait", 2)),
     ("assets/team/ayanna-yarra.webp", "About Us Picture/Aya.png", ("portrait", 2)),
@@ -217,6 +227,47 @@ def place_portrait(src: Path, out: Path) -> None:
     save_webp(canvas, out)
 
 
+def vivi_head(src: Path) -> Image.Image:
+    """VIVI's V-shaped head with the headband and face, cut from the pointing
+    pose. Masks are in the 671 px wide layout of that pose."""
+    import numpy as np
+    im = Image.open(src).convert("RGBA")
+    a = np.array(im).astype(int)
+    k = im.width / 671
+    yy, xx = np.mgrid[0:a.shape[0], 0:a.shape[1]]
+    y, x = yy / k, xx / k
+    r, g, b = a[..., 0], a[..., 1], a[..., 2]
+    drop = (y > 300) & (b > r + 30)                       # navy shirt below the headband
+    drop |= (y > 290) & (x < 55 + .38 * (y - 45) - 1)     # pointing arm, left of the V
+    drop |= (x > 452) & (y > 460)                         # hand on the hip
+    drop |= y > 548
+    drop |= (y > 405) & (x < 300) & (y > 405 + (x - 195) * 140 / 105)   # neckline
+    drop |= (y > 415) & (x >= 300) & (y > 415 + (440 - x) * 130 / 140)
+    drop |= (y > 405) & (x < 195)
+    drop |= (y > 380) & (r > 230) & (g > 230) & (b > 230)  # white shirt trim
+    a[..., 3] = np.where(drop, 0, a[..., 3])
+    head = Image.fromarray(a.astype("uint8"))
+    return head.crop(head.getbbox())
+
+
+def vivi_icon(src: Path, out: Path, n: int, rounded: bool = True) -> None:
+    S = 512
+    tile = Image.new("RGBA", (S, S), (0, 0, 0, 0))
+    ImageDraw.Draw(tile).rounded_rectangle((0, 0, S - 1, S - 1), 112 if rounded else 0, fill=(244, 189, 106))
+    head = vivi_head(src)
+    h = 448
+    w = round(head.width * h / head.height)
+    if w > 468:
+        w, h = 468, round(head.height * 468 / head.width)
+    tile.alpha_composite(head.resize((w, h), Image.LANCZOS), ((S - w) // 2, (S - h) // 2))
+    if out.suffix == ".ico":
+        tile.save(out, sizes=[(16, 16), (32, 32), (48, 48)])
+    elif rounded:
+        tile.resize((n, n), Image.LANCZOS).save(out, optimize=True)
+    else:
+        tile.convert("RGB").resize((n, n), Image.LANCZOS).save(out, optimize=True)
+
+
 def build(recipe: tuple, src: Path, out: Path) -> None:
     kind, arg = recipe
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -234,6 +285,10 @@ def build(recipe: tuple, src: Path, out: Path) -> None:
         cutout_square(src, out, arg)
     elif kind == "portrait":
         portrait(src, out)
+    elif kind == "vivi-icon":
+        vivi_icon(src, out, arg)
+    elif kind == "vivi-touch-icon":
+        vivi_icon(src, out, arg, rounded=False)
     else:
         raise ValueError(f"unknown recipe {kind}")
 
