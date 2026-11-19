@@ -18,8 +18,9 @@ Then visit [http://localhost:8767/](http://localhost:8767/) (or `http://localhos
 
 ## Deliverables and Status
 
-| Page | File | Status | Highlights |
-|---|---|---|---|
+The site has four pages: [Home](index.html), [About Us](about.html), [Product](product.html), and [Shop](shop.html). Page status, open checks, and the next action live in [CONTEXT.md](CONTEXT.md).
+
+---|---|---|---|
 | **Home** | [index.html](index.html) | Draft v1 complete | Canonical homepage with vitamin-led burst hero, Glow, Classic, and Focus posters with buttons, ad mockups, and video player container |
 | **About Us** | [about.html](about.html) | Draft v1 complete | Founding story (*revive* and *survive*), six-person team roster, and expanding panel cards |
 | **Product** | [product.html](product.html) | Draft v1 complete | Animated hero, one strip each for Classic, Glow, and Focus, an "In every can" strip, and a vitamin comparison table |
@@ -67,7 +68,8 @@ git push <NEW_GITHUB_REPO_URL> deploy-vive:main
 When importing this repository into Vercel:
 1. **Framework Preset:** Other / None.
 2. **Root Directory:** `./` (the repository root).
-3. **Clean URL Routing:** With [`vercel.json`](vercel.json) enabling clean URLs, Vercel natively serves `index.html` at `/`, `about.html` at `/about`, `product.html` at `/product`, and `shop.html` at `/shop` without URL redirects.
+3. **Deploy boundary:** [`.vercelignore`](.vercelignore) keeps project material (`design-demos/`, `source/`, `wix-assets/`, `scripts/`, the Markdown docs, and the `router.html` poster source) off the live site. Only the four pages, `site.css`, `site.js`, and `assets/` are served.
+4. **Clean URL Routing:** With [`vercel.json`](vercel.json) enabling clean URLs, Vercel natively serves `index.html` at `/`, `about.html` at `/about`, `product.html` at `/product`, and `shop.html` at `/shop` without URL redirects.
 
 ---
 

@@ -1,0 +1,12 @@
+# Deploy boundary: Vercel serves only the four pages, site.css, site.js,
+# assets/, and vercel.json. Everything below is project material.
+design-demos/
+source/
+wix-assets/
+scripts/
+dist/
+memory/
+.github/
+.githooks/
+*.md
+router.html

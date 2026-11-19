@@ -10,6 +10,7 @@ This document is the canonical router and functional contract for the VIVE four-
 | 02 About Us | [about.html](about.html) | Draft v3 complete: the friends' founding story, a large VIVI on a white star with Motion pause, and six untinted team cutouts with rising sun name plates | Founding story, team roster, and team photos | Verify complete names, company roles, and photo look |
 | 03 Product | [product.html](product.html) | Draft v1 complete | Can renders, flavor specifications, and nutritional facts | Verify one variant per strip, zero posters, and zero merch |
 | 04 Shop | [shop.html](shop.html) | Draft v5 complete: VIVI's "I need more VIVE" sticker in the hero, 13 merch mockup photos (jersey cut out of its checkerboard, keychain, and scarf added), can renders, and a poster hover reveal | Merch catalog, bundle definitions, and pricing | Verify quantity inputs, cart count behavior, zero checkout |
+| Share card | [design-demos/og-card.html](design-demos/og-card.html) → `assets/og-card.png` | Chosen: VIVI's Pick (2026-11-19), 1200×630, referenced by the OG and Twitter tags on all four pages | Wordmark, cans, VIVI, `star-10pt-white.svg` | After a change, re-render with headless Brave at 1200×630 (see the file's header comment) |
 | Web portal poster | [router.html](router.html) → `VIVE.pdf` on Drive | Locked: Three Columns (2026-11-18), see [direction-approved.md](direction-approved.md) | Can renders, `site.css` tokens | Change only when the client asks; rebuild by hand with `scripts/build_router_pdf.py` |
 
 **Next action:** Get the corrected Classic poster export from the team, run `python3 scripts/sync_assets.py` after any source change in `ponce-advertising/`, and decide whether the lone 13th merch card needs a different layout.
@@ -100,4 +101,6 @@ This document is the canonical router and functional contract for the VIVE four-
 | `scripts/` | Tooling | Link checkers, `sync_assets.py` (the one path from the team's source files into `assets/`), and asset generators, including `generate_merch_mockups.py`, `build_scene_mockups.py`, and `outline_ring.py` (outline shapes as mitered rings) |
 | `wix-assets/` | Source exports | Print exports and PDF materials for Wix migration |
 | `source/` | Archival source | Original 8-page brand deck and raw asset extracts |
-| `design-demos/` | Archive | Initial concept explorations (A: Sticker Pop, B: Three Moods, C: Charged Geometry) |
+| `design-demos/` | Archive | Initial concept explorations (A: Sticker Pop, B: Three Moods, C: Charged Geometry) and `og-card.html`, the source of the share card. Earlier portal and OG drafts were removed on 2026-11-19 and remain in Git history |
+| `router.html` | Print source | The locked Three Columns web portal poster, built into `VIVE.pdf`; never deployed |
+| `.vercelignore` | Deploy boundary | Keeps everything except the four pages, `site.css`, `site.js`, `assets/`, and `vercel.json` off the live site |

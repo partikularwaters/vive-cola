@@ -59,6 +59,8 @@ Client's words:
 - The whole page links to `https://vive-cola.vercel.app`. The final file in the Drive `Website` folder is `VIVE.pdf`, built by `scripts/build_router_pdf.py`.
 - The previous `router.html` is kept as `design-demos/router-before-portal.html`.
 
+**Drafts removed (2026-11-19).** The `router-dir-*`, `portal-dir-*`, and `simple-dir-*` drafts, their comparison sheets, and `router-before-portal.html` were deleted once Three Columns was locked. The tracked files remain in Git history through commit `1100eae`; the `simple-dir-*` drafts were never committed.
+
 **Locked (2026-11-18).** Client's words:
 > We should settle with this design until I decide otherwise
 

@@ -5,7 +5,7 @@ scripts/build_router_pdf.py
 Mechanical build script for the VIVE 1-Page Router Poster PDF.
 
 Features:
-1. Starts from an HTML template (e.g. design-demos/router-dir-1.html or custom).
+1. Starts from router.html, the locked Three Columns portal (or a custom template).
 2. Synchronizes with current website design tokens from site.css (colors, fonts, geometry).
 3. Predictably compiles HTML to high-resolution A4 vector PDF using WeasyPrint.
 4. Guarantees 100% full-page clickable routing to the production website (https://vive-cola.vercel.app).
@@ -14,7 +14,7 @@ Features:
 7. Generates a matching preview PNG thumbnail via native macOS tooling (qlmanage / sips).
 
 Usage:
-    python3 scripts/build_router_pdf.py [--direction {1,2,3}] [--input path/to/template.html]
+    python3 scripts/build_router_pdf.py [--input path/to/template.html]
 """
 
 import argparse
@@ -132,13 +132,6 @@ def generate_png_preview(pdf_path: Path, png_path: Path) -> None:
 def main():
     parser = argparse.ArgumentParser(description="Build and deploy VIVE Router Poster PDF.")
     parser.add_argument(
-        "--direction",
-        type=int,
-        choices=[1, 2, 3],
-        default=None,
-        help="Direction choice (1: Charged Burst Hero, 2: The Flavor Trio, 3: Editorial Billboard)",
-    )
-    parser.add_argument(
         "--input",
         type=str,
         default=None,
@@ -167,8 +160,6 @@ def main():
     # Determine input template
     if args.input:
         template_path = Path(args.input).resolve()
-    elif args.direction:
-        template_path = REPO_ROOT / f"design-demos/router-dir-{args.direction}.html"
     else:
         template_path = REPO_ROOT / "router.html"
 
