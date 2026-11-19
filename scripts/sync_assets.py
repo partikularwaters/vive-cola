@@ -64,8 +64,8 @@ ASSETS: list[tuple[str, str, tuple]] = [
     ("assets/seasonal/christmas-madrid-full.webp", "[Madrid] John Madrid v3.pdf", ("pdf", 2000)),
     ("assets/seasonal/christmas-madrid-thumb.webp", "[Madrid] John Madrid v3.pdf", ("pdf", 900)),
     # Home: the VIVE ad
-    ("assets/video/vive-ad.mp4", "video-recordings/draft12.mov", ("video", 1920)),
-    ("assets/video/vive-ad-poster.webp", "video-recordings/draft12.mov", ("frame", 43.0)),
+    ("assets/video/vive-ad.mp4", "video-recordings/VIVE.mp4", ("video", 1920)),
+    ("assets/video/vive-ad-poster.webp", "video-recordings/VIVE.mp4", ("frame", 43.0)),
     # Mascot: VIVI
     ("assets/mascot/vivi-pointing.webp", "Mascot/VIVI pointing.png", ("fit", 720)),
     ("assets/mascot/vivi-running.webp", "Mascot/Vivi Running.png", ("fit", 720)),

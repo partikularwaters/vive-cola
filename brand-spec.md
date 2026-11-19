@@ -31,7 +31,7 @@ The older leaf wordmark and purple can in `training/vive-copy.md` are superseded
 | `merch/*.webp` | The team's merch mockup photos, synced by `scripts/sync_assets.py` |
 | `team/*.webp` | Transparent team cutouts, synced by `scripts/sync_assets.py` |
 | `mascot/vivi-*.webp` | VIVI, the mascot: pointing, running, and dizzy |
-| `video/vive-ad.mp4` | The 45-second VIVE ad (H.264, 720p, from `draft12.mov`) and its end-card poster |
+| `video/vive-ad.mp4` | The 45-second VIVE ad (H.264, 1080p, from `VIVE.mp4`) and its end-card poster |
 | `shapes/` (`source/deck-extract/`, mirrored to `assets/shapes/`) | 148 standalone vector SVGs and 1024×1024 transparent PNGs: 10-point stars, 5-point stars, 4-point stars, squares & diamonds (solids, outlines, concentric badges, tilts, chamfers), triangles (equilateral, directional, acute energy, wireframe, corner wedges), angled banners, clusters, and price/vitamin burst badges |
 
 ## Visual language (client's words, 2026-11-14)
