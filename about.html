@@ -32,111 +32,132 @@
      About Us Page-Specific Styles
      ========================================================================== */
 
-  /* Hero */
+  /* Hero: unlike the split navy heroes elsewhere, About opens on a light, centered
+     story page. The sparse confetti pattern keeps the off-white ground light, and VIVI rises from a
+     sun star that the section's diagonal cut crops at the bottom. */
   .about-hero {
-    position: relative;
+    background: var(--white);
+    --pat-op: .45;
+    text-align: center;
+    padding-top: clamp(56px, 6vw, 88px);
+    padding-bottom: 0;
     overflow: hidden;
-    /* Same rhythm as Home: equal space above and below the content */
-    padding-top: clamp(64px, 8vw, 112px);
-    padding-bottom: calc(var(--cut) + 40px);
-    background: var(--navy);
-  }
-  .hero-grid {
-    position: relative;
-    z-index: 2;
-    display: grid;
-    grid-template-columns: 1fr minmax(360px, 1fr);
-    align-items: center;
-    gap: clamp(24px, 4vw, 64px);
   }
   .hero-content {
-    max-width: 760px;
-  }
-  /* VIVI on a slow-turning white 10-point star fills the right half of the hero.
-     The star bleeds a little past the column, like Home's burst behind the can. */
-  .hero-vivi {
     position: relative;
-    aspect-ratio: 1;
-    display: grid;
-    place-items: center;
-    margin-block: -10%;
-    /* Reach halfway into the right gutter: the headline labels set the text
-       column's width, so VIVI grows sideways instead */
-    margin-right: calc(var(--gutter) / -2);
+    z-index: 2;
+    max-width: 980px;
+    margin-inline: auto;
   }
-  .hero-vivi .burst {
-    position: absolute;
-    inset: -12%;
-    background-image: url(assets/shapes/star-10pt-white.svg);
-    animation: about-spin 90s linear infinite;
-  }
-  .hero-vivi img {
-    position: relative;
-    width: 86%;
-    filter: drop-shadow(0 22px 20px rgba(20, 24, 63, .35));
-    animation: about-pop .55s .15s var(--ease-pop) both;
-  }
-  @keyframes about-spin { to { transform: rotate(360deg); } }
-  @keyframes about-pop { from { opacity: 0; transform: translateY(36px) rotate(-10deg) scale(.88); } }
   .hero-content h1 {
     margin: 0;
     font-weight: 900;
     text-transform: uppercase;
-    font-size: clamp(38px, 6.5vw, 92px);
-    line-height: .92;
+    font-size: clamp(34px, 5vw, 76px);
+    line-height: 1;
     letter-spacing: -.01em;
-    color: var(--white);
   }
-  .hero-content h1 em {
-    font-style: normal;
-    color: var(--orange);
-    display: block;
+  .hero-content h1 .label {
+    margin-inline: auto;
   }
   .hero-intro {
     font-size: clamp(16px, 1.4vw, 20px);
     line-height: 1.6;
     font-weight: 600;
-    color: var(--white);
-    margin: 28px 0 0;
-    max-width: 38em;
+    color: var(--deep);
+    margin: 28px auto 0;
+    max-width: 40em;
   }
   .hero-nav-strip {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 12px;
     margin-top: 32px;
   }
+  .hero-vivi {
+    position: relative;
+    z-index: 1;
+    width: min(440px, 70%);
+    aspect-ratio: 1;
+    margin: clamp(24px, 3vw, 40px) auto calc(var(--cut) * -0.2);
+    display: grid;
+    place-items: end center;
+  }
+  /* Two counter-turning stars, like the can on Home: the navy of the two-color
+     star behind, sun in front */
+  .hero-vivi .burst {
+    position: absolute;
+    inset: 0 -30% -60%;
+    background-image: url(assets/shapes/star-10pt-sun.svg);
+    animation: about-spin 90s linear infinite;
+  }
+  .hero-vivi .burst.back {
+    inset: -12% -44% -74%;
+    background-image: url(assets/shapes/star-10pt-navy.svg);
+    animation-direction: reverse;
+  }
+  .hero-vivi img {
+    position: relative;
+    width: 78%;
+    filter: drop-shadow(0 22px 20px rgba(20, 24, 63, .3));
+    animation: about-pop .55s .15s var(--ease-pop) both;
+  }
+  .about-hero .motion-toggle {
+    color: var(--navy);
+  }
+  @keyframes about-spin { to { transform: rotate(360deg); } }
+  @keyframes about-pop { from { opacity: 0; transform: translateY(36px) rotate(-10deg) scale(.88); } }
+
+  /* Facts strip: deep navy, so it parts the hero from the story instead of
+     blending into VIVI's sun star. The diagonal lives on the strip, which overlaps
+     the hero: cutting the hero itself left a light seam where the turning star's
+     layer and the hero's ground were clipped separately. */
+  .facts {
+    position: relative;
+    z-index: 3;
+    background: var(--deep);
+    color: var(--white);
+    clip-path: polygon(0 var(--cut), 100% 0, 100% 100%, 0 100%);
+  }
+  .facts span::before {
+    background-image: url(assets/shapes/triangle-equilateral-sun.svg);
+  }
 
   /* Story Section */
+  /* The copy holds the left; the confetti pattern fills the right and fades out
+     toward the center, mirroring the Home hero's left-to-center fade */
   .story-section {
-    background: var(--white);
+    background: var(--mist);
+    --pat-op: .22;
+    --pat-mask: linear-gradient(260deg, #000 0%, transparent 58%);
     color: var(--ink);
     padding-top: clamp(64px, 8vw, 112px);
     padding-bottom: clamp(64px, 8vw, 112px);
   }
-  .story-grid {
-    display: grid;
-    grid-template-columns: 1.15fr .85fr;
-    gap: clamp(32px, 5vw, 80px);
-    align-items: center;
+  .story-copy {
+    max-width: min(900px, 68%);
   }
   .story-copy h2 {
-    margin: 0 0 28px;
+    margin: 0 0 36px;
     font-weight: 900;
     text-transform: uppercase;
-    font-size: clamp(32px, 4vw, 54px);
+    font-size: clamp(38px, 5vw, 72px);
     line-height: .96;
   }
   .story-copy p {
-    font-size: 16px;
-    line-height: 1.7;
+    font-size: clamp(18px, 1.5vw, 22px);
+    line-height: 1.65;
+    font-weight: 500;
     color: #2b3360;
-    margin: 0 0 20px;
+    margin: 0 0 24px;
   }
   .story-copy p strong {
     color: var(--navy);
   }
+  /* The formulation standard runs full width under the story, four points across */
   .story-card {
+    margin-top: clamp(40px, 5vw, 64px);
     background: var(--navy);
     color: var(--white);
     padding: clamp(28px, 4vw, 44px);
@@ -168,7 +189,8 @@
     margin: 0;
     padding: 0;
     display: grid;
-    gap: 14px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px 32px;
   }
   .story-card li {
     font-size: 15px;
@@ -188,6 +210,7 @@
   /* Team Section: portraits on stars with a rising name plate */
   .team-section {
     background: var(--ink);
+    --pat-op: .4;
     color: var(--white);
     padding-top: clamp(64px, 8vw, 112px);
     padding-bottom: clamp(64px, 8vw, 112px);
@@ -210,9 +233,12 @@
   .team-header p {
     margin: 0;
     max-width: 32em;
-    font-size: 16px;
+    padding: 18px 22px;
+    background: var(--ink);
+    font-size: 17px;
     line-height: 1.6;
-    color: #a7acc8;
+    font-weight: 600;
+    color: var(--white);
   }
 
   /* Two rows of three equal cards. Each portrait stands plain on its star; a
@@ -230,15 +256,22 @@
     height: clamp(440px, 36vw, 540px);
   }
   .member-card {
-    --star: url(assets/shapes/star-10pt-orange.svg);
     position: relative;
     overflow: hidden;
     color: var(--deep);
     /* Star sized by card height, centered behind the head */
-    background: var(--deep) var(--star) 50% 4% / auto 74% no-repeat;
+    /* White frame with the warm Confetti Toss (Home's Christmas pattern) behind each portrait */
+    background: var(--white);
   }
-  .member-card:nth-child(3n+2) { --star: url(assets/shapes/star-10pt-sun.svg); }
-  .member-card:nth-child(3n) { --star: url(assets/shapes/star-10pt-cream.svg); }
+  .member-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url(assets/patterns/confetti-warm.svg) var(--pat-x, 0) 0 / 312px;
+    opacity: .4;
+  }
+  .member-card:nth-child(3n+2) { --pat-x: -104px; }
+  .member-card:nth-child(3n) { --pat-x: -208px; }
   /* Sized by the card's height and centered, so every head sits at the same
      height and size. sync_assets.py frames each cutout with its face at the same spot. */
   .member-card img.avatar {
@@ -317,8 +350,10 @@
 
   /* Pillars Section */
   .pillars-section {
-    background: var(--navy);
-    color: var(--white);
+    z-index: 1;
+    background: var(--sun);
+    --pat-op: .35;
+    color: var(--navy);
     padding-top: clamp(64px, 8vw, 112px);
     padding-bottom: clamp(64px, 8vw, 112px);
   }
@@ -337,7 +372,7 @@
   .pillar-card {
     background: var(--deep);
     padding: clamp(28px, 3.5vw, 40px);
-    border: 2px solid rgba(244, 189, 106, .2);
+    box-shadow: 0 20px 36px rgba(20, 24, 63, .18);
     clip-path: polygon(0 0, 100% 0, 100% 95%, 92% 100%, 0 100%);
     display: flex;
     flex-direction: column;
@@ -375,10 +410,13 @@
   }
 
   /* Call to Action Strip */
+  /* Tucks under the pillars' diagonal cut so no body color shows between them */
   .about-cta-strip {
-    background: var(--orange);
+    background: var(--white);
+    --pat-op: .16;
+    margin-top: calc(var(--cut) * -1);
     color: var(--white);
-    padding-top: clamp(60px, 7vw, 96px);
+    padding-top: calc(var(--cut) + clamp(60px, 7vw, 96px));
     padding-bottom: clamp(60px, 7vw, 96px);
     text-align: center;
   }
@@ -408,8 +446,8 @@
 
   /* Responsive Adjustments */
   @media (max-width: 960px) {
-    .story-grid {
-      grid-template-columns: 1fr;
+    .story-card ul {
+      grid-template-columns: 1fr 1fr;
     }
     .pillars-grid {
       grid-template-columns: 1fr;
@@ -443,30 +481,24 @@
 
 <!-- Header / Hero Section -->
 <main id="content">
-<section class="about-hero cut-down on-dark">
-  <!-- Dynamic Brand Triangles -->
-  <i class="tri" style="--s:110px;--c:url(assets/shapes/triangle-equilateral-sun.svg);--r:22deg;left:calc(var(--gutter) - var(--s) - 28px);top:110px;--d:.06s"></i>
-  <i class="tri hide-sm" style="--s:42px;--c:url(assets/shapes/triangle-equilateral-orange.svg);--r:-28deg;left:48%;top:28px;--d:.14s"></i>
-  <i class="tri hide-sm" style="--s:64px;--c:url(assets/shapes/triangle-equilateral-white.svg);--r:190deg;left:calc(var(--gutter) / 2 - 32px);bottom:calc(var(--cut) + 24px);--d:.2s"></i>
-  <i class="tri" style="--s:38px;--c:url(assets/shapes/triangle-equilateral-orange.svg);--r:38deg;right:8%;top:100px;--d:.26s"></i>
-
-
-  <div class="wrap hero-grid">
+<section class="about-hero pat pat-sparse">
+<div class="wrap">
   <div class="hero-content">
     <h1>
-      <span class="label sun">Born from the vibes</span>
-      <em>Crafted for life</em>
+      <span class="label">Born from the vibes</span>
+      <span class="label orange">Crafted for life</span>
     </h1>
     <p class="hero-intro">
       VIVE started with one aim: put real vitamins in the cola people already love. Today that means three cans with four vitamins each. VIVE Classic is for everyday energy, VIVE Glow supports skin health, and VIVE Focus supports mental performance.
     </p>
     <div class="hero-nav-strip">
-      <a class="btn orange" href="#story">The Founding Story</a>
-      <a class="btn white" href="#team">Leadership Team</a>
-      <a class="btn orange" href="#pillars">Brand Pillars</a>
+      <a class="btn navy" href="#story">The Founding Story</a>
+      <a class="btn orange" href="#team">Leadership Team</a>
+      <a class="btn navy" href="#pillars">Brand Pillars</a>
     </div>
   </div>
   <div class="hero-vivi" aria-hidden="true">
+    <div class="burst back star"></div>
     <div class="burst star"></div>
     <img src="assets/mascot/vivi-pointing.webp" alt="" width="671" height="720">
   </div>
@@ -483,8 +515,7 @@
 </div>
 
 <!-- Section 1: The Founding Story -->
-<section id="story" class="story-section wrap">
-  <div class="story-grid">
+<section id="story" class="story-section wrap pat pat-confetti">
     <div class="story-copy">
       <h2>
         <span class="label">How VIVE</span>
@@ -531,11 +562,10 @@
         </li>
       </ul>
     </aside>
-  </div>
 </section>
 
 <!-- Section 2: Leadership Team (name plates rise on hover to reveal each bio) -->
-<section id="team" class="team-section wrap cut-both">
+<section id="team" class="team-section wrap cut-up pat pat-seal-blue">
   <div class="team-header">
     <div>
       <h2>
@@ -646,9 +676,9 @@
 </section>
 
 <!-- Section 3: Brand Pillars -->
-<section id="pillars" class="pillars-section wrap cut-down">
+<section id="pillars" class="pillars-section wrap cut-down pat pat-sparse">
   <h2>
-    <span class="label orange">Our core</span>
+    <span class="label">Our core</span>
     <span class="label white">commitments</span>
   </h2>
 
@@ -686,12 +716,12 @@
 </section>
 
 <!-- Section 4: Call to Action Strip -->
-<section class="about-cta-strip wrap">
+<section class="about-cta-strip wrap pat pat-confetti">
   <h2>Ready for your dose of good vibes?</h2>
   <p>Get your VIVE at your nearest store, or order single cans, packs, and merch online.</p>
   <div class="cta-buttons">
     <a class="btn navy" href="shop.html">Grab a VIVE!</a>
-    <a class="btn white" href="product.html">Explore all three vibes</a>
+    <a class="btn orange" href="product.html">Explore all three vibes</a>
   </div>
 </section>
 

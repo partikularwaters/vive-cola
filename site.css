@@ -573,6 +573,9 @@ nav a[aria-current="page"] {
 .pat-confetti-deep { --pat: url(assets/patterns/confetti-deep.svg); }
 .pat-confetti-navy { --pat: url(assets/patterns/confetti-navy.svg); }
 .pat-sparse { --pat: url(assets/patterns/sparse-color.svg); --pat-size: 640px; }
+.pat-sparse-light { --pat: url(assets/patterns/sparse-light.svg); --pat-size: 640px; }
+.pat-sparse-blue { --pat: url(assets/patterns/sparse-blue.svg); --pat-size: 640px; }
+.pat-seal-blue { --pat: url(assets/patterns/seal-blue.svg); --pat-size: 140px; }
 .pat-seal { --pat: url(assets/patterns/seal-color.svg); --pat-size: 140px; }
 .pat-seal-sun { --pat: url(assets/patterns/seal-sun.svg); --pat-size: 140px; }
 .pat-seal-white { --pat: url(assets/patterns/seal-white.svg); --pat-size: 140px; }

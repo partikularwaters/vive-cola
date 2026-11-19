@@ -57,6 +57,7 @@ SEALS = {
     "seal-color": (ORANGE, NAVY, NAVY),   # on sun or cream
     "seal-sun": (SUN, NAVY, ORANGE),      # on navy or deep
     "seal-white": (WHITE, "none", WHITE), # quiet tone-on-tone
+    "seal-blue": (NAVY, DEEP, NAVY),      # tone-on-tone for ink grounds
 }
 for name, cols in SEALS.items():
     out = ROOT / f"assets/patterns/{name}.svg"
@@ -76,7 +77,9 @@ print("recolored", n, "shape SVGs to", ORANGE)
 
 def sparse(c1, c2, c3):
     """Confetti Sparse (2026-11-20): the Confetti Toss shapes at about a fifth of the
-    density on a larger tile, so sections with busy content keep room to breathe."""
+    density on a larger tile, so sections with busy content keep room to breathe.
+    On blue grounds, use the blue-toned tiles instead of fading orange ones
+    (user, 2026-11-20): seal-blue on ink, sparse-blue on navy."""
     pieces = [("s10", 40, 60, 54, c1, -12), ("tac", 300, 30, 26, c2, 22), ("cham", 520, 120, 34, c3, 18),
               ("s4", 200, 210, 22, c2, 0), ("tri", 420, 300, 46, c1, -30), ("s10k", 110, 400, 40, c3, 8),
               ("strip", 330, 500, 48, c2, -18), ("dia", 560, 470, 24, c1, 0), ("s4", 30, 560, 18, c1, 0)]
@@ -94,7 +97,7 @@ def sparse(c1, c2, c3):
     return ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="640" height="640">'
             f"<defs>{S.SYM}</defs>{''.join(out)}</svg>\n")
 
-for name, cols in {"sparse-color": (ORANGE, NAVY, SUN), "sparse-warm": (ORANGE, SUN, NAVY)}.items():
+for name, cols in {"sparse-color": (ORANGE, NAVY, SUN), "sparse-warm": (ORANGE, SUN, NAVY), "sparse-light": (ORANGE, SUN, WHITE), "sparse-blue": (DEEP, DEEP, DEEP)}.items():
     out = ROOT / f"assets/patterns/{name}.svg"
     out.write_text(sparse(*cols))
     print("wrote", out.relative_to(ROOT), out.stat().st_size, "bytes")
