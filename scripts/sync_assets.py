@@ -55,9 +55,9 @@ DEFAULT_SOURCE = Path.home() / "client-work/pineapple/training/ponce-advertising
 #                       no transparency is cut out first by scripts/cutout.swift.
 #                       n is a version; bump it to force a rebuild.
 #   ("vivi-icon", N)    VIVI's head (arms and shirt masked off) on a rounded
-#                       sun tile, N x N PNG. A .ico output holds 16, 32, and
+#                       deep blue tile, N x N PNG. A .ico output holds 16, 32, and
 #                       48 px.
-#   ("vivi-touch-icon", N) the same head on a square sun tile with no rounded
+#   ("vivi-touch-icon", N) the same head on a square deep blue tile with no rounded
 #                       corners, because iOS rounds home-screen icons itself.
 ASSETS: list[tuple[str, str, tuple]] = [
     # Home: John Madrid's Christmas poster (v3 is the final export)
@@ -70,7 +70,7 @@ ASSETS: list[tuple[str, str, tuple]] = [
     ("assets/mascot/vivi-pointing.webp", "Mascot/VIVI pointing.png", ("fit", 720)),
     ("assets/mascot/vivi-running.webp", "Mascot/Vivi Running.png", ("fit", 720)),
     ("assets/mascot/vivi-dizzy.webp", "Mascot/VIVI Dizzy.png", ("fit", 720)),
-    # Favicon and app icons: VIVI on sun
+    # Favicon and app icons: VIVI on deep blue
     ("favicon.ico", "Mascot/VIVI pointing.png", ("vivi-icon", 48)),
     ("assets/icons/favicon-32.png", "Mascot/VIVI pointing.png", ("vivi-icon", 32)),
     ("assets/icons/icon-512.png", "Mascot/VIVI pointing.png", ("vivi-icon", 512)),
@@ -227,6 +227,12 @@ def place_portrait(src: Path, out: Path) -> None:
     save_webp(canvas, out)
 
 
+# Icon tile color: the site's --deep blue. Brand navy (#2B3990) would hide
+# the navy stripes of VIVI's headband. After changing it, delete the icon
+# entries from asset-sources.json so the next run rebuilds them.
+ICON_TILE = (29, 39, 102)
+
+
 def vivi_head(src: Path) -> Image.Image:
     """VIVI's V-shaped head with the headband and face, cut from the pointing
     pose. Masks are in the 671 px wide layout of that pose."""
@@ -253,7 +259,7 @@ def vivi_head(src: Path) -> Image.Image:
 def vivi_icon(src: Path, out: Path, n: int, rounded: bool = True) -> None:
     S = 512
     tile = Image.new("RGBA", (S, S), (0, 0, 0, 0))
-    ImageDraw.Draw(tile).rounded_rectangle((0, 0, S - 1, S - 1), 112 if rounded else 0, fill=(244, 189, 106))
+    ImageDraw.Draw(tile).rounded_rectangle((0, 0, S - 1, S - 1), 112 if rounded else 0, fill=ICON_TILE)
     head = vivi_head(src)
     h = 448
     w = round(head.width * h / head.height)
