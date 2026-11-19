@@ -22,7 +22,7 @@ The site has four pages: [Home](index.html), [About Us](about.html), [Product](p
 
 ---|---|---|---|
 | **Home** | [index.html](index.html) | Draft v1 complete | Canonical homepage with vitamin-led burst hero, Glow, Classic, and Focus posters with buttons, ad mockups, and video player container |
-| **About Us** | [about.html](about.html) | Draft v1 complete | Founding story (*revive* and *survive*), six-person team roster, and expanding panel cards |
+| **About Us** | [about.html](about.html) | Draft v1 complete | The friends' founding story, six-person team roster, and expanding panel cards |
 | **Product** | [product.html](product.html) | Draft v1 complete | Animated hero, one strip each for Classic, Glow, and Focus, an "In every can" strip, and a vitamin comparison table |
 | **Shop** | [shop.html](shop.html) | Draft v1 complete | Single cans, packs, and 11 merch items with quantity selectors, plus a header cart count that persists on every page |
 
