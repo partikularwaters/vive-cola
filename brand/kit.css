@@ -624,6 +624,14 @@ ul.grid {
   background: var(--sun);
 }
 
+.on-orange .frame {
+  background: var(--orange);
+}
+
+.on-ink .frame {
+  background: var(--ink);
+}
+
 .tall .frame {
   aspect-ratio: 3 / 4;
 }

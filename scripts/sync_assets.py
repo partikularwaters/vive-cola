@@ -54,6 +54,8 @@ DEFAULT_SOURCE = Path.home() / "client-work/pineapple/training/ponce-advertising
 #                       scripts/face_boxes.swift, macOS Vision). A photo with
 #                       no transparency is cut out first by scripts/cutout.swift.
 #                       n is a version; bump it to force a rebuild.
+#   ("trim", N)         crop to the visible pixels (drop transparent padding), then
+#                       at most N px wide, keep transparency, WebP. For logos.
 #   ("head-square", N)  square crop with the head at the same size and spot in
 #   ("head-square", (N, zoom))  every photo (HEAD_SQUARE below; face found by
 #                       scripts/face_boxes.swift), then N x N px, WebP. For the
@@ -81,6 +83,12 @@ ASSETS: list[tuple[str, str, tuple]] = [
     ("assets/stationery/business-card-front.webp", "MVA Batch 54/Group 1 - (VIVE)/Mockups/VIVE Business Card Front.png", ("fit", 1575)),
     ("assets/stationery/business-card-back.webp", "MVA Batch 54/Group 1 - (VIVE)/Mockups/VIVE Business Card Back.png", ("fit", 1575)),
     ("assets/stationery/letterhead.webp", "MVA Batch 54/Group 1 - (VIVE)/Mockups/VIVE Letterhead.png", ("fit", 1600)),
+    # The wordmark in the four colorways the Brand Guidelines approve (p. 6): the "!" and
+    # the second V always differ in color from the other letters
+    ("assets/logo/vive-wordmark-on-orange.webp", "MVA Batch 54/Group 1 - (VIVE)/Logo/Logo Variation-05.png", ("trim", 600)),
+    ("assets/logo/vive-wordmark-on-blue.webp", "MVA Batch 54/Group 1 - (VIVE)/Logo/Logo Variation-03.png", ("trim", 600)),
+    ("assets/logo/vive-wordmark-on-dark.webp", "MVA Batch 54/Group 1 - (VIVE)/Logo/Logo Variation-01.png", ("trim", 600)),
+    ("assets/logo/vive-wordmark-on-light.webp", "MVA Batch 54/Group 1 - (VIVE)/Logo/Logo Variation-04.png", ("trim", 600)),
     # Home: the VIVE ad
     ("assets/video/vive-ad.mp4", "MVA Batch 54/Group 1 - (VIVE)/Video/VIVE VIDEO ADVERTISEMENT.mp4", ("video", 1920)),
     # Mascot: VIVI, the team's outlined versions with a white sticker edge
@@ -243,6 +251,14 @@ def face_box(src: Path) -> dict:
     return box
 
 
+def trim(src: Path, out: Path, n: int) -> None:
+    im = Image.open(src).convert("RGBA")
+    im = im.crop(im.getchannel("A").getbbox())
+    if im.width > n:
+        im = im.resize((n, round(im.height * n / im.width)), Image.LANCZOS)
+    save_webp(im, out)
+
+
 def head_square(src: Path, out: Path, n: int, zoom: float = 1) -> None:
     box = face_box(src)
     im = Image.open(src).convert("RGB")
@@ -335,6 +351,8 @@ def build(recipe: tuple, src: Path, out: Path) -> None:
         fit(src, out, arg)
     elif kind == "square":
         square(src, out, arg)
+    elif kind == "trim":
+        trim(src, out, arg)
     elif kind == "head-square":
         head_square(src, out, *(arg if isinstance(arg, tuple) else (arg,)))
     elif kind == "pdf":

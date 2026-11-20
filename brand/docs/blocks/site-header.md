@@ -5,7 +5,7 @@ order: 1
 ---
 # Site header
 
-The header is an orange bar with a deep navy base line, pinned to the top of every page. It holds the navy wordmark, the four page links, and the [cart button](../components/cart-button.md).
+The header is an orange bar with a deep navy base line, pinned to the top of every page. It holds the wordmark in its on-orange colorway (white, with a navy !V), the four page links, and the [cart button](../components/cart-button.md).
 
 <!-- specimen: site-header -->
 
@@ -14,7 +14,7 @@ The header is an orange bar with a deep navy base line, pinned to the top of eve
 ```html
 <header class="site-header">
 <nav class="wrap" aria-label="Primary">
-  <a href="index.html"><img src="assets/wordmark-vive-navy.png" alt="VIVE home" width="125" height="32"></a>
+  <a href="index.html"><img src="assets/logo/vive-wordmark-on-orange.webp" alt="VIVE home" width="119" height="32"></a>
   <ul>
     <li><a href="index.html" aria-current="page">Home</a></li>
     <li><a href="about.html">About Us</a></li>

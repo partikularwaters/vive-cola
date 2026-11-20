@@ -5,7 +5,7 @@ order: 1
 ---
 # Cans
 
-Three 12 oz cans, each with four vitamins for one daily need, zero calories, and 100% stevia. Each is ₱67.
+Three 12 oz cans, each with four vitamins for one daily need, zero sugar, and 100% stevia. Each is ₱67.
 
 <!-- specimen: cans -->
 

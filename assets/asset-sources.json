@@ -26,6 +26,42 @@
       512
     ]
   },
+  "assets/logo/vive-wordmark-on-blue.webp": {
+    "source": "MVA Batch 54/Group 1 - (VIVE)/Logo/Logo Variation-03.png",
+    "size": 20687,
+    "mtime": 1794595604,
+    "recipe": [
+      "trim",
+      600
+    ]
+  },
+  "assets/logo/vive-wordmark-on-dark.webp": {
+    "source": "MVA Batch 54/Group 1 - (VIVE)/Logo/Logo Variation-01.png",
+    "size": 20028,
+    "mtime": 1794595604,
+    "recipe": [
+      "trim",
+      600
+    ]
+  },
+  "assets/logo/vive-wordmark-on-light.webp": {
+    "source": "MVA Batch 54/Group 1 - (VIVE)/Logo/Logo Variation-04.png",
+    "size": 21348,
+    "mtime": 1794595604,
+    "recipe": [
+      "trim",
+      600
+    ]
+  },
+  "assets/logo/vive-wordmark-on-orange.webp": {
+    "source": "MVA Batch 54/Group 1 - (VIVE)/Logo/Logo Variation-05.png",
+    "size": 20688,
+    "mtime": 1794595604,
+    "recipe": [
+      "trim",
+      600
+    ]
+  },
   "assets/mascot/vivi-dizzy.webp": {
     "source": "MVA Batch 54/Group 1 - (VIVE)/Drafts/VIVI Dizzy Outline.png",
     "size": 121392,

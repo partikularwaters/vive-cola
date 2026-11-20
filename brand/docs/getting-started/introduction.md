@@ -5,7 +5,7 @@ order: 1
 ---
 # Introduction
 
-The VIVE brand kit is the set of colors, type, shapes, components, and sections that every VIVE page is built from. VIVE is the vitamin-charged cola: three 12 oz cans, each with four vitamins, zero calories, and 100% stevia.
+The VIVE brand kit is the set of colors, type, shapes, components, and sections that every VIVE page is built from. VIVE is the vitamin-charged cola: three 12 oz cans, each with four vitamins, zero sugar, and 100% stevia.
 
 The kit has one source for two readers. People browse these pages and see each piece rendered with the site's own stylesheet. Agents read the same pages as Markdown: every page has **Copy for agents**, and the top bar can copy or download the whole system as one file.
 

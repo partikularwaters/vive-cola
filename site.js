@@ -173,7 +173,7 @@
     footer.innerHTML = `
   <div class="foot-cols wrap">
     <div class="foot-brand">
-      <a href="index.html"><img src="assets/wordmark-vive-white.png" alt="VIVE home" width="203" height="52" loading="lazy"></a>
+      <a href="index.html"><img src="assets/logo/vive-wordmark-on-dark.webp" alt="VIVE home" width="205" height="52" loading="lazy"></a>
       <p>Real vitamins in the cola you already love. Four in every can.</p>
       <a class="btn sun" href="shop.html">Shop VIVE</a>
     </div>

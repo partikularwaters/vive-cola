@@ -5,7 +5,7 @@ order: 8
 ---
 # Voice
 
-VIVE sounds sharp, energetic, and cheerful. Lead with the vitamins; stevia and zero calories are the reassurance that follows.
+VIVE sounds sharp, energetic, and cheerful. Lead with the four vitamins and zero sugar, the two benefits the Brand Guidelines ask every piece to make easy to spot. Stevia and zero calories are the reassurance that follows.
 
 ## Lines
 
@@ -27,7 +27,7 @@ VIVE sounds sharp, energetic, and cheerful. Lead with the vitamins; stevia and z
 
 ## Product facts
 
-Every can is 12 oz, ₱67, sweetened with 100% stevia, and has zero calories. VIVE is sold at Lawson, 7-Eleven, SM, and Ayala Malls.
+Every can is 12 oz, ₱67, sweetened with 100% stevia, and has zero sugar and zero calories. VIVE is sold at Lawson, 7-Eleven, SM, and Ayala Malls.
 
 ## Rules
 

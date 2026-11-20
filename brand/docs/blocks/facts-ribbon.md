@@ -15,7 +15,7 @@ A sun strip of three or four short facts, set in uppercase Black with a small na
 <div class="facts wrap">
   <span>Four vitamins in every can</span>
   <span>VIVE Classic, Glow, and Focus</span>
-  <span>0 calories</span>
+  <span>Zero sugar</span>
   <span>12 oz can</span>
 </div>
 ```

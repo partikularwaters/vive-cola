@@ -155,8 +155,10 @@ def specimens():
     shapes_html, _ = shape_sections()
     return {
         "logo": grid([
-            asset_card("assets/wordmark-vive-navy.png", "Wordmark, navy", "on-light"),
-            asset_card("assets/wordmark-vive-white.png", "Wordmark, white", "on-dark"),
+            asset_card("assets/logo/vive-wordmark-on-blue.webp", "On blue: white, orange !V", "on-dark"),
+            asset_card("assets/logo/vive-wordmark-on-orange.webp", "On orange: white, navy !V", "on-orange"),
+            asset_card("assets/logo/vive-wordmark-on-dark.webp", "On dark: orange, white !V", "on-ink"),
+            asset_card("assets/logo/vive-wordmark-on-light.webp", "On light: orange, navy !V", "on-light"),
             asset_card("assets/logo-vive-navy-tagline.png", "Monogram with tagline", "on-light"),
             asset_card("assets/logo-color-variations.png", "Color variations", "on-light tall"),
             asset_card("assets/icons/icon-512.png", "App icon, VIVI on deep navy", "on-light"),
@@ -186,10 +188,10 @@ def specimens():
             for m, t in (("cap", "-1.5deg"), ("headband", "1deg"), ("mug", "-.6deg")))),
         "mascot": grid([asset_card(f"assets/mascot/vivi-{p}.webp", f"VIVI {p.replace('-', ' ')}", "on-sun") for p in ("pointing", "running", "dizzy", "need-more-vive")]),
         "site-header": '<div class="specimen-frame"><header class="site-header"><nav class="wrap" aria-label="Sample site navigation">'
-                       '<a href="@R@index.html"><img src="@R@assets/wordmark-vive-navy.png" alt="VIVE home" width="125" height="32"></a>'
+                       '<a href="@R@index.html"><img src="@R@assets/logo/vive-wordmark-on-orange.webp" alt="VIVE home" width="119" height="32"></a>'
                        '<ul><li><a href="@R@index.html" aria-current="page">Home</a></li><li><a href="@R@about.html">About Us</a></li><li><a href="@R@product.html">Product</a></li><li><a href="@R@shop.html">Shop</a></li></ul>'
                        '<button type="button" class="cart-btn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 7V6a5 5 0 0 1 10 0v1h3.2l-1.3 15H5.1L3.8 7H7Zm2 0h6V6a3 3 0 0 0-6 0v1Z"/></svg>Cart <span class="cart-count">0</span><span class="vh"> items</span></button></nav></header></div>',
-        "facts-ribbon": '<div class="specimen-frame"><div class="facts wrap facts-sample"><span>Four vitamins in every can</span><span>VIVE Classic, Glow, and Focus</span><span>0 calories</span><span>12 oz can</span></div></div>',
+        "facts-ribbon": '<div class="specimen-frame"><div class="facts wrap facts-sample"><span>Four vitamins in every can</span><span>VIVE Classic, Glow, and Focus</span><span>Zero sugar</span><span>12 oz can</span></div></div>',
         "section-grounds": '<div class="grounds">' + "".join(
             f'<div class="ground pat {pc}" style="background:{bg};color:{fg}"><span class="label {lc}">{esc(t)}</span><small>{esc(n)}</small></div>'
             for t, n, bg, fg, pc, lc in (
@@ -312,7 +314,7 @@ def page(docs, i, spec):
     body = f"""<body class="kit" data-root="@R@">
 <a class="skip" href="#doc">Skip to content</a>
 <header class="kit-top">
-  <a class="kit-brand" href="@R@brand/getting-started/introduction.html"><img src="@R@assets/wordmark-vive-navy.png" alt="VIVE" width="94" height="24"><span>Brand Kit</span></a>
+  <a class="kit-brand" href="@R@brand/getting-started/introduction.html"><img src="@R@assets/logo/vive-wordmark-on-orange.webp" alt="VIVE" width="89" height="24"><span>Brand Kit</span></a>
   <label class="kit-search"><span class="vh">Search the brand kit</span><input type="search" placeholder="Search…" autocomplete="off" aria-controls="kit-nav"><kbd aria-hidden="true">/</kbd></label>
   <div class="kit-actions">
     <button type="button" class="kit-btn" data-copy-system="@R@brand/vive-brand-kit.md" title="Copy the whole brand kit as one Markdown file">Copy entire system</button>

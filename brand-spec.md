@@ -7,7 +7,8 @@ The older leaf wordmark and purple can in `training/vive-copy.md` are superseded
 | File | What |
 |---|---|
 | `logo-vive-navy-tagline.png` | White V, navy !, white VE, "Vitamin-Charged Cola" in navy (for orange ground) |
-| `wordmark-vive-white.png`, `wordmark-vive-navy.png` | Wordmark only |
+| `logo/vive-wordmark-on-orange.webp`, `-on-blue`, `-on-dark`, `-on-light` | The wordmark in the four colorways the Brand Guidelines approve (p. 6), from Drive `Group 1 - (VIVE)/Logo/Logo Variation-05`, `-03`, `-01`, and `-04`, built by `scripts/sync_assets.py`. The "!" and second V always differ in color from the other letters (user, 2026-11-20) |
+| `wordmark-vive-white.png`, `wordmark-vive-navy.png` | Earlier one-color wordmarks. Off the site since 2026-11-20 because they break the Brand Guidelines; still used by the locked `router.html` poster and old design demos |
 | `logo-color-variations.png` | The four approved grounds: orange, navy, cream, black |
 | `can-original-hires.png` | Deck-era Classic (orange) can, 554×1473, transparent. Kept for the design demos; the site uses `can-classic-web.webp` |
 | `can-original.png`, `can-extra-caffeine.png`, `can-decaffeinated.png` | The three deck-era cans, transparent. Only `can-original` matches the current line (Classic); the other two are retired variants. |
@@ -61,7 +62,7 @@ Flavor grounds seen on the retired deck-era cans (not part of the core four): cr
 - Headings and body: Montserrat Bold / Regular (Google Fonts, so it carries to Wix)
 
 ## Product facts
-- VIVE, "The vitamin-charged cola." Lead with the vitamins; stevia is secondary reassurance. Sweetened with 100% stevia. Zero calories. 12 oz can. ₱67.
+- VIVE, "The vitamin-charged cola." Lead with the vitamins and zero sugar, the two benefits the Brand Guidelines (Drive, `Group 1 - (VIVE)/Brand Guidelines/`) ask every piece to make easy to spot (user, 2026-11-20); stevia is secondary reassurance. Sweetened with 100% stevia. Zero calories. 12 oz can. ₱67.
 - Product line (client, 2026-11-16):
   - **VIVE Classic:** "Your dose of good vibes." The original orange can. Vitamins A, B9, B12, and C.
     - Nutrition facts from the Classic label, per 12 fl oz can: 0 calories, 0 g fat, 25 mg sodium (1%), 0 g carbohydrate, 0 g sugar, 0 g protein; vitamin A 10%, B9 (folate) 25%, B12 50%, and C 50% of the daily value; caffeine 34 mg.

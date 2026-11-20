@@ -38,7 +38,7 @@
 > Getting started · VIVE brand kit · https://vive-cola.vercel.app/brand/getting-started/introduction
 > Source: brand/docs/getting-started/introduction.md
 
-The VIVE brand kit is the set of colors, type, shapes, components, and sections that every VIVE page is built from. VIVE is the vitamin-charged cola: three 12 oz cans, each with four vitamins, zero calories, and 100% stevia.
+The VIVE brand kit is the set of colors, type, shapes, components, and sections that every VIVE page is built from. VIVE is the vitamin-charged cola: three 12 oz cans, each with four vitamins, zero sugar, and 100% stevia.
 
 The kit has one source for two readers. People browse these pages and see each piece rendered with the site's own stylesheet. Agents read the same pages as Markdown: every page has **Copy for agents**, and the top bar can copy or download the whole system as one file.
 
@@ -123,25 +123,31 @@ Every page loads two shared files from the site root, plus the self-hosted font:
 The VIVE wordmark sets its middle letters as a bold exclamation mark and **IV**, the Roman numeral for the four vitamins in every can. The logo is an image drawn in Gardin Bold Rounded. Never set it as live text.
 
 
-## Files
+## Colorways
 
-| File | Use it on |
-| --- | --- |
-| `assets/wordmark-vive-navy.png` | Light, off-white, sun, and orange grounds. The site header uses it at 125×32 |
-| `assets/wordmark-vive-white.png` | Navy, deep navy, and ink grounds |
-| `assets/logo-vive-navy-tagline.png` | The monogram with "The vitamin-charged cola" |
-| `assets/logo-color-variations.png` | Reference sheet of approved color pairings |
-| `assets/icons/icon-512.png` and `favicon.ico` | App icon and favicon: VIVI on a deep navy tile |
+The "!" and the second V are always a different color from the other letters. Use the colorway made for the ground, as set in the Brand Guidelines (page 6).
+
+| File | Letters and !V | Use it on |
+| --- | --- | --- |
+| `assets/logo/vive-wordmark-on-orange.webp` | White, with a navy !V | Orange: the site header and this kit's top bar |
+| `assets/logo/vive-wordmark-on-blue.webp` | White, with an orange !V | Navy and blue grounds |
+| `assets/logo/vive-wordmark-on-dark.webp` | Orange, with a white !V | Black and the darkest grounds: the footer on ink |
+| `assets/logo/vive-wordmark-on-light.webp` | Orange, with a navy !V | White and off-white grounds |
+| `assets/logo-vive-navy-tagline.png` | The monogram with "The vitamin-charged cola" | Reference |
+| `assets/icons/icon-512.png` and `favicon.ico` | App icon and favicon: VIVI on a deep navy tile | Browser tabs and home screens |
+
+All four colorways come from the official files in the team's Drive (`Group 1 - (VIVE)/Logo/`) through `scripts/sync_assets.py`.
 
 ## Rules
 
+- Never use a one-color wordmark. A logo that is all navy or all white breaks the brand rule.
 - Keep the wordmark's proportions. Scale it by height only.
 - Give it clear space at least the height of its exclamation mark on every side.
+- Do not recolor it, outline it, add a drop shadow or glow, or rearrange its letters.
 - Never place it inside a pattern tile, and never rebuild its letters from shapes.
-- On orange, use the navy wordmark. White on orange is too faint (2.08:1).
 
 ```html
-<a href="index.html"><img src="assets/wordmark-vive-navy.png" alt="VIVE home" width="125" height="32"></a>
+<a href="index.html"><img src="assets/logo/vive-wordmark-on-orange.webp" alt="VIVE home" width="119" height="32"></a>
 ```
 
 ---
@@ -349,7 +355,7 @@ VIVE moves like it is charged: quick, snappy, and physical, never floaty.
 > Foundations · VIVE brand kit · https://vive-cola.vercel.app/brand/foundations/voice
 > Source: brand/docs/foundations/voice.md
 
-VIVE sounds sharp, energetic, and cheerful. Lead with the vitamins; stevia and zero calories are the reassurance that follows.
+VIVE sounds sharp, energetic, and cheerful. Lead with the four vitamins and zero sugar, the two benefits the Brand Guidelines ask every piece to make easy to spot. Stevia and zero calories are the reassurance that follows.
 
 ## Lines
 
@@ -371,7 +377,7 @@ VIVE sounds sharp, energetic, and cheerful. Lead with the vitamins; stevia and z
 
 ## Product facts
 
-Every can is 12 oz, ₱67, sweetened with 100% stevia, and has zero calories. VIVE is sold at Lawson, 7-Eleven, SM, and Ayala Malls.
+Every can is 12 oz, ₱67, sweetened with 100% stevia, and has zero sugar and zero calories. VIVE is sold at Lawson, 7-Eleven, SM, and Ayala Malls.
 
 ## Rules
 
@@ -587,7 +593,7 @@ All four are the team's outlined versions, with a white sticker edge built in.
 > Blocks · VIVE brand kit · https://vive-cola.vercel.app/brand/blocks/site-header
 > Source: brand/docs/blocks/site-header.md
 
-The header is an orange bar with a deep navy base line, pinned to the top of every page. It holds the navy wordmark, the four page links, and the [cart button](https://vive-cola.vercel.app/brand/docs/components/cart-button.md).
+The header is an orange bar with a deep navy base line, pinned to the top of every page. It holds the wordmark in its on-orange colorway (white, with a navy !V), the four page links, and the [cart button](https://vive-cola.vercel.app/brand/docs/components/cart-button.md).
 
 
 ## Markup
@@ -595,7 +601,7 @@ The header is an orange bar with a deep navy base line, pinned to the top of eve
 ```html
 <header class="site-header">
 <nav class="wrap" aria-label="Primary">
-  <a href="index.html"><img src="assets/wordmark-vive-navy.png" alt="VIVE home" width="125" height="32"></a>
+  <a href="index.html"><img src="assets/logo/vive-wordmark-on-orange.webp" alt="VIVE home" width="119" height="32"></a>
   <ul>
     <li><a href="index.html" aria-current="page">Home</a></li>
     <li><a href="about.html">About Us</a></li>
@@ -677,7 +683,7 @@ A sun strip of three or four short facts, set in uppercase Black with a small na
 <div class="facts wrap">
   <span>Four vitamins in every can</span>
   <span>VIVE Classic, Glow, and Focus</span>
-  <span>0 calories</span>
+  <span>Zero sugar</span>
   <span>12 oz can</span>
 </div>
 ```
@@ -831,7 +837,7 @@ Every page ends with an empty footer. `site.js` fills it, so the footer is defin
 > Assets · VIVE brand kit · https://vive-cola.vercel.app/brand/assets/cans
 > Source: brand/docs/assets/cans.md
 
-Three 12 oz cans, each with four vitamins for one daily need, zero calories, and 100% stevia. Each is ₱67.
+Three 12 oz cans, each with four vitamins for one daily need, zero sugar, and 100% stevia. Each is ₱67.
 
 
 | Can | Line | Vitamins | For | File |
