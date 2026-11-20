@@ -18,7 +18,7 @@ Then visit [http://localhost:8767/](http://localhost:8767/) (or `http://localhos
 
 ## Deliverables and Status
 
-The site has four pages: [Home](index.html), [About Us](about.html), [Product](product.html), and [Shop](shop.html). Page status, open checks, and the next action live in [CONTEXT.md](CONTEXT.md).
+The site has four pages: [Home](index.html), [About Us](about.html), [Product](product.html), and [Shop](shop.html). Page status, open checks, and the next action live in the local `memory/state.md`; [CONTEXT.md](CONTEXT.md) routes the project and states each page's contract.
 
 ---|---|---|---|
 | **Home** | [index.html](index.html) | Draft v1 complete | Canonical homepage with vitamin-led burst hero, Glow, Classic, and Focus posters with buttons, ad mockups, and video player container |
@@ -77,7 +77,7 @@ When importing this repository into Vercel:
 
 Following the principle of one place per truth, specific domains are maintained in dedicated reference documents:
 
-- **[CONTEXT.md](CONTEXT.md):** The canonical router for the project, detailing stage contracts, pipeline inputs/outputs, and comprehensive page requirements.
+- **[CONTEXT.md](CONTEXT.md):** The project router: where each file and record lives, and what each page must contain.
 - **[AGENTS.md](AGENTS.md):** The authoritative rules and execution invariants for AI coding assistants.
 - **[brand-spec.md](brand-spec.md):** Brand color codes, typography standards, flavor formulations, and asset manifests.
 - **[direction-approved.md](direction-approved.md):** The approved visual direction combining Direction C's geometry, Direction A's tilted headings, and Direction B's expanding panels.

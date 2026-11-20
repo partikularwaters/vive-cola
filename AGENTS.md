@@ -8,7 +8,8 @@ Built on ICM principles: one place per truth, folders carry structure, and plain
 
 | Task or Question | Source of Truth |
 |---|---|
-| Page specifications, stage contracts, and pipeline status | [CONTEXT.md](CONTEXT.md) |
+| Folder routing and page contracts | [CONTEXT.md](CONTEXT.md) |
+| Page status, open checks, next action, and settled decisions | `memory/state.md` and `memory/decisions.md` (local, gitignored; capture and restore steps in `memory/CONTEXT.md`) |
 | Brand colors, typography, shapes, product facts, and assets | [brand-spec.md](brand-spec.md) |
 | Approved visual direction and motion decisions | [direction-approved.md](direction-approved.md) |
 | Human project overview, preview instructions, and samples | [README.md](README.md) |

@@ -1,123 +1,57 @@
-# VIVE Website — Canonical Router and Scope Contract
+# VIVE Website — Router and Page Contracts
 
-This document is the canonical router and functional contract for the VIVE four-page website prototype. It defines the page specifications, folder roles, quality constraints, and build sequence.
+This file routes work on the VIVE four-page website prototype and states what each page must contain. It holds no status, history, or dated decisions: those live in the local, gitignored `memory/` folder.
 
-## Pipeline and Current Status
+## Where Things Live
 
-| Page | File | Status | Input Dependencies | Human Check Gate |
-|---|---|---|---|---|
-| 01 Home | [index.html](index.html) | Draft v6 complete (2026-11-20): intro poster and variant posters in separate strips, the VIVE ad behind a designed cover and sun-star play button, the collabs strip, and Christmas on off-white; patterns used sparingly | `assets/`, `brand-spec.md`, `direction-approved.md` | The hero will move to a photo background (user, 2026-11-20) |
-| 02 About Us | [about.html](about.html) | Draft v4 complete: the friends' founding story, VIVI on counter-turning navy and sun stars with Motion pause, and six team portraits in white frames with rising sun name plates | Founding story, team roster, and team photos | Verify complete names, company roles, and photo look |
-| 03 Product | [product.html](product.html) | Draft v2 complete (2026-11-20): navy headline band over three can panels with a subtle Star Seal, strips with large brand shapes, and a larger comparison table | Can renders, flavor specifications, and nutritional facts | Verify one variant per strip, zero posters, and zero merch |
-| 04 Shop | [shop.html](shop.html) | Draft v5 complete: VIVI's "I need more VIVE" sticker in the hero, 14 merch mockup photos (jersey cut out of its checkerboard; keychain, scarf, and headband added), can renders, and a model-photo hover reveal | Merch catalog, bundle definitions, and pricing | Verify quantity inputs, cart count behavior, zero checkout |
-| Share card | [design-demos/og-card.html](design-demos/og-card.html) → `assets/og-card.png` | Chosen: VIVI's Pick (2026-11-19), 1200×630, referenced by the OG and Twitter tags on all four pages | Wordmark, cans, VIVI, `star-10pt-white.svg` | After a change, re-render with headless Brave at 1200×630 (see the file's header comment) |
-| Favicon and app icons | `favicon.ico` and `assets/icons/`, built by `scripts/sync_assets.py` from `Mascot/VIVI pointing.png` | Chosen: VIVI on deep blue (2026-11-19; #1D2766 keeps the navy headband stripes visible), linked on all four pages | VIVI mascot source | Rebuilds with the other assets when the mascot source changes |
-| Web portal poster | [router.html](router.html) → `VIVE.pdf` on Drive | Locked: Three Columns (2026-11-18), see [direction-approved.md](direction-approved.md) | Can renders, `site.css` tokens | Change only when the client asks; rebuild by hand with `scripts/build_router_pdf.py` |
-| Brand Kit | [brand.html](brand.html), unlisted at `/brand` | Built 2026-11-20 by `scripts/build_brand_page.py`; no site page links to it | `assets/shapes/`, `assets/patterns/`, logos, VIVI, cans, and stationery | Rerun the script after adding shapes or patterns. Its sample buttons are native `<button type="button">` elements that show hover, focus, and press states and go nowhere (user, 2026-11-20) |
-| Brand Kit share card | [design-demos/og-brand-kit.html](design-demos/og-brand-kit.html) → `assets/og-brand-kit.png` | Built 2026-11-20, 1200×630, referenced by the OG and Twitter tags in `brand.html`: "VIVE Brand Kit" beside a fan of swatch cards (deep with navy confetti, sun, orange, and off-white with VIVI in front) on navy under a deep Star Seal | Wordmark, VIVI, `confetti-navy.svg`, `seal-deep.svg`, shapes | Re-render with headless Brave at 1200×630 (see the file's header comment) |
+| Path | Role | Owns |
+|---|---|---|
+| [AGENTS.md](AGENTS.md) | Agent contract | Execution invariants, quality standards, and skill routing |
+| `CONTEXT.md` | Router | This file: where things live and the page contracts |
+| `memory/state.md` | Operational status (local) | Page status, open checks, and the next action |
+| `memory/decisions.md` | Decision log (local) | Settled design, technical, and editorial decisions, including the as-built page details and shared system contracts |
+| `memory/session-notes/` | Session history (local) | Dated notes for each working session |
+| `memory/CONTEXT.md` | Memory router (local) | How to capture and restore session state |
+| [README.md](README.md) | Human overview | Welcome, live preview, and reference links |
+| [brand-spec.md](brand-spec.md) | Brand reference | Palette, typography, product facts, sample prices, and the asset inventory |
+| [direction-approved.md](direction-approved.md) | Design decision | Direction C base, Direction A headings, and Direction B panels |
+| `index.html`, `about.html`, `product.html`, and `shop.html` | Product output | The four public pages at the root |
+| [brand.html](brand.html) | Brand Kit | Unlisted page at `/brand`, marked `noindex`, generated by `scripts/build_brand_page.py` |
+| [site.css](site.css) and [site.js](site.js) | Shared system | Tokens, nav, buttons, labels, cart, and the global footer |
+| `assets/` | Asset library | Web copies of every image, font, and video the site serves |
+| `scripts/` | Tooling | Link checkers, asset generators, and `sync_assets.py`, the only path from the team's source files into `assets/` (add an entry to its `ASSETS` list; never copy by hand) |
+| `design-demos/` | Archive | Concept explorations, share card sources, and `retired-assets/` for files only the demos still use |
+| `source/` and `wix-assets/` | Source material | The original brand deck extracts and the print exports for Wix |
+| `router.html` | Print source | The locked web portal poster, built into `VIVE.pdf`; never deployed |
+| `.vercelignore` | Deploy boundary | Keeps everything except the four pages, `brand.html`, `site.css`, `site.js`, `assets/`, and `vercel.json` off the live site |
 
-**Next action:** Review the Shop page with the user, applying the decisions from Home, About, and Product (patterns sparingly, one layer of background detail per section, blue-toned tiles on blue grounds), then commit it on its own. Later: replace the Home hero with a photo background.
-
-**Open checks (as of 2026-11-20):**
-- The Shop merch grid holds 14 items in four columns, so the keychain and the knit scarf share the last row.
-- Not yet seen in Firefox or Safari: the cart panel exit fallback and the Christmas viewer's outside-click close.
-- `source/deck-extract/brand-assets-contact-sheet.png` still shows the old outline shapes; its build script needs headless Brave.
-
----
-
-## Canonical Page Specifications
+## Page Contracts
 
 ### All pages
-- **Header:** The sticky navbar is orange on every page with deep navy links, the navy wordmark, and a deep navy cart, so it always stands apart from the hero below (instructor critique, 2026-11-20).
-- **Heroes:** Each page opens differently: Home is a split navy hero with the can on a star; About is a light, centered story opener; Product is a white, confetti-covered headline over a three-panel can lineup; Shop is a navy storefront with aisle tiles.
-- **Brand patterns:** Selected sections carry the Confetti Toss, Confetti Sparse, or Star Seal pattern (`assets/patterns/`, `.pat` in `site.css`), so the color grounds read as branded surfaces. Use them sparingly: the user found the first, heavier pass suffocating (2026-11-20).
+- A sticky header navigation links all four pages and carries a live numeric cart count.
+- Every page uses the brand visual language from [AGENTS.md](AGENTS.md) and [brand-spec.md](brand-spec.md).
 
-### 1. Homepage (`index.html`)
-- **Hero section:** Bold brand statement, 10-point burst, Classic can visual, a vitamin-led paragraph, and clear calls to action. No price in the hero.
-- **Intro poster section:** Its own sun strip right after the hero, under a Star Seal pattern. The introductory "Your dose of good vibes" poster leads at full size, with VIVI in the right gutter; the bus-shelter and street-wall mockups sit small under "Spotted around town" as supporting proof.
-- **Posters section:** Its own off-white strip after the intro, under the low-density Confetti Sparse pattern and with no mascot. Present one poster per variant (VIVE Glow, VIVE Classic, and VIVE Focus) at slight angles under the tilted "Pick your vibe" label. Each poster carries the variant name, its tagline, its vitamins, and a "Grab VIVE …" button to `shop.html`. The posters are the team's 1024×1636 Classic, Glow, and Focus posters (see [brand-spec.md](brand-spec.md)).
-- **Video section:** The team's 45-second ad (`assets/video/vive-ad.mp4`, synced from the team's Drive copy, `Group 1 - (VIVE)/Video/VIVE VIDEO ADVERTISEMENT.mp4`) plays in a native `<video controls>` element at 16:9, with a designed cover graphic as the poster image (`assets/video/vive-ad-cover.webp`, rendered from `design-demos/ad-cover.html`). The strip is sun with the intro's Star Seal layer. Until the first press, a custom cover shows that graphic with a large sun-star play button in its open center; pressing it removes the cover and plays the ad with native controls. Without JavaScript the native player shows as usual.
-- **Collabs strip:** a thin off-white bar between the ad and the Christmas posters. "Collabs with" leads a slow, looping marquee of Filipino brand logos: Jollibee, Bench, Mercury Drug, Goldilocks, Cebu Pacific, Penshoppe, National Book Store, Chowking, Max's Restaurant, and Greenwich. The logos sit muted in grayscale and show their own colors on hover. The strip pauses on hover, on focus, and with its Motion button (WCAG 2.2.2), and it holds still under `prefers-reduced-motion`. The SVGs in `assets/collabs/` were downloaded on 2026-11-19 from the brands' Wikipedia and Wikimedia Commons file pages and checked for scripts and external references. The collaborations are fictional, written for the prototype story at the user's request on 2026-11-19.
-- **Seasonal poster footer:** "Christmas with VIVE" on an off-white ground with the warm Confetti Toss layer at the end of the page shows the six team Christmas posters (Czar, Louie, Venson, Warren, Aya, and Madrid) in one row at equal height. On the page, the lede credits them to the VIVE community; that framing is fictional, chosen on 2026-11-19. Selecting a poster opens it full size in a native modal `<dialog>` (`showModal()` and a Close button). A click outside the poster closes it in every browser: a script closes the dialog when both the press and the release land on its backdrop, and `closedby="any"` covers the same case natively.
-- **All ads created live here:** The homepage acts as the comprehensive advertising showcase for the brand.
+### 1. Home (`index.html`)
+- The advertising showcase: every ad lives here.
+- A hero with the brand statement, a 10-point star, the Classic can, a vitamin-led paragraph, and calls to action, with no price.
+- The intro poster, one poster per variant (Glow, Classic, and Focus), the video ad, and the seasonal posters.
 
 ### 2. About Us (`about.html`)
-- **Founding story:** A group of friends unwinding after work asks, "What if this cola had vitamins in it?" The story closes on the three cans and the IV on each can. The *revive* and *survive* name origin was removed from the page on 2026-11-20 at the user's request; the Formulation Standard card below covers the vitamins and stevia.
-- **The team:** Complete names and company roles for the six team members.
-- **Brand-aligned photos:** Transparent team cutouts (`assets/team/*.webp`) stand in white frames over the warm Confetti Toss pattern (Home's Christmas pattern), three per row in two rows, on an ink ground under a subtle blue-toned Star Seal pattern. `sync_assets.py` frames every cutout on a 1000×1250 canvas with the face (found by `scripts/face_boxes.swift`, macOS Vision) 420px wide, centered, and 250px from the top, so every head shares one size and eye line. The portrait is sized by card height and centered. The hero is a light, centered story opener under the Confetti Sparse pattern with no loose shapes: the headline labels and buttons are centered, and VIVI rises from two counter-turning stars (navy behind, sun in front), cropped by the facts strip's diagonal top, with the shared Motion pause button. A deep navy facts strip follows, so it parts from VIVI's sun star. The founding story, set large, holds about two thirds of the width with Confetti Toss fading in from the right; the formulation standard runs full width beneath it. The core commitments sit on sun under Confetti Sparse. On blue grounds, patterns use blue-toned tiles at full strength instead of faded orange ones (user, 2026-11-20), and the closing call to action is off-white with Confetti Toss. `sync_assets.py` cuts out any team photo without transparency first (`scripts/cutout.swift`, macOS Vision foreground mask);
-- **Visual mechanic:** Six equal cards, three per row. Each portrait stands untinted on its star, and a solid sun name plate with an angled top carries the role and name. On hover or focus the plate rises (`grid-template-rows` 0fr to 1fr, 260ms ease-out, 120ms leave delay) to reveal the bio and badge; the portrait never moves.
+- The founding story.
+- The six team members with complete names, company roles, and brand-aligned photos.
 
-### 3. Product Page (`product.html`)
-- **Brand product showcase:** Deep focus on the cans, vitamin formulation per variant (see the product line in [brand-spec.md](brand-spec.md)), stevia sweetening, and zero-calorie benefits.
-- **Hero:** An off-white hero under one Confetti Toss layer that runs the whole section, behind and between the panels (user, 2026-11-20). A navy headline with "Four vitamins each." on a tilted orange label sits over a lineup of three color panels (Classic, Glow, and Focus), each linking to its strip. The panels float inside the page gutters with a soft shadow and clear space below, and their stars avoid white so they never merge with the hero ground: sun on Classic, orange on Glow, and deep navy on Focus. Each panel carries a subtle Star Seal outside its star: white seals on Classic and Glow, deep navy seals on Focus.
-- **Strip structure:** Each strip carries large brand shapes behind its content and no pattern, so each section has one layer of background detail. The hero carries Confetti Toss across its full width; "In every can" sits on Confetti Sparse, the comparison on a subtle blue-toned Star Seal, and the closing call to action on off-white with Confetti Toss. Exactly one product variation per strip, except where variants are showcased together as a cohesive family strip.
-- **Strict negative constraints:**
-  - **NO** product posters are allowed on this page.
-  - **NO** merchandise items are allowed on this page.
+### 3. Product (`product.html`)
+- The cans, each variant's vitamins, stevia sweetening, and zero calories.
+- One product variant per strip, except a strip that shows the family together.
+- No posters and no merchandise.
 
-### 4. Shop Page (`shop.html`)
-- **E-commerce experience:** Browse and select items with quantity selectors and functional "Add to Cart" interactions.
-- **Hero:** A storefront: navy under a deep navy Star Seal with no loose shapes, VIVI's sticker, and three aisle tiles (Cans, Packs, and Merch) that jump to the shelves.
-- **Shelf grounds:** Cans sits on off-white under Confetti Sparse; Packs (mist) and Merch (off-white) stay plain, so no pattern piece lands on a product card.
-- **Shelf titles:** VIVI stands in the left gutter beside every shelf title, facing it (the pointing VIVI is mirrored).
-- **Hero sticker:** The team's outlined "I need more VIVE" art (`assets/mascot/vivi-need-more-vive.webp`) carries its own white die-cut edge, so the page adds only a drop shadow (user, 2026-11-20).
-- **Hero aisle tiles:** White tiles with each name on a tilted navy label (layout B, chosen 2026-11-20); the rejected options A and C stay in `design-demos/shop-aisles-options.html`.
-- **Merch frames:** The tilted frames cycle orange, sun, and navy only.
-- **Catalog range:** Individual cans/singles, curated multi-can bundles, and branded merchandise.
-- **Cart count state:** Display a true, reactive numeric cart counter in the header navigation.
-- **Strict negative constraints:**
-  - Dedicated cart, checkout, and payment pages are **not needed** and are excluded.
+### 4. Shop (`shop.html`)
+- Single cans, multi-can bundles, and branded merchandise, each with a quantity selector and a working "Add to cart" button.
+- No cart, checkout, or payment pages.
 
----
+## Project Constraints
 
-## Operational Standards and Submission Rules
-
-- **Copywriting standard (`/copywriting`, `/copy-editing`):** Follow the `/copywriting` skill for new copy and `/copy-editing` for tightening drafts. Copy must be clear, compelling, and grounded in customer benefits. Strictly ban all `ai-tells` (no contrast reveals like "not X, but Y", no negation lists like "no X, no Y, no Z", no trailing pile-on comma clauses, no rhetorical self-questions, and no empty buzzwords).
-- **Web platform standard (`/modern-web-guidance`):** Follow Google Chrome's `modern-web-guidance` for semantic HTML5 structure, modern CSS layout (Grid, Subgrid, container queries, `:has()`, `@starting-style`), accessibility, and asset performance. Check `modern-web-guidance` before writing ad-hoc layout logic or script workarounds.
-- **Prototyping and design standard (`/huashu-design`, `/snowe-ui-skill`):** Apply `/huashu-design` for high-fidelity HTML prototype creation, multi-directional exploration, and design presentation reviews. Use `/snowe-ui-skill` to safeguard brand visual balance, sharp cuts, star/triangle motifs, and typography hierarchy.
-- **Motion and micro-interaction standard (`/animate`, `/emil-design-eng`, `/apple-design`):** Interactions must feel energetic, crisp, and physically grounded. Button hovers, poster tilts, the team name-plate reveal, and cart badge updates should use snappy easing curves with mandatory `prefers-reduced-motion` support.
-- **Punctuation standard:** Mandatory Oxford comma in all lists of three or more items across copy, documentation, and interface text.
-- **Interactive fidelity:** The site must feel like an authentic, finished web application. Every button, selector, and link must work. If an external link has no specific sub-page (such as social channels), wire it directly to the platform root (`https://facebook.com`, `https://instagram.com`, `https://tiktok.com`).
-- **High-stakes grading:** Gian will grade all assets appearing across these pages (posters, video, product variations, and branding).
-- **Asset integrity:** No placeholder photos and no placeholder texts (Lorem Ipsum). All content must be written and staged with genuine assets.
-  - **Approved stand-ins (client, 2026-11-16):** until real assets exist, the site may use (1) merch mockups in `assets/merch/` (the team's mockup photos; the jersey photo is cut out of its baked-in checkerboard by the `cutout-square` sync recipe) and (2) sample shop prices. The three cans now use the team's own renders. Each is labeled on the page or in its alt text. Replace them when the real renders, product photos, and prices arrive.
-- **Shared system:** Every page loads [site.css](site.css) and [site.js](site.js). `.wrap` gutters are at least 7vw, and on screens wider than about 1500px the content column holds at 1240px while the gutters take the rest. VIVI, the mascot (`.mascot.left` or `.mascot.right`), stands centered in a section's side gutter on screens 1280px and wider. Each hero keeps equal space above and below its content (112px at desktop widths). `site.js` renders the one global footer (direction C, chosen 2026-11-20): an ink ground with blue Confetti Sparse and a top edge tilted against the page cuts, then four columns under tilted sun labels. The columns hold the wordmark, one line of copy, and a Shop button; Pages (Home, About, Product, and Shop); Find us at, with the Lawson, 7-Eleven, SM, and Ayala Malls logos stacked on 28px rows; and Say hi, with the location and contact details (123 Street, Quezon City, Philippines; hello@vivecola.com; +63 922 000 1234). The base row carries the social links and the copyright line. `site.js` also adds the header cart button and cart panel to the primary nav, and keeps the cart count in `localStorage` so it persists across pages and visits. The primary nav sits in a sticky `.site-header` on every page, and in-page links scroll smoothly to a stop below it (`scroll-padding-top: 96px`; reduced motion jumps instantly). Page files keep only page-specific styles.
-- **Shape placement:** A decorative triangle never overlaps text, a button, an image, a card, or a mascot at 1280 to 1920px wide. Place hero triangles in the band above the content (`top` under about 40px), anchor large edge triangles to the gutter (`left: calc(var(--gutter) - var(--s) - 28px)` bleeds them off the page), and center small ones in a gutter (`left: calc(var(--gutter) / 2 - <half size>)`). Re-check overlaps after any layout change.
-- **Motion pause:** Any hero with always-turning stars carries `<button class="motion-toggle">`; `site.css` styles it and `site.js` toggles `.is-still` on its section, which pauses every `.burst.star` inside.
-- **Brand shapes:** Stars and triangles load the SVG files from `assets/shapes/`, the web mirror of `source/deck-extract/` (`star-10pt-*.svg`, `triangle-equilateral-*.svg`, and `triangle-right-white.svg` for the play icon). A `.tri` takes its SVG through `--c:url(…)`, and a `.star` takes it through `background-image`. Section cuts, tilted labels, and button chamfers stay as CSS `clip-path` because they shape layout boxes, not standalone brand assets.
-- **Cart panel motion:** The cart is a native popover. It scales in from its top-right trigger corner in 200ms (ease-out) and exits in 140ms on a plain ease, transitioning `display` and `overlay` so the column layout and top-layer position hold until the fade ends. Browsers that cannot transition `display` or `overlay` (Firefox and older Safari) play the same exit through a `data-closing` attribute set by `site.js` on the close and cart buttons; Esc and outside clicks close instantly there. Reduced motion keeps a 100ms fade without the scale.
-- **Hover rule:** No hover effect may move its own hit area. Buttons show an offset shadow block behind them; tilting cards and images lift an inner `.lift` (with `pointer-events: none`) inside a static `.lift-zone`. Every hover also waits about 120ms before reversing when the pointer leaves. Together these prevent repeated hover toggling when the pointer rests on an edge.
-- **Shop can reveal:** On the three single-can cards, hovering the image raises that can's model photo (`assets/model-*-web.webp`, the poster art without its headline, cropped square by the `head-square` sync recipe so the three heads share one size and spot; Focus zooms out 3% by eye, 2026-11-20) from the bottom behind a row of three large triangles, modeled on Olipop's product-card wave: 700ms on an ease-out cubic curve in both directions, reversing from its current point. The triangles flatten into a straight edge over the last 16% of the rise. A registered `--reveal` property drives the clip-path. The reveal is armed only after the model photo has decoded (or 1.2s after it loads), the layer has `pointer-events: none`, it waits the usual 120ms before falling, and reduced motion swaps the rise for a fade.
-- **Fonts and a steady nav (2026-11-20):** Montserrat is self-hosted in `assets/fonts/`. Every page preloads `montserrat-latin.woff2`, Vercel caches `assets/fonts/` for a year as immutable (rename a font file when it changes), and a metric-matched "Montserrat Fallback" (Arial resized in `montserrat.css`) keeps text widths while the font loads. Each page ships the cart button in its nav markup, and `site.js` only wires it, so the nav never shifts on load. Paragraphs use `text-wrap: pretty` so none ends on a single word.
-- **Asset sync (`scripts/sync_assets.py`):** The team's working files (posters, video, mascot, team photos, and merch mockups) live outside this repository in `ponce-advertising/`. Never copy them by hand. Add each new output to the `ASSETS` list in the script and run `python3 scripts/sync_assets.py`; it converts and resizes each file into `assets/` and records its source size and time in `assets/asset-sources.json`. When a source file changes, rerun the script; `--check` lists stale outputs and exits 1.
-- **Dynamic visual generosity:** Apply signature brand patterns generously (10-point star, triangles, diagonal cuts, and contrasting color grounds). Do not settle for plainness.
-- **GitHub and Vercel publishing (`/deploy-with-vercel`):** The `vive-website/` directory will be published as a standalone repository on GitHub and deployed directly to Vercel. All relative asset links and inter-page navigations must function cleanly in this standalone root structure.
-- **Out of scope:**
-  - Dedicated cart, checkout, and payment pages.
-  - Mobile responsive layouts (desktop presentation is the target).
-- **Benchmark samples:**
-  - [Chewla](https://pjconsing.wixsite.com/chewla)
-  - [Collide](https://hpearlquinto.wixsite.com/collideyourwaynow)
+- **Approved stand-ins (client, 2026-11-16):** merch mockups in `assets/merch/` and sample shop prices, each labeled on the page or in its alt text. Replace them when real product photos and prices arrive.
+- **Out of scope:** cart, checkout, and payment pages, and mobile responsive layouts (desktop is the target).
+- **Benchmarks:** [Chewla](https://pjconsing.wixsite.com/chewla) and [Collide](https://hpearlquinto.wixsite.com/collideyourwaynow).
 - **Deadline:** Friday.
-
----
-
-## Folder Map and Domain Authorities
-
-| Path | Role | Domain Authority |
-|---|---|---|
-| `README.md` | Human overview | Welcome, live preview, submission tracking, and reference links |
-| `AGENTS.md` | Agent contract | Execution invariants, strict constraints, and agent routing |
-| `CONTEXT.md` | Canonical router | This file: pipeline status, page requirements, and system contracts |
-| [brand-spec.md](brand-spec.md) | Brand reference | Palette (#FF9447 on the web, #2B3990, #F4BD6A, #F9F9F9), typography, cans, and assets |
-| [direction-approved.md](direction-approved.md) | Design decision | Decision record for Direction C base + Direction A headings + Direction B panels |
-| `index.html`, `about.html`, etc. | Product output | The canonical static HTML pages at root |
-| `site.css`, `site.js` | Shared system | Tokens, nav, buttons, labels, cart, and the global footer |
-| `assets/` | Asset library | High-resolution WebP posters, transparent can renders, logos, and mockups (`assets/merch/` holds the merch mockups) |
-| `scripts/` | Tooling | Link checkers, `sync_assets.py` (the one path from the team's source files into `assets/`), and asset generators, including `generate_merch_mockups.py`, `build_scene_mockups.py`, and `outline_ring.py` (outline shapes as mitered rings) |
-| `wix-assets/` | Source exports | Print exports and PDF materials for Wix migration |
-| `source/` | Archival source | Original 8-page brand deck and raw asset extracts |
-| `design-demos/` | Archive | Initial concept explorations (A: Sticker Pop, B: Three Moods, C: Charged Geometry) and `og-card.html`, the source of the share card. Earlier portal and OG drafts were removed on 2026-11-19 and remain in Git history |
-| [brand.html](brand.html) | Brand Kit | Unlisted page at `/brand`: every brand element (logo, color, type, all shapes, the approved patterns, VIVI, cans, components, voice, and the brand in use, including the business card and letterhead). Reachable only by direct link, marked `noindex`. Generated by `scripts/build_brand_page.py`; rerun it after adding shapes or patterns |
-| `router.html` | Print source | The locked Three Columns web portal poster, built into `VIVE.pdf`; never deployed |
-| `.vercelignore` | Deploy boundary | Keeps everything except the four pages, the unlisted `brand.html`, `site.css`, `site.js`, `assets/`, and `vercel.json` off the live site |
