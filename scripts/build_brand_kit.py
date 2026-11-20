@@ -369,13 +369,38 @@ def build():
         lines += ["", f"## {label}", ""]
         lines += [f"- [{d['title']}]({SITE_URL}/brand/docs/{key}/{d['slug']}.md): {d['summary']}" for d in docs if d["section"] == key]
     (KIT / "llms.txt").write_text("\n".join(lines) + "\n")
-    # /brand opens the introduction
-    (KIT / "index.html").write_text(
-        '<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><title>VIVE Brand Kit</title>'
-        '<meta name="robots" content="noindex, nofollow">'
-        '<meta http-equiv="refresh" content="0; url=getting-started/introduction.html">'
-        '<link rel="canonical" href="getting-started/introduction.html"></head>'
-        '<body><p><a href="getting-started/introduction.html">Open the VIVE Brand Kit</a></p></body></html>\n')
+    # /brand opens the introduction. Link previews read this page's own tags and do not
+    # follow the redirect, so it carries the Brand Kit share card too.
+    desc = "The VIVE brand system for people and agents: colors, type, shapes, components, blocks, and assets, with every page as Markdown."
+    card_alt = "VIVE Brand Kit: the VIVE wordmark beside a fan of brand swatch cards ending with VIVI, the mascot."
+    (KIT / "index.html").write_text(f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>VIVE Brand Kit</title>
+<meta name="description" content="{desc}">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="VIVE">
+<meta property="og:title" content="VIVE Brand Kit">
+<meta property="og:description" content="{desc}">
+<meta property="og:url" content="{SITE_URL}/brand">
+<meta property="og:image" content="{SITE_URL}/assets/og-brand-kit.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{card_alt}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="VIVE Brand Kit">
+<meta name="twitter:description" content="{desc}">
+<meta name="twitter:image" content="{SITE_URL}/assets/og-brand-kit.png">
+<meta name="twitter:image:alt" content="{card_alt}">
+<link rel="icon" href="../favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="canonical" href="{SITE_URL}/brand/getting-started/introduction">
+<meta http-equiv="refresh" content="0; url=getting-started/introduction.html">
+</head>
+<body><p><a href="getting-started/introduction.html">Open the VIVE Brand Kit</a></p></body>
+</html>
+""")
     print(f"wrote {len(docs)} pages, vive-brand-kit.md, llms.txt, and index.html in brand/")
 
 
