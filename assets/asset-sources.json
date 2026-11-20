@@ -27,27 +27,36 @@
     ]
   },
   "assets/mascot/vivi-dizzy.webp": {
-    "source": "Mascot/VIVI Dizzy.png",
-    "size": 91122,
-    "mtime": 1795019760,
+    "source": "MVA Batch 54/Group 1 - (VIVE)/Drafts/VIVI Dizzy Outline.png",
+    "size": 121392,
+    "mtime": 1795174528,
     "recipe": [
       "fit",
       720
     ]
   },
+  "assets/mascot/vivi-need-more-vive.webp": {
+    "source": "MVA Batch 54/Group 1 - (VIVE)/Drafts/Vivi need more Vive outline.png",
+    "size": 200924,
+    "mtime": 1795174434,
+    "recipe": [
+      "fit",
+      900
+    ]
+  },
   "assets/mascot/vivi-pointing.webp": {
-    "source": "Mascot/VIVI pointing.png",
-    "size": 73398,
-    "mtime": 1795019745,
+    "source": "MVA Batch 54/Group 1 - (VIVE)/Drafts/VIVI pointing Outline.png",
+    "size": 107884,
+    "mtime": 1795174107,
     "recipe": [
       "fit",
       720
     ]
   },
   "assets/mascot/vivi-running.webp": {
-    "source": "Mascot/Vivi Running.png",
-    "size": 74951,
-    "mtime": 1795019784,
+    "source": "MVA Batch 54/Group 1 - (VIVE)/Drafts/VIVI Running Outline.png",
+    "size": 112414,
+    "mtime": 1795174216,
     "recipe": [
       "fit",
       720
@@ -170,6 +179,93 @@
       900
     ]
   },
+  "assets/mockup-intro-bus-shelter.webp": {
+    "source": "MVA Batch 54/Group 1 - (VIVE)/Mockups/VIVE Poster Mockup 1.png",
+    "size": 1466122,
+    "mtime": 1795175990,
+    "recipe": [
+      "fit",
+      1440
+    ]
+  },
+  "assets/mockup-intro-street-wall.webp": {
+    "source": "MVA Batch 54/Group 1 - (VIVE)/Mockups/VIVE Poster Mockup 2.png",
+    "size": 767648,
+    "mtime": 1795175993,
+    "recipe": [
+      "fit",
+      1440
+    ]
+  },
+  "assets/model-classic-web.webp": {
+    "source": "MVA Batch 54/Group 1 - (VIVE)/Drafts/VIVE model classic.png",
+    "size": 2205540,
+    "mtime": 1795174358,
+    "recipe": [
+      "head-square",
+      560
+    ]
+  },
+  "assets/model-focus-web.webp": {
+    "source": "MVA Batch 54/Group 1 - (VIVE)/Drafts/VIVE model Focus.png",
+    "size": 2152780,
+    "mtime": 1795174352,
+    "recipe": [
+      "head-square",
+      [
+        560,
+        0.97
+      ]
+    ]
+  },
+  "assets/model-glow-web.webp": {
+    "source": "MVA Batch 54/Group 1 - (VIVE)/Drafts/VIVE model glow.png",
+    "size": 2615886,
+    "mtime": 1795174348,
+    "recipe": [
+      "head-square",
+      [
+        560,
+        1.0
+      ]
+    ]
+  },
+  "assets/poster-classic-hires.webp": {
+    "source": "MVA Batch 54/Group 1 - (VIVE)/Posters/Vive Classic (1).png",
+    "size": 2027983,
+    "mtime": 1795177584,
+    "recipe": [
+      "fit",
+      1636
+    ]
+  },
+  "assets/poster-focus-hires.webp": {
+    "source": "MVA Batch 54/Group 1 - (VIVE)/Posters/VIVE Focus Poster.png",
+    "size": 1939758,
+    "mtime": 1795157851,
+    "recipe": [
+      "fit",
+      1636
+    ]
+  },
+  "assets/poster-glow-hires.webp": {
+    "source": "MVA Batch 54/Group 1 - (VIVE)/Posters/VIVE Glow Poster.png",
+    "size": 2350251,
+    "mtime": 1795157842,
+    "recipe": [
+      "fit",
+      1636
+    ]
+  },
+  "assets/poster-intro-hires.webp": {
+    "source": "MVA Batch 54/Group 1 - (VIVE)/Posters/VIVE Introductory Poster.png",
+    "size": 18171084,
+    "mtime": 1795157835,
+    "recipe": [
+      "fit",
+      1800
+    ]
+  },
   "assets/seasonal/christmas-madrid-full.webp": {
     "source": "[Madrid] John Madrid v3.pdf",
     "size": 3912470,
@@ -186,6 +282,33 @@
     "recipe": [
       "pdf",
       900
+    ]
+  },
+  "assets/stationery/business-card-back.webp": {
+    "source": "MVA Batch 54/Group 1 - (VIVE)/Mockups/VIVE Business Card Back.png",
+    "size": 108579,
+    "mtime": 1795158091,
+    "recipe": [
+      "fit",
+      1575
+    ]
+  },
+  "assets/stationery/business-card-front.webp": {
+    "source": "MVA Batch 54/Group 1 - (VIVE)/Mockups/VIVE Business Card Front.png",
+    "size": 132839,
+    "mtime": 1795158082,
+    "recipe": [
+      "fit",
+      1575
+    ]
+  },
+  "assets/stationery/letterhead.webp": {
+    "source": "MVA Batch 54/Group 1 - (VIVE)/Mockups/VIVE Letterhead.png",
+    "size": 860822,
+    "mtime": 1795158051,
+    "recipe": [
+      "fit",
+      1600
     ]
   },
   "assets/team/ayanna-yarra.webp": {

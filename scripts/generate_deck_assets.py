@@ -166,6 +166,40 @@ def make_svg_polygon(pts, size, fill_color, stroke_color=None, stroke_width=0):
   <polygon points="{pts_str}" fill="{fill_color}"{stroke_attr}/>
 </svg>'''
 
+def badge_font_css(text):
+    """@font-face rules that embed Montserrat Black for `text` as base64 WOFF2.
+
+    The badges are shown with <img>, and browsers block every external load
+    inside an image SVG (an @import of Google Fonts or of assets/fonts/ alike),
+    so the font travels inside the file. It is subset to the badge's own
+    glyphs from the self-hosted files in assets/fonts/ and pinned to weight
+    900. Latin letters and the peso sign live in different files, so each
+    file contributes its own rule."""
+    import base64
+    import io
+    from fontTools import subset
+    from fontTools.ttLib import TTFont
+    from fontTools.varLib import instancer
+
+    fonts = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "assets", "fonts")
+    rules = []
+    for part in ("latin", "latin-ext"):
+        font = TTFont(os.path.join(fonts, f"montserrat-{part}.woff2"))
+        chars = "".join(sorted({c for c in text if ord(c) in font.getBestCmap()}))
+        if not chars.strip():
+            continue
+        font = instancer.instantiateVariableFont(font, {"wght": 900})
+        sub = subset.Subsetter(subset.Options(flavor="woff2", layout_features=["kern"], name_IDs=["*"]))
+        sub.populate(text=chars)
+        sub.subset(font)
+        font.flavor = "woff2"
+        buf = io.BytesIO()
+        font.save(buf)
+        data = base64.b64encode(buf.getvalue()).decode("ascii")
+        rules.append("@font-face { font-family: 'Montserrat'; font-weight: 900; "
+                     f"src: url(data:font/woff2;base64,{data}) format('woff2'); }}")
+    return "\n      ".join(rules)
+
 def save_asset(name, svg_content, png_image, dirs):
     for d in dirs:
         svg_path = os.path.join(d, f"{name}.svg")
@@ -509,7 +543,7 @@ def main():
         badge_svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
   <defs>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&amp;display=swap');
+      {badge_font_css(line1 + line2)}
       .badge-text {{ font-family: 'Montserrat', 'Avenir Next', Arial, sans-serif; font-weight: 900; text-anchor: middle; }}
     </style>
   </defs>

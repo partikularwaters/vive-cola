@@ -54,6 +54,12 @@ DEFAULT_SOURCE = Path.home() / "client-work/pineapple/training/ponce-advertising
 #                       scripts/face_boxes.swift, macOS Vision). A photo with
 #                       no transparency is cut out first by scripts/cutout.swift.
 #                       n is a version; bump it to force a rebuild.
+#   ("head-square", N)  square crop with the head at the same size and spot in
+#   ("head-square", (N, zoom))  every photo (HEAD_SQUARE below; face found by
+#                       scripts/face_boxes.swift), then N x N px, WebP. For the
+#                       Shop can reveal, so the three models line up. A zoom
+#                       above 1 crops tighter, for a tilted head whose face box
+#                       reads smaller than the head looks.
 #   ("vivi-icon", N)    VIVI's head (arms and shirt masked off) on a rounded
 #                       deep blue tile, N x N PNG. A .ico output holds 16, 32, and
 #                       48 px.
@@ -63,13 +69,33 @@ ASSETS: list[tuple[str, str, tuple]] = [
     # Home: John Madrid's Christmas poster (v3 is the final export)
     ("assets/seasonal/christmas-madrid-full.webp", "[Madrid] John Madrid v3.pdf", ("pdf", 2000)),
     ("assets/seasonal/christmas-madrid-thumb.webp", "[Madrid] John Madrid v3.pdf", ("pdf", 900)),
+    # Home, Shop, and Brand Kit: the team's posters
+    ("assets/poster-intro-hires.webp", "MVA Batch 54/Group 1 - (VIVE)/Posters/VIVE Introductory Poster.png", ("fit", 1800)),
+    ("assets/poster-classic-hires.webp", "MVA Batch 54/Group 1 - (VIVE)/Posters/Vive Classic (1).png", ("fit", 1636)),
+    ("assets/poster-glow-hires.webp", "MVA Batch 54/Group 1 - (VIVE)/Posters/VIVE Glow Poster.png", ("fit", 1636)),
+    ("assets/poster-focus-hires.webp", "MVA Batch 54/Group 1 - (VIVE)/Posters/VIVE Focus Poster.png", ("fit", 1636)),
+    # Home: the intro poster in place, under "Spotted around town"
+    ("assets/mockup-intro-bus-shelter.webp", "MVA Batch 54/Group 1 - (VIVE)/Mockups/VIVE Poster Mockup 1.png", ("fit", 1440)),
+    ("assets/mockup-intro-street-wall.webp", "MVA Batch 54/Group 1 - (VIVE)/Mockups/VIVE Poster Mockup 2.png", ("fit", 1440)),
+    # Brand Kit: stationery
+    ("assets/stationery/business-card-front.webp", "MVA Batch 54/Group 1 - (VIVE)/Mockups/VIVE Business Card Front.png", ("fit", 1575)),
+    ("assets/stationery/business-card-back.webp", "MVA Batch 54/Group 1 - (VIVE)/Mockups/VIVE Business Card Back.png", ("fit", 1575)),
+    ("assets/stationery/letterhead.webp", "MVA Batch 54/Group 1 - (VIVE)/Mockups/VIVE Letterhead.png", ("fit", 1600)),
     # Home: the VIVE ad
     ("assets/video/vive-ad.mp4", "video-recordings/Vive Draft1.mp4", ("video", 1920)),
-    # Mascot: VIVI
-    ("assets/mascot/vivi-pointing.webp", "Mascot/VIVI pointing.png", ("fit", 720)),
-    ("assets/mascot/vivi-running.webp", "Mascot/Vivi Running.png", ("fit", 720)),
-    ("assets/mascot/vivi-dizzy.webp", "Mascot/VIVI Dizzy.png", ("fit", 720)),
-    # Favicon and app icons: VIVI on deep blue
+    # Mascot: VIVI, the team's outlined versions with a white sticker edge
+    ("assets/mascot/vivi-pointing.webp", "MVA Batch 54/Group 1 - (VIVE)/Drafts/VIVI pointing Outline.png", ("fit", 720)),
+    ("assets/mascot/vivi-running.webp", "MVA Batch 54/Group 1 - (VIVE)/Drafts/VIVI Running Outline.png", ("fit", 720)),
+    ("assets/mascot/vivi-dizzy.webp", "MVA Batch 54/Group 1 - (VIVE)/Drafts/VIVI Dizzy Outline.png", ("fit", 720)),
+    # Shop hero: the "I need more VIVE" sticker
+    ("assets/mascot/vivi-need-more-vive.webp", "MVA Batch 54/Group 1 - (VIVE)/Drafts/Vivi need more Vive outline.png", ("fit", 900)),
+    # Shop can reveal: the poster photos without their headlines, framed alike
+    ("assets/model-classic-web.webp", "MVA Batch 54/Group 1 - (VIVE)/Drafts/VIVE model classic.png", ("head-square", 560)),
+    ("assets/model-glow-web.webp", "MVA Batch 54/Group 1 - (VIVE)/Drafts/VIVE model glow.png", ("head-square", (560, 1.00))),
+    ("assets/model-focus-web.webp", "MVA Batch 54/Group 1 - (VIVE)/Drafts/VIVE model Focus.png", ("head-square", (560, 0.97))),
+    # Favicon and app icons: VIVI on deep blue. These keep the original artwork,
+    # because the icon recipe masks off the arms and shirt, and an outline would
+    # leave a white halo on the tile.
     ("favicon.ico", "Mascot/VIVI pointing.png", ("vivi-icon", 48)),
     ("assets/icons/favicon-32.png", "Mascot/VIVI pointing.png", ("vivi-icon", 32)),
     ("assets/icons/icon-512.png", "Mascot/VIVI pointing.png", ("vivi-icon", 512)),
@@ -104,6 +130,13 @@ WEBP = {"quality": 82, "method": 6}
 # Louie) wide enough to hide those edges, and every body reaches the bottom.
 # Bump the recipe number in ASSETS after changing these to force a rebuild.
 PORTRAIT = {"size": (1000, 1250), "face_w": 420, "face_top": 250}
+
+
+# Shop reveal framing, as fractions of the square side: face width and face top.
+# The Classic model is shot closest, so these match its framing. Per-photo zoom
+# values in ASSETS are set by eye, because the face box drifts a few percent
+# with head tilt.
+HEAD_SQUARE = {"face_w": .30, "face_top": .18}
 
 
 def save_webp(im: Image.Image, out: Path) -> None:
@@ -197,6 +230,28 @@ def cutout_square(src: Path, out: Path, n: int) -> None:
         save_webp(canvas.convert("RGB"), out)
 
 
+def face_box(src: Path) -> dict:
+    res = subprocess.run(["swift", str(SITE / "scripts" / "face_boxes.swift"), str(src)],
+                         check=True, capture_output=True, text=True)
+    box = json.loads(res.stdout.strip().splitlines()[-1])
+    if box.get("x") is None:
+        raise RuntimeError(f"no face found in {src}")
+    return box
+
+
+def head_square(src: Path, out: Path, n: int, zoom: float = 1) -> None:
+    box = face_box(src)
+    im = Image.open(src).convert("RGB")
+    side = round(box["w"] / (HEAD_SQUARE["face_w"] * zoom))
+    if side > min(im.size):
+        raise RuntimeError(f"{src}: face too large for a {HEAD_SQUARE['face_w']:.0%} square crop")
+    cx = box["x"] + box["w"] / 2
+    left = min(max(round(cx - side / 2), 0), im.width - side)
+    top = min(max(round(box["y"] - HEAD_SQUARE["face_top"] * side), 0), im.height - side)
+    im = im.crop((left, top, left + side, top + side)).resize((n, n), Image.LANCZOS)
+    save_webp(im, out)
+
+
 def portrait(src: Path, out: Path) -> None:
     with tempfile.TemporaryDirectory() as tmp:
         im = Image.open(src)
@@ -209,11 +264,7 @@ def portrait(src: Path, out: Path) -> None:
 
 
 def place_portrait(src: Path, out: Path) -> None:
-    res = subprocess.run(["swift", str(SITE / "scripts" / "face_boxes.swift"), str(src)],
-                         check=True, capture_output=True, text=True)
-    box = json.loads(res.stdout.strip().splitlines()[-1])
-    if box.get("x") is None:
-        raise RuntimeError(f"no face found in {src}")
+    box = face_box(src)
     cw, ch = PORTRAIT["size"]
     k = PORTRAIT["face_w"] / box["w"]
     im = Image.open(src).convert("RGBA")
@@ -280,6 +331,8 @@ def build(recipe: tuple, src: Path, out: Path) -> None:
         fit(src, out, arg)
     elif kind == "square":
         square(src, out, arg)
+    elif kind == "head-square":
+        head_square(src, out, *(arg if isinstance(arg, tuple) else (arg,)))
     elif kind == "pdf":
         pdf(src, out, arg)
     elif kind == "video":
@@ -300,7 +353,7 @@ def build(recipe: tuple, src: Path, out: Path) -> None:
 
 def fingerprint(src: Path, recipe: tuple) -> dict:
     st = src.stat()
-    return {"source": None, "size": st.st_size, "mtime": int(st.st_mtime), "recipe": list(recipe)}
+    return {"source": None, "size": st.st_size, "mtime": int(st.st_mtime), "recipe": json.loads(json.dumps(recipe))}  # JSON form, so nested tuples match the lock
 
 
 def main() -> int:

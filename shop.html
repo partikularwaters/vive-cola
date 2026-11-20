@@ -42,18 +42,11 @@
   .s-hero h1 { margin:0; font-weight:900; text-transform:uppercase; line-height:.9; font-size:clamp(52px,7vw,112px); letter-spacing:-.01em; }
   .s-hero h1 em { display:block; font-style:normal; color:var(--orange); }
   .s-hero p { font-size:clamp(16px,1.4vw,19px); line-height:1.55; font-weight:600; max-width:30em; margin:24px 0 0; }
-  /* VIVI says "I need more VIVE", drawn like the team's sticker and keychain: the line and
-     the dizzy mascot sit together on a sun star, cut out with a thick white sticker edge */
+  /* VIVI says "I need more VIVE": the team's outlined sticker art, which carries its own
+     white die-cut edge, on a sun star */
   .s-hero .sticker { position:relative; margin:0; justify-self:end; width:min(100%,360px); aspect-ratio:1; display:grid; place-items:center; }
   .s-hero .sticker .burst { position:absolute; inset:0; background-image:url(assets/shapes/star-10pt-sun.svg); }
-  .s-hero .sticker .art { position:relative; display:flex; align-items:center; gap:2%; width:96%; rotate:-6deg;
-    /* A die-cut sticker edge (defined in the page): grow the shape well past the border,
-       then shrink it back, so the notches between VIVI's arms, legs, and headband fill in
-       while the border keeps sharp, straight corners */
-    filter:url(#sticker-edge) drop-shadow(0 18px 16px rgba(20,24,63,.3)); }
-  .s-hero .sticker .say { margin:0; flex:1.25; display:grid; gap:4px; font-weight:900; text-transform:uppercase; color:var(--navy); font-size:clamp(22px,2.1vw,32px); line-height:.92; letter-spacing:-.01em; }
-  .s-hero .sticker .say img { width:100%; height:auto; }
-  .s-hero .sticker .vivi { flex:1; min-width:0; width:100%; height:auto; aspect-ratio:608/720; object-fit:contain; }
+  .s-hero .sticker .art { position:relative; width:96%; height:auto; rotate:-6deg; filter:drop-shadow(0 18px 16px rgba(20,24,63,.3)); }
   .motion .s-hero .sticker .art { animation:drop .55s var(--ease-pop) both; }
   @keyframes drop { from { opacity:0; transform:translateY(-40px) scale(.92); } }
   /* Aisle tiles: white cards with the brand chamfer; the picture pops on hover */
@@ -115,8 +108,8 @@
                       50% var(--base), 66.67% calc(var(--base) + var(--tooth)), 83.33% var(--base),
                       100% calc(var(--base) + var(--tooth)), 100% 100%);
     transition:--reveal .7s cubic-bezier(.33,1,.68,1) .12s; }
-  /* Each can reveals its own poster, cropped to keep the headline and the person */
-  .item .reveal img { width:100%; height:100%; object-fit:cover; object-position:50% 6%; display:block; }
+  /* Each can reveals its own model photo (the poster art without its headline), pre-cropped by the head-square sync recipe so the three heads share one size and spot */
+  .item .reveal img { width:100%; height:100%; object-fit:cover; object-position:50% 50%; display:block; }
   @media (hover:hover) and (pointer:fine) {
     .item .art.is-ready:hover .reveal .scene { --reveal:1; transition-delay:0s; }
   }
@@ -155,7 +148,6 @@
 </nav>
 </header>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><filter id="sticker-edge" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB"><feComponentTransfer in="SourceAlpha" result="solid"><feFuncA type="discrete" tableValues="0 1"/></feComponentTransfer><feMorphology in="solid" operator="dilate" radius="16" result="grow"/><feMorphology in="grow" operator="erode" radius="7" result="die"/><feFlood flood-color="#F9F9F9"/><feComposite in2="die" operator="in" result="edge"/><feMerge><feMergeNode in="edge"/><feMergeNode in="SourceGraphic"/></feMerge></filter></svg>
 <main id="content">
 <section class="s-hero cut-down on-dark pat pat-seal-deep">
 
@@ -167,10 +159,7 @@
     </div>
     <figure class="sticker">
       <div class="burst star" aria-hidden="true"></div>
-      <div class="art">
-        <p class="say">I need more <img src="assets/wordmark-vive-navy.png" alt="VIVE" width="412" height="105"></p>
-        <img class="vivi" src="assets/mascot/vivi-dizzy.webp" alt="VIVI, the VIVE mascot, dizzy for more" width="608" height="720">
-      </div>
+      <img class="art" src="assets/mascot/vivi-need-more-vive.webp" alt="VIVI, the VIVE mascot, dizzy beside the line &quot;I need more VIVE&quot;" width="900" height="662">
     </figure>
   </div>
   <ul class="aisles" aria-label="Shop sections">
@@ -183,14 +172,14 @@
 
 
 <section class="shelf cans wrap pat pat-sparse" id="cans" aria-labelledby="cans-title">
-  <img class="mascot left flip" src="assets/mascot/vivi-pointing.webp" alt="" width="671" height="720" loading="lazy" style="top:clamp(140px,13vw,190px)">
+  <img class="mascot left flip" src="assets/mascot/vivi-pointing.webp" alt="" width="680" height="720" loading="lazy" style="top:clamp(140px,13vw,190px)">
   <div class="shelf-head">
     <h2 id="cans-title"><span class="label">Single cans</span></h2>
     <p>Every 12 oz can carries four vitamins and zero calories. ₱67 each.</p>
   </div>
   <div class="grid-3">
       <article class="item" data-item data-id="can-classic" data-name="VIVE Classic" data-price="67">
-        <div class="art lift-zone" style="--g:var(--orange)"><div class="lift"><img class="can" src="assets/can-classic-web.webp" alt="VIVE Classic can" width="600" height="1569" loading="lazy"></div><div class="reveal" aria-hidden="true"><div class="scene"><img src="assets/poster-classic-hires.webp" alt="" width="1024" height="1636" decoding="async"></div></div></div>
+        <div class="art lift-zone" style="--g:var(--orange)"><div class="lift"><img class="can" src="assets/can-classic-web.webp" alt="VIVE Classic can" width="600" height="1569" loading="lazy"></div><div class="reveal" aria-hidden="true"><div class="scene"><img src="assets/model-classic-web.webp" alt="" width="560" height="560" decoding="async"></div></div></div>
         <h3>VIVE Classic</h3>
         <p class="desc">The original orange can. Vitamins A, B9, B12, and C for everyday energy.</p>
         <div class="buy">
@@ -205,7 +194,7 @@
         <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: VIVE Classic</span></button>
       </article>
       <article class="item" data-item data-id="can-glow" data-name="VIVE Glow" data-price="67">
-        <div class="art lift-zone" style="--g:var(--sun)"><div class="lift"><img class="can" src="assets/can-glow-web.webp" alt="VIVE Glow can" width="600" height="1568" loading="lazy"></div><div class="reveal" aria-hidden="true"><div class="scene"><img src="assets/poster-glow-hires.webp" alt="" width="1024" height="1636" decoding="async"></div></div></div>
+        <div class="art lift-zone" style="--g:var(--sun)"><div class="lift"><img class="can" src="assets/can-glow-web.webp" alt="VIVE Glow can" width="600" height="1568" loading="lazy"></div><div class="reveal" aria-hidden="true"><div class="scene"><img src="assets/model-glow-web.webp" alt="" width="560" height="560" decoding="async"></div></div></div>
         <h3>VIVE Glow</h3>
         <p class="desc">Vitamins A, B7, C, and E to support skin health.</p>
         <div class="buy">
@@ -220,7 +209,7 @@
         <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: VIVE Glow</span></button>
       </article>
       <article class="item" data-item data-id="can-focus" data-name="VIVE Focus" data-price="67">
-        <div class="art lift-zone" style="--g:var(--navy)"><div class="lift"><img class="can" src="assets/can-focus-web.webp" alt="VIVE Focus can" width="600" height="1569" loading="lazy"></div><div class="reveal" aria-hidden="true"><div class="scene"><img src="assets/poster-focus-hires.webp" alt="" width="1024" height="1636" decoding="async"></div></div></div>
+        <div class="art lift-zone" style="--g:var(--navy)"><div class="lift"><img class="can" src="assets/can-focus-web.webp" alt="VIVE Focus can" width="600" height="1569" loading="lazy"></div><div class="reveal" aria-hidden="true"><div class="scene"><img src="assets/model-focus-web.webp" alt="" width="560" height="560" decoding="async"></div></div></div>
         <h3>VIVE Focus</h3>
         <p class="desc">Vitamins B6, B9, B12, and C to support mental performance.</p>
         <div class="buy">
@@ -238,7 +227,7 @@
 </section>
 
 <section class="shelf packs wrap" id="packs" aria-labelledby="packs-title">
-  <img class="mascot left" src="assets/mascot/vivi-dizzy.webp" alt="" width="608" height="720" loading="lazy" style="top:clamp(110px,11.4vw,170px)">
+  <img class="mascot left" src="assets/mascot/vivi-dizzy.webp" alt="" width="610" height="720" loading="lazy" style="top:clamp(110px,11.4vw,170px)">
   <div class="shelf-head">
     <h2 id="packs-title"><span class="label orange">Packs</span></h2>
     <p>Stock the fridge for the week, or bring a cooler to the court.</p>
@@ -293,7 +282,7 @@
 </section>
 
 <section class="shelf merch wrap" id="merch" aria-labelledby="merch-title">
-  <img class="mascot left" src="assets/mascot/vivi-running.webp" alt="" width="595" height="720" loading="lazy" style="top:clamp(110px,11.4vw,170px)">
+  <img class="mascot left" src="assets/mascot/vivi-running.webp" alt="" width="606" height="720" loading="lazy" style="top:clamp(110px,11.4vw,170px)">
   <div class="shelf-head">
     <h2 id="merch-title"><span class="label sun">Merch</span></h2>
     <p>Wear the vibe to the gym, the office, and the weekend game.</p>
@@ -502,7 +491,7 @@
 
 <footer class="site-footer"></footer>
 <script>
-  /* Arm each can's hover reveal once its poster image is decoded, so the star never opens on an empty layer.
+  /* Arm each can's hover reveal once its model photo is decoded, so the star never opens on an empty layer.
      If decoding stalls (a background tab, for example), arm it 1.2s after the image loads anyway. */
   document.querySelectorAll('.item .reveal img').forEach((img) => {
     const art = img.closest('.art');
