@@ -37,7 +37,7 @@
   /* Navy hero: white and sun for text (9.5:1 and 5.9:1), orange only for large display type and fills */
   .hero { position:relative; z-index:1; overflow:hidden; background:var(--navy); --pat-op:.14; --pat-mask:linear-gradient(100deg,#000 0%,transparent 55%); padding-bottom:calc(var(--cut) + 40px); }
   .hero .grid { display:grid; grid-template-columns:1fr minmax(260px,.85fr); align-items:center; gap:24px; position:relative; z-index:2; }
-  .hero h1 { margin:0; font-weight:900; text-transform:uppercase; line-height:.9; font-size:clamp(48px,8.6vw,128px); letter-spacing:-.01em; color:var(--white); }
+  .hero h1 { margin:0; font-weight:900; text-transform:uppercase; line-height:.9; font-size:var(--h1-home); letter-spacing:-.01em; color:var(--white); }
   .hero h1 em { font-style:normal; color:var(--orange); display:block; }
   .hero p { font-size:clamp(16px,1.4vw,19px); line-height:1.55; font-weight:600; color:var(--white); max-width:30em; margin:24px 0 0; }
   .cta { position:relative; width:fit-content; display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }

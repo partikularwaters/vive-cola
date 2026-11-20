@@ -16,6 +16,11 @@
   --mist: #F1F2F8;
   --f: "Montserrat", "Montserrat Fallback", "Avenir Next", Arial, sans-serif;
   --cut: clamp(28px, 5vw, 72px);
+  /* Hero headline scale: Home leads at full size, and the inner pages (About Us,
+     Product, and Shop) share one size about half as large, so Home reads as the
+     main page */
+  --h1-home: clamp(48px, 8.6vw, 128px);
+  --h1-page: clamp(34px, 4.2vw, 64px);
   /* Emil Kowalski curves: strong ease-out for UI response, springy overshoot for brand pops */
   --ease-out: cubic-bezier(.23, 1, .32, 1);
   --ease-pop: cubic-bezier(.2, 1.5, .4, 1);

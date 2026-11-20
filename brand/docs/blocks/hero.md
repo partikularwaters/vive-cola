@@ -41,6 +41,7 @@ The hero's layout styles live in its page's own `<style>` block; the shared part
 ## Rules
 
 - No price in a hero.
+- Home's headline uses `--h1-home`; every other hero uses `--h1-page`, about half as large, so Home stays the loudest page.
 - Equal space above and below the content: 112px at desktop widths.
 - Turning stars need a [motion toggle](../components/motion-toggle.md).
 - The hero's main image loads with `fetchpriority="high"`; nothing else on the page does.

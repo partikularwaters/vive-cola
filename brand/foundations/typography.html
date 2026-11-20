@@ -67,9 +67,14 @@
 </thead>
 <tbody>
 <tr>
-<td>Display</td>
-<td>Black 900, uppercase</td>
-<td>48 to 128px, line height 0.9</td>
+<td>Home hero</td>
+<td>Black 900, uppercase, <code>var(--h1-home)</code></td>
+<td>48 to 128px, line height 0.9. Home only, so it reads as the main page</td>
+</tr>
+<tr>
+<td>Page hero</td>
+<td>Black 900, uppercase, <code>var(--h1-page)</code></td>
+<td>34 to 64px: About Us, Product, and Shop, about half the Home size</td>
 </tr>
 <tr>
 <td>Heading</td>
@@ -96,6 +101,7 @@
 <h2>Rules</h2>
 <ul>
 <li>Set sizes with <code>clamp()</code> so type scales between 1280 and 1920px wide.</li>
+<li>A page's <code>h1</code> uses <code>--h1-home</code> on Home and <code>--h1-page</code> everywhere else. Never set a hero size by hand.</li>
 <li>Paragraphs use <code>text-wrap: pretty</code> (set in <code>site.css</code>) so none ends on a single word.</li>
 <li>A fallback face, "Montserrat Fallback," is Arial resized to Montserrat's widths, so text keeps its line breaks while the font loads. Keep it in the stack.</li>
 <li>The logo is an image. Never set "VIVE" in Montserrat to stand in for it.</li>
@@ -104,6 +110,6 @@
   <nav class="pager" aria-label="Previous and next"><a class="prev" href="../../brand/foundations/colors.html"><small>Previous</small>Colors</a><a class="next" href="../../brand/foundations/layout.html"><small>Next</small>Layout</a></nav>
 </main>
 </div>
-<script type="application/json" id="doc-md">"# Typography\n\n> Foundations \u00b7 VIVE brand kit \u00b7 https://vive-cola.vercel.app/brand/foundations/typography\n> Source: brand/docs/foundations/typography.md\n\nMontserrat carries every line of live text, self-hosted in `assets/fonts/` and set by the `--f` token. Black (900) does the shouting, ExtraBold (800) labels things, SemiBold (600) carries body copy, and Regular (400) holds long notes.\n\n\n## Roles\n\n| Role | Weight and case | Size |\n| --- | --- | --- |\n| Display | Black 900, uppercase | 48 to 128px, line height 0.9 |\n| Heading | Black 900, uppercase, usually inside a [Label](https://vive-cola.vercel.app/brand/docs/components/label.md) | 32 to 72px |\n| Eyebrow and button | Black or ExtraBold, uppercase, 0.04 to 0.12em tracking | 13 to 15px |\n| Body | SemiBold 600 | 16 to 22px, line height 1.5 to 1.6 |\n| Note | Regular 400 | 13 to 15px |\n\n## Rules\n\n- Set sizes with `clamp()` so type scales between 1280 and 1920px wide.\n- Paragraphs use `text-wrap: pretty` (set in `site.css`) so none ends on a single word.\n- A fallback face, \"Montserrat Fallback,\" is Arial resized to Montserrat's widths, so text keeps its line breaks while the font loads. Keep it in the stack.\n- The logo is an image. Never set \"VIVE\" in Montserrat to stand in for it.\n"</script>
+<script type="application/json" id="doc-md">"# Typography\n\n> Foundations \u00b7 VIVE brand kit \u00b7 https://vive-cola.vercel.app/brand/foundations/typography\n> Source: brand/docs/foundations/typography.md\n\nMontserrat carries every line of live text, self-hosted in `assets/fonts/` and set by the `--f` token. Black (900) does the shouting, ExtraBold (800) labels things, SemiBold (600) carries body copy, and Regular (400) holds long notes.\n\n\n## Roles\n\n| Role | Weight and case | Size |\n| --- | --- | --- |\n| Home hero | Black 900, uppercase, `var(--h1-home)` | 48 to 128px, line height 0.9. Home only, so it reads as the main page |\n| Page hero | Black 900, uppercase, `var(--h1-page)` | 34 to 64px: About Us, Product, and Shop, about half the Home size |\n| Heading | Black 900, uppercase, usually inside a [Label](https://vive-cola.vercel.app/brand/docs/components/label.md) | 32 to 72px |\n| Eyebrow and button | Black or ExtraBold, uppercase, 0.04 to 0.12em tracking | 13 to 15px |\n| Body | SemiBold 600 | 16 to 22px, line height 1.5 to 1.6 |\n| Note | Regular 400 | 13 to 15px |\n\n## Rules\n\n- Set sizes with `clamp()` so type scales between 1280 and 1920px wide.\n- A page's `h1` uses `--h1-home` on Home and `--h1-page` everywhere else. Never set a hero size by hand.\n- Paragraphs use `text-wrap: pretty` (set in `site.css`) so none ends on a single word.\n- A fallback face, \"Montserrat Fallback,\" is Arial resized to Montserrat's widths, so text keeps its line breaks while the font loads. Keep it in the stack.\n- The logo is an image. Never set \"VIVE\" in Montserrat to stand in for it.\n"</script>
 </body>
 </html>
