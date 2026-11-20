@@ -15,7 +15,7 @@ A shelf is a section of product cards: the Shop's cans, packs, and merch. Each c
 <article class="item" data-item data-id="merch-headband" data-name="Sport headband" data-price="249">
   <div class="art lift-zone" style="--g:var(--orange)"><div class="lift"><img class="photo" src="assets/merch/headband.webp" alt="Sport headband mockup: white band with navy edges, the orange VIVE wordmark, and sun triangles" width="900" height="900" loading="lazy"></div></div>
   <h3>Sport headband</h3>
-  <p class="desc">The sweatband VIVI wears, sized for you. Stretch knit with the wordmark up front.</p>
+  <p class="desc">Match VIVI's look. A stretch-knit sweatband with the wordmark up front.</p>
   <div class="buy">
     <p class="price">₱249</p>
     <div class="qty">
