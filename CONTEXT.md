@@ -30,7 +30,7 @@ This document is the canonical router and functional contract for the VIVE four-
 
 ### All pages
 - **Header:** The sticky navbar is orange on every page with deep navy links, the navy wordmark, and a deep navy cart, so it always stands apart from the hero below (instructor critique, 2026-11-20).
-- **Heroes:** Each page opens differently: Home is a split navy hero with the can on a star; About is a light, centered story opener; Product is a headline band over a three-panel can lineup; Shop is a navy storefront with aisle tiles.
+- **Heroes:** Each page opens differently: Home is a split navy hero with the can on a star; About is a light, centered story opener; Product is a white, confetti-covered headline over a three-panel can lineup; Shop is a navy storefront with aisle tiles.
 - **Brand patterns:** Selected sections carry the Confetti Toss, Confetti Sparse, or Star Seal pattern (`assets/patterns/`, `.pat` in `site.css`), so the color grounds read as branded surfaces. Use them sparingly: the user found the first, heavier pass suffocating (2026-11-20).
 
 ### 1. Homepage (`index.html`)
@@ -50,8 +50,8 @@ This document is the canonical router and functional contract for the VIVE four-
 
 ### 3. Product Page (`product.html`)
 - **Brand product showcase:** Deep focus on the cans, vitamin formulation per variant (see the product line in [brand-spec.md](brand-spec.md)), stevia sweetening, and zero-calorie benefits.
-- **Hero:** A navy headline band over a lineup of three color panels (Classic, Glow, and Focus), each linking to its strip. Each panel carries a subtle Star Seal outside its star: white seals on Classic and Glow, deep navy seals on Focus.
-- **Strip structure:** Each strip carries large brand shapes behind its content and no pattern, so each section has one layer of background detail. The hero band carries a deep Confetti Toss fading from the left; "In every can" sits on Confetti Sparse, the comparison on a subtle blue-toned Star Seal, and the closing call to action on off-white with Confetti Toss. Exactly one product variation per strip, except where variants are showcased together as a cohesive family strip.
+- **Hero:** An off-white hero under one Confetti Toss layer that runs the whole section, behind and between the panels (user, 2026-11-20). A navy headline with "Four vitamins each." on a tilted orange label sits over a lineup of three color panels (Classic, Glow, and Focus), each linking to its strip. The panels float inside the page gutters with a soft shadow and clear space below, and their stars avoid white so they never merge with the hero ground: sun on Classic, orange on Glow, and deep navy on Focus. Each panel carries a subtle Star Seal outside its star: white seals on Classic and Glow, deep navy seals on Focus.
+- **Strip structure:** Each strip carries large brand shapes behind its content and no pattern, so each section has one layer of background detail. The hero carries Confetti Toss across its full width; "In every can" sits on Confetti Sparse, the comparison on a subtle blue-toned Star Seal, and the closing call to action on off-white with Confetti Toss. Exactly one product variation per strip, except where variants are showcased together as a cohesive family strip.
 - **Strict negative constraints:**
   - **NO** product posters are allowed on this page.
   - **NO** merchandise items are allowed on this page.
