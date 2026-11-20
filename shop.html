@@ -24,6 +24,7 @@
 <meta name="twitter:description" content="Shop VIVE Classic, Glow, and Focus by the can or the pack, plus VIVE merch: jerseys, run club kits, jackets, totes, caps, mugs, keychains, scarves, and more.">
 <meta name="twitter:image" content="https://vive-cola.vercel.app/assets/og-card.png">
 <meta name="twitter:image:alt" content="VIVI, the VIVE mascot, points at the line “Your dose of good vibes” beside the Glow, Classic, and Focus cans.">
+<link rel="preload" href="assets/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/fonts/montserrat.css">
 <link rel="stylesheet" href="site.css">
 <script src="site.js" defer></script>
@@ -145,6 +146,7 @@
     <li><a href="product.html">Product</a></li>
     <li><a href="shop.html" aria-current="page">Shop</a></li>
   </ul>
+  <button type="button" class="cart-btn" popovertarget="cart-panel"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 7V6a5 5 0 0 1 10 0v1h3.2l-1.3 15H5.1L3.8 7H7Zm2 0h6V6a3 3 0 0 0-6 0v1Z"/></svg>Cart <span class="cart-count">0</span><span class="vh"> items</span></button>
 </nav>
 </header>
 
@@ -165,7 +167,7 @@
   <ul class="aisles" aria-label="Shop sections">
     <li><a href="#cans"><span><b>Cans</b><small>3 vibes · ₱67 each</small></span><span class="pic" aria-hidden="true"><img src="assets/can-glow-web.webp" alt="" width="600" height="1568"><img src="assets/can-classic-web.webp" alt="" width="600" height="1569"><img src="assets/can-focus-web.webp" alt="" width="600" height="1569"></span></a></li>
     <li><a href="#packs"><span><b>Packs</b><small>3 packs · from ₱195</small></span><span class="pic" aria-hidden="true"><img src="assets/can-classic-web.webp" alt="" width="600" height="1569"><img src="assets/can-classic-web.webp" alt="" width="600" height="1569"><img src="assets/can-classic-web.webp" alt="" width="600" height="1569"></span></a></li>
-    <li><a href="#merch"><span><b>Merch</b><small>13 items · from ₱99</small></span><span class="pic" aria-hidden="true"><img class="photo" src="assets/merch/cap.webp" alt="" width="900" height="900"></span></a></li>
+    <li><a href="#merch"><span><b>Merch</b><small>14 items · from ₱99</small></span><span class="pic" aria-hidden="true"><img class="photo" src="assets/merch/cap.webp" alt="" width="900" height="900"></span></a></li>
   </ul>
   </div>
 </section>
@@ -317,6 +319,21 @@
           </div>
         </div>
         <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: Run club kit</span></button>
+      </article>
+      <article class="item" data-item data-id="merch-headband" data-name="Sport headband" data-price="249">
+        <div class="art lift-zone" style="--g:var(--orange)"><div class="lift"><img class="photo" src="assets/merch/headband.webp" alt="Sport headband mockup: white band with navy edges, the orange VIVE wordmark, and sun triangles" width="900" height="900" loading="lazy"></div></div>
+        <h3>Sport headband</h3>
+        <p class="desc">The sweatband VIVI wears, sized for you. Stretch knit with the wordmark up front.</p>
+        <div class="buy">
+          <p class="price">₱249</p>
+          <div class="qty">
+            <button type="button" data-step="-1" aria-label="Decrease quantity for Sport headband">−</button>
+            <label class="vh" for="q-merch-headband">Quantity for Sport headband</label>
+            <input id="q-merch-headband" type="number" inputmode="numeric" min="1" max="99" value="1">
+            <button type="button" data-step="1" aria-label="Increase quantity for Sport headband">+</button>
+          </div>
+        </div>
+        <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: Sport headband</span></button>
       </article>
       <article class="item" data-item data-id="merch-jacket" data-name="Bomber jacket" data-price="1899">
         <div class="art lift-zone" style="--g:var(--navy)"><div class="lift"><img class="photo" src="assets/merch/jacket.webp" alt="Bomber jacket mockup" width="900" height="900" loading="lazy"></div></div>

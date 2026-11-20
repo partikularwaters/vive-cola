@@ -14,7 +14,7 @@
   --deep: #1D2766;
   --ink: #14183F;
   --mist: #F1F2F8;
-  --f: "Montserrat", "Avenir Next", Arial, sans-serif;
+  --f: "Montserrat", "Montserrat Fallback", "Avenir Next", Arial, sans-serif;
   --cut: clamp(28px, 5vw, 72px);
   /* Emil Kowalski curves: strong ease-out for UI response, springy overshoot for brand pops */
   --ease-out: cubic-bezier(.23, 1, .32, 1);
@@ -35,6 +35,12 @@ body {
 
 a {
   color: inherit;
+}
+
+/* Rebalance the last lines so a paragraph never ends on one word (an orphan),
+   whatever the zoom or window width. Browsers without support wrap as usual. */
+p {
+  text-wrap: pretty;
 }
 
 img {

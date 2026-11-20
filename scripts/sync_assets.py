@@ -82,7 +82,7 @@ ASSETS: list[tuple[str, str, tuple]] = [
     ("assets/stationery/business-card-back.webp", "MVA Batch 54/Group 1 - (VIVE)/Mockups/VIVE Business Card Back.png", ("fit", 1575)),
     ("assets/stationery/letterhead.webp", "MVA Batch 54/Group 1 - (VIVE)/Mockups/VIVE Letterhead.png", ("fit", 1600)),
     # Home: the VIVE ad
-    ("assets/video/vive-ad.mp4", "video-recordings/Vive Draft1.mp4", ("video", 1920)),
+    ("assets/video/vive-ad.mp4", "MVA Batch 54/Group 1 - (VIVE)/Video/VIVE VIDEO ADVERTISEMENT.mp4", ("video", 1920)),
     # Mascot: VIVI, the team's outlined versions with a white sticker edge
     ("assets/mascot/vivi-pointing.webp", "MVA Batch 54/Group 1 - (VIVE)/Drafts/VIVI pointing Outline.png", ("fit", 720)),
     ("assets/mascot/vivi-running.webp", "MVA Batch 54/Group 1 - (VIVE)/Drafts/VIVI Running Outline.png", ("fit", 720)),
@@ -121,6 +121,7 @@ ASSETS: list[tuple[str, str, tuple]] = [
     ("assets/merch/mug.webp", "vive-mockups/Merch/VIVE-mug.jpg", ("square", 900)),
     ("assets/merch/keychain.webp", "vive-mockups/Merch/I Need More V!VE Keychain.png", ("square", 900)),
     ("assets/merch/scarf.webp", "vive-mockups/Merch/shawl.png", ("square", 900)),
+    ("assets/merch/headband.webp", "MVA Batch 54/Group 1 - (VIVE)/Mockups/Headband.png", ("square", 900)),
 ]
 
 WEBP = {"quality": 82, "method": 6}

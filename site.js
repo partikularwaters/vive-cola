@@ -1,7 +1,7 @@
 /* ==========================================================================
    VIVE shared behavior (site.js), loaded with `defer` on every page.
    1. Renders the global footer into <footer class="site-footer"></footer>.
-   2. Adds the cart button and cart panel to the primary nav.
+   2. Wires the cart button in the primary nav and adds the cart panel.
    3. Keeps the cart in localStorage so the count persists across pages and visits.
    4. Wires quantity steppers and "Add to cart" buttons ([data-add]) on any page.
    5. Wires any .motion-toggle to pause the motion in its section or aside.
@@ -39,12 +39,17 @@
   const nav = document.querySelector('nav[aria-label="Primary"]');
   let badge;
   if (nav) {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'cart-btn';
-    btn.setAttribute('popovertarget', 'cart-panel');
-    btn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 7V6a5 5 0 0 1 10 0v1h3.2l-1.3 15H5.1L3.8 7H7Zm2 0h6V6a3 3 0 0 0-6 0v1Z"/></svg>Cart <span class="cart-count">0</span><span class="vh"> items</span>';
-    nav.append(btn);
+    /* Each page ships the cart button in its nav markup, so the nav never shifts when this
+       script runs. Build one only for a page that lacks it. */
+    let btn = nav.querySelector('.cart-btn');
+    if (!btn) {
+      btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'cart-btn';
+      btn.setAttribute('popovertarget', 'cart-panel');
+      btn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 7V6a5 5 0 0 1 10 0v1h3.2l-1.3 15H5.1L3.8 7H7Zm2 0h6V6a3 3 0 0 0-6 0v1Z"/></svg>Cart <span class="cart-count">0</span><span class="vh"> items</span>';
+      nav.append(btn);
+    }
     badge = btn.querySelector('.cart-count');
 
     const panel = document.createElement('div');

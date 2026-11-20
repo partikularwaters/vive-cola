@@ -89,6 +89,15 @@
       900
     ]
   },
+  "assets/merch/headband.webp": {
+    "source": "MVA Batch 54/Group 1 - (VIVE)/Mockups/Headband.png",
+    "size": 2492057,
+    "mtime": 1795179260,
+    "recipe": [
+      "square",
+      900
+    ]
+  },
   "assets/merch/jacket.webp": {
     "source": "vive-mockups/Merch/Vive Bomber jacket.jpg",
     "size": 1672866,
@@ -366,9 +375,9 @@
     ]
   },
   "assets/video/vive-ad.mp4": {
-    "source": "video-recordings/Vive Draft1.mp4",
+    "source": "MVA Batch 54/Group 1 - (VIVE)/Video/VIVE VIDEO ADVERTISEMENT.mp4",
     "size": 352467589,
-    "mtime": 1795114837,
+    "mtime": 1795174615,
     "recipe": [
       "video",
       1920

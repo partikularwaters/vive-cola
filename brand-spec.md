@@ -33,7 +33,7 @@ The older leaf wordmark and purple can in `training/vive-copy.md` are superseded
 | `mascot/vivi-pointing.webp`, `mascot/vivi-running.webp`, `mascot/vivi-dizzy.webp` | VIVI, the mascot: pointing, running, and dizzy. The team's outlined versions with a white sticker edge (Drive: `Group 1 - (VIVE)/Drafts/VIVI * Outline.png`, 2026-11-20), built by `scripts/sync_assets.py`. The favicon and app icons still come from the original artwork in `Mascot/` |
 | `mascot/vivi-need-more-vive.webp` | The team's outlined "I need more VIVE" sticker with dizzy VIVI (Drive: `Group 1 - (VIVE)/Drafts/Vivi need more Vive outline.png`), 900×662. Used in the Shop hero |
 | `model-classic-web.webp`, `model-glow-web.webp`, `model-focus-web.webp` | The Classic, Glow, and Focus poster photos without their headlines (Drive: `Group 1 - (VIVE)/Drafts/VIVE model *.png`), cropped to 560×560 by the `head-square` sync recipe so the three heads share one size and spot. Used in the Shop can reveal |
-| `video/vive-ad.mp4` | The 45-second VIVE ad (H.264, 1080p, from `Vive Draft1.mp4`) |
+| `video/vive-ad.mp4` | The 45-second VIVE ad (H.264, 1080p, from the team's Drive copy, `Group 1 - (VIVE)/Video/VIVE VIDEO ADVERTISEMENT.mp4`) |
 | `video/vive-ad-cover.webp` | The ad's custom cover graphic, rendered from `design-demos/ad-cover.html` |
 | `shapes/` (`source/deck-extract/`, mirrored to `assets/shapes/`) | 148 standalone vector SVGs and 1024×1024 transparent PNGs: 10-point stars, 5-point stars, 4-point stars, squares & diamonds (solids, outlines, concentric badges, tilts, chamfers), triangles (equilateral, directional, acute energy, wireframe, corner wedges), angled banners, clusters, and price/vitamin burst badges |
 
@@ -69,7 +69,7 @@ Flavor grounds seen on the retired deck-era cans (not part of the core four): cr
   - **VIVE Focus:** "Your dose of sharp vibes." Vitamins B6, B9, B12, and C, which support mental performance.
 - Retired deck-era variants (do not promote): Decaffeinated ("Your dose of relaxing vibes") and Extra Caffeine ("Your dose of grind vibes").
 - CTA lines: "Grab a VIVE!" / "Spread the vibes!" Retailers: Lawson, 7-Eleven, SM, and Ayala Malls.
-- Shop catalog and sample prices (prototype, pending client confirmation): single cans ₱67; Trio sampler ₱195; Classic six-pack ₱380; 12-can party pack ₱720; baseball jersey ₱1,299; run club kit (singlet and shorts) ₱1,499; bomber jacket ₱1,899; canvas tote ₱449; coaster set ₱299; cap ₱599; A5 notebook ₱249; pen set ₱149; sticker pack ₱99; tumbler ₱699; ceramic mug ₱399.
+- Shop catalog and sample prices (prototype, pending client confirmation): single cans ₱67; Trio sampler ₱195; Classic six-pack ₱380; 12-can party pack ₱720; baseball jersey ₱1,299; run club kit (singlet and shorts) ₱1,499; bomber jacket ₱1,899; canvas tote ₱449; coaster set ₱299; cap ₱599; A5 notebook ₱249; pen set ₱149; sticker pack ₱99; tumbler ₱699; ceramic mug ₱399; keychain ₱199; knit scarf ₱549; sport headband ₱249.
 - Name: from the last letters of *revive* and *survive* (vive-copy.md). The middle "!" / IV marks the four vitamins.
 
 ## Missing (honest placeholders in the draft)
