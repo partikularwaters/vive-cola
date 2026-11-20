@@ -69,7 +69,7 @@ Flavor grounds seen on the retired deck-era cans (not part of the core four): cr
   - **VIVE Focus:** "Your dose of sharp vibes." Vitamins B6, B9, B12, and C, which support mental performance.
 - Retired deck-era variants (do not promote): Decaffeinated ("Your dose of relaxing vibes") and Extra Caffeine ("Your dose of grind vibes").
 - CTA lines: "Grab a VIVE!" / "Spread the vibes!" Retailers: Lawson, 7-Eleven, SM, and Ayala Malls.
-- Shop catalog and sample prices (prototype, pending client confirmation): single cans ₱67; Trio sampler ₱195; Classic six-pack ₱380; 12-can party pack ₱720; baseball jersey ₱1,299; run club kit (singlet and shorts) ₱1,499; bomber jacket ₱1,899; canvas tote ₱449; coaster set ₱299; cap ₱599; A5 notebook ₱249; pen set ₱149; sticker pack ₱99; tumbler ₱699; ceramic mug ₱399; keychain ₱199; knit scarf ₱549; sport headband ₱249.
+- Shop catalog and sample prices (prototype, pending client confirmation): single cans ₱67; Trio sampler ₱195; Classic six-pack ₱380; 12-can party pack ₱720; baseball jersey ₱1,299; run club kit (singlet and shorts) ₱1,499; bomber jacket ₱1,899; canvas tote ₱449; coaster set ₱299; cap ₱599; A5 notebook ₱249; pen set ₱149; sticker pack ₱99; tumbler ₱699; ceramic mug ₱399; keychain ₱199; knit scarf ₱549; sport headband ₱249; VIVI plushie ₱899 (the featured best seller).
 - Name: from the last letters of *revive* and *survive* (vive-copy.md). The middle "!" / IV marks the four vitamins.
 
 ## Missing (honest placeholders in the draft)

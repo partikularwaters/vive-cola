@@ -122,6 +122,8 @@ ASSETS: list[tuple[str, str, tuple]] = [
     ("assets/merch/keychain.webp", "vive-mockups/Merch/I Need More V!VE Keychain.png", ("square", 900)),
     ("assets/merch/scarf.webp", "vive-mockups/Merch/shawl.png", ("square", 900)),
     ("assets/merch/headband.webp", "MVA Batch 54/Group 1 - (VIVE)/Mockups/Headband.png", ("square", 900)),
+    # Shop: the featured best seller, shown larger than the grid photos
+    ("assets/merch/vivi-plushie.webp", "MVA Batch 54/Group 1 - (VIVE)/Mockups/Freckled Orange V Mascot Surrounded by Books.png", ("square", 1200)),
     ("assets/merch/vivi-graphic-tee.webp", "MVA Batch 54/Group 1 - (VIVE)/Mockups/V!VE Mascot Graphic T-Shirt Mockup.png", ("cutout-square", 900)),
 ]
 

@@ -788,6 +788,10 @@ A shelf is a section of product cards: the Shop's cans, packs, and merch. Each c
 
 The card styles live in `shop.html`. `site.js` wires the stepper and the button for any element with `data-id`, `data-name`, and `data-price`.
 
+## Featured item
+
+The Merch shelf opens with one featured item before its grid: the VIVI plushie, the best seller. It is the same `.item` with a `.feature` class on a navy panel, the photo at twice the grid size, a sun 10-point star seal reading "#1," a **Best seller** label, and an orange button. Keep one featured item per shelf.
+
 ## Rules
 
 - `--g` sets the tilted frame's color. Frames cycle orange, sun, and navy only.

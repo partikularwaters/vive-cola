@@ -64,7 +64,7 @@
   @media (hover:hover) and (pointer:fine) { .aisles a:hover .pic { translate:0 -8px; transition-delay:0s; } }
 
   /* ---------- SHELVES ---------- */
-  /* Patterns stay sparing: Confetti Sparse on the cans shelf only. Packs (mist) and the 15-item merch grid stay plain, so no piece lands on a card */
+  /* Patterns stay sparing: Confetti Sparse on the cans shelf only. Packs (mist) and the merch grid stay plain, so no piece lands on a card */
   .shelf { background:var(--white); --pat-op:.35; }
   /* The pointing VIVI is drawn pointing left; mirrored, it points at the shelf title */
   .mascot.flip { scale:-1 1; }
@@ -130,9 +130,33 @@
   .qty input::-webkit-outer-spin-button, .qty input::-webkit-inner-spin-button { -webkit-appearance:none; margin:0; }
   .item .add { margin-top:14px; justify-self:stretch; text-align:center; }
 
+  /* ---------- FEATURED MERCH ---------- */
+  /* The best seller leads the merch shelf on its own navy panel: the photo twice the grid size on
+     the left, the story and the buy row on the right, and a sun star seal on the photo's corner */
+  .item.feature { grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr); grid-template-rows:none; align-items:center;
+    gap:clamp(32px,4vw,64px); margin-bottom:clamp(48px,5vw,72px); padding:clamp(28px,3.2vw,52px);
+    background:var(--navy); color:var(--white);
+    clip-path:polygon(0 0,100% 0,100% calc(100% - 28px),calc(100% - 28px) 100%,0 100%); --tilt:-2deg; }
+  .feature .art img.photo { width:88%; }
+  .feature .seal { position:absolute; z-index:1; top:-2%; left:-1%; width:clamp(96px,9vw,132px); aspect-ratio:1;
+    display:grid; place-items:center; rotate:-12deg; background:url(assets/shapes/star-10pt-sun.svg) center / contain no-repeat;
+    color:var(--navy); font:900 clamp(22px,2.2vw,30px)/1 var(--f); filter:drop-shadow(0 8px 10px rgba(20,24,63,.35)); }
+  .feature .info { display:grid; justify-items:start; }
+  .feature .eyebrow { margin:0; font-size:clamp(18px,1.6vw,22px); font-weight:900; text-transform:uppercase; }
+  .feature h3 { margin:18px 0 0; font-size:clamp(34px,3.6vw,56px); line-height:.95; color:var(--white); }
+  .feature .desc { margin:16px 0 0; max-width:30em; font-size:clamp(16px,1.3vw,18px); line-height:1.55; color:#e3e6f5; }
+  .feature .buy { justify-content:flex-start; gap:24px; margin-top:28px; }
+  .feature .price { font-size:clamp(28px,2.6vw,36px); color:var(--sun); }
+  /* On navy the stepper draws in off-white */
+  .feature .qty { border-color:var(--white); }
+  .feature .qty button { color:var(--white); }
+  .feature .qty button:hover { background:rgba(249,249,249,.12); }
+  .feature .qty input { border-inline-color:var(--white); }
+  .feature .add { justify-self:start; margin-top:22px; padding-inline:36px; }
+
   .note { margin:48px 0 0; font-size:13px; line-height:1.6; color:#4a5384; max-width:60em; }
 
-  @media (max-width:980px) { .grid-4 { grid-template-columns:repeat(2,1fr); } .grid-3 { grid-template-columns:1fr 1fr; } .s-hero .grid, .aisles { grid-template-columns:1fr; } }
+  @media (max-width:980px) { .item.feature { grid-template-columns:1fr; } .grid-4 { grid-template-columns:repeat(2,1fr); } .grid-3 { grid-template-columns:1fr 1fr; } .s-hero .grid, .aisles { grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
@@ -167,7 +191,7 @@
   <ul class="aisles" aria-label="Shop sections">
     <li><a href="#cans"><span><b>Cans</b><small>3 vibes · ₱67 each</small></span><span class="pic" aria-hidden="true"><img src="assets/can-glow-web.webp" alt="" width="600" height="1568"><img src="assets/can-classic-web.webp" alt="" width="600" height="1569"><img src="assets/can-focus-web.webp" alt="" width="600" height="1569"></span></a></li>
     <li><a href="#packs"><span><b>Packs</b><small>3 packs · from ₱195</small></span><span class="pic" aria-hidden="true"><img src="assets/can-classic-web.webp" alt="" width="600" height="1569"><img src="assets/can-classic-web.webp" alt="" width="600" height="1569"><img src="assets/can-classic-web.webp" alt="" width="600" height="1569"></span></a></li>
-    <li><a href="#merch"><span><b>Merch</b><small>15 items · from ₱99</small></span><span class="pic" aria-hidden="true"><img class="photo" src="assets/merch/cap.webp" alt="" width="900" height="900"></span></a></li>
+    <li><a href="#merch"><span><b>Merch</b><small>16 items · from ₱99</small></span><span class="pic" aria-hidden="true"><img class="photo" src="assets/merch/vivi-plushie.webp" alt="" width="1200" height="1200"></span></a></li>
   </ul>
   </div>
 </section>
@@ -289,6 +313,27 @@
     <h2 id="merch-title"><span class="label sun">Merch</span></h2>
     <p>Rep the vibe at the gym, the office, and the weekend game.</p>
   </div>
+  <article class="item feature on-dark" data-item data-id="merch-vivi-plushie" data-name="VIVI plushie" data-price="899">
+    <div class="art lift-zone" style="--g:var(--orange)">
+      <div class="lift"><img class="photo" src="assets/merch/vivi-plushie.webp" alt="VIVI plushie mockup: the orange V mascot in sunglasses and a navy-and-white headband, arms crossed, on a desk beside books and a VIVE mug" width="1200" height="1200" loading="lazy"></div>
+      <span class="seal" aria-hidden="true">#1</span>
+    </div>
+    <div class="info">
+      <p class="eyebrow"><span class="label sun">Best seller</span></p>
+      <h3>VIVI plushie</h3>
+      <p class="desc">Shades on, arms crossed, and ready to guard your desk. Our number one merch is VIVI as a soft plushie, headband and freckles included.</p>
+      <div class="buy">
+        <p class="price">₱899</p>
+        <div class="qty">
+          <button type="button" data-step="-1" aria-label="Decrease quantity for VIVI plushie">−</button>
+          <label class="vh" for="q-merch-vivi-plushie">Quantity for VIVI plushie</label>
+          <input id="q-merch-vivi-plushie" type="number" inputmode="numeric" min="1" max="99" value="1">
+          <button type="button" data-step="1" aria-label="Increase quantity for VIVI plushie">+</button>
+        </div>
+      </div>
+      <button class="btn orange add" type="button" data-add>Add to cart<span class="vh">: VIVI plushie</span></button>
+    </div>
+  </article>
   <div class="grid-4">
       <article class="item" data-item data-id="merch-baseball-jersey" data-name="Baseball jersey" data-price="1299">
         <div class="art lift-zone" style="--g:var(--orange)"><div class="lift"><img class="photo" src="assets/merch/baseball-jersey.webp" alt="Baseball jersey mockup" width="900" height="900" loading="lazy"></div></div>
