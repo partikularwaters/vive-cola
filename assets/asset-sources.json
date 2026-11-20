@@ -188,6 +188,15 @@
       900
     ]
   },
+  "assets/merch/vivi-graphic-tee.webp": {
+    "source": "MVA Batch 54/Group 1 - (VIVE)/Mockups/V!VE Mascot Graphic T-Shirt Mockup.png",
+    "size": 1514610,
+    "mtime": 1795181250,
+    "recipe": [
+      "cutout-square",
+      900
+    ]
+  },
   "assets/mockup-intro-bus-shelter.webp": {
     "source": "MVA Batch 54/Group 1 - (VIVE)/Mockups/VIVE Poster Mockup 1.png",
     "size": 1466122,

@@ -64,7 +64,7 @@
   @media (hover:hover) and (pointer:fine) { .aisles a:hover .pic { translate:0 -8px; transition-delay:0s; } }
 
   /* ---------- SHELVES ---------- */
-  /* Patterns stay sparing: Confetti Sparse on the cans shelf only. Packs (mist) and the 13-item merch grid stay plain, so no piece lands on a card */
+  /* Patterns stay sparing: Confetti Sparse on the cans shelf only. Packs (mist) and the 15-item merch grid stay plain, so no piece lands on a card */
   .shelf { background:var(--white); --pat-op:.35; }
   /* The pointing VIVI is drawn pointing left; mirrored, it points at the shelf title */
   .mascot.flip { scale:-1 1; }
@@ -167,7 +167,7 @@
   <ul class="aisles" aria-label="Shop sections">
     <li><a href="#cans"><span><b>Cans</b><small>3 vibes · ₱67 each</small></span><span class="pic" aria-hidden="true"><img src="assets/can-glow-web.webp" alt="" width="600" height="1568"><img src="assets/can-classic-web.webp" alt="" width="600" height="1569"><img src="assets/can-focus-web.webp" alt="" width="600" height="1569"></span></a></li>
     <li><a href="#packs"><span><b>Packs</b><small>3 packs · from ₱195</small></span><span class="pic" aria-hidden="true"><img src="assets/can-classic-web.webp" alt="" width="600" height="1569"><img src="assets/can-classic-web.webp" alt="" width="600" height="1569"><img src="assets/can-classic-web.webp" alt="" width="600" height="1569"></span></a></li>
-    <li><a href="#merch"><span><b>Merch</b><small>14 items · from ₱99</small></span><span class="pic" aria-hidden="true"><img class="photo" src="assets/merch/cap.webp" alt="" width="900" height="900"></span></a></li>
+    <li><a href="#merch"><span><b>Merch</b><small>15 items · from ₱99</small></span><span class="pic" aria-hidden="true"><img class="photo" src="assets/merch/cap.webp" alt="" width="900" height="900"></span></a></li>
   </ul>
   </div>
 </section>
@@ -499,6 +499,21 @@
           </div>
         </div>
         <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: Knit scarf</span></button>
+      </article>
+      <article class="item" data-item data-id="merch-vivi-graphic-tee" data-name="VIVI graphic tee" data-price="499">
+        <div class="art lift-zone" style="--g:var(--sun)"><div class="lift"><img class="photo" src="assets/merch/vivi-graphic-tee.webp" alt="VIVI graphic tee mockup: white tee with the VIVI mascot in sunglasses and the line “I’m on VIVE” in navy" width="900" height="900" loading="lazy"></div></div>
+        <h3>VIVI graphic tee</h3>
+        <p class="desc">VIVI in shades. Say “I’m on VIVE.”</p>
+        <div class="buy">
+          <p class="price">₱499</p>
+          <div class="qty">
+            <button type="button" data-step="-1" aria-label="Decrease quantity for VIVI graphic tee">−</button>
+            <label class="vh" for="q-merch-vivi-graphic-tee">Quantity for VIVI graphic tee</label>
+            <input id="q-merch-vivi-graphic-tee" type="number" inputmode="numeric" min="1" max="99" value="1">
+            <button type="button" data-step="1" aria-label="Increase quantity for VIVI graphic tee">+</button>
+          </div>
+        </div>
+        <button class="btn navy add" type="button" data-add>Add to cart<span class="vh">: VIVI graphic tee</span></button>
       </article>
   </div>
   <p class="note">Merch images are design mockups. Prices are sample prototype prices.</p>

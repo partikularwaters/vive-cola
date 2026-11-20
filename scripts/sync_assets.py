@@ -122,6 +122,7 @@ ASSETS: list[tuple[str, str, tuple]] = [
     ("assets/merch/keychain.webp", "vive-mockups/Merch/I Need More V!VE Keychain.png", ("square", 900)),
     ("assets/merch/scarf.webp", "vive-mockups/Merch/shawl.png", ("square", 900)),
     ("assets/merch/headband.webp", "MVA Batch 54/Group 1 - (VIVE)/Mockups/Headband.png", ("square", 900)),
+    ("assets/merch/vivi-graphic-tee.webp", "MVA Batch 54/Group 1 - (VIVE)/Mockups/V!VE Mascot Graphic T-Shirt Mockup.png", ("cutout-square", 900)),
 ]
 
 WEBP = {"quality": 82, "method": 6}
