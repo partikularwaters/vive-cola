@@ -166,29 +166,40 @@
   const footer = document.querySelector('footer.site-footer');
   if (footer && !footer.children.length) {
     footer.innerHTML = `
-  <i class="tri" aria-hidden="true" style="--s:140px;--c:url(assets/shapes/triangle-equilateral-navy.svg);--r:14deg;right:-30px;top:-24px"></i>
-  <i class="tri hide-sm" aria-hidden="true" style="--s:56px;--c:url(assets/shapes/triangle-equilateral-orange.svg);--r:-32deg;right:22%;top:14px"></i>
-  <i class="tri hide-sm" aria-hidden="true" style="--s:40px;--c:url(assets/shapes/triangle-equilateral-sun.svg);--r:200deg;left:46%;top:20px"></i>
-  <div class="foot-cta wrap">
+  <div class="foot-cols wrap">
+    <div class="foot-brand">
+      <a href="index.html"><img src="assets/wordmark-vive-white.png" alt="VIVE home" width="203" height="52" loading="lazy"></a>
+      <p>Real vitamins in the cola you already love. Four in every can.</p>
+      <a class="btn sun" href="shop.html">Shop VIVE</a>
+    </div>
+    <nav class="foot-pages" aria-labelledby="foot-pages-h">
+      <h2 id="foot-pages-h"><span class="label sun">Pages</span></h2>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="product.html">Product</a></li>
+        <li><a href="shop.html">Shop</a></li>
+      </ul>
+    </nav>
     <div>
-      <h2><span class="label sun">Grab a VIVE!</span></h2>
-      <p class="lede">Get your VIVE at your nearest Lawson, 7-Eleven, SM, or Ayala Malls, or order a pack online.</p>
+      <h2><span class="label sun">Find us at</span></h2>
       <ul class="retailers">
-        <li><img src="assets/lawson-logo-white.png" alt="Lawson" width="1280" height="195" style="--h:26px" loading="lazy"></li>
-        <li><img src="assets/seven-eleven-logo.svg" alt="7-Eleven" width="273" height="257" style="--h:42px" loading="lazy"></li>
-        <li><img src="assets/sm-logo-white.svg" alt="SM Supermalls" width="44" height="44" style="--h:44px" loading="lazy"></li>
-        <li><img src="assets/ayala-malls-logo-white.svg" alt="Ayala Malls" width="688" height="276" style="--h:44px" loading="lazy"></li>
+        <li><img src="assets/lawson-logo-white.png" alt="Lawson" width="1280" height="195" style="--h:15px" loading="lazy"></li>
+        <li><img src="assets/seven-eleven-logo.svg" alt="7-Eleven" width="273" height="257" style="--h:28px" loading="lazy"></li>
+        <li><img src="assets/sm-logo-white.svg" alt="SM Supermalls" width="44" height="44" style="--h:28px" loading="lazy"></li>
+        <li><img src="assets/ayala-malls-logo-white.svg" alt="Ayala Malls" width="688" height="276" style="--h:28px" loading="lazy"></li>
       </ul>
     </div>
-    <a class="btn sun" href="shop.html">Shop VIVE</a>
+    <div>
+      <h2><span class="label sun">Say hi</span></h2>
+      <address class="foot-contact">
+        <span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>123 Street, Quezon City, Philippines</span>
+        <a href="mailto:hello@vivecola.com"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 5h18v14H3V5Zm2 2v.5l7 4.6 7-4.6V7H5Zm14 2.9-7 4.6-7-4.6V17h14V9.9Z"/></svg>hello@vivecola.com</a>
+        <a href="tel:+639220001234"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8Z"/></svg>+63 922 000 1234</a>
+      </address>
+    </div>
   </div>
   <div class="foot-base wrap">
-    <a href="index.html"><img src="assets/wordmark-vive-white.png" alt="VIVE home" width="94" height="24" loading="lazy"></a>
-    <address class="foot-contact">
-      <span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>123 Street, Quezon City, Philippines</span>
-      <a href="mailto:hello@vivecola.com"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 5h18v14H3V5Zm2 2v.5l7 4.6 7-4.6V7H5Zm14 2.9-7 4.6-7-4.6V17h14V9.9Z"/></svg>hello@vivecola.com</a>
-      <a href="tel:+639220001234"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8Z"/></svg>+63 922 000 1234</a>
-    </address>
     <nav class="social" aria-label="Social media">
       <ul>
         <li><a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="${ICONS.facebook}"/></svg></a></li>
