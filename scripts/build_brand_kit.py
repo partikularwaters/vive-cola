@@ -369,8 +369,10 @@ def build():
         lines += ["", f"## {label}", ""]
         lines += [f"- [{d['title']}]({SITE_URL}/brand/docs/{key}/{d['slug']}.md): {d['summary']}" for d in docs if d["section"] == key]
     (KIT / "llms.txt").write_text("\n".join(lines) + "\n")
-    # /brand opens the introduction. Link previews read this page's own tags and do not
-    # follow the redirect, so it carries the Brand Kit share card too.
+    # /brand opens the introduction. Vercel serves this page at /brand with no trailing
+    # slash, so the redirect uses a root path: a relative one would resolve from the site
+    # root. Link previews read this page's own tags and do not follow the redirect, so it
+    # carries the Brand Kit share card too.
     desc = "The VIVE brand system for people and agents: colors, type, shapes, components, blocks, and assets, with every page as Markdown."
     card_alt = "VIVE Brand Kit: the VIVE wordmark beside a fan of brand swatch cards ending with VIVI, the mascot."
     (KIT / "index.html").write_text(f"""<!doctype html>
@@ -394,11 +396,11 @@ def build():
 <meta name="twitter:description" content="{desc}">
 <meta name="twitter:image" content="{SITE_URL}/assets/og-brand-kit.png">
 <meta name="twitter:image:alt" content="{card_alt}">
-<link rel="icon" href="../favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="canonical" href="{SITE_URL}/brand/getting-started/introduction">
-<meta http-equiv="refresh" content="0; url=getting-started/introduction.html">
+<meta http-equiv="refresh" content="0; url=/brand/getting-started/introduction.html">
 </head>
-<body><p><a href="getting-started/introduction.html">Open the VIVE Brand Kit</a></p></body>
+<body><p><a href="/brand/getting-started/introduction.html">Open the VIVE Brand Kit</a></p></body>
 </html>
 """)
     print(f"wrote {len(docs)} pages, vive-brand-kit.md, llms.txt, and index.html in brand/")
