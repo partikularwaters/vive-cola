@@ -217,7 +217,8 @@ def main():
         print("Mode: Planned pages permitted as warnings.")
     print("=" * 60)
 
-    html_files = list(repo_root.glob("*.html"))
+    # The four pages at the root, plus the Brand Kit catalog pages in brand/
+    html_files = list(repo_root.glob("*.html")) + sorted((repo_root / "brand").rglob("*.html"))
 
     if not html_files:
         print("No HTML files found at repository root.")

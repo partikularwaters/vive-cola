@@ -1,5 +1,5 @@
-# Deploy boundary: Vercel serves only the four pages, the unlisted brand.html, site.css, site.js,
-# assets/, and vercel.json. Everything below is project material.
+# Deploy boundary: Vercel serves only the four pages, the unlisted Brand Kit in brand/, site.css,
+# site.js, assets/, and vercel.json. Everything below is project material.
 design-demos/
 source/
 wix-assets/
@@ -9,4 +9,6 @@ memory/
 .github/
 .githooks/
 *.md
+# The Brand Kit's Markdown docs are its agent-readable source, so they deploy
+!brand/**/*.md
 router.html

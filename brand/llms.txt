@@ -1,0 +1,46 @@
+# VIVE Brand Kit
+
+> The design system behind the VIVE website: tokens, components, blocks, and assets for the vitamin-charged cola. Every page is Markdown; fetch one, or fetch the whole system in one file.
+
+- [Entire system](https://vive-cola.vercel.app/brand/vive-brand-kit.md): every doc in one Markdown file
+
+## Getting started
+
+- [Introduction](https://vive-cola.vercel.app/brand/docs/getting-started/introduction.md): What the VIVE brand kit is, who it is for, and how the catalog is organized.
+- [How to use](https://vive-cola.vercel.app/brand/docs/getting-started/how-to-use.md): Two ways in. Describe a page to an agent, or build it yourself with site.css and site.js.
+
+## Foundations
+
+- [Logo](https://vive-cola.vercel.app/brand/docs/foundations/logo.md): The VIVE wordmark, where the middle letters read as an exclamation mark and IV for the four vitamins.
+- [Colors](https://vive-cola.vercel.app/brand/docs/foundations/colors.md): Four core colors and four supporting grounds, each with a token and a tested text pairing.
+- [Typography](https://vive-cola.vercel.app/brand/docs/foundations/typography.md): Montserrat in four weights, with uppercase Black for display and headings.
+- [Layout](https://vive-cola.vercel.app/brand/docs/foundations/layout.md): Full-bleed color grounds, a centered content column, wide side gutters, and diagonal cuts between sections.
+- [Shapes](https://vive-cola.vercel.app/brand/docs/foundations/shapes.md): The 10-point star, triangles, and their families, as SVG files in the brand colors.
+- [Patterns](https://vive-cola.vercel.app/brand/docs/foundations/patterns.md): Three approved repeating tiles, used sparingly, one per section.
+- [Motion](https://vive-cola.vercel.app/brand/docs/foundations/motion.md): Quick, snappy motion with two curves, a grace period on every hover, and a still mode for reduced motion.
+- [Voice](https://vive-cola.vercel.app/brand/docs/foundations/voice.md): Lead with the vitamins, keep stevia as reassurance, and write plain, upbeat lines.
+
+## Components
+
+- [Label](https://vive-cola.vercel.app/brand/docs/components/label.md): The tilted color strip that carries every section heading.
+- [Button](https://vive-cola.vercel.app/brand/docs/components/button.md): The angled button with an offset shadow block, in four colors.
+- [Cart button](https://vive-cola.vercel.app/brand/docs/components/cart-button.md): The header's cart button with a live item count, and the panel it opens.
+- [Motion toggle](https://vive-cola.vercel.app/brand/docs/components/motion-toggle.md): The pause button every section with always-turning stars must carry.
+- [Hover lift](https://vive-cola.vercel.app/brand/docs/components/hover-lift.md): How cards and images tilt and rise on hover without flickering at their edges.
+- [VIVI](https://vive-cola.vercel.app/brand/docs/components/mascot.md): The VIVE mascot, its three poses, and where it stands on a page.
+
+## Blocks
+
+- [Site header](https://vive-cola.vercel.app/brand/docs/blocks/site-header.md): The sticky orange navigation bar with the wordmark, four page links, and the cart.
+- [Hero](https://vive-cola.vercel.app/brand/docs/blocks/hero.md): How each page opens, and the parts every hero shares.
+- [Facts ribbon](https://vive-cola.vercel.app/brand/docs/blocks/facts-ribbon.md): A sun strip of short product facts, each marked with a small navy triangle.
+- [Section grounds](https://vive-cola.vercel.app/brand/docs/blocks/section-grounds.md): How a content section picks its ground, its one layer of detail, and its cuts.
+- [Poster row](https://vive-cola.vercel.app/brand/docs/blocks/poster-row.md): One poster per variant, each tilted on its own color block with its name, line, vitamins, and a button.
+- [Product shelf](https://vive-cola.vercel.app/brand/docs/blocks/product-shelf.md): A shelf of product cards with tilted photos, a price, a quantity stepper, and an add-to-cart button.
+- [Footer](https://vive-cola.vercel.app/brand/docs/blocks/footer.md): The global footer, rendered once by site.js on every page.
+
+## Assets
+
+- [Cans](https://vive-cola.vercel.app/brand/docs/assets/cans.md): The three 12 oz cans, their vitamins, and the transparent renders.
+- [Posters and ads](https://vive-cola.vercel.app/brand/docs/assets/posters.md): The intro poster, the three variant posters, the ad, and the share card.
+- [Stationery](https://vive-cola.vercel.app/brand/docs/assets/stationery.md): The business card and the letterhead.
