@@ -47,8 +47,9 @@
   .s-hero .sticker { position:relative; margin:0; justify-self:end; width:min(100%,360px); aspect-ratio:1; display:grid; place-items:center; }
   .s-hero .sticker .burst { position:absolute; inset:0; background-image:url(assets/shapes/star-10pt-sun.svg); }
   .s-hero .sticker .art { position:relative; display:flex; align-items:center; gap:2%; width:96%; rotate:-6deg;
-    /* A true outline (feMorphology dilate, defined in the page) instead of four offset
-       shadows, which left ragged edges around VIVI's legs and arm tips */
+    /* A die-cut sticker edge (defined in the page): grow the shape well past the border,
+       then shrink it back, so the notches between VIVI's arms, legs, and headband fill in
+       while the border keeps sharp, straight corners */
     filter:url(#sticker-edge) drop-shadow(0 18px 16px rgba(20,24,63,.3)); }
   .s-hero .sticker .say { margin:0; flex:1.25; display:grid; gap:4px; font-weight:900; text-transform:uppercase; color:var(--navy); font-size:clamp(22px,2.1vw,32px); line-height:.92; letter-spacing:-.01em; }
   .s-hero .sticker .say img { width:100%; height:auto; }
@@ -154,7 +155,7 @@
 </nav>
 </header>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><filter id="sticker-edge" x="-10%" y="-10%" width="120%" height="120%"><feComponentTransfer in="SourceAlpha" result="solid"><feFuncA type="discrete" tableValues="0 1"/></feComponentTransfer><feMorphology in="solid" operator="dilate" radius="5" result="grow"/><feFlood flood-color="#F9F9F9"/><feComposite in2="grow" operator="in" result="edge"/><feMerge><feMergeNode in="edge"/><feMergeNode in="SourceGraphic"/></feMerge></filter></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><filter id="sticker-edge" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB"><feComponentTransfer in="SourceAlpha" result="solid"><feFuncA type="discrete" tableValues="0 1"/></feComponentTransfer><feMorphology in="solid" operator="dilate" radius="16" result="grow"/><feMorphology in="grow" operator="erode" radius="7" result="die"/><feFlood flood-color="#F9F9F9"/><feComposite in2="die" operator="in" result="edge"/><feMerge><feMergeNode in="edge"/><feMergeNode in="SourceGraphic"/></feMerge></filter></svg>
 <main id="content">
 <section class="s-hero cut-down on-dark pat pat-seal-deep">
 

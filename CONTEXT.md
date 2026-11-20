@@ -14,6 +14,7 @@ This document is the canonical router and functional contract for the VIVE four-
 | Favicon and app icons | `favicon.ico` and `assets/icons/`, built by `scripts/sync_assets.py` from `Mascot/VIVI pointing.png` | Chosen: VIVI on deep blue (2026-11-19; #1D2766 keeps the navy headband stripes visible), linked on all four pages | VIVI mascot source | Rebuilds with the other assets when the mascot source changes |
 | Web portal poster | [router.html](router.html) → `VIVE.pdf` on Drive | Locked: Three Columns (2026-11-18), see [direction-approved.md](direction-approved.md) | Can renders, `site.css` tokens | Change only when the client asks; rebuild by hand with `scripts/build_router_pdf.py` |
 | Brand Kit | [brand.html](brand.html), unlisted at `/brand` | Built 2026-11-20 by `scripts/build_brand_page.py`; no site page links to it | `assets/shapes/`, `assets/patterns/`, logos, VIVI, and cans | Rerun the script after adding shapes or patterns |
+| Brand Kit share card | [design-demos/og-brand-kit.html](design-demos/og-brand-kit.html) → `assets/og-brand-kit.png` | Built 2026-11-20, 1200×630, referenced by the OG and Twitter tags in `brand.html`: "VIVE Brand Kit" beside a fan of swatch cards (deep with navy confetti, sun, orange, and off-white with VIVI in front) on navy under a deep Star Seal | Wordmark, VIVI, `confetti-navy.svg`, `seal-deep.svg`, shapes | Re-render with headless Brave at 1200×630 (see the file's header comment) |
 
 **Next action:** Review the Shop page with the user, applying the decisions from Home, About, and Product (patterns sparingly, one layer of background detail per section, blue-toned tiles on blue grounds), then commit it on its own. Later: replace the Home hero with a photo background.
 
@@ -60,6 +61,7 @@ This document is the canonical router and functional contract for the VIVE four-
 - **Hero:** A storefront: navy under a deep navy Star Seal with no loose shapes, VIVI's sticker, and three aisle tiles (Cans, Packs, and Merch) that jump to the shelves.
 - **Shelf grounds:** Cans sits on off-white under Confetti Sparse; Packs (mist) and Merch (off-white) stay plain, so no pattern piece lands on a product card.
 - **Shelf titles:** VIVI stands in the left gutter beside every shelf title, facing it (the pointing VIVI is mirrored).
+- **Hero sticker edge:** A die-cut white border with sharp corners (an inline SVG filter grows the shape 16px and shrinks it back 7px) fills the notches around VIVI and the line, replacing the thin traced outline. Corners stay sharp, never rounded (user, 2026-11-20).
 - **Hero aisle tiles:** White tiles with each name on a tilted navy label (layout B, chosen 2026-11-20); the rejected options A and C stay in `design-demos/shop-aisles-options.html`.
 - **Merch frames:** The tilted frames cycle orange, sun, and navy only.
 - **Catalog range:** Individual cans/singles, curated multi-can bundles, and branded merchandise.

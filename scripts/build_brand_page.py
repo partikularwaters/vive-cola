@@ -155,6 +155,20 @@ def build():
 <title>VIVE · Brand Kit</title>
 <meta name="description" content="Every VIVE brand element in one place: logo, color, type, shapes, patterns, VIVI, cans, components, and voice.">
 <meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="VIVE">
+<meta property="og:title" content="VIVE Brand Kit">
+<meta property="og:description" content="Every VIVE brand element in one place: logo, color, type, shapes, patterns, VIVI, cans, components, and voice.">
+<meta property="og:url" content="https://vive-cola.vercel.app/brand">
+<meta property="og:image" content="https://vive-cola.vercel.app/assets/og-brand-kit.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="VIVE Brand Kit: the VIVE wordmark beside a fan of brand swatch cards ending with VIVI, the mascot.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="VIVE Brand Kit">
+<meta name="twitter:description" content="Every VIVE brand element in one place: logo, color, type, shapes, patterns, VIVI, cans, components, and voice.">
+<meta name="twitter:image" content="https://vive-cola.vercel.app/assets/og-brand-kit.png">
+<meta name="twitter:image:alt" content="VIVE Brand Kit: the VIVE wordmark beside a fan of brand swatch cards ending with VIVI, the mascot.">
 <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap">

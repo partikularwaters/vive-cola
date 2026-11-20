@@ -1,0 +1,46 @@
+<!doctype html>
+<!-- Source of assets/og-brand-kit.png, the share card for the unlisted Brand Kit page (brand.html).
+     Render from the repo root:
+     "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser" --headless=new --hide-scrollbars --force-device-scale-factor=1 --virtual-time-budget=4000 --window-size=1200,630 --screenshot="$PWD/assets/og-brand-kit.png" "file://$PWD/design-demos/og-brand-kit.html" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>VIVE Brand Kit share card</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap">
+<style>
+  :root { --orange:#FF9447; --navy:#2B3990; --sun:#F4BD6A; --white:#F9F9F9; --deep:#1D2766; }
+  * { box-sizing:border-box; }
+  html, body { margin:0; }
+  body { width:1200px; height:630px; overflow:hidden; position:relative; background:var(--navy); font-family:Montserrat, sans-serif; -webkit-font-smoothing:antialiased; }
+  /* One background layer: the blue Star Seal, fading out toward the words */
+  body::before { content:""; position:absolute; inset:0; background:url(../assets/patterns/seal-deep.svg) 0 0 / 140px; opacity:.5;
+    -webkit-mask-image:linear-gradient(90deg,transparent 30%,#000 75%); mask-image:linear-gradient(90deg,transparent 30%,#000 75%); }
+  .copy { position:absolute; z-index:1; left:84px; top:50%; translate:0 -50%; }
+  .copy img { display:block; width:400px; height:auto; }
+  .label { display:block; width:max-content; margin-top:30px; background:var(--sun); color:var(--navy); font-weight:900; font-size:76px; line-height:1; text-transform:uppercase; padding:.12em .36em .16em; transform:rotate(-3deg); clip-path:polygon(2% 0,100% 6%,98% 100%,0 94%); }
+  /* A fanned swatch deck: each chip carries one brand element */
+  .deck { position:absolute; left:840px; top:92px; width:300px; height:430px; }
+  .chip { position:absolute; inset:0; transform-origin:50% 128%; clip-path:polygon(0 0,100% 0,100% calc(100% - 34px),calc(100% - 34px) 100%,0 100%); box-shadow:0 20px 30px rgba(20,24,63,.35); }
+  .chip i { position:absolute; background:center / contain no-repeat; }
+  .c1 { background:var(--deep) url(../assets/patterns/confetti-navy.svg) 0 0 / 240px; rotate:-27deg; }
+  .c2 { background:var(--sun); rotate:-18deg; }
+  .c3 { background:var(--orange); rotate:-9deg; }
+  .c4 { background:var(--white); rotate:2deg; }
+  .c2 i { left:26px; top:26px; width:92px; height:92px; background-image:url(../assets/shapes/triangle-equilateral-navy.svg); rotate:-14deg; }
+  .c3 i { left:22px; top:22px; width:100px; height:100px; background-image:url(../assets/shapes/star-10pt-white.svg); }
+  .c4 i { inset:auto 12px 26px 12px; height:300px; background-image:url(../assets/mascot/vivi-pointing.webp); background-position:center bottom; }
+</style>
+</head>
+<body>
+  <div class="copy">
+    <img src="../assets/wordmark-vive-white.png" alt="VIVE">
+    <span class="label">Brand Kit</span>
+  </div>
+  <div class="deck" aria-hidden="true">
+    <div class="chip c1"></div>
+    <div class="chip c2"><i></i></div>
+    <div class="chip c3"><i></i></div>
+    <div class="chip c4"><i></i></div>
+  </div>
+</body>
+</html>
